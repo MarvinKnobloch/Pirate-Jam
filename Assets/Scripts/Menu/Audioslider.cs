@@ -25,7 +25,7 @@ public class Audioslider : MonoBehaviour
 
         float soundvalue = PlayerPrefs.GetFloat(gamevalue);
         float textvalue;
-        if (gamevalue == "Sound")
+        if (gamevalue == "SoundVolume")
         {
             slider.value = soundvalue + 80;
             textvalue = soundvalue + 80;

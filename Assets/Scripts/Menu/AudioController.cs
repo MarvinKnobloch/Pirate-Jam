@@ -19,24 +19,11 @@ public class AudioController : MonoBehaviour
     public enum Songs
     {
         empty,
-        song1,
-        song2,
     }
     public enum Sounds
     {
         empty,
         menuButton,
-        jump,
-        doubleJump,
-        dash,
-        land,
-        lever,
-        elevator,
-        collect,
-        death,
-        secret,
-        victory,
-
     }
 
     private void Awake()
