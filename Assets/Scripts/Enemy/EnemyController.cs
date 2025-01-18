@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -9,7 +10,9 @@ public class EnemyController : MonoBehaviour
     [Header("Combat")]
     public float AttackDistance = 2f;
     public float AttackCooldown = 1f;
-    public float Health = 10f;
+    public int AttackDamage = 1;
+
+    [NonSerialized] public Health Health;
 
     private Rigidbody2D _rigidbody;
     private CircleCollider2D _collider;
@@ -24,11 +27,12 @@ public class EnemyController : MonoBehaviour
         _collider = GetComponent<CircleCollider2D>();
 
         _collider.radius = AttackDistance;
+
+        Health = GetComponent<Health>();
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("Boig");
         if (other.collider.CompareTag("Player"))
         {
             _isAttacking = true;
@@ -48,6 +52,23 @@ public class EnemyController : MonoBehaviour
         if (!_isAttacking)
         {
             MoveToPlayer();
+        }
+        else
+        {
+            HandleAttack();
+        }
+    }
+
+    private void HandleAttack()
+    {
+        if (_attackTimer <= 0)
+        {
+            Player.Instance.Health.TakeDamage(AttackDamage);
+            _attackTimer = AttackCooldown;
+        }
+        else
+        {
+            _attackTimer -= Time.fixedDeltaTime;
         }
     }
 

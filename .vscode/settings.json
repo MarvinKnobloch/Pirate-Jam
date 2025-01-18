@@ -56,6 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "files.eol": "\n",
+    "files.eol": "\r\n",
     "dotnet.defaultSolution": "Pirate-Jam.sln"
 }

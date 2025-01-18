@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
 {
     public static Player Instance;
 
+
     [NonSerialized] public Controls controls;
     private AbilityController abilityController;
 
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
 
     public Abilities[] abilities;
 
+    [NonSerialized] public Health Health;
 
     public int CurrentEnergy
     {
@@ -37,6 +39,8 @@ public class Player : MonoBehaviour
         }
 
         controls = new Controls();//Keybindinputmanager.inputActions;
+        Health = GetComponent<Health>();
+
     }
     void Start()
     {
