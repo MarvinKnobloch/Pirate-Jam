@@ -53,6 +53,33 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ConfirmAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""515c412b-da23-4f0e-8591-11940d326a19"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CancelAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""5a410a01-b921-4fc1-9bdc-2777315b2b53"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ability1"",
+                    ""type"": ""Button"",
+                    ""id"": ""7031e6a5-b975-4628-a353-0cbd17072421"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +159,39 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c3813a10-e549-441b-88a4-25a0d39918b1"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76539dd7-edf9-486e-9531-194dc90b9f94"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ConfirmAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c307ed29-293a-4ee9-a900-96a44cee0093"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CancelAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -171,6 +231,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_ConfirmAbility = m_Player.FindAction("ConfirmAbility", throwIfNotFound: true);
+        m_Player_CancelAbility = m_Player.FindAction("CancelAbility", throwIfNotFound: true);
+        m_Player_Ability1 = m_Player.FindAction("Ability1", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_MenuEsc = m_Menu.FindAction("MenuEsc", throwIfNotFound: true);
@@ -244,6 +307,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_ConfirmAbility;
+    private readonly InputAction m_Player_CancelAbility;
+    private readonly InputAction m_Player_Ability1;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -251,6 +317,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @ConfirmAbility => m_Wrapper.m_Player_ConfirmAbility;
+        public InputAction @CancelAbility => m_Wrapper.m_Player_CancelAbility;
+        public InputAction @Ability1 => m_Wrapper.m_Player_Ability1;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -269,6 +338,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @ConfirmAbility.started += instance.OnConfirmAbility;
+            @ConfirmAbility.performed += instance.OnConfirmAbility;
+            @ConfirmAbility.canceled += instance.OnConfirmAbility;
+            @CancelAbility.started += instance.OnCancelAbility;
+            @CancelAbility.performed += instance.OnCancelAbility;
+            @CancelAbility.canceled += instance.OnCancelAbility;
+            @Ability1.started += instance.OnAbility1;
+            @Ability1.performed += instance.OnAbility1;
+            @Ability1.canceled += instance.OnAbility1;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -282,6 +360,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @ConfirmAbility.started -= instance.OnConfirmAbility;
+            @ConfirmAbility.performed -= instance.OnConfirmAbility;
+            @ConfirmAbility.canceled -= instance.OnConfirmAbility;
+            @CancelAbility.started -= instance.OnCancelAbility;
+            @CancelAbility.performed -= instance.OnCancelAbility;
+            @CancelAbility.canceled -= instance.OnCancelAbility;
+            @Ability1.started -= instance.OnAbility1;
+            @Ability1.performed -= instance.OnAbility1;
+            @Ability1.canceled -= instance.OnAbility1;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -350,6 +437,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnConfirmAbility(InputAction.CallbackContext context);
+        void OnCancelAbility(InputAction.CallbackContext context);
+        void OnAbility1(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

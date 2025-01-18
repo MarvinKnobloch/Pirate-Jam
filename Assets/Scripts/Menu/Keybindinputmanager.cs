@@ -10,8 +10,8 @@ public class Keybindinputmanager : MonoBehaviour
 {
     private static Controls inputActions;
 
-    public static event Action keyrebindfinished;                                    //für udatebinding UI
-    public static event Action keyrebindcanceled;                                    //für udatebinding UI
+    public static event Action keyrebindfinished;                                    //fï¿½r udatebinding UI
+    public static event Action keyrebindcanceled;                                    //fï¿½r udatebinding UI
     public static event Action disablecantclicklayer;
 
     public static Text keyrebindtext;
@@ -37,7 +37,7 @@ public class Keybindinputmanager : MonoBehaviour
             Debug.Log("action nicht vorhanden");
             return;
         }
-        //if (action.bindings[bindingindex].isComposite)                                          // Composite = W/A/S/D mehrere hotkeys die gebindet werden müssen
+        //if (action.bindings[bindingindex].isComposite)                                          // Composite = W/A/S/D mehrere hotkeys die gebindet werden mï¿½ssen
         //{
         //    var firstpartindex = bindingindex + 1;
         //    if (firstpartindex < action.bindings.Count && action.bindings[firstpartindex].isPartOfComposite)
@@ -109,7 +109,7 @@ public class Keybindinputmanager : MonoBehaviour
         rebind.OnCancel(functionisruning =>                                             // wegen memoryleak
         {
             actiontorebind.Enable();
-            functionisruning.Dispose();                                                   //löscht alles was in der Funktion passiert damit keine speicherfehler im hintergrund entstehen
+            functionisruning.Dispose();                                                   //lï¿½scht alles was in der Funktion passiert damit keine speicherfehler im hintergrund entstehen
 
             keyrebindcanceled?.Invoke();
             disablecantclicklayer?.Invoke();
@@ -117,9 +117,9 @@ public class Keybindinputmanager : MonoBehaviour
 
         rebind.WithCancelingThrough("<Keyboard>/escape");
 
-        rebind.Start();                                                               // startet die funktion rebind/macht das die rebind funktion ständig durchläuft
+        rebind.Start();                                                               // startet die funktion rebind/macht das die rebind funktion stï¿½ndig durchlï¿½uft
     }
-    public static string getbindingname(string actionname, int bindingindex)                           // für textupdate in spielmodus
+    public static string getbindingname(string actionname, int bindingindex)                           // fï¿½r textupdate in spielmodus
     {
         if (inputActions == null)
         {
