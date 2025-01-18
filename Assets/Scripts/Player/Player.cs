@@ -1,8 +1,29 @@
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour
 {
     public static Player Instance;
+
+    [NonSerialized] public Controls controls;
+    private AbilityController abilityController;
+
+    [SerializeField] private int currentEnergy;
+    [SerializeField] private int maxEnergy;
+
+    public Abilities[] abilities;
+
+
+    public int CurrentEnergy
+    {
+        get { return currentEnergy; }
+        set { currentEnergy = Math.Min(Math.Max(0, value), maxEnergy); }
+    }
+    public int MaxEnergy
+    {
+        get { return maxEnergy; }
+        set { maxEnergy = Math.Max(0, value); currentEnergy = Math.Min(value, currentEnergy); }
+    }
 
     public void Awake()
     {
@@ -14,14 +35,14 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        controls = new Controls();//Keybindinputmanager.inputActions;
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
 
