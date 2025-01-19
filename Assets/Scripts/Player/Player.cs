@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
@@ -42,13 +43,19 @@ public class Player : MonoBehaviour
         Health = GetComponent<Health>();
 
     }
+    void OnEnable(){
+        controls.Enable();
+    }
     void Start()
     {
-
+        abilityController = GetComponent<AbilityController>();
+        CurrentEnergy = MaxEnergy;
     }
 
     void Update()
     {
-
+        if(controls.Player.Ability1.WasPerformedThisFrame()){
+            abilityController.CheckForAbility(abilities[0]);
+        }
     }
 }
