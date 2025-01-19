@@ -9,7 +9,6 @@ public class Abilities : ScriptableObject
     public int AbilityCooldown;
     public float AbilityTime;
     public ProjectileObj projectileObj;
-
 }
 
 

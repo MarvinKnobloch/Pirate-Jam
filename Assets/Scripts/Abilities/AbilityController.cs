@@ -10,6 +10,8 @@ public class AbilityController : MonoBehaviour
     private Abilities currentAbility;
     private AbilityState state;
     private float abilityTimer;
+
+    [SerializeField] private GameObject testobj;
     private enum AbilityState{
         WaitForAbility,
         PrepareAbility,
@@ -44,16 +46,47 @@ public class AbilityController : MonoBehaviour
         state = AbilityState.ExecuteAbility;
         CastAbility();
     }
-    private void CastAbility(){
+    private void CastAbility()
+    {
+        switch (currentAbility.projectileObj.projectileType)
+        {
+            case ProjectileType.single:
+                ShootSingleBullet();
+                break;
+            case ProjectileType.aoe:
+                ShootAOEBullet();
+                break;
+        }
+
+
+    }
+    private void ShootSingleBullet()
+    {
         GameObject bullet = Instantiate(currentAbility.projectileObj.prefab, transform.position, Quaternion.identity);
-        if(bullet.TryGetComponent(out Projectile projectile)){
+        if (bullet.TryGetComponent(out Projectile projectile))
+        {
             Vector3 mousePosi = cam.ScreenToWorldPoint(new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, cam.nearClipPlane));
             Vector2 direction = ((Vector2)mousePosi - (Vector2)transform.position).normalized;
 
             bullet.transform.right = direction;
 
-            projectile.SetProjectile(currentAbility, direction);
+            projectile.SetProjectileSingle(currentAbility, direction);
         }
+    }
+    private void ShootAOEBullet()
+    {
+        GameObject bullet = Instantiate(currentAbility.projectileObj.prefab, transform.position, Quaternion.identity);
+        {
+            if (bullet.TryGetComponent(out Projectile projectile))
+            {
+                Vector3 mousePosi = cam.ScreenToWorldPoint(new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, -cam.transform.position.z));
+                mousePosi.z = 0;
 
+                float dist = Vector2.Distance(mousePosi,transform.position);
+                Debug.Log(dist);
+
+                projectile.SetProjectileAOE(currentAbility,transform.position, mousePosi);
+            }
+        }
     }
 }

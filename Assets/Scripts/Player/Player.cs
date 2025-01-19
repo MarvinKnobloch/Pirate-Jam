@@ -54,8 +54,13 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if(controls.Player.Ability1.WasPerformedThisFrame()){
+        if(controls.Player.Ability1.WasPerformedThisFrame())
+        {
             abilityController.CheckForAbility(abilities[0]);
+        }
+        if (controls.Player.Ability2.WasPerformedThisFrame())
+        {
+            abilityController.CheckForAbility(abilities[1]);
         }
     }
 }

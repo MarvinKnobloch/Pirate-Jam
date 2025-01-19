@@ -8,6 +8,7 @@ public class ProjectileObj : ScriptableObject
     public int damage;
     public int amount;
     public ProjectileType projectileType;
+    public float maxBulletHeight;
     public float timeToDestroy;
     public LayerMask hitLayer;
 }
