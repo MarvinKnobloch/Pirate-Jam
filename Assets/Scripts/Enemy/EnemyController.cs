@@ -76,6 +76,6 @@ public class EnemyController : MonoBehaviour
     {
         var playerPosition = Player.Instance.transform.position;
         var direction = (playerPosition - transform.position).normalized;
-        _rigidbody.MovePosition(transform.position + direction * MoveSpeed * Time.fixedDeltaTime);
+        _rigidbody.MovePosition(transform.position + MoveSpeed * Time.fixedDeltaTime * direction);
     }
 }
