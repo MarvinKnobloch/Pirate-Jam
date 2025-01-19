@@ -30,6 +30,12 @@ public class Projectile : MonoBehaviour
                 case ProjectileType.aoe:
                     CurveMovement();
                     break;
+                case ProjectileType.explosion:
+                    StraightMovement();
+                    break;
+                case ProjectileType.piercing:
+                    StraightMovement();
+                    break;
 
             }
         }
@@ -93,6 +99,14 @@ public class Projectile : MonoBehaviour
             {
                 case ProjectileType.single:
                     DealSingleDamage(collision.gameObject);
+                    Destroy(gameObject);
+                    break;
+                case ProjectileType.explosion:
+                    DealAoeDamage();
+                    Destroy(gameObject);
+                    break;
+                case ProjectileType.piercing:
+                    DealSingleDamage(collision.gameObject);
                     break;
             }
         }
@@ -103,7 +117,6 @@ public class Projectile : MonoBehaviour
         {
             health.TakeDamage(projectile.damage);
         }
-        gameObject.SetActive(false);
     }
     private void DealAoeDamage()
     {

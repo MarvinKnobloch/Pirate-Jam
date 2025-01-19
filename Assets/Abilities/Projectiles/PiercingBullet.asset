@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4844b80c316a2094d91f85851f9fd637, type: 3}
+  m_Name: PiercingBullet
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2019969566017605790, guid: 49e4002462fb8524392e7e11ed822389, type: 3}
+  speed: 10
+  damage: 1
+  projectileType: 3
+  aoeRange: 0
+  multipleProjectiles: 0
+  maxBulletHeight: 0
+  timeToDestroy: 5
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 128

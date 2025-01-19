@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4844b80c316a2094d91f85851f9fd637, type: 3}
+  m_Name: ExplosionBullet
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7943254572456533060, guid: 83f5561e2e551fd4693751c65f906a34, type: 3}
+  speed: 10
+  damage: 2
+  projectileType: 2
+  aoeRange: 2
+  multipleProjectiles: 0
+  maxBulletHeight: 0
+  timeToDestroy: 5
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 128

@@ -17,6 +17,7 @@ public enum ProjectileType{
     single,
     aoe,
     explosion,
+    piercing,
     heal,
     summon,
 

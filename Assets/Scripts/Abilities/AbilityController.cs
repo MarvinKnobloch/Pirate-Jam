@@ -10,8 +10,6 @@ public class AbilityController : MonoBehaviour
     private Abilities currentAbility;
     private AbilityState state;
     private float abilityTimer;
-
-    [SerializeField] private GameObject testobj;
     private enum AbilityState{
         WaitForAbility,
         PrepareAbility,
@@ -55,6 +53,12 @@ public class AbilityController : MonoBehaviour
                 break;
             case ProjectileType.aoe:
                 ShootAOEBullet();
+                break;
+            case ProjectileType.explosion:
+                ShootSingleBullet();
+                break;
+            case ProjectileType.piercing:
+                ShootSingleBullet();
                 break;
         }
 
