@@ -65,7 +65,9 @@ public class AbilityController : MonoBehaviour
         GameObject bullet = Instantiate(currentAbility.projectileObj.prefab, transform.position, Quaternion.identity);
         if (bullet.TryGetComponent(out Projectile projectile))
         {
-            Vector3 mousePosi = cam.ScreenToWorldPoint(new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, cam.nearClipPlane));
+            Vector3 mousePosi = cam.ScreenToWorldPoint(new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, -cam.transform.position.z));
+            mousePosi.z = 0;
+
             Vector2 direction = ((Vector2)mousePosi - (Vector2)transform.position).normalized;
 
             bullet.transform.right = direction;
@@ -83,7 +85,6 @@ public class AbilityController : MonoBehaviour
                 mousePosi.z = 0;
 
                 float dist = Vector2.Distance(mousePosi,transform.position);
-                Debug.Log(dist);
 
                 projectile.SetProjectileAOE(currentAbility,transform.position, mousePosi);
             }
