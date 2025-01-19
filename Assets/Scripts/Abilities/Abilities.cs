@@ -7,12 +7,9 @@ public class Abilities : ScriptableObject
     public int AbilityID;
     public int AbilityCost;
     public int AbilityCooldown;
-    public AbilityType abilityType;
+    public float AbilityTime;
+    public ProjectileObj projectileObj;
 
 }
 
-public enum AbilityType{
-    projectile,
-    instant,
-}
 
