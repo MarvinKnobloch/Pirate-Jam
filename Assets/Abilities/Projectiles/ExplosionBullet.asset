@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4844b80c316a2094d91f85851f9fd637, type: 3}
-  m_Name: CanonProjectile
+  m_Name: ExplosionBullet
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8356378035270633483, guid: c5b1c9500a7680f42ae30d07d4700010, type: 3}
-  speed: 5
+  prefab: {fileID: 7943254572456533060, guid: 83f5561e2e551fd4693751c65f906a34, type: 3}
+  speed: 10
   damage: 2
-  projectileType: 1
-  aoeRange: 1
+  projectileType: 2
+  aoeRange: 2
   multipleProjectiles: 0
-  maxBulletHeight: 3
+  maxBulletHeight: 0
   timeToDestroy: 5
   hitLayer:
     serializedVersion: 2
