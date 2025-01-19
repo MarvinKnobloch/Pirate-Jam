@@ -50,7 +50,6 @@ public class Projectile : MonoBehaviour
         direction = ((Vector2)endPosi - (Vector2)transform.position).normalized;
 
         distance = Vector2.Distance(endPosi, startPosi);
-        //Debug.Log(distance);
 
         startHeight = transform.position.z;
         currentSpeed = projectile.speed * (1 + distance / distance * 3);
@@ -70,7 +69,7 @@ public class Projectile : MonoBehaviour
         currentLifeTime -= Time.deltaTime;
         if (currentLifeTime <= 0)
         {
-            Debug.Log("dealDamage");
+            DealAoeDamage();
             Destroy(gameObject);
         }
         transform.Translate(direction * currentSpeed * Time.deltaTime, Space.World);
@@ -105,5 +104,18 @@ public class Projectile : MonoBehaviour
             health.TakeDamage(projectile.damage);
         }
         gameObject.SetActive(false);
+    }
+    private void DealAoeDamage()
+    {
+        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, projectile.aoeRange, projectile.hitLayer);
+
+        foreach (Collider2D enemy in cols)
+        {
+            if (enemy.gameObject.TryGetComponent(out Health health))
+            {
+                health.TakeDamage(projectile.damage);
+            }
+        }
+
     }
 }
