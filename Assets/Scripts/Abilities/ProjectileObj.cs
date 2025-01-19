@@ -9,6 +9,7 @@ public class ProjectileObj : ScriptableObject
     public int amount;
     public ProjectileType projectileType;
     public float timeToDestroy;
+    public LayerMask hitLayer;
 }
 public enum ProjectileType{
     single,

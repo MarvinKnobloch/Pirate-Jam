@@ -34,7 +34,7 @@ public class Health : MonoBehaviour
 
         if (Value <= 0)
         {
-            //Die
+            Destroy(gameObject);
         }
 
     }
