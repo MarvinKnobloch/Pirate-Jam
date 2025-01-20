@@ -41,9 +41,9 @@ public class NPCController : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.GetComponent<GatherResource>() != null)
+        if (other.collider.GetComponent<GatherResource>() != null)
         {
             _isGathering = true;
         }

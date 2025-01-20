@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -18,10 +20,14 @@ public class EnemyController : MonoBehaviour
     private CircleCollider2D _collider;
     private float _attackTimer = 0f;
     private bool _isAttacking = false;
+    private float _maxMovementSpeed;
+    private EnemyTargetDetector _targetDetector;
+    private GameObject _attackTarget;
 
     void OnEnable()
     {
         _attackTimer = AttackCooldown;
+        _maxMovementSpeed = MoveSpeed;
 
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<CircleCollider2D>();
@@ -29,21 +35,24 @@ public class EnemyController : MonoBehaviour
         _collider.radius = AttackDistance;
 
         Health = GetComponent<Health>();
+        _targetDetector = GetComponentInChildren<EnemyTargetDetector>();
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.CompareTag("Player"))
+        if (other.collider.CompareTag("Player") || other.collider.CompareTag("NPC"))
         {
             _isAttacking = true;
+            _attackTarget = other.gameObject;
         }
     }
 
     void OnCollisionExit2D(Collision2D other)
     {
-        if (other.collider.CompareTag("Player"))
+        if (other.collider.CompareTag("Player") || other.collider.CompareTag("NPC"))
         {
             _isAttacking = false;
+            _attackTarget = null;
         }
     }
 
@@ -51,7 +60,7 @@ public class EnemyController : MonoBehaviour
     {
         if (!_isAttacking)
         {
-            MoveToPlayer();
+            MoveToPlayerOrTarget();
         }
         else
         {
@@ -59,11 +68,26 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public void DoSlow(float slowPercentage, float slowDuration)
+    {
+        StartCoroutine(Slow(slowPercentage, slowDuration));
+    }
+
+    IEnumerator Slow(float slowPercentage, float slowDuration)
+    {
+        MoveSpeed *= slowPercentage;
+        yield return new WaitForSeconds(slowDuration);
+        MoveSpeed = _maxMovementSpeed;
+    }
+
     private void HandleAttack()
     {
         if (_attackTimer <= 0)
         {
-            Player.Instance.Health.TakeDamage(AttackDamage);
+            if (_attackTarget != null)
+            {
+                _attackTarget.GetComponent<Health>().TakeDamage(AttackDamage);
+            }
             _attackTimer = AttackCooldown;
         }
         else
@@ -72,10 +96,22 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void MoveToPlayer()
+    private void MoveToPlayerOrTarget()
     {
-        var playerPosition = Player.Instance.transform.position;
-        var direction = (playerPosition - transform.position).normalized;
+        var nearestTarget = _targetDetector.Targets.ElementAtOrDefault(0);
+        Vector3 targetPosition;
+
+        if (nearestTarget != null)
+        {
+            targetPosition = nearestTarget.transform.position;
+        }
+        else
+        {
+            targetPosition = Player.Instance.transform.position;
+
+        }
+
+        var direction = (targetPosition - transform.position).normalized;
         _rigidbody.MovePosition(transform.position + MoveSpeed * Time.fixedDeltaTime * direction);
     }
 }

@@ -21,7 +21,8 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        if(projectile != null){
+        if (projectile != null)
+        {
             switch (projectile.projectileType)
             {
                 case ProjectileType.single:
@@ -66,7 +67,8 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject, projectile.timeToDestroy);
     }
 
-    private void StraightMovement(){
+    private void StraightMovement()
+    {
         transform.Translate(direction * projectile.speed * Time.deltaTime, Space.World);
         transform.right = direction;
     }
@@ -113,11 +115,16 @@ public class Projectile : MonoBehaviour
     }
     private void DealSingleDamage(GameObject obj)
     {
-        if(obj.TryGetComponent(out Health health))
+        if (obj.TryGetComponent(out Health health))
         {
             health.TakeDamage(projectile.damage);
         }
+        else if (obj.transform.parent.TryGetComponent(out Health parentHealth))
+        {
+            parentHealth.TakeDamage(projectile.damage);
+        }
     }
+
     private void DealAoeDamage()
     {
         Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, projectile.aoeRange, projectile.hitLayer);
@@ -128,7 +135,10 @@ public class Projectile : MonoBehaviour
             {
                 health.TakeDamage(projectile.damage);
             }
+            else if (enemy.gameObject.transform.parent.TryGetComponent(out Health parentHealth))
+            {
+                parentHealth.TakeDamage(projectile.damage);
+            }
         }
-
     }
 }
