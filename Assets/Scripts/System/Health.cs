@@ -28,14 +28,14 @@ public class Health : MonoBehaviour
     void FixedUpdate()
     {
         if (HealthBar == null) return;
-        // if (currentHealth == maxHealth)
-        // {
-        //     HealthBar.sizeDelta = new Vector2(0, HealthBar.sizeDelta.y);
-        // }
-        // else
-        // {
-        HealthBar.sizeDelta = new Vector2(2 * ((float)currentHealth / maxHealth), HealthBar.sizeDelta.y);
-        // }
+        if (currentHealth == maxHealth)
+        {
+            HealthBar.sizeDelta = new Vector2(0, HealthBar.sizeDelta.y);
+        }
+        else
+        {
+            HealthBar.sizeDelta = new Vector2(2 * ((float)currentHealth / maxHealth), HealthBar.sizeDelta.y);
+        }
 
         var healthBarRotation = HealthBar.rotation;
         healthBarRotation.SetLookRotation(transform.forward * -1);
