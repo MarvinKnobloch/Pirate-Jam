@@ -18,10 +18,10 @@ MonoBehaviour:
   projectileType: 0
   aoeRange: 0
   maxBulletHeight: 0
-  multipleProjectiles: 2
+  multipleProjectiles: 5
   multiShotAngle: 10
   timeToDestroy: 5
   hitLayer:
     serializedVersion: 2
     m_Bits: 128
-  mirrorAttack: 0
+  mirrorAttack: 1
