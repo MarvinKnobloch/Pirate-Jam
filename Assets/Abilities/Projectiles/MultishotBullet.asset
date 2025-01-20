@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4844b80c316a2094d91f85851f9fd637, type: 3}
-  m_Name: BasicProjectile
+  m_Name: MultishotBullet
   m_EditorClassIdentifier: 
   prefab: {fileID: 5903401445494139436, guid: 44e65ae7a8c87504286b7f00833f2ff5, type: 3}
-  speed: 4
+  speed: 10
   damage: 1
   projectileType: 0
   aoeRange: 0
-  multipleProjectiles: 0
   maxBulletHeight: 0
+  multipleProjectiles: 2
+  multiShotAngle: 10
   timeToDestroy: 5
   hitLayer:
     serializedVersion: 2
     m_Bits: 128
-  mirrorAttack: 1
+  mirrorAttack: 0

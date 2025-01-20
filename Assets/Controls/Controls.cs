@@ -107,6 +107,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ability5"",
+                    ""type"": ""Button"",
+                    ""id"": ""7a021b66-9c79-496b-a2e8-b50d1b5964cc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -252,6 +261,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Ability4"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""54c93479-fb40-467e-a185-35fee95c1c43"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -297,6 +317,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Ability2 = m_Player.FindAction("Ability2", throwIfNotFound: true);
         m_Player_Ability3 = m_Player.FindAction("Ability3", throwIfNotFound: true);
         m_Player_Ability4 = m_Player.FindAction("Ability4", throwIfNotFound: true);
+        m_Player_Ability5 = m_Player.FindAction("Ability5", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_MenuEsc = m_Menu.FindAction("MenuEsc", throwIfNotFound: true);
@@ -376,6 +397,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Ability2;
     private readonly InputAction m_Player_Ability3;
     private readonly InputAction m_Player_Ability4;
+    private readonly InputAction m_Player_Ability5;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -389,6 +411,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Ability2 => m_Wrapper.m_Player_Ability2;
         public InputAction @Ability3 => m_Wrapper.m_Player_Ability3;
         public InputAction @Ability4 => m_Wrapper.m_Player_Ability4;
+        public InputAction @Ability5 => m_Wrapper.m_Player_Ability5;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -425,6 +448,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Ability4.started += instance.OnAbility4;
             @Ability4.performed += instance.OnAbility4;
             @Ability4.canceled += instance.OnAbility4;
+            @Ability5.started += instance.OnAbility5;
+            @Ability5.performed += instance.OnAbility5;
+            @Ability5.canceled += instance.OnAbility5;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -456,6 +482,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Ability4.started -= instance.OnAbility4;
             @Ability4.performed -= instance.OnAbility4;
             @Ability4.canceled -= instance.OnAbility4;
+            @Ability5.started -= instance.OnAbility5;
+            @Ability5.performed -= instance.OnAbility5;
+            @Ability5.canceled -= instance.OnAbility5;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -530,6 +559,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnAbility2(InputAction.CallbackContext context);
         void OnAbility3(InputAction.CallbackContext context);
         void OnAbility4(InputAction.CallbackContext context);
+        void OnAbility5(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

@@ -10,6 +10,8 @@ public class AbilityController : MonoBehaviour
     private Abilities currentAbility;
     private AbilityState state;
     private float abilityTimer;
+
+    private Vector3 mousePosi;
     private enum AbilityState{
         WaitForAbility,
         PrepareAbility,
@@ -23,13 +25,14 @@ public class AbilityController : MonoBehaviour
     }
     void Update()
     {
-        if(state == AbilityState.ExecuteAbility){
+        if (state == AbilityState.ExecuteAbility)
+        {
+            abilityTimer += Time.deltaTime;
 
-        abilityTimer += Time.deltaTime;
-
-        if(abilityTimer > currentAbility.AbilityTime){
-            state = AbilityState.WaitForAbility;
-        }
+            if (abilityTimer > currentAbility.AbilityTime)
+            {
+                state = AbilityState.WaitForAbility;
+            }
         }
     }
 
@@ -46,13 +49,16 @@ public class AbilityController : MonoBehaviour
     }
     private void CastAbility()
     {
+        mousePosi = cam.ScreenToWorldPoint(new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, -cam.transform.position.z));
+        mousePosi.z = 0;
+
         switch (currentAbility.projectileObj.projectileType)
         {
             case ProjectileType.single:
                 ShootSingleBullet();
                 break;
             case ProjectileType.aoe:
-                ShootAOEBullet();
+                ShootAoeBullet();
                 break;
             case ProjectileType.explosion:
                 ShootSingleBullet();
@@ -66,31 +72,87 @@ public class AbilityController : MonoBehaviour
     }
     private void ShootSingleBullet()
     {
+        if (currentAbility.projectileObj.multipleProjectiles < 2)
+        {
+            Vector2 direction = ((Vector2)mousePosi - (Vector2)transform.position).normalized;
+            CreateSingleBullet(direction);
+
+            if (currentAbility.projectileObj.mirrorAttack)
+            {
+                CreateSingleBullet(direction * -1);
+            }
+        }
+        else
+        {
+            MultipleBullets();
+        }
+    }
+    private void CreateSingleBullet(Vector2 direction)
+    {
         GameObject bullet = Instantiate(currentAbility.projectileObj.prefab, transform.position, Quaternion.identity);
         if (bullet.TryGetComponent(out Projectile projectile))
         {
-            Vector3 mousePosi = cam.ScreenToWorldPoint(new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, -cam.transform.position.z));
-            mousePosi.z = 0;
-
-            Vector2 direction = ((Vector2)mousePosi - (Vector2)transform.position).normalized;
-
             bullet.transform.right = direction;
 
             projectile.SetProjectileSingle(currentAbility, direction);
         }
     }
-    private void ShootAOEBullet()
+    private void ShootAoeBullet()
+    {
+        CreateAoeBullet(mousePosi);
+
+        if (currentAbility.projectileObj.mirrorAttack)
+        {
+            CreateAoeBullet(new Vector3(mousePosi.x * -1, mousePosi.y * -1, mousePosi.z));
+        }
+    }
+    private void CreateAoeBullet(Vector3 mousePosi)
     {
         GameObject bullet = Instantiate(currentAbility.projectileObj.prefab, transform.position, Quaternion.identity);
         {
             if (bullet.TryGetComponent(out Projectile projectile))
             {
-                Vector3 mousePosi = cam.ScreenToWorldPoint(new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, -cam.transform.position.z));
-                mousePosi.z = 0;
+                float dist = Vector2.Distance(mousePosi, transform.position);
 
-                float dist = Vector2.Distance(mousePosi,transform.position);
+                projectile.SetProjectileAOE(currentAbility, transform.position, mousePosi);
+            }
+        }
+    }
+    private void MultipleBullets()
+    {
+        int count = currentAbility.projectileObj.multipleProjectiles;
+        float shotAngle = currentAbility.projectileObj.multiShotAngle;
 
-                projectile.SetProjectileAOE(currentAbility,transform.position, mousePosi);
+        if (count % 2 == 0)
+        {
+            float startAngle = shotAngle * count * 0.5f - shotAngle * 0.5f;
+            CreateMultiShotBullet(count, shotAngle, startAngle);
+        }
+        else
+        {
+            float startAngle = (count - 1) * 0.5f * shotAngle;
+            CreateMultiShotBullet(count, shotAngle, startAngle);
+        }
+    }
+    private void CreateMultiShotBullet(int count, float shotAngle, float startAngle)
+    {
+        Vector2 direction = ((Vector2)mousePosi - (Vector2)transform.position).normalized;
+
+        for (int i = 0; i < count; i++)
+        {
+            GameObject bullet = Instantiate(currentAbility.projectileObj.prefab, transform.position, Quaternion.identity);
+
+            if (bullet.TryGetComponent(out Projectile projectile))
+            {
+                bullet.transform.right = direction;
+                bullet.transform.Rotate(0, 0, startAngle - i * shotAngle);
+                //direction = bullet.transform.right;
+
+                projectile.SetProjectileSingle(currentAbility, bullet.transform.right);
+            }
+            if (currentAbility.projectileObj.mirrorAttack)
+            {
+                CreateSingleBullet(bullet.transform.right * -1);
             }
         }
     }
