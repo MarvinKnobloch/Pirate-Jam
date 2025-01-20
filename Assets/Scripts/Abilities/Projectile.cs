@@ -16,8 +16,8 @@ public class Projectile : MonoBehaviour
     private float distance;
     private float startHeight;
     private float maxHeight;
-    [SerializeField] private float bulletLifeTime;
-    [SerializeField] private float currentLifeTime;
+    private float bulletLifeTime;
+    private float currentLifeTime;
 
     void Update()
     {
@@ -94,7 +94,7 @@ public class Projectile : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject);
+        //Debug.Log(collision.gameObject);
         if (((1 << collision.gameObject.layer) & projectile.hitLayer) != 0)
         {
             switch (projectile.projectileType)
@@ -126,7 +126,7 @@ public class Projectile : MonoBehaviour
 
         if (projectile.createArea)
         {
-            GameObject area = Instantiate(projectile.areaPrefab, transform.position, Quaternion.identity);
+            GameObject area = Instantiate(projectile.areaPrefab, transform.position, transform.rotation);
         }
     }
 

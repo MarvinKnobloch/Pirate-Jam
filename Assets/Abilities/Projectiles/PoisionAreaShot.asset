@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4844b80c316a2094d91f85851f9fd637, type: 3}
-  m_Name: FireAreaShot
+  m_Name: PoisionAreaShot
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5903401445494139436, guid: 192bbda08f5cb874dae84309fb2ab7df, type: 3}
-  speed: 10
+  prefab: {fileID: 5903401445494139436, guid: 78de93eb1c2806f46939c966fc14c1b6, type: 3}
+  speed: 12
   damage: 0
   projectileType: 0
   aoeRange: 0
@@ -26,4 +26,4 @@ MonoBehaviour:
     m_Bits: 128
   mirrorAttack: 0
   createArea: 1
-  areaPrefab: {fileID: 4328325964248613563, guid: 8de2ef56c9f90b843b5de23516614297, type: 3}
+  areaPrefab: {fileID: 5928990622130729032, guid: b4b1978b950b5ec4fb08764a853ffa25, type: 3}

@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
 
-    [Header("Movement"), Range(1, 10)]
+    [Header("Movement"), Range(0, 10)]
     public float MoveSpeed;
 
     [Header("Combat")]
@@ -89,7 +89,6 @@ public class EnemyController : MonoBehaviour
     {
         MoveSpeed *= slowPercentage;
         yield return new WaitForSeconds(slowDuration);
-        Debug.Log("slow");
         MoveSpeed = _maxMovementSpeed;
     }
 

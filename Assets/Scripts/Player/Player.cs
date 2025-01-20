@@ -74,5 +74,17 @@ public class Player : MonoBehaviour
         {
             abilityController.CheckForAbility(abilities[4]);
         }
+        if (controls.Player.Ability6.WasPerformedThisFrame())
+        {
+            abilityController.CheckForAbility(abilities[5]);
+        }
+        if (controls.Player.Ability7.WasPerformedThisFrame())
+        {
+            abilityController.CheckForAbility(abilities[6]);
+        }
+        if (controls.Player.Ability8.WasPerformedThisFrame())
+        {
+            abilityController.CheckForAbility(abilities[7]);
+        }
     }
 }
