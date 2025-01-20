@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 770166c160678bc4a914ec5e804298d8, type: 3}
-  m_Name: PiercingShot
+  m_Name: MultiShot
   m_EditorClassIdentifier: 
-  AbilityName: PiercingShot
-  AbilityID: 4
+  AbilityName: MultieShot
+  AbilityID: 5
   AbilityCost: 0
   AbilityCooldown: 3
   AbilityTime: 0.3
-  projectileObj: {fileID: 11400000, guid: ee0bf7287c67e104e9a9bdf526fd9c91, type: 2}
+  projectileObj: {fileID: 11400000, guid: c22419fff0f5a8d4083ae2751eb1d569, type: 2}

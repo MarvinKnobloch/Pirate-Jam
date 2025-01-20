@@ -23,3 +23,4 @@ MonoBehaviour:
   hitLayer:
     serializedVersion: 2
     m_Bits: 128
+  mirrorAttack: 0

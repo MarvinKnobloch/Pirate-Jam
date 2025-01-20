@@ -8,10 +8,16 @@ public class ProjectileObj : ScriptableObject
     public int damage;
     public ProjectileType projectileType;
     public float aoeRange;
-    public int multipleProjectiles;
     public float maxBulletHeight;
+
+    public int multipleProjectiles;
+    public float multiShotAngle;
+
     public float timeToDestroy;
+
     public LayerMask hitLayer;
+
+    public bool mirrorAttack;
 }
 public enum ProjectileType{
     single,
