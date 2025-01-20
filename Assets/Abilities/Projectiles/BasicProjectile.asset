@@ -17,10 +17,13 @@ MonoBehaviour:
   damage: 1
   projectileType: 0
   aoeRange: 0
-  multipleProjectiles: 0
   maxBulletHeight: 0
+  multipleProjectiles: 0
+  multiShotAngle: 0
   timeToDestroy: 5
   hitLayer:
     serializedVersion: 2
     m_Bits: 128
-  mirrorAttack: 1
+  mirrorAttack: 0
+  createArea: 0
+  areaPrefab: {fileID: 0}
