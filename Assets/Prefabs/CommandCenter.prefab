@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -106,7 +106,7 @@ MonoBehaviour:
   currentEnergy: 0
   maxEnergy: 10
   abilities:
-  - {fileID: 11400000, guid: 263b1e16752a13f4bab2181ebf86ad97, type: 2}
+  - {fileID: 11400000, guid: 518bf22a6eb549b429f7f5bbb2d99744, type: 2}
   - {fileID: 11400000, guid: 59c3a181c8eebb44389eb6d1d7307bdb, type: 2}
   - {fileID: 11400000, guid: d976206bc70cbfd49934b5063aa269c3, type: 2}
   - {fileID: 11400000, guid: 64b73054378863b44a7b300465c3f7fc, type: 2}

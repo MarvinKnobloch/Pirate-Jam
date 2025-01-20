@@ -123,6 +123,11 @@ public class Projectile : MonoBehaviour
         {
             parentHealth.TakeDamage(projectile.damage);
         }
+
+        if (projectile.createArea)
+        {
+            GameObject area = Instantiate(projectile.areaPrefab, transform.position, Quaternion.identity);
+        }
     }
 
     private void DealAoeDamage()

@@ -19,10 +19,7 @@ public class Health : MonoBehaviour
 
     void Awake()
     {
-        if (currentHealth <= 0)
-        {
-            currentHealth = maxHealth;
-        }
+        currentHealth = maxHealth;
     }
 
     public void TakeDamage(int damage)

@@ -24,6 +24,9 @@ public class EnemyController : MonoBehaviour
     private EnemyTargetDetector _targetDetector;
     private GameObject _attackTarget;
 
+    private float slowPercentage;
+    private float slowDuration;
+
     void OnEnable()
     {
         _attackTimer = AttackCooldown;
@@ -68,15 +71,25 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void DoSlow(float slowPercentage, float slowDuration)
+    public void DoSlow(float _slowPercentage, float _slowDuration)
     {
-        StartCoroutine(Slow(slowPercentage, slowDuration));
+        if (MoveSpeed >= (_maxMovementSpeed * _slowPercentage))          //if new Slow is worse do nothing
+        {
+            StopCoroutine("Slow");
+
+            MoveSpeed = _maxMovementSpeed;
+            slowPercentage = _slowPercentage;
+            slowDuration = _slowDuration;
+
+            StartCoroutine("Slow");
+        }
     }
 
-    IEnumerator Slow(float slowPercentage, float slowDuration)
+    IEnumerator Slow()
     {
         MoveSpeed *= slowPercentage;
         yield return new WaitForSeconds(slowDuration);
+        Debug.Log("slow");
         MoveSpeed = _maxMovementSpeed;
     }
 

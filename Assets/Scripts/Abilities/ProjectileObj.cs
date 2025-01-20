@@ -18,6 +18,10 @@ public class ProjectileObj : ScriptableObject
     public LayerMask hitLayer;
 
     public bool mirrorAttack;
+
+    [Header("Area")]
+    public bool createArea;
+    public GameObject areaPrefab;
 }
 public enum ProjectileType{
     single,
