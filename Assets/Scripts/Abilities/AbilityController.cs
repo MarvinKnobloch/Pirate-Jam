@@ -12,6 +12,8 @@ public class AbilityController : MonoBehaviour
     private float abilityTimer;
 
     private Vector3 mousePosi;
+
+    private CooldownController cooldownController;
     private enum AbilityState{
         WaitForAbility,
         PrepareAbility,
@@ -22,6 +24,13 @@ public class AbilityController : MonoBehaviour
     {
         controls = new Controls();
         cam = Camera.main;
+    }
+    private void Start()
+    {
+        if(PlayerUI.Instance != null)
+        {
+            cooldownController = PlayerUI.Instance.cooldownController;
+        }
     }
     void Update()
     {
@@ -37,12 +46,15 @@ public class AbilityController : MonoBehaviour
     }
 
 
-    public void CheckForAbility(Abilities ability){
+    public void CheckForAbility(Abilities ability, int abilitySlot){
         if(Player.Instance.CurrentEnergy < ability.AbilityCost) return;
         if(state == AbilityState.ExecuteAbility) return;
+        if(cooldownController != null) if (cooldownController.onCooldown[abilitySlot]) return;
 
         currentAbility = ability;
         abilityTimer = 0;
+
+        if (cooldownController != null) cooldownController.CooldownStart(abilitySlot, currentAbility.AbilityCooldown);
 
         state = AbilityState.ExecuteAbility;
         CastAbility();

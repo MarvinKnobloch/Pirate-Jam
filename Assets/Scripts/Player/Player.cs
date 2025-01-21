@@ -56,35 +56,35 @@ public class Player : MonoBehaviour
     {
         if(controls.Player.Ability1.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[0]);
+            abilityController.CheckForAbility(abilities[0], 0);
         }
         if (controls.Player.Ability2.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[1]);
+            abilityController.CheckForAbility(abilities[1], 1);
         }
         if (controls.Player.Ability3.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[2]);
+            abilityController.CheckForAbility(abilities[2], 2);
         }
         if (controls.Player.Ability4.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[3]);
+            abilityController.CheckForAbility(abilities[3], 3);
         }
         if (controls.Player.Ability5.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[4]);
+            abilityController.CheckForAbility(abilities[4], 4);
         }
         if (controls.Player.Ability6.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[5]);
+            abilityController.CheckForAbility(abilities[5], 5);
         }
         if (controls.Player.Ability7.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[6]);
+            abilityController.CheckForAbility(abilities[6], 6);
         }
         if (controls.Player.Ability8.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[7]);
+            abilityController.CheckForAbility(abilities[7], 7);
         }
     }
 }
