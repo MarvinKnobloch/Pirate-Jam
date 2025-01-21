@@ -17,6 +17,11 @@ public class PlayerUI : MonoBehaviour
     public Image energyBar;
     public TextMeshProUGUI energyText;
 
+    [Header("Resources")]
+    public TextMeshProUGUI ironText;
+    public TextMeshProUGUI copperText;
+    public TextMeshProUGUI woodText;
+
     private void Awake()
     {
         if (Instance == null)
@@ -31,9 +36,17 @@ public class PlayerUI : MonoBehaviour
         healthBar.fillAmount = (float)current / max;
         healthText.text = current.ToString();
     }
+
     public void EnergyUIUpdate(int current, int max)
     {
         energyBar.fillAmount = (float)current / max;
         energyText.text = current.ToString();
+    }
+
+    public void ResourceUIUpdate(int iron, int copper, int wood)
+    {
+        ironText.text = iron.ToString();
+        copperText.text = copper.ToString();
+        woodText.text = wood.ToString();
     }
 }

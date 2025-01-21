@@ -53,7 +53,8 @@ public class NPCController : MonoBehaviour
     {
         if (_targetResource != null)
         {
-            _targetResource.Gather(GatherAmount);
+            var collected = _targetResource.Gather(GatherAmount);
+            Player.Instance.AddResource(_targetResource.Type, collected);
         }
 
         yield return new WaitForSeconds(GatherTime);

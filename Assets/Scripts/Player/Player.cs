@@ -20,6 +20,11 @@ public class Player : MonoBehaviour
 
     [NonSerialized] public Health health;
 
+    [Header("Resources")]
+    public int Iron = 0;
+    public int Copper = 0;
+    public int Wood = 0;
+
     public int CurrentEnergy
     {
         get { return currentEnergy; }
@@ -46,7 +51,8 @@ public class Player : MonoBehaviour
         health = GetComponent<Health>();
         abilityController = GetComponent<AbilityController>();
     }
-    void OnEnable(){
+    void OnEnable()
+    {
         controls.Enable();
     }
     void Start()
@@ -58,7 +64,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if(controls.Player.Ability1.WasPerformedThisFrame())
+        if (controls.Player.Ability1.WasPerformedThisFrame())
         {
             abilityController.CheckForAbility(abilities[0], 0);
         }
@@ -91,15 +97,36 @@ public class Player : MonoBehaviour
             abilityController.CheckForAbility(abilities[7], 7);
         }
     }
+
     public void HealthUIUpdate()
     {
         if (PlayerUI.Instance != null) PlayerUI.Instance.HealthUIUpdate(health.Value, health.MaxValue);
     }
+
     public void EnergyUpdate(int energyChange)
     {
         CurrentEnergy += energyChange;
         if (PlayerUI.Instance != null) PlayerUI.Instance.EnergyUIUpdate(CurrentEnergy, MaxEnergy);
     }
+
+    public void AddResource(ResourceType type, int amount)
+    {
+        switch (type)
+        {
+            case ResourceType.Iron:
+                Iron += amount;
+                break;
+            case ResourceType.Copper:
+                Copper += amount;
+                break;
+            case ResourceType.Wood:
+                Wood += amount;
+                break;
+        }
+
+        if (PlayerUI.Instance != null) PlayerUI.Instance.ResourceUIUpdate(Iron, Copper, Wood);
+    }
+
     private void EnergyRestoreTick()
     {
         EnergyUpdate(energyRestoreAmount);
