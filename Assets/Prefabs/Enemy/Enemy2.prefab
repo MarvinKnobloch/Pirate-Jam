@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 5786323231946821683}
   - component: {fileID: 5810476043483011221}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -256,10 +256,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73697dd4034a1794a98f985e0689c0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 2
+  MoveSpeed: 1.31
   AttackDistance: 0.7
-  AttackCooldown: 0.5
-  AttackDamage: 1
+  AttackCooldown: 1
+  AttackDamage: 2
 --- !u!114 &8265245240528079808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,8 +274,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 6589723892033796994}
   HealthBarOffset: 1
-  maxHealth: 4
-  currentHealth: 4
+  maxHealth: 5
+  currentHealth: 5
 --- !u!50 &5786323231946821683
 Rigidbody2D:
   serializedVersion: 5
@@ -291,7 +291,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

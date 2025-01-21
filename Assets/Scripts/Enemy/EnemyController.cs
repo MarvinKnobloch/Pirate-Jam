@@ -23,9 +23,9 @@ public class EnemyController : MonoBehaviour
     private float _maxMovementSpeed;
     private EnemyTargetDetector _targetDetector;
     private GameObject _attackTarget;
-
-    private float slowPercentage;
-    private float slowDuration;
+    private float _slowPercentage;
+    private float _slowDuration;
+    private bool _isStunned = false;
 
     void OnEnable()
     {
@@ -71,15 +71,29 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void DoSlow(float _slowPercentage, float _slowDuration)
+    public void DoStun(float stunDuration)
     {
-        if (MoveSpeed >= (_maxMovementSpeed * _slowPercentage))          //if new Slow is worse do nothing
+        StartCoroutine(Stun(stunDuration));
+    }
+
+    IEnumerator Stun(float stunDuration)
+    {
+        MoveSpeed = 0;
+        _isStunned = true;
+        yield return new WaitForSeconds(stunDuration);
+        MoveSpeed = _maxMovementSpeed;
+        _isStunned = false;
+    }
+
+    public void DoSlow(float slowPercentage, float slowDuration)
+    {
+        if (MoveSpeed >= (_maxMovementSpeed * slowPercentage))          //if new Slow is worse do nothing
         {
             StopCoroutine("Slow");
 
             MoveSpeed = _maxMovementSpeed;
-            slowPercentage = _slowPercentage;
-            slowDuration = _slowDuration;
+            this._slowPercentage = slowPercentage;
+            this._slowDuration = slowDuration;
 
             StartCoroutine("Slow");
         }
@@ -87,13 +101,18 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator Slow()
     {
-        MoveSpeed *= slowPercentage;
-        yield return new WaitForSeconds(slowDuration);
+        MoveSpeed *= _slowPercentage;
+        yield return new WaitForSeconds(_slowDuration);
         MoveSpeed = _maxMovementSpeed;
     }
 
     private void HandleAttack()
     {
+        if (_isStunned)
+        {
+            return;
+        }
+
         if (_attackTimer <= 0)
         {
             if (_attackTarget != null)

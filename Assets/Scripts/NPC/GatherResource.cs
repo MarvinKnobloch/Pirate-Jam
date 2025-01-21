@@ -30,5 +30,5 @@ public enum ResourceType
 {
     Iron,
     Copper,
-    Mana
+    Wood
 }
