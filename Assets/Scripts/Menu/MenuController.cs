@@ -4,6 +4,7 @@ using System;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
+using Unity.VisualScripting;
 
 public class MenuController : MonoBehaviour
 {
@@ -23,7 +24,6 @@ public class MenuController : MonoBehaviour
     private void Awake()
     {
         controls = Keybindinputmanager.Controls;
-        controls.Enable();
 
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
@@ -42,6 +42,14 @@ public class MenuController : MonoBehaviour
             HandleMenu();
         }
 
+    }
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+    private void OnDisable()
+    {
+        controls.Disable();
     }
     public void HandleMenu()
     {
@@ -100,16 +108,15 @@ public class MenuController : MonoBehaviour
         ingameMenu.SetActive(false);
         EndPause();
     }
-    public void RestartGame()
+    public void SetRestartConfirm()
     {
         OpenConfirmController(StartGame, "Restart Game?");
     }
-    public void BackToMainMenuController()
+    public void SetBackToMainMenuConfirm()
     {
         OpenConfirmController(BackToMainMenu, "Back to main menu?");
     }
-
-    private void BackToMainMenu()
+    public void BackToMainMenu()
     {
         AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.menuButton);
         gameIsPaused = false;
@@ -148,10 +155,18 @@ public class MenuController : MonoBehaviour
 
         AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.menuButton);
     }
-    public void OpenConfirmController(UnityAction buttonEvent, string confirmText)
+    private void OpenConfirmController(UnityAction buttonEvent, string text)
     {
+        confirmText.text = text;
+
         confirmButton.onClick.RemoveAllListeners();
         confirmButton.onClick.AddListener(() => buttonEvent());
         confirmController.SetActive(true);
+    }
+    public void CloseConfirmSelection()
+    {
+        confirmController.SetActive(false);
+
+        AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.menuButton);
     }
 }
