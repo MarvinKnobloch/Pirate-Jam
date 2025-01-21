@@ -10,12 +10,15 @@ public class Player : MonoBehaviour
     [NonSerialized] public Controls controls;
     private AbilityController abilityController;
 
+    [Header("Energy")]
     [SerializeField] private int currentEnergy;
     [SerializeField] private int maxEnergy;
+    [SerializeField] private float energyRestoreInterval;
+    [SerializeField] private int energyRestoreAmount;
 
     public Abilities[] abilities;
 
-    [NonSerialized] public Health Health;
+    [NonSerialized] public Health health;
 
     public int CurrentEnergy
     {
@@ -40,16 +43,17 @@ public class Player : MonoBehaviour
         }
 
         controls = new Controls();//Keybindinputmanager.inputActions;
-        Health = GetComponent<Health>();
-
+        health = GetComponent<Health>();
+        abilityController = GetComponent<AbilityController>();
     }
     void OnEnable(){
         controls.Enable();
     }
     void Start()
     {
-        abilityController = GetComponent<AbilityController>();
-        CurrentEnergy = MaxEnergy;
+        HealthUIUpdate();
+        EnergyUpdate(MaxEnergy);
+        InvokeRepeating("EnergyRestoreTick", energyRestoreInterval, energyRestoreInterval);
     }
 
     void Update()
@@ -86,5 +90,18 @@ public class Player : MonoBehaviour
         {
             abilityController.CheckForAbility(abilities[7], 7);
         }
+    }
+    public void HealthUIUpdate()
+    {
+        if (PlayerUI.Instance != null) PlayerUI.Instance.HealthUIUpdate(health.Value, health.MaxValue);
+    }
+    public void EnergyUpdate(int energyChange)
+    {
+        CurrentEnergy += energyChange;
+        if (PlayerUI.Instance != null) PlayerUI.Instance.EnergyUIUpdate(CurrentEnergy, MaxEnergy);
+    }
+    private void EnergyRestoreTick()
+    {
+        EnergyUpdate(energyRestoreAmount);
     }
 }

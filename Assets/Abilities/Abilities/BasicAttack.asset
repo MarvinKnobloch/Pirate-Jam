@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityName: BasicAttack
   AbilityID: 1
-  AbilityCost: 0
+  AbilityCost: 1
   AbilityCooldown: 0
   AbilityTime: 0.2
   projectileObj: {fileID: 11400000, guid: 1752d0a6e386bfc4dbc780fa5c868ef7, type: 2}

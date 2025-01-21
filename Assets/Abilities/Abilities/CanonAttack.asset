@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityName: Canon
   AbilityID: 2
-  AbilityCost: 0
+  AbilityCost: 1
   AbilityCooldown: 5
   AbilityTime: 0.3
   projectileObj: {fileID: 11400000, guid: ef51ecce8a8f07641b06f06079621c67, type: 2}

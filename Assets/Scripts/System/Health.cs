@@ -23,20 +23,13 @@ public class Health : MonoBehaviour
     void Awake()
     {
         currentHealth = maxHealth;
+
+        EnemyHealthbarUpdate();
     }
 
     void FixedUpdate()
     {
         if (HealthBar == null) return;
-        if (currentHealth == maxHealth)
-        {
-            HealthBar.sizeDelta = new Vector2(0, HealthBar.sizeDelta.y);
-        }
-        else
-        {
-            HealthBar.sizeDelta = new Vector2(2 * ((float)currentHealth / maxHealth), HealthBar.sizeDelta.y);
-        }
-
         var healthBarRotation = HealthBar.rotation;
         healthBarRotation.SetLookRotation(transform.forward * -1);
         HealthBar.rotation = healthBarRotation;
@@ -54,10 +47,30 @@ public class Health : MonoBehaviour
 
         Value -= damage;
 
+        if (gameObject == Player.Instance.gameObject) Player.Instance.HealthUIUpdate();
+        else
+        {
+            EnemyHealthbarUpdate();
+        }
+
         if (Value <= 0)
         {
             Destroy(gameObject);
         }
 
+    }
+    private void EnemyHealthbarUpdate()
+    {
+        if(HealthBar != null)
+        {
+            if (currentHealth == maxHealth)
+            {
+                HealthBar.sizeDelta = new Vector2(0, HealthBar.sizeDelta.y);
+            }
+            else
+            {
+                HealthBar.sizeDelta = new Vector2(2 * ((float)currentHealth / maxHealth), HealthBar.sizeDelta.y);
+            }
+        }
     }
 }

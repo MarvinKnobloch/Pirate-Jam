@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityName: PoisionArea
   AbilityID: 7
-  AbilityCost: 0
+  AbilityCost: 1
   AbilityCooldown: 3
   AbilityTime: 0.3
   projectileObj: {fileID: 11400000, guid: 0ee895928fab28d48add608fa18040ce, type: 2}

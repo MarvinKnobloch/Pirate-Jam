@@ -55,6 +55,7 @@ public class AbilityController : MonoBehaviour
         abilityTimer = 0;
 
         if (cooldownController != null) cooldownController.CooldownStart(abilitySlot, currentAbility.AbilityCooldown);
+        Player.Instance.EnergyUpdate(-ability.AbilityCost);
 
         state = AbilityState.ExecuteAbility;
         CastAbility();

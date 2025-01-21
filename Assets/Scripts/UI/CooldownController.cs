@@ -38,13 +38,13 @@ public class CooldownController : MonoBehaviour
         onCooldown[number] = true;
         cooldownImage[number].enabled = true;
         cooldownImage[number].fillAmount = 1;
-        cooldownText[number].text = Mathf.RoundToInt(time + 0.5f).ToString();
+        cooldownText[number].text = Mathf.Ceil(time).ToString();
 
         while (time > 0)
         {
             time -= Time.deltaTime;
             cooldownImage[number].fillAmount = time / maxTime;
-            cooldownText[number].text = Mathf.RoundToInt(time + 0.5f).ToString();
+            cooldownText[number].text = Mathf.Ceil(time).ToString();
             yield return null;
         }
         onCooldown[number] = false;
