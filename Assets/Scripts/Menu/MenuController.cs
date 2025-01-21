@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using TMPro;
+using Unity.VisualScripting;
 
 public class MenuController : MonoBehaviour
 {
@@ -11,15 +14,16 @@ public class MenuController : MonoBehaviour
     private GameObject currentOpenMenu;
     [NonSerialized] public bool gameIsPaused;
 
-    //public SceneEnum newGameScene = SceneEnum.IntroSzene;
-
     [SerializeField] private GameObject titleMenu;
     [SerializeField] private GameObject ingameMenu;
+
+    [SerializeField] private GameObject confirmController;
+    [SerializeField] private Button confirmButton;
+    [SerializeField] private TextMeshProUGUI confirmText;
 
     private void Awake()
     {
         controls = Keybindinputmanager.Controls;
-        controls.Enable();
 
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
@@ -38,6 +42,14 @@ public class MenuController : MonoBehaviour
             HandleMenu();
         }
 
+    }
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+    private void OnDisable()
+    {
+        controls.Disable();
     }
     public void HandleMenu()
     {
@@ -86,71 +98,30 @@ public class MenuController : MonoBehaviour
 
     public void StartGame()
     {
-        Debug.Log("return activ");
-        return;
-
-
-        baseMenu.SetActive(false);
-        baseMenu = ingameMenu;
-
-        if (PlayerPrefs.GetInt("NewGame") == 0)
-        {
-            // GameManager.Instance.LoadFormMenu();
-
-            // PlayerPrefs.SetInt("SceneNumber", (int)SceneEnum.Level1);
-            // PlayerPrefs.SetFloat("SavePlayerXPosition", 18);
-            // PlayerPrefs.SetFloat("SavePlayerYPosition", 1);
-            // PlayerPrefs.SetFloat("SavePlayerZPosition", -53);
-            // PlayerPrefs.SetFloat("SavePlayerRotation", 0);
-            // PlayerPrefs.SetInt("DoubleJumpUnlock", 0);
-            // PlayerPrefs.SetInt("DashUnlock", 0);
-
-            // for (int i = 0; i < 15; i++)
-            // {
-            //     PlayerPrefs.SetInt("Collectable" + i, 0);
-            // }
-
-            // PlayerPrefs.SetInt("NewGame", 1);
-            // GameManager.Instance.LoadScene(newGameScene);
-        }
-        else
-        {
-            // GameManager.Instance.LoadFormMenu();
-            // GameManager.Instance.LoadScene((SceneEnum) PlayerPrefs.GetInt("SceneNumber"));
-        }
+        AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.menuButton);
+        gameIsPaused = false;
+        Time.timeScale = 1;
+        SceneManager.LoadScene(1);
     }
     public void ResumeGame()
     {
         ingameMenu.SetActive(false);
         EndPause();
     }
-
-    public void NewGame()
+    public void SetRestartConfirm()
     {
-        AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.menuButton);
-        if (currentOpenMenu)
-            currentOpenMenu.SetActive(false);
-
-        PlayerPrefs.SetInt("NewGame", 0);
-
-        gameIsPaused = false;
-        Time.timeScale = 1;
-        StartGame();
+        OpenConfirmController(StartGame, "Restart Game?");
     }
-
+    public void SetBackToMainMenuConfirm()
+    {
+        OpenConfirmController(BackToMainMenu, "Back to main menu?");
+    }
     public void BackToMainMenu()
     {
-        baseMenu.SetActive(false);
-        baseMenu = titleMenu;
-
-        baseMenu.SetActive(true);
-        //GameManager.Instance.ActivateGameUI(false);
-
         AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.menuButton);
-
         gameIsPaused = false;
         Time.timeScale = 1;
-        //GameManager.Instance.LoadScene(SceneEnum.Hauptmen�);
+        SceneManager.LoadScene(0);
     }
     public void CloseSelectedMenu()
     {
@@ -181,6 +152,20 @@ public class MenuController : MonoBehaviour
         Cursor.visible = false;
         gameIsPaused = false;
         Time.timeScale = 1;
+
+        AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.menuButton);
+    }
+    private void OpenConfirmController(UnityAction buttonEvent, string text)
+    {
+        confirmText.text = text;
+
+        confirmButton.onClick.RemoveAllListeners();
+        confirmButton.onClick.AddListener(() => buttonEvent());
+        confirmController.SetActive(true);
+    }
+    public void CloseConfirmSelection()
+    {
+        confirmController.SetActive(false);
 
         AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.menuButton);
     }

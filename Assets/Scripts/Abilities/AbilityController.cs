@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class AbilityController : MonoBehaviour
 {
-    private Controls controls;
+    //private Controls controls;
     private Camera cam;
 
     private Abilities currentAbility;
@@ -22,7 +22,7 @@ public class AbilityController : MonoBehaviour
 
     void Awake()
     {
-        controls = new Controls();
+        //controls = Keybindinputmanager.Controls;
         cam = Camera.main;
     }
     private void Start()

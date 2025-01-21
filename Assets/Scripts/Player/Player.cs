@@ -47,13 +47,17 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         }
 
-        controls = new Controls();//Keybindinputmanager.inputActions;
+        controls = Keybindinputmanager.Controls;
         health = GetComponent<Health>();
         abilityController = GetComponent<AbilityController>();
     }
     void OnEnable()
     {
         controls.Enable();
+    }
+    private void OnDisable()
+    {
+        controls.Disable();
     }
     void Start()
     {
