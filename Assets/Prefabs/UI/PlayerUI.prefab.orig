@@ -237,6 +237,7 @@ MonoBehaviour:
   healthText: {fileID: 1674111064521140266}
   energyBar: {fileID: 7280077613128892595}
   energyText: {fileID: 7476768573418860859}
+<<<<<<< HEAD
   ironText: {fileID: 5045908248918231502}
   copperText: {fileID: 3875123551513973783}
   woodText: {fileID: 7516619915572599024}
@@ -453,6 +454,8 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+=======
+>>>>>>> 8fe866d242a4d5f802e491b484e840073fcef1f8
 --- !u!1 &2192982665988058648
 GameObject:
   m_ObjectHideFlags: 0
