@@ -5,44 +5,59 @@ using UnityEngine;
 
 public class SpawnDirector : MonoBehaviour
 {
-    public GameObject InstancePrefab;
-    public int MaxInstances;
-    public float SpawnTickRate;
-    public int SpawnInstancesPerTick;
-    public int SpawnMagnitude;
+    public List<Spawnable> Spawnables;
 
-    private List<GameObject> _instances = new();
+    private Dictionary<int, List<GameObject>> _instances = new();
     private Player _player;
 
-
-    IEnumerator Start()
+    void Start()
     {
         _player = FindFirstObjectByType<Player>();
-        yield return StartCoroutine(NPCDirector());
+        _instances = Spawnables.ToDictionary(s => s.GetInstanceID(), s => new List<GameObject>());
+        Spawnables.ForEach(s => StartCoroutine(NPCDirector(s)));
     }
 
-    IEnumerator NPCDirector()
+    IEnumerator NPCDirector(Spawnable spawnable)
     {
-        yield return new WaitForSeconds(SpawnTickRate);
+        yield return new WaitForSeconds(spawnable.SpawnTickRate);
 
-        if (_instances.Count() < MaxInstances)
+        if (Random.Range(0f, 1f) <= spawnable.SpawnChance)
         {
-            var enemiesToSpawn = Mathf.Min(MaxInstances - _instances.Count(), SpawnInstancesPerTick);
-            for (var i = 0; i < enemiesToSpawn; i++)
+            if (_instances[spawnable.GetInstanceID()].Count() < spawnable.MaxInstances)
             {
-                SpawnEnemy();
+                var enemiesToSpawn = Mathf.Min(
+                    spawnable.MaxInstances - _instances.Count(),
+                    spawnable.SpawnInstancesPerTick
+                );
+                for (var i = 0; i < enemiesToSpawn; i++)
+                {
+                    SpawnEnemy(spawnable);
+                }
             }
         }
 
-
-        yield return NPCDirector();
+        yield return NPCDirector(spawnable);
     }
 
-    void SpawnEnemy()
+    void SpawnEnemy(Spawnable spawnable)
     {
-        var spawnPosition = SpawnUtil.GetSpawnPointAroundTarget((Vector2)_player.transform.position, SpawnMagnitude);
+        var spawnPosition = SpawnUtil.GetSpawnPointAroundTarget(
+            (Vector2)_player.transform.position,
+            spawnable.SpawnMagnitude
+        );
 
-        var enemy = Instantiate(InstancePrefab, spawnPosition, Quaternion.identity);
-        _instances.Add(enemy);
+        var enemy = Instantiate(spawnable.InstancePrefab, spawnPosition, Quaternion.identity);
+        var component = enemy.AddComponent<DirectorInstance>();
+        component.SpawnDirector = this;
+        component.Key = spawnable.GetInstanceID();
+        _instances[spawnable.GetInstanceID()].Add(enemy);
+    }
+
+    public void Delete(int key, GameObject instance)
+    {
+        if (_instances.TryGetValue(key, out var instanceList))
+        {
+            instanceList.Remove(instance);
+        }
     }
 }
