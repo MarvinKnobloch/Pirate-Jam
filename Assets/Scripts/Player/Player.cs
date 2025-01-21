@@ -10,12 +10,15 @@ public class Player : MonoBehaviour
     [NonSerialized] public Controls controls;
     private AbilityController abilityController;
 
+    [Header("Energy")]
     [SerializeField] private int currentEnergy;
     [SerializeField] private int maxEnergy;
+    [SerializeField] private float energyRestoreInterval;
+    [SerializeField] private int energyRestoreAmount;
 
     public Abilities[] abilities;
 
-    [NonSerialized] public Health Health;
+    [NonSerialized] public Health health;
 
     public int CurrentEnergy
     {
@@ -40,39 +43,65 @@ public class Player : MonoBehaviour
         }
 
         controls = new Controls();//Keybindinputmanager.inputActions;
-        Health = GetComponent<Health>();
-
+        health = GetComponent<Health>();
+        abilityController = GetComponent<AbilityController>();
     }
     void OnEnable(){
         controls.Enable();
     }
     void Start()
     {
-        abilityController = GetComponent<AbilityController>();
-        CurrentEnergy = MaxEnergy;
+        HealthUIUpdate();
+        EnergyUpdate(MaxEnergy);
+        InvokeRepeating("EnergyRestoreTick", energyRestoreInterval, energyRestoreInterval);
     }
 
     void Update()
     {
         if(controls.Player.Ability1.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[0]);
+            abilityController.CheckForAbility(abilities[0], 0);
         }
         if (controls.Player.Ability2.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[1]);
+            abilityController.CheckForAbility(abilities[1], 1);
         }
         if (controls.Player.Ability3.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[2]);
+            abilityController.CheckForAbility(abilities[2], 2);
         }
         if (controls.Player.Ability4.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[3]);
+            abilityController.CheckForAbility(abilities[3], 3);
         }
         if (controls.Player.Ability5.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[4]);
+            abilityController.CheckForAbility(abilities[4], 4);
         }
+        if (controls.Player.Ability6.WasPerformedThisFrame())
+        {
+            abilityController.CheckForAbility(abilities[5], 5);
+        }
+        if (controls.Player.Ability7.WasPerformedThisFrame())
+        {
+            abilityController.CheckForAbility(abilities[6], 6);
+        }
+        if (controls.Player.Ability8.WasPerformedThisFrame())
+        {
+            abilityController.CheckForAbility(abilities[7], 7);
+        }
+    }
+    public void HealthUIUpdate()
+    {
+        if (PlayerUI.Instance != null) PlayerUI.Instance.HealthUIUpdate(health.Value, health.MaxValue);
+    }
+    public void EnergyUpdate(int energyChange)
+    {
+        CurrentEnergy += energyChange;
+        if (PlayerUI.Instance != null) PlayerUI.Instance.EnergyUIUpdate(CurrentEnergy, MaxEnergy);
+    }
+    private void EnergyRestoreTick()
+    {
+        EnergyUpdate(energyRestoreAmount);
     }
 }

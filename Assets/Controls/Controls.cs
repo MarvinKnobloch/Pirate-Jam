@@ -116,6 +116,33 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ability6"",
+                    ""type"": ""Button"",
+                    ""id"": ""0f58b395-95d0-41ab-a7cf-4e21f052c559"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ability7"",
+                    ""type"": ""Button"",
+                    ""id"": ""20dd8f1e-9dbf-41c4-bb07-a0dcee53bc6c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ability8"",
+                    ""type"": ""Button"",
+                    ""id"": ""bd4cae45-dec5-46db-a803-4c9cffa02e4b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -272,6 +299,39 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Ability5"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f2c84d4a-9917-40d6-b8cf-994ec862d0c8"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability6"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ac49c528-dcd0-4874-bd55-7b2fdad1f2e3"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability7"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c50ac345-7d37-49ea-b2f9-7f797603b6b5"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability8"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -318,6 +378,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Ability3 = m_Player.FindAction("Ability3", throwIfNotFound: true);
         m_Player_Ability4 = m_Player.FindAction("Ability4", throwIfNotFound: true);
         m_Player_Ability5 = m_Player.FindAction("Ability5", throwIfNotFound: true);
+        m_Player_Ability6 = m_Player.FindAction("Ability6", throwIfNotFound: true);
+        m_Player_Ability7 = m_Player.FindAction("Ability7", throwIfNotFound: true);
+        m_Player_Ability8 = m_Player.FindAction("Ability8", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_MenuEsc = m_Menu.FindAction("MenuEsc", throwIfNotFound: true);
@@ -398,6 +461,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Ability3;
     private readonly InputAction m_Player_Ability4;
     private readonly InputAction m_Player_Ability5;
+    private readonly InputAction m_Player_Ability6;
+    private readonly InputAction m_Player_Ability7;
+    private readonly InputAction m_Player_Ability8;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -412,6 +478,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Ability3 => m_Wrapper.m_Player_Ability3;
         public InputAction @Ability4 => m_Wrapper.m_Player_Ability4;
         public InputAction @Ability5 => m_Wrapper.m_Player_Ability5;
+        public InputAction @Ability6 => m_Wrapper.m_Player_Ability6;
+        public InputAction @Ability7 => m_Wrapper.m_Player_Ability7;
+        public InputAction @Ability8 => m_Wrapper.m_Player_Ability8;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -451,6 +520,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Ability5.started += instance.OnAbility5;
             @Ability5.performed += instance.OnAbility5;
             @Ability5.canceled += instance.OnAbility5;
+            @Ability6.started += instance.OnAbility6;
+            @Ability6.performed += instance.OnAbility6;
+            @Ability6.canceled += instance.OnAbility6;
+            @Ability7.started += instance.OnAbility7;
+            @Ability7.performed += instance.OnAbility7;
+            @Ability7.canceled += instance.OnAbility7;
+            @Ability8.started += instance.OnAbility8;
+            @Ability8.performed += instance.OnAbility8;
+            @Ability8.canceled += instance.OnAbility8;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -485,6 +563,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Ability5.started -= instance.OnAbility5;
             @Ability5.performed -= instance.OnAbility5;
             @Ability5.canceled -= instance.OnAbility5;
+            @Ability6.started -= instance.OnAbility6;
+            @Ability6.performed -= instance.OnAbility6;
+            @Ability6.canceled -= instance.OnAbility6;
+            @Ability7.started -= instance.OnAbility7;
+            @Ability7.performed -= instance.OnAbility7;
+            @Ability7.canceled -= instance.OnAbility7;
+            @Ability8.started -= instance.OnAbility8;
+            @Ability8.performed -= instance.OnAbility8;
+            @Ability8.canceled -= instance.OnAbility8;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -560,6 +647,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnAbility3(InputAction.CallbackContext context);
         void OnAbility4(InputAction.CallbackContext context);
         void OnAbility5(InputAction.CallbackContext context);
+        void OnAbility6(InputAction.CallbackContext context);
+        void OnAbility7(InputAction.CallbackContext context);
+        void OnAbility8(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

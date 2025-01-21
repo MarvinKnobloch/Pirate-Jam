@@ -4,7 +4,7 @@ using UnityEngine.InputSystem.Interactions;
 public class AreaAbility : MonoBehaviour
 {
     [SerializeField] Vector2 areaSize;
-    [SerializeField] private AreaType areaType;
+    [SerializeField] private AreaType areaCollider;
     [SerializeField] private float lifeTime;
     [SerializeField] private float tickInterval;
     [SerializeField] private int damage;
@@ -27,20 +27,41 @@ public class AreaAbility : MonoBehaviour
     {
         CancelInvoke();
         Destroy(gameObject, lifeTime);
-        InvokeRepeating("ExecuteAbility", 0.1f, tickInterval);
+        InvokeRepeating("SetAreaCollider", 0.1f, tickInterval);
     }
-    private void ExecuteAbility()
+    private void SetAreaCollider()
     {
-        switch (areaType)
+        switch (areaCollider)
         {
             case AreaType.Circle:
                 CheckInCircle();
+                break;
+            case AreaType.Box:
+                CheckInBox();
                 break;
         }
     }
     private void CheckInCircle()
     {
         Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x * 0.5f, hitLayer);
+
+        ExecuteAbility(cols);
+    }
+    private void CheckInBox()
+    {
+        float angle = transform.eulerAngles.z;
+        if(angle > 180)
+        {
+            float difference = angle - 180;
+            angle = (180 - difference) * -1;
+        }
+
+        Collider2D[] cols = Physics2D.OverlapBoxAll(transform.position, areaSize, angle, hitLayer);
+
+        ExecuteAbility(cols);
+    }
+    private void ExecuteAbility(Collider2D[] cols)
+    {
 
         foreach (Collider2D obj in cols)
         {
