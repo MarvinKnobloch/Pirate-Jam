@@ -234,7 +234,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.74301016, b: 0.06666666, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -274,8 +274,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 6589723892033796994}
   HealthBarOffset: 1
-  maxHealth: 5
-  currentHealth: 5
+  maxHealth: 2
+  currentHealth: 2
+  dieEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  healthUpgrade:
+    type: 0
+    percentage: 0
 --- !u!50 &5786323231946821683
 Rigidbody2D:
   serializedVersion: 5
@@ -347,6 +353,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4368947903866740981}
     m_Modifications:
+    - target: {fileID: 959518903400884722, guid: fae109589fef1714ebd144ad69d51b50, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 959518903400884722, guid: fae109589fef1714ebd144ad69d51b50, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 959518903400884722, guid: fae109589fef1714ebd144ad69d51b50, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3263193145813955883, guid: fae109589fef1714ebd144ad69d51b50, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

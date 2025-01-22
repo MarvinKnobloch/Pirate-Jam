@@ -134,12 +134,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 7205211150960355112}
+  HealthBarPermanent: 1
   HealthBarOffset: 1
   maxHealth: 10
   currentHealth: 2
   dieEvent:
     m_PersistentCalls:
       m_Calls: []
+  healthUpgrade:
+    type: 0
+    percentage: 0
 --- !u!212 &5995851000078966377
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -243,7 +247,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -345,6 +349,10 @@ PrefabInstance:
     - target: {fileID: 3263193145813955883, guid: fae109589fef1714ebd144ad69d51b50, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3880564814018214472, guid: fae109589fef1714ebd144ad69d51b50, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8280983770968939263, guid: fae109589fef1714ebd144ad69d51b50, type: 3}
       propertyPath: m_Name

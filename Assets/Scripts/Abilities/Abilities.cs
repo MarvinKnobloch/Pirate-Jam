@@ -6,7 +6,7 @@ public class Abilities : ScriptableObject
     public string AbilityName;
     public int AbilityID;
     public int AbilityCost;
-    public int AbilityCooldown;
+    public float AbilityCooldown;
     public float AbilityTime;
     public ProjectileObj projectileObj;
 }

@@ -6,6 +6,7 @@ using UpgradeSystem;
 public class Health : MonoBehaviour
 {
     public RectTransform HealthBar;
+    public bool HealthBarPermanent = false;
     public float HealthBarOffset = 1f;
 
     [SerializeField] private int maxHealth = 1;
@@ -82,9 +83,9 @@ public class Health : MonoBehaviour
     }
     private void EnemyHealthbarUpdate()
     {
-        if(HealthBar != null)
+        if (HealthBar != null)
         {
-            if (currentHealth == maxHealth)
+            if (!HealthBarPermanent && currentHealth == maxHealth)
             {
                 HealthBar.sizeDelta = new Vector2(0, HealthBar.sizeDelta.y);
             }
@@ -98,6 +99,6 @@ public class Health : MonoBehaviour
     {
         if (healthUpgrade.type == Upgrades.UpgradeType.Empty) return;
 
-        MaxValue +=  Mathf.RoundToInt(Upgrades.GetUpgradeStat(healthUpgrade.type) * healthUpgrade.percentage);
+        MaxValue += Mathf.RoundToInt(Upgrades.GetUpgradeStat(healthUpgrade.type) * healthUpgrade.percentage);
     }
 }
