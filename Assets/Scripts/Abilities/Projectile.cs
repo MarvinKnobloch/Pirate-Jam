@@ -1,12 +1,14 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UpgradeSystem;
 
 public class Projectile : MonoBehaviour
 {
     private Abilities ability;
     private ProjectileObj projectile;
     private Vector2 direction;
+    private int damage;
 
     //AOE
     [SerializeField] private GameObject aoeVisualBullet;
@@ -18,6 +20,7 @@ public class Projectile : MonoBehaviour
     private float maxHeight;
     private float bulletLifeTime;
     private float currentLifeTime;
+
 
     void Update()
     {
@@ -37,7 +40,6 @@ public class Projectile : MonoBehaviour
                 case ProjectileType.piercing:
                     StraightMovement();
                     break;
-
             }
         }
     }
@@ -47,6 +49,7 @@ public class Projectile : MonoBehaviour
         projectile = aby.projectileObj;
         direction = _direction;
 
+        StatsUpdate();
         Destroy(gameObject, projectile.timeToDestroy);
     }
     public void SetProjectileAOE(Abilities aby, Vector2 startPosi, Vector2 endPosi)
@@ -64,7 +67,12 @@ public class Projectile : MonoBehaviour
         bulletLifeTime = distance / currentSpeed;
         currentLifeTime = bulletLifeTime;
 
+        StatsUpdate();
         Destroy(gameObject, projectile.timeToDestroy);
+    }
+    private void StatsUpdate()
+    {
+        if(projectile.damage != 0) damage = projectile.damage + Mathf.RoundToInt(Upgrades.GetUpgradeStat(projectile.damageUpgrade.type) * projectile.damageUpgrade.percentage);
     }
 
     private void StraightMovement()
@@ -115,13 +123,10 @@ public class Projectile : MonoBehaviour
     }
     private void DealSingleDamage(GameObject obj)
     {
-        if (obj.TryGetComponent(out Health health))
+        if (obj.transform.parent.TryGetComponent(out Health parentHealth))
         {
-            health.TakeDamage(projectile.damage);
-        }
-        else if (obj.transform.parent.TryGetComponent(out Health parentHealth))
-        {
-            parentHealth.TakeDamage(projectile.damage);
+            if(projectile.damage != 0) parentHealth.TakeDamage(damage);
+            if(projectile.heal != 0) parentHealth.Heal(projectile.heal);
         }
 
         if (projectile.createArea)
@@ -136,13 +141,10 @@ public class Projectile : MonoBehaviour
 
         foreach (Collider2D enemy in cols)
         {
-            if (enemy.gameObject.TryGetComponent(out Health health))
+            if (enemy.gameObject.transform.parent.TryGetComponent(out Health parentHealth))
             {
-                health.TakeDamage(projectile.damage);
-            }
-            else if (enemy.gameObject.transform.parent.TryGetComponent(out Health parentHealth))
-            {
-                parentHealth.TakeDamage(projectile.damage);
+                if (projectile.damage != 0) parentHealth.TakeDamage(damage);
+
             }
         }
     }

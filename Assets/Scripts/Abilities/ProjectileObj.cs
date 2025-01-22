@@ -1,4 +1,5 @@
 using UnityEngine;
+using UpgradeSystem;
 
 [CreateAssetMenu(fileName = "Projectile", menuName = "ScriptableObjects/Projectile")]
 public class ProjectileObj : ScriptableObject
@@ -6,6 +7,7 @@ public class ProjectileObj : ScriptableObject
     public GameObject prefab;
     public float speed;
     public int damage;
+    public int heal;
     public ProjectileType projectileType;
     public float aoeRange;
     public float maxBulletHeight;
@@ -22,8 +24,13 @@ public class ProjectileObj : ScriptableObject
     [Header("Area")]
     public bool createArea;
     public GameObject areaPrefab;
+
+    [Header("Upgrades")]
+    public Upgrades.UpgradeValues damageUpgrade;
+    public Upgrades.UpgradeValues aoeSizeUpgrade;
+    public Upgrades.UpgradeValues slowUpgrade;
 }
-public enum ProjectileType{
+    public enum ProjectileType{
     single,
     aoe,
     explosion,

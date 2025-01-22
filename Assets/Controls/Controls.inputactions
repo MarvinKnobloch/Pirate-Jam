@@ -6,51 +6,6 @@
             "id": "956879dd-24ff-438a-95ac-e2bcee32c427",
             "actions": [
                 {
-                    "name": "Move",
-                    "type": "PassThrough",
-                    "id": "48659833-b4a4-4346-b2fe-b8217270d896",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "e0f120e1-28c5-4c32-861f-bbc0c2f52f90",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Interact",
-                    "type": "Button",
-                    "id": "feeca810-98c6-42d7-a047-75b166c949a4",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ConfirmAbility",
-                    "type": "Button",
-                    "id": "515c412b-da23-4f0e-8591-11940d326a19",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "CancelAbility",
-                    "type": "Button",
-                    "id": "5a410a01-b921-4fc1-9bdc-2777315b2b53",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Ability1",
                     "type": "Button",
                     "id": "7031e6a5-b975-4628-a353-0cbd17072421",
@@ -121,83 +76,26 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "UpgradMenu",
+                    "type": "Button",
+                    "id": "feeca810-98c6-42d7-a047-75b166c949a4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
-                    "name": "2D Vector",
-                    "id": "dac7ce51-d16e-4ee9-bcac-77f16dc8dc6a",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "4e2be0a4-b946-4c08-a7eb-8e924816e22e",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "1313282c-71ab-4def-8e7a-bf23526ac3ab",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "90a3e5df-1673-4558-9db9-36fd7ccb40bf",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "a4b65862-96ce-4758-a476-1236251daf8c",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "e42ca92e-0f2b-41b7-b478-63ac99c3434a",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "",
                     "id": "1864a50e-4ebf-4fd4-a641-fd00ec141e45",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/f1",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "UpgradMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -209,28 +107,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Ability1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "76539dd7-edf9-486e-9531-194dc90b9f94",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ConfirmAbility",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c307ed29-293a-4ee9-a900-96a44cee0093",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "CancelAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -16,6 +16,7 @@ public class MenuController : MonoBehaviour
 
     [SerializeField] private GameObject titleMenu;
     [SerializeField] private GameObject ingameMenu;
+    [SerializeField] private GameObject upgradeMenu;
 
     [SerializeField] private GameObject confirmController;
     [SerializeField] private Button confirmButton;
@@ -41,6 +42,10 @@ public class MenuController : MonoBehaviour
         {
             HandleMenu();
         }
+        if (controls.Player.UpgradMenu.WasPerformedThisFrame())
+        {
+            HandleUpgradeMenu();
+        }
 
     }
     private void OnEnable()
@@ -62,13 +67,15 @@ public class MenuController : MonoBehaviour
         {
             if (Player.Instance == null) return;
 
-            //if (GameManager.Instance.playerUI.messageBox.activeSelf) GameManager.Instance.playerUI.CloseMessageBox();
-            if (ingameMenu.activeSelf == false)
+            if (upgradeMenu.activeSelf == true)
+            {
+                upgradeMenu.SetActive(false);
+                EndPause();
+            }
+            else if (ingameMenu.activeSelf == false)
             {
                 if (gameIsPaused == false)
                 {
-                    Cursor.lockState = CursorLockMode.None;
-                    Cursor.visible = true;
                     PauseGame();
                     ingameMenu.SetActive(true);
 
@@ -80,6 +87,22 @@ public class MenuController : MonoBehaviour
                 ingameMenu.SetActive(false);
                 EndPause();
             }
+        }
+    }
+    private void HandleUpgradeMenu()
+    {
+        if (Player.Instance == null) return;
+        if (ingameMenu.activeSelf == true) return;
+
+        if (upgradeMenu.activeSelf == false)
+        {
+            upgradeMenu.SetActive(true);
+            PauseGame();
+        }
+        else
+        {
+            upgradeMenu.SetActive(false);
+            EndPause();
         }
     }
 
@@ -141,6 +164,9 @@ public class MenuController : MonoBehaviour
 
     private void PauseGame()
     {
+        //Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
+
         gameIsPaused = true;
         Time.timeScale = 0;
 
@@ -148,8 +174,9 @@ public class MenuController : MonoBehaviour
     }
     private void EndPause()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+
         gameIsPaused = false;
         Time.timeScale = 1;
 

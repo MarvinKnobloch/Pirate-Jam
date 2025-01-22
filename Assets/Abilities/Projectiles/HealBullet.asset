@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4844b80c316a2094d91f85851f9fd637, type: 3}
+  m_Name: HealBullet
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5903401445494139436, guid: d3582ad4aaa77a043af7ebf6c276c347, type: 3}
+  speed: 12
+  damage: 0
+  heal: 10
+  projectileType: 0
+  aoeRange: 0
+  maxBulletHeight: 0
+  multipleProjectiles: 0
+  multiShotAngle: 0
+  timeToDestroy: 5
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  mirrorAttack: 0
+  createArea: 0
+  areaPrefab: {fileID: 0}

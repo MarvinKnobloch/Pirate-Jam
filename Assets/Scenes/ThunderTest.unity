@@ -934,26 +934,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyDirector
       objectReference: {fileID: 0}
-    - target: {fileID: 3788006482785907621, guid: 45a58e91c1afe8341b254116a5524d01, type: 3}
-      propertyPath: MaxInstances
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3788006482785907621, guid: 45a58e91c1afe8341b254116a5524d01, type: 3}
-      propertyPath: SpawnMagnitude
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3788006482785907621, guid: 45a58e91c1afe8341b254116a5524d01, type: 3}
-      propertyPath: Spawnables.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3788006482785907621, guid: 45a58e91c1afe8341b254116a5524d01, type: 3}
-      propertyPath: 'Spawnables.Array.data[0]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 3aa266716c8ca574da23c9d12631cc57, type: 2}
-    - target: {fileID: 3788006482785907621, guid: 45a58e91c1afe8341b254116a5524d01, type: 3}
-      propertyPath: 'Spawnables.Array.data[1]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 6d7ecd7eecc666540923b6770759cc9f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1068,14 +1048,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7312821347948439616, guid: bd283c850957dd34c92233eff2806c02, type: 3}
-      propertyPath: Spawnables.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7312821347948439616, guid: bd283c850957dd34c92233eff2806c02, type: 3}
-      propertyPath: 'Spawnables.Array.data[0]'
-      value: 
-      objectReference: {fileID: 11400000, guid: eff85670d73a11a499f4c77ff1f00c24, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1093,14 +1065,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPCDirector
       objectReference: {fileID: 0}
-    - target: {fileID: 6292462937892867576, guid: 64f0c34ff0fc8ad4daeed5323c014fff, type: 3}
-      propertyPath: Spawnables.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6292462937892867576, guid: 64f0c34ff0fc8ad4daeed5323c014fff, type: 3}
-      propertyPath: 'Spawnables.Array.data[0]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 8506cea0083739040adb2d437b6fafa6, type: 2}
     - target: {fileID: 8391448347456091942, guid: 64f0c34ff0fc8ad4daeed5323c014fff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

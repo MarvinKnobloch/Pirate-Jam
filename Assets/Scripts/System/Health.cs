@@ -1,5 +1,7 @@
 using UnityEngine;
 using System;
+using UnityEngine.Events;
+using UpgradeSystem;
 
 public class Health : MonoBehaviour
 {
@@ -8,6 +10,11 @@ public class Health : MonoBehaviour
 
     [SerializeField] private int maxHealth = 1;
     [SerializeField] private int currentHealth;
+
+    [HideInInspector]
+    public UnityEvent dieEvent;
+
+    public Upgrades.UpgradeValues healthUpgrade;
     public int Value
     {
         get { return currentHealth; }
@@ -22,6 +29,7 @@ public class Health : MonoBehaviour
 
     void Awake()
     {
+        HealthUpgrade();
         currentHealth = maxHealth;
 
         EnemyHealthbarUpdate();
@@ -41,11 +49,11 @@ public class Health : MonoBehaviour
         HealthBar.position = healthBarPosition;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int amount)
     {
-        if (damage == 0) return;
+        if (amount == 0) return;
 
-        Value -= damage;
+        Value -= amount;
 
         if (gameObject == Player.Instance.gameObject) Player.Instance.HealthUIUpdate();
         else
@@ -55,9 +63,22 @@ public class Health : MonoBehaviour
 
         if (Value <= 0)
         {
+            dieEvent?.Invoke();
             Destroy(gameObject);
         }
+    }
+    public void Heal(int amount)
+    {
+        if (amount == 0) return;
 
+        Value += amount;
+        Debug.Log(Value);
+
+        if (gameObject == Player.Instance.gameObject) Player.Instance.HealthUIUpdate();
+        else
+        {
+            EnemyHealthbarUpdate();
+        }
     }
     private void EnemyHealthbarUpdate()
     {
@@ -72,5 +93,11 @@ public class Health : MonoBehaviour
                 HealthBar.sizeDelta = new Vector2(2 * ((float)currentHealth / maxHealth), HealthBar.sizeDelta.y);
             }
         }
+    }
+    public void HealthUpgrade()
+    {
+        if (healthUpgrade.type == Upgrades.UpgradeType.Empty) return;
+
+        MaxValue +=  Mathf.RoundToInt(Upgrades.GetUpgradeStat(healthUpgrade.type) * healthUpgrade.percentage);
     }
 }

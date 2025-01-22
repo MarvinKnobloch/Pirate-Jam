@@ -22,6 +22,16 @@ public class PlayerUI : MonoBehaviour
     public TextMeshProUGUI copperText;
     public TextMeshProUGUI woodText;
 
+    [Header("Counter")]
+    public TextMeshProUGUI killCount;
+    private int kills;
+
+    [Space]
+    public TextMeshProUGUI gameTimer;
+    private float time;
+    private int seconds;
+    private int minutes;
+
     private void Awake()
     {
         if (Instance == null)
@@ -29,6 +39,16 @@ public class PlayerUI : MonoBehaviour
             Instance = this;
         }
         else Destroy(gameObject);
+
+        killCount.text = 0 + " Kills";
+    }
+    private void Update()
+    {
+        time += Time.deltaTime;
+
+        seconds = Mathf.FloorToInt(time % 60);
+        minutes = Mathf.FloorToInt(time / 60 % 60);
+        gameTimer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     public void HealthUIUpdate(int current, int max)
@@ -48,5 +68,10 @@ public class PlayerUI : MonoBehaviour
         ironText.text = iron.ToString();
         copperText.text = copper.ToString();
         woodText.text = wood.ToString();
+    }
+    public void KillCountUpdate()
+    {
+        kills++;
+        killCount.text = kills + " Kills";
     }
 }
