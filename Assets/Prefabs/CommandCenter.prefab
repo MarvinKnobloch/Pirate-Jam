@@ -150,6 +150,9 @@ MonoBehaviour:
   dieEvent:
     m_PersistentCalls:
       m_Calls: []
+  healthUpgrade:
+    type: 1
+    percantage: 100
 --- !u!1 &2165618624583706656
 GameObject:
   m_ObjectHideFlags: 0
