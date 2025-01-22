@@ -28,51 +28,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             ""id"": ""956879dd-24ff-438a-95ac-e2bcee32c427"",
             ""actions"": [
                 {
-                    ""name"": ""Move"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""48659833-b4a4-4346-b2fe-b8217270d896"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""e0f120e1-28c5-4c32-861f-bbc0c2f52f90"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Interact"",
-                    ""type"": ""Button"",
-                    ""id"": ""feeca810-98c6-42d7-a047-75b166c949a4"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ConfirmAbility"",
-                    ""type"": ""Button"",
-                    ""id"": ""515c412b-da23-4f0e-8591-11940d326a19"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""CancelAbility"",
-                    ""type"": ""Button"",
-                    ""id"": ""5a410a01-b921-4fc1-9bdc-2777315b2b53"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Ability1"",
                     ""type"": ""Button"",
                     ""id"": ""7031e6a5-b975-4628-a353-0cbd17072421"",
@@ -143,83 +98,26 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UpgradMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""feeca810-98c6-42d7-a047-75b166c949a4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""dac7ce51-d16e-4ee9-bcac-77f16dc8dc6a"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""4e2be0a4-b946-4c08-a7eb-8e924816e22e"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""1313282c-71ab-4def-8e7a-bf23526ac3ab"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""90a3e5df-1673-4558-9db9-36fd7ccb40bf"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""a4b65862-96ce-4758-a476-1236251daf8c"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e42ca92e-0f2b-41b7-b478-63ac99c3434a"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": """",
                     ""id"": ""1864a50e-4ebf-4fd4-a641-fd00ec141e45"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""path"": ""<Keyboard>/f1"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Interact"",
+                    ""action"": ""UpgradMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -231,28 +129,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Ability1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""76539dd7-edf9-486e-9531-194dc90b9f94"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ConfirmAbility"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c307ed29-293a-4ee9-a900-96a44cee0093"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""CancelAbility"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -368,11 +244,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
-        m_Player_ConfirmAbility = m_Player.FindAction("ConfirmAbility", throwIfNotFound: true);
-        m_Player_CancelAbility = m_Player.FindAction("CancelAbility", throwIfNotFound: true);
         m_Player_Ability1 = m_Player.FindAction("Ability1", throwIfNotFound: true);
         m_Player_Ability2 = m_Player.FindAction("Ability2", throwIfNotFound: true);
         m_Player_Ability3 = m_Player.FindAction("Ability3", throwIfNotFound: true);
@@ -381,6 +252,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Ability6 = m_Player.FindAction("Ability6", throwIfNotFound: true);
         m_Player_Ability7 = m_Player.FindAction("Ability7", throwIfNotFound: true);
         m_Player_Ability8 = m_Player.FindAction("Ability8", throwIfNotFound: true);
+        m_Player_UpgradMenu = m_Player.FindAction("UpgradMenu", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_MenuEsc = m_Menu.FindAction("MenuEsc", throwIfNotFound: true);
@@ -451,11 +323,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-    private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_Interact;
-    private readonly InputAction m_Player_ConfirmAbility;
-    private readonly InputAction m_Player_CancelAbility;
     private readonly InputAction m_Player_Ability1;
     private readonly InputAction m_Player_Ability2;
     private readonly InputAction m_Player_Ability3;
@@ -464,15 +331,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Ability6;
     private readonly InputAction m_Player_Ability7;
     private readonly InputAction m_Player_Ability8;
+    private readonly InputAction m_Player_UpgradMenu;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
         public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @Interact => m_Wrapper.m_Player_Interact;
-        public InputAction @ConfirmAbility => m_Wrapper.m_Player_ConfirmAbility;
-        public InputAction @CancelAbility => m_Wrapper.m_Player_CancelAbility;
         public InputAction @Ability1 => m_Wrapper.m_Player_Ability1;
         public InputAction @Ability2 => m_Wrapper.m_Player_Ability2;
         public InputAction @Ability3 => m_Wrapper.m_Player_Ability3;
@@ -481,6 +344,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Ability6 => m_Wrapper.m_Player_Ability6;
         public InputAction @Ability7 => m_Wrapper.m_Player_Ability7;
         public InputAction @Ability8 => m_Wrapper.m_Player_Ability8;
+        public InputAction @UpgradMenu => m_Wrapper.m_Player_UpgradMenu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -490,21 +354,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
-            @Move.started += instance.OnMove;
-            @Move.performed += instance.OnMove;
-            @Move.canceled += instance.OnMove;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
-            @Interact.started += instance.OnInteract;
-            @Interact.performed += instance.OnInteract;
-            @Interact.canceled += instance.OnInteract;
-            @ConfirmAbility.started += instance.OnConfirmAbility;
-            @ConfirmAbility.performed += instance.OnConfirmAbility;
-            @ConfirmAbility.canceled += instance.OnConfirmAbility;
-            @CancelAbility.started += instance.OnCancelAbility;
-            @CancelAbility.performed += instance.OnCancelAbility;
-            @CancelAbility.canceled += instance.OnCancelAbility;
             @Ability1.started += instance.OnAbility1;
             @Ability1.performed += instance.OnAbility1;
             @Ability1.canceled += instance.OnAbility1;
@@ -529,25 +378,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Ability8.started += instance.OnAbility8;
             @Ability8.performed += instance.OnAbility8;
             @Ability8.canceled += instance.OnAbility8;
+            @UpgradMenu.started += instance.OnUpgradMenu;
+            @UpgradMenu.performed += instance.OnUpgradMenu;
+            @UpgradMenu.canceled += instance.OnUpgradMenu;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
         {
-            @Move.started -= instance.OnMove;
-            @Move.performed -= instance.OnMove;
-            @Move.canceled -= instance.OnMove;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
-            @Interact.started -= instance.OnInteract;
-            @Interact.performed -= instance.OnInteract;
-            @Interact.canceled -= instance.OnInteract;
-            @ConfirmAbility.started -= instance.OnConfirmAbility;
-            @ConfirmAbility.performed -= instance.OnConfirmAbility;
-            @ConfirmAbility.canceled -= instance.OnConfirmAbility;
-            @CancelAbility.started -= instance.OnCancelAbility;
-            @CancelAbility.performed -= instance.OnCancelAbility;
-            @CancelAbility.canceled -= instance.OnCancelAbility;
             @Ability1.started -= instance.OnAbility1;
             @Ability1.performed -= instance.OnAbility1;
             @Ability1.canceled -= instance.OnAbility1;
@@ -572,6 +409,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Ability8.started -= instance.OnAbility8;
             @Ability8.performed -= instance.OnAbility8;
             @Ability8.canceled -= instance.OnAbility8;
+            @UpgradMenu.started -= instance.OnUpgradMenu;
+            @UpgradMenu.performed -= instance.OnUpgradMenu;
+            @UpgradMenu.canceled -= instance.OnUpgradMenu;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -637,11 +477,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     public MenuActions @Menu => new MenuActions(this);
     public interface IPlayerActions
     {
-        void OnMove(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
-        void OnInteract(InputAction.CallbackContext context);
-        void OnConfirmAbility(InputAction.CallbackContext context);
-        void OnCancelAbility(InputAction.CallbackContext context);
         void OnAbility1(InputAction.CallbackContext context);
         void OnAbility2(InputAction.CallbackContext context);
         void OnAbility3(InputAction.CallbackContext context);
@@ -650,6 +485,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnAbility6(InputAction.CallbackContext context);
         void OnAbility7(InputAction.CallbackContext context);
         void OnAbility8(InputAction.CallbackContext context);
+        void OnUpgradMenu(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
