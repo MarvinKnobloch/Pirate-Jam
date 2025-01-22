@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
     {
         HealthUIUpdate();
         EnergyUpdate(MaxEnergy);
+        AddResource(ResourceType.Iron, 0);
         InvokeRepeating("EnergyRestoreTick", energyRestoreInterval, energyRestoreInterval);
     }
 
