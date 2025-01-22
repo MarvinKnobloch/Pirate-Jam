@@ -6,6 +6,7 @@ public class ProjectileObj : ScriptableObject
     public GameObject prefab;
     public float speed;
     public int damage;
+    public int heal;
     public ProjectileType projectileType;
     public float aoeRange;
     public float maxBulletHeight;

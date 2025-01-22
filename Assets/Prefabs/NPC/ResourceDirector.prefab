@@ -44,8 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d1610cb52657e409ecc8e5800a0a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InstancePrefab: {fileID: 6787278756199275497, guid: 1615606624ef6c44faa1b1e30cbebe1d, type: 3}
-  MaxInstances: 6
-  SpawnTickRate: 2
-  SpawnInstancesPerTick: 1
-  SpawnMagnitude: 10
+  Spawnables:
+  - {fileID: 11400000, guid: eff85670d73a11a499f4c77ff1f00c24, type: 2}

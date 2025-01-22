@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8391448347456091942}
-  - component: {fileID: 7347469826798811754}
   - component: {fileID: 6292462937892867576}
   m_Layer: 0
   m_Name: NPCDirector
@@ -33,18 +32,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7347469826798811754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5681521739962021531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 301faa74c6099a24c8c3f6253ebc0d64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6292462937892867576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,8 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d1610cb52657e409ecc8e5800a0a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InstancePrefab: {fileID: 6663886683702503038, guid: cdd92df9528e2824ba8067f457ab25ef, type: 3}
-  MaxInstances: 5
-  SpawnTickRate: 5
-  SpawnInstancesPerTick: 1
-  SpawnMagnitude: 5
+  Spawnables:
+  - {fileID: 11400000, guid: 8506cea0083739040adb2d437b6fafa6, type: 2}

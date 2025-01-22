@@ -34,7 +34,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 564728675964471983}
-  - {fileID: 8678797366224374395}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6525713836435907070
@@ -116,6 +115,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 348e88d9d5e1c5e49ac1a5d2f5d939db, type: 2}
   - {fileID: 11400000, guid: 518bf22a6eb549b429f7f5bbb2d99744, type: 2}
   - {fileID: 11400000, guid: e8d8035d098c2e5499279ffed915a42d, type: 2}
+  - {fileID: 11400000, guid: c9257f5bb27dff049b0c95d37a889aad, type: 2}
+  Iron: 0
+  Copper: 0
+  Wood: 0
 --- !u!114 &8687104560363440044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,6 +147,9 @@ MonoBehaviour:
   HealthBarOffset: 1
   maxHealth: 10
   currentHealth: 10
+  dieEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2165618624583706656
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,29 +320,3 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
---- !u!1001 &6140790962820792144
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8415603043176165304}
-  - component: {fileID: 8061898387241291179}
-  - component: {fileID: 3995806269986199064}
-  - component: {fileID: 2495606150417616888}
-  - component: {fileID: 7391018833808447524}
-  - component: {fileID: 7361881953699096659}
-  m_Layer: 5
-  m_Name: HealthBar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &8415603043176165304
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3263193145813955883, guid: fae109589fef1714ebd144ad69d51b50, type: 3}
-  m_PrefabInstance: {fileID: 6140790962820792144}
-  m_PrefabAsset: {fileID: 0}

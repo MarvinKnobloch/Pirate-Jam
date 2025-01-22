@@ -37,8 +37,10 @@ public class EnemyController : MonoBehaviour
 
         _collider.radius = AttackDistance;
 
-        Health = GetComponent<Health>();
         _targetDetector = GetComponentInChildren<EnemyTargetDetector>();
+
+        Health = GetComponent<Health>();
+        if (Health != null) Health.dieEvent.AddListener(OnDeath);
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -144,5 +146,9 @@ public class EnemyController : MonoBehaviour
 
         var direction = (targetPosition - transform.position).normalized;
         _rigidbody.MovePosition(transform.position + MoveSpeed * Time.fixedDeltaTime * direction);
+    }
+    public void OnDeath()
+    {
+        PlayerUI.Instance.KillCountUpdate();
     }
 }

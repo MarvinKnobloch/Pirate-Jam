@@ -115,13 +115,10 @@ public class Projectile : MonoBehaviour
     }
     private void DealSingleDamage(GameObject obj)
     {
-        if (obj.TryGetComponent(out Health health))
+        if (obj.transform.parent.TryGetComponent(out Health parentHealth))
         {
-            health.TakeDamage(projectile.damage);
-        }
-        else if (obj.transform.parent.TryGetComponent(out Health parentHealth))
-        {
-            parentHealth.TakeDamage(projectile.damage);
+            if(projectile.damage != 0) parentHealth.TakeDamage(projectile.damage);
+            if(projectile.heal != 0) parentHealth.Heal(projectile.heal);
         }
 
         if (projectile.createArea)
