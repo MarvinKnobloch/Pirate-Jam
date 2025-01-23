@@ -99,6 +99,14 @@ public class Health : MonoBehaviour
     {
         if (healthUpgrade.type == Upgrades.UpgradeType.Empty) return;
 
-        MaxValue += Mathf.RoundToInt(Upgrades.GetUpgradeStat(healthUpgrade.type) * healthUpgrade.percentage);
+        if (healthUpgrade.type == Upgrades.UpgradeType.Health)
+        {
+            MaxValue += Mathf.RoundToInt(Upgrades.GetUpgradeStat(healthUpgrade.type) * healthUpgrade.percentage);
+            if(Player.Instance != null) Player.Instance.HealthUIUpdate();
+        }
+        else if (healthUpgrade.type == Upgrades.UpgradeType.MinionHealth)
+        {
+            MaxValue += Mathf.RoundToInt(Upgrades.GetUpgradeStat(healthUpgrade.type) * healthUpgrade.percentage);
+        }
     }
 }

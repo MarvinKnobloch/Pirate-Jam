@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [Header("Energy")]
     [SerializeField] private int currentEnergy;
     [SerializeField] private int maxEnergy;
-    [SerializeField] private float energyRestoreInterval;
+    public float energyRestoreInterval;
     [SerializeField] private int energyRestoreAmount;
 
     public Abilities[] abilities;

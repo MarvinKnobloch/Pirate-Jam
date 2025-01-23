@@ -67,6 +67,7 @@ public class MenuController : MonoBehaviour
         {
             if (Player.Instance == null) return;
 
+            if (PlayerUI.Instance.upgradeController.gameObject.activeSelf == true) return;
             if (upgradeMenu.activeSelf == true)
             {
                 upgradeMenu.SetActive(false);
@@ -93,6 +94,7 @@ public class MenuController : MonoBehaviour
     {
         if (Player.Instance == null) return;
         if (ingameMenu.activeSelf == true) return;
+        if (PlayerUI.Instance.upgradeController.gameObject.activeSelf == true) return;
 
         if (upgradeMenu.activeSelf == false)
         {

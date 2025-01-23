@@ -22,15 +22,17 @@ public class PlayerUI : MonoBehaviour
     public TextMeshProUGUI copperText;
     public TextMeshProUGUI woodText;
 
-    [Header("Counter")]
+    [Header("Numbers")]
     public TextMeshProUGUI killCount;
     private int kills;
 
-    [Space]
     public TextMeshProUGUI gameTimer;
     private float time;
     private int seconds;
     private int minutes;
+
+    [Header("Upgrades")]
+    public UpgradeController upgradeController;
 
     private void Awake()
     {

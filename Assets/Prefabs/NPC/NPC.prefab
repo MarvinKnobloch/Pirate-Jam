@@ -142,8 +142,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   healthUpgrade:
-    type: 0
-    percentage: 0
+    type: 2
+    percentage: 1
 --- !u!212 &5995851000078966377
 SpriteRenderer:
   m_ObjectHideFlags: 0

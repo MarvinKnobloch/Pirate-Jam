@@ -154,7 +154,7 @@ MonoBehaviour:
       m_Calls: []
   healthUpgrade:
     type: 1
-    percentage: 0
+    percentage: 1
 --- !u!61 &2965474188687742104
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -230,7 +230,7 @@ Transform:
   m_GameObject: {fileID: 2165618624583706656}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -269,7 +269,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 88.50715
+  field of view: 40
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
