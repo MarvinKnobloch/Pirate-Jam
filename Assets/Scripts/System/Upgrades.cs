@@ -12,6 +12,7 @@ namespace UpgradeSystem
         private int healthUpgradeValue;
         private int minionHealthUpgradeValue;
         private int damageUpgradeValue;
+        private float damageOverTimeUpgradeValue;
         private int maxEnergyUpgradeValue;
         private float energyIntervalUpgradeValue;
         private float aoeSizeUpgradeValue;
@@ -34,6 +35,8 @@ namespace UpgradeSystem
                     return minionHealthUpgradeValue;
                 case UpgradeType.Damage:
                     return damageUpgradeValue;
+                case UpgradeType.DamageOverTime:
+                    return damageOverTimeUpgradeValue;
                 case UpgradeType.MaxEnergy:
                     return maxEnergyUpgradeValue;
                 case UpgradeType.EnergyInterval:
@@ -60,6 +63,9 @@ namespace UpgradeSystem
                 case UpgradeType.Damage:
                     damageUpgradeValue += Mathf.RoundToInt(value);
                     break;
+                case UpgradeType.DamageOverTime:
+                    damageOverTimeUpgradeValue += value;
+                    break;
                 case UpgradeType.MaxEnergy:
                     maxEnergyUpgradeValue += Mathf.RoundToInt(value);
                     break;
@@ -76,6 +82,10 @@ namespace UpgradeSystem
                     stunUpgradeValue += value;
                     break;
             }
+        }
+        public int DamageUpgradeCalculation(UpgradeType upgradeType, float percentage)
+        {
+            return Mathf.RoundToInt(Upgrades.Instance.GetUpgradeStat(upgradeType) * (percentage * 0.01f));
         }
         public float AoeSizeCalculation(UpgradeType upgradeType, float percentage)
         {
@@ -96,6 +106,7 @@ namespace UpgradeSystem
             PlayerHealth,
             MinionHealth,
             Damage,
+            DamageOverTime,
             MaxEnergy,
             EnergyInterval,
             AoeSize,

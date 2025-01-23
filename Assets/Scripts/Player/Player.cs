@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using Unity.VisualScripting;
+using static UpgradeSystem.Upgrades;
 
 public class Player : MonoBehaviour
 {
@@ -113,6 +114,15 @@ public class Player : MonoBehaviour
         CurrentEnergy += energyChange;
         if (PlayerUI.Instance != null) PlayerUI.Instance.EnergyUIUpdate(CurrentEnergy, MaxEnergy);
     }
+    private void EnergyRestoreTick()
+    {
+        EnergyUpdate(energyRestoreAmount);
+    }
+    public void ChangeMaxEnergy(int value)
+    {
+        Instance.MaxEnergy += Mathf.RoundToInt(value);
+        if (PlayerUI.Instance != null) PlayerUI.Instance.EnergyUIUpdate(CurrentEnergy, MaxEnergy);
+    }
 
     public void AddResource(ResourceType type, int amount)
     {
@@ -132,8 +142,4 @@ public class Player : MonoBehaviour
         if (PlayerUI.Instance != null) PlayerUI.Instance.ResourceUIUpdate(Iron, Copper, Wood);
     }
 
-    private void EnergyRestoreTick()
-    {
-        EnergyUpdate(energyRestoreAmount);
-    }
 }

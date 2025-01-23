@@ -29,10 +29,10 @@ MonoBehaviour:
   createArea: 1
   areaPrefab: {fileID: 5928990622130729032, guid: b4b1978b950b5ec4fb08764a853ffa25, type: 3}
   damageUpgrade:
-    type: 3
+    type: 4
     percentage: 50
   aoeSizeUpgrade:
-    type: 6
+    type: 7
     percentage: 500
   slowUpgrade:
     type: 0

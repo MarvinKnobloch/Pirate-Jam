@@ -73,7 +73,7 @@ public class Projectile : MonoBehaviour
     }
     private void StatsUpdate()
     {
-        if(projectile.damage != 0) damage = projectile.damage + Mathf.RoundToInt(Upgrades.Instance.GetUpgradeStat(projectile.damageUpgrade.type) * (projectile.damageUpgrade.percentage * 0.01f));
+        if (projectile.damage != 0) damage = projectile.damage + Upgrades.Instance.DamageUpgradeCalculation(projectile.damageUpgrade.type, projectile.damageUpgrade.percentage);
         if (projectile.aoeRange != 0) aoeSize = projectile.aoeRange * Upgrades.Instance.AoeSizeCalculation(projectile.aoeSizeUpgrade.type, projectile.aoeSizeUpgrade.percentage);
     }
 
@@ -134,7 +134,7 @@ public class Projectile : MonoBehaviour
         if (projectile.createArea)
         {
             GameObject area = Instantiate(projectile.areaPrefab, transform.position, transform.rotation);
-            area.GetComponent<AreaAbility>().SetSize(projectile);
+            area.GetComponent<AreaAbility>().SetAreaValues(projectile);
         }
     }
 

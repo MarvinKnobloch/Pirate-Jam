@@ -15,11 +15,25 @@ MonoBehaviour:
   prefab: {fileID: 2019969566017605790, guid: 49e4002462fb8524392e7e11ed822389, type: 3}
   speed: 10
   damage: 1
+  heal: 0
   projectileType: 3
   aoeRange: 0
-  multipleProjectiles: 0
   maxBulletHeight: 0
+  multipleProjectiles: 0
+  multiShotAngle: 0
   timeToDestroy: 5
   hitLayer:
     serializedVersion: 2
     m_Bits: 128
+  mirrorAttack: 0
+  createArea: 0
+  areaPrefab: {fileID: 0}
+  damageUpgrade:
+    type: 3
+    percentage: 100
+  aoeSizeUpgrade:
+    type: 0
+    percentage: 0
+  slowUpgrade:
+    type: 0
+    percentage: 0

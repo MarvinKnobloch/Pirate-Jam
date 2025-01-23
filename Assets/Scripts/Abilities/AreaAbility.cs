@@ -22,16 +22,19 @@ public class AreaAbility : MonoBehaviour
     }
     private void Start()
     {
+
         CancelInvoke();
         Destroy(gameObject, lifeTime);
         InvokeRepeating("SetAreaCollider", 0.1f, tickInterval);
     }
-    public void SetSize(ProjectileObj projectile)
+    public void SetAreaValues(ProjectileObj projectile)
     {
+        damage = damage + Upgrades.Instance.DamageUpgradeCalculation(projectile.damageUpgrade.type, projectile.damageUpgrade.percentage);
+
         float scaling = Upgrades.Instance.AoeSizeCalculation(projectile.aoeSizeUpgrade.type, projectile.aoeSizeUpgrade.percentage);
-        float xScale = areaSize.x * scaling;
-        float yScale = areaSize.y * scaling;
-        transform.localScale = new Vector3(xScale, yScale, 1);
+        areaSize.x *= scaling;
+        areaSize.y *= scaling;
+        transform.localScale = new Vector3(areaSize.x, areaSize.y, 1);
     }
     private void SetAreaCollider()
     {

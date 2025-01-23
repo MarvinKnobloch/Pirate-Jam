@@ -64,10 +64,10 @@ public class UpgradeSlot : MonoBehaviour
                 Player.Instance.health.HealthUpgrade();
                 break;
             case Upgrades.UpgradeType.MaxEnergy:
-                Player.Instance.MaxEnergy += Mathf.RoundToInt(upgradeValue);
+                Player.Instance.ChangeMaxEnergy(Mathf.RoundToInt(upgradeValue));
                 break;
             case Upgrades.UpgradeType.EnergyInterval:
-                Player.Instance.energyRestoreInterval += Mathf.RoundToInt(upgradeValue);
+                Player.Instance.energyRestoreInterval -= upgradeValue;
                 break;
         }
 
@@ -77,10 +77,10 @@ public class UpgradeSlot : MonoBehaviour
                 Player.Instance.health.HealthUpgrade();
                 break;
             case Upgrades.UpgradeType.MaxEnergy:
-                Player.Instance.MaxEnergy += Mathf.RoundToInt(upgradeValue);
+                Player.Instance.ChangeMaxEnergy(Mathf.RoundToInt(secondUpgradeValue));
                 break;
             case Upgrades.UpgradeType.EnergyInterval:
-                Player.Instance.energyRestoreInterval += Mathf.RoundToInt(upgradeValue);
+                Player.Instance.energyRestoreInterval -= secondUpgradeValue;
                 break;
         }
 
