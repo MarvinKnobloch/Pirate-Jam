@@ -18,7 +18,12 @@ namespace UpgradeSystem
         private float aoeSizeUpgradeValue;
         private float slowUpgradeValue;
         private float stunUpgradeValue;
+        private float expGainUpgradeValue;
         private float cooldownUpgradeValue;
+        private float gatherSpeedUpgradeValue;
+        private float bulletSpeedUpgradeValue;
+        private float damagePercentageUpgradeValue;
+        private int healValue;
 
         private void Awake()
         {
@@ -48,8 +53,18 @@ namespace UpgradeSystem
                     return slowUpgradeValue;
                 case UpgradeType.Stun:
                     return stunUpgradeValue;
+                case UpgradeType.ExpGain:
+                    return expGainUpgradeValue;
                 case UpgradeType.Cooldown:
                     return cooldownUpgradeValue;
+                case UpgradeType.GatherSpeed:
+                    return gatherSpeedUpgradeValue;
+                case UpgradeType.BulletSpeed:
+                    return bulletSpeedUpgradeValue;
+                case UpgradeType.DamagePercentage:
+                    return damagePercentageUpgradeValue;
+                case UpgradeType.Heal:
+                    return healValue;
             }
             return 0;
         }
@@ -84,8 +99,23 @@ namespace UpgradeSystem
                 case UpgradeType.Stun:
                     stunUpgradeValue += value;
                     break;
+                case UpgradeType.ExpGain:
+                    expGainUpgradeValue += value;
+                    break;
                 case UpgradeType.Cooldown:
                     cooldownUpgradeValue += value;
+                    break;
+                case UpgradeType.GatherSpeed:
+                    gatherSpeedUpgradeValue += value;
+                    break;
+                case UpgradeType.BulletSpeed:
+                    bulletSpeedUpgradeValue += value;
+                    break;
+                case UpgradeType.DamagePercentage:
+                    damagePercentageUpgradeValue += value;
+                    break;
+                case UpgradeType.Heal:
+                    healValue += Mathf.RoundToInt(value);
                     break;
             }
         }
@@ -122,8 +152,12 @@ namespace UpgradeSystem
             AoeSize,
             Slow,
             Stun,
-            Heal,
+            ExpGain,
             Cooldown,
+            GatherSpeed,
+            BulletSpeed,
+            DamagePercentage,
+            Heal,
         }
     }
 }
