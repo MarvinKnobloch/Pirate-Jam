@@ -18,6 +18,7 @@ namespace UpgradeSystem
         private float aoeSizeUpgradeValue;
         private float slowUpgradeValue;
         private float stunUpgradeValue;
+        private float cooldownUpgradeValue;
 
         private void Awake()
         {
@@ -47,6 +48,8 @@ namespace UpgradeSystem
                     return slowUpgradeValue;
                 case UpgradeType.Stun:
                     return stunUpgradeValue;
+                case UpgradeType.Cooldown:
+                    return cooldownUpgradeValue;
             }
             return 0;
         }
@@ -81,6 +84,9 @@ namespace UpgradeSystem
                 case UpgradeType.Stun:
                     stunUpgradeValue += value;
                     break;
+                case UpgradeType.Cooldown:
+                    cooldownUpgradeValue += value;
+                    break;
             }
         }
         public int DamageUpgradeCalculation(UpgradeType upgradeType, float percentage)
@@ -113,6 +119,7 @@ namespace UpgradeSystem
             Slow,
             Stun,
             Heal,
+            Cooldown,
         }
     }
 }

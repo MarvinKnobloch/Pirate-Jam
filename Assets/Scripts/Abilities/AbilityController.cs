@@ -1,6 +1,8 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UpgradeSystem;
+using static UpgradeSystem.Upgrades;
 
 public class AbilityController : MonoBehaviour
 {
@@ -54,7 +56,12 @@ public class AbilityController : MonoBehaviour
         currentAbility = ability;
         abilityTimer = 0;
 
-        if (cooldownController != null) cooldownController.CooldownStart(abilitySlot, currentAbility.AbilityCooldown);
+        if (cooldownController != null)
+        {
+            float cooldown =  currentAbility.AbilityCooldown - (currentAbility.AbilityCooldown * Upgrades.Instance.GetUpgradeStat(UpgradeType.Cooldown) * 0.01f);
+            if(cooldown <= 0) cooldown = 0;
+            cooldownController.CooldownStart(abilitySlot, cooldown);
+        }
         Player.Instance.EnergyUpdate(-ability.AbilityCost);
 
         state = AbilityState.ExecuteAbility;
