@@ -101,12 +101,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaSize: {x: 3, y: 3}
-  areaType: 0
+  areaCollider: 0
   lifeTime: 3
   tickInterval: 0.5
   damage: 1
   heal: 0
-  speedReduction: 0.1
+  speedReduction: 0.9
   speedReductionTime: 3
   hitLayer:
     serializedVersion: 2

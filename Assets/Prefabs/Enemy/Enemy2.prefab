@@ -273,8 +273,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 6589723892033796994}
+  HealthBarPermanent: 0
   HealthBarOffset: 1
-  maxHealth: 2
+  maxHealth: 5
   currentHealth: 2
   dieEvent:
     m_PersistentCalls:

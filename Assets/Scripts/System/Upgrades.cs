@@ -97,6 +97,10 @@ namespace UpgradeSystem
         {
             return (1 + GetUpgradeStat(upgradeType) * (percentage * 0.0001f));
         }
+        public float SlowCalculation()
+        {
+            return GetUpgradeStat(UpgradeType.Slow) * 0.01f;
+        }
 
 
         [Serializable]

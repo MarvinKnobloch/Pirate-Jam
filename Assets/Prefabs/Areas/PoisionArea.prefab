@@ -104,9 +104,9 @@ MonoBehaviour:
   areaCollider: 1
   lifeTime: 3
   tickInterval: 1
-  damage: 1
+  damage: 0
   heal: 0
-  speedReduction: 0.5
+  speedReduction: 0.6
   speedReductionTime: 2
   hitLayer:
     serializedVersion: 2
