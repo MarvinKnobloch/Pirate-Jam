@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem.Interactions;
+using UpgradeSystem;
 
 public class AreaAbility : MonoBehaviour
 {
@@ -19,15 +20,18 @@ public class AreaAbility : MonoBehaviour
         Circle,
         Box,
     }
-    private void Awake()
-    {
-        transform.localScale = areaSize;
-    }
     private void Start()
     {
         CancelInvoke();
         Destroy(gameObject, lifeTime);
         InvokeRepeating("SetAreaCollider", 0.1f, tickInterval);
+    }
+    public void SetSize(ProjectileObj projectile)
+    {
+        float scaling = Upgrades.Instance.AoeSizeCalculation(projectile.aoeSizeUpgrade.type, projectile.aoeSizeUpgrade.percentage);
+        float xScale = areaSize.x * scaling;
+        float yScale = areaSize.y * scaling;
+        transform.localScale = new Vector3(xScale, yScale, 1);
     }
     private void SetAreaCollider()
     {

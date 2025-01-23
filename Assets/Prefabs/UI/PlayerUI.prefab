@@ -1052,6 +1052,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1334829344742709414}
   - component: {fileID: 4638704056586305271}
+  - component: {fileID: 3884569912135218832}
   m_Layer: 5
   m_Name: UpgradeSelection
   m_TagString: Untagged
@@ -1093,6 +1094,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeSelectionGrid: {fileID: 4909963836703403275}
   maxSlots: 3
+--- !u!114 &3884569912135218832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2834294160594538847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05453cb7a5fa0c2489045bf101367157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3019019828492533284
 GameObject:
   m_ObjectHideFlags: 0
@@ -1895,10 +1908,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a777fdc9b82f724fabff330c47126ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeString: Increase Aoe size by 10
+  upgradeString: Increase Aoe size by
   upgradeStringAfterFirstValue: '%.'
   upgradeStringAfterSecondValue: 
-  maxLevel: 8
+  maxLevel: 10
   upgradeValue: 10
   upgradeType: 6
   secondUpgradeValue: 0

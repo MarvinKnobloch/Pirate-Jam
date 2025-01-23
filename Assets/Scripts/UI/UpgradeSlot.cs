@@ -54,13 +54,13 @@ public class UpgradeSlot : MonoBehaviour
     public void AddUpgrade()
     {
         currentLevel++;
-        Upgrades.IncreaseValue(upgradeType, Mathf.RoundToInt(upgradeValue));
-        if(secondUpgradeType != Upgrades.UpgradeType.Empty) Upgrades.IncreaseValue(secondUpgradeType, Mathf.RoundToInt(secondUpgradeValue));
+        Upgrades.Instance.IncreaseValue(upgradeType, Mathf.RoundToInt(upgradeValue));
+        if(secondUpgradeType != Upgrades.UpgradeType.Empty) Upgrades.Instance.IncreaseValue(secondUpgradeType, Mathf.RoundToInt(secondUpgradeValue));
 
 
         switch (upgradeType)
         {
-            case Upgrades.UpgradeType.Health:
+            case Upgrades.UpgradeType.PlayerHealth:
                 Player.Instance.health.HealthUpgrade();
                 break;
             case Upgrades.UpgradeType.MaxEnergy:
@@ -73,7 +73,7 @@ public class UpgradeSlot : MonoBehaviour
 
         switch (secondUpgradeType)
         {
-            case Upgrades.UpgradeType.Health:
+            case Upgrades.UpgradeType.PlayerHealth:
                 Player.Instance.health.HealthUpgrade();
                 break;
             case Upgrades.UpgradeType.MaxEnergy:

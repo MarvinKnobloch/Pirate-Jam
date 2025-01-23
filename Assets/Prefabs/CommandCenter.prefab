@@ -154,7 +154,7 @@ MonoBehaviour:
       m_Calls: []
   healthUpgrade:
     type: 1
-    percentage: 1
+    percentage: 100
 --- !u!61 &2965474188687742104
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     private ProjectileObj projectile;
     private Vector2 direction;
     private int damage;
+    private float aoeSize;
 
     //AOE
     [SerializeField] private GameObject aoeVisualBullet;
@@ -72,7 +73,8 @@ public class Projectile : MonoBehaviour
     }
     private void StatsUpdate()
     {
-        if(projectile.damage != 0) damage = projectile.damage + Mathf.RoundToInt(Upgrades.GetUpgradeStat(projectile.damageUpgrade.type) * projectile.damageUpgrade.percentage);
+        if(projectile.damage != 0) damage = projectile.damage + Mathf.RoundToInt(Upgrades.Instance.GetUpgradeStat(projectile.damageUpgrade.type) * (projectile.damageUpgrade.percentage * 0.01f));
+        if (projectile.aoeRange != 0) aoeSize = projectile.aoeRange * Upgrades.Instance.AoeSizeCalculation(projectile.aoeSizeUpgrade.type, projectile.aoeSizeUpgrade.percentage);
     }
 
     private void StraightMovement()
@@ -132,12 +134,13 @@ public class Projectile : MonoBehaviour
         if (projectile.createArea)
         {
             GameObject area = Instantiate(projectile.areaPrefab, transform.position, transform.rotation);
+            area.GetComponent<AreaAbility>().SetSize(projectile);
         }
     }
 
     private void DealAoeDamage()
     {
-        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, projectile.aoeRange, projectile.hitLayer);
+        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, aoeSize, projectile.hitLayer);
 
         foreach (Collider2D enemy in cols)
         {

@@ -28,7 +28,7 @@ public class Health : MonoBehaviour
         set { maxHealth = Math.Max(0, value); currentHealth = Math.Min(value, currentHealth); }
     }
 
-    void Awake()
+    void Start()
     {
         HealthUpgrade();
         currentHealth = maxHealth;
@@ -99,14 +99,14 @@ public class Health : MonoBehaviour
     {
         if (healthUpgrade.type == Upgrades.UpgradeType.Empty) return;
 
-        if (healthUpgrade.type == Upgrades.UpgradeType.Health)
+        if (healthUpgrade.type == Upgrades.UpgradeType.PlayerHealth)
         {
-            MaxValue += Mathf.RoundToInt(Upgrades.GetUpgradeStat(healthUpgrade.type) * healthUpgrade.percentage);
+            MaxValue += Mathf.RoundToInt(Upgrades.Instance.GetUpgradeStat(healthUpgrade.type) * (healthUpgrade.percentage * 0.01f));
             if(Player.Instance != null) Player.Instance.HealthUIUpdate();
         }
         else if (healthUpgrade.type == Upgrades.UpgradeType.MinionHealth)
         {
-            MaxValue += Mathf.RoundToInt(Upgrades.GetUpgradeStat(healthUpgrade.type) * healthUpgrade.percentage);
+            MaxValue += Mathf.RoundToInt(Upgrades.Instance.GetUpgradeStat(healthUpgrade.type) * (healthUpgrade.percentage * 0.01f));
         }
     }
 }

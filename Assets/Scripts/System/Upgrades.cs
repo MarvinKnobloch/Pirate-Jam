@@ -1,25 +1,34 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
-namespace UpgradeSystem 
+namespace UpgradeSystem
 {
-    public static class Upgrades
+    public class Upgrades : MonoBehaviour
     {
-        private static int healthUpgradeValue;
-        private static int minionHealthUpgradeValue;
-        private static int damageUpgradeValue;
-        private static int maxEnergyUpgradeValue;
-        private static float energyIntervalUpgradeValue;
-        private static float aoeSizeUpgradeValue;
-        private static float slowUpgradeValue;
-        private static float stunUpgradeValue;
+        public static Upgrades Instance;
 
-        public static float GetUpgradeStat(UpgradeType slot)
+        private int healthUpgradeValue;
+        private int minionHealthUpgradeValue;
+        private int damageUpgradeValue;
+        private int maxEnergyUpgradeValue;
+        private float energyIntervalUpgradeValue;
+        private float aoeSizeUpgradeValue;
+        private float slowUpgradeValue;
+        private float stunUpgradeValue;
+
+        private void Awake()
+        {
+            if (Instance == null) Instance = this;
+            else Destroy(gameObject);
+        }
+
+        public float GetUpgradeStat(UpgradeType slot)
         {
             switch (slot)
             {
-                case UpgradeType.Health:
+                case UpgradeType.PlayerHealth:
                     return healthUpgradeValue;
                 case UpgradeType.MinionHealth:
                     return minionHealthUpgradeValue;
@@ -38,11 +47,11 @@ namespace UpgradeSystem
             }
             return 0;
         }
-        public static void IncreaseValue(UpgradeType slot, float value)
+        public void IncreaseValue(UpgradeType slot, float value)
         {
             switch (slot)
             {
-                case UpgradeType.Health:
+                case UpgradeType.PlayerHealth:
                     healthUpgradeValue += Mathf.RoundToInt(value);
                     break;
                 case UpgradeType.MinionHealth:
@@ -68,6 +77,11 @@ namespace UpgradeSystem
                     break;
             }
         }
+        public float AoeSizeCalculation(UpgradeType upgradeType, float percentage)
+        {
+            return (1 + GetUpgradeStat(upgradeType) * (percentage * 0.0001f));
+        }
+
 
         [Serializable]
         public struct UpgradeValues
@@ -79,7 +93,7 @@ namespace UpgradeSystem
         public enum UpgradeType
         {
             Empty,
-            Health,
+            PlayerHealth,
             MinionHealth,
             Damage,
             MaxEnergy,
@@ -87,7 +101,9 @@ namespace UpgradeSystem
             AoeSize,
             Slow,
             Stun,
+            Heal,
         }
     }
 }
+
 
