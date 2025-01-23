@@ -1685,7 +1685,7 @@ MonoBehaviour:
   upgradeStringAfterSecondValue: 
   maxLevel: 10
   upgradeValue: 0.02
-  upgradeType: 5
+  upgradeType: 6
   secondUpgradeValue: 0
   secondUpgradeType: 0
 --- !u!1 &4033130067465987519
@@ -2051,7 +2051,7 @@ MonoBehaviour:
   upgradeStringAfterSecondValue: 
   maxLevel: 10
   upgradeValue: 10
-  upgradeType: 6
+  upgradeType: 7
   secondUpgradeValue: 0
   secondUpgradeType: 0
 --- !u!1 &4909963836703403275
@@ -2446,7 +2446,7 @@ MonoBehaviour:
   upgradeStringAfterSecondValue: 
   maxLevel: 10
   upgradeValue: 2
-  upgradeType: 4
+  upgradeType: 5
   secondUpgradeValue: 0
   secondUpgradeType: 0
 --- !u!1 &6813802850923762829

@@ -147,7 +147,7 @@ MonoBehaviour:
   HealthBar: {fileID: 0}
   HealthBarPermanent: 0
   HealthBarOffset: 1
-  maxHealth: 10
+  maxHealth: 100
   currentHealth: 10
   dieEvent:
     m_PersistentCalls:

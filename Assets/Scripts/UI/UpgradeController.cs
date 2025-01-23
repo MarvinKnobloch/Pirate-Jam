@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UpgradeController : MonoBehaviour
 {
-    [SerializeField] private GameObject upgradeSelectionGrid;
+    [SerializeField] public GameObject upgradeSelectionGrid;
     private List<UpgradeSlot> upgradeSlots = new List<UpgradeSlot>();
 
     private int activeSlots;
