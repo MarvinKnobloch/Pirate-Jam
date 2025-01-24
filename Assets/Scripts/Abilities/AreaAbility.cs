@@ -12,7 +12,7 @@ public class AreaAbility : MonoBehaviour
     [SerializeField] private int heal;
     [Range(0.6f, 1f)]
     [SerializeField] private float speedReduction;
-    [SerializeField] private float speedReductionTime;
+    [SerializeField] private float slowDuration;
     [SerializeField] private LayerMask hitLayer;
 
     private enum AreaType
@@ -87,9 +87,7 @@ public class AreaAbility : MonoBehaviour
             {
                 if (obj.gameObject.transform.parent.TryGetComponent(out EnemyController enemyController))
                 {
-                    float finalSlow = speedReduction - Upgrades.Instance.SlowCalculation();
-                    if (finalSlow < 0.1f) finalSlow = 0.1f;
-                    enemyController.DoSlow(finalSlow, speedReductionTime);
+                    enemyController.DoSlow(speedReduction - Upgrades.Instance.SlowCalculation(), slowDuration);
                 }
             }
         }

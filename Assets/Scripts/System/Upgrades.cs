@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 namespace UpgradeSystem
@@ -131,7 +132,13 @@ namespace UpgradeSystem
         }
         public float SlowCalculation()
         {
-            return GetUpgradeStat(UpgradeType.Slow) * 0.01f;
+            float slow = GetUpgradeStat(UpgradeType.Slow) * 0.01f;
+            if (slow < 0.1f) slow = 0.1f;
+            return slow;
+        }
+        public float StunCalculation(float stunDuration)
+        {
+            return stunDuration + (stunUpgradeValue * 0.01f * stunDuration);
         }
 
 

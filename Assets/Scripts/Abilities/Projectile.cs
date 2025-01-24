@@ -82,7 +82,6 @@ public class Projectile : MonoBehaviour
         float percentage = Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.BulletSpeed);
         bulletSpeed = projectile.speed + (percentage * 0.01f * projectile.speed);
 
-        Debug.Log(damage);
     }
 
     private void StraightMovement()
@@ -133,10 +132,10 @@ public class Projectile : MonoBehaviour
     }
     private void DealSingleDamage(GameObject obj)
     {
-        if (obj.transform.parent.TryGetComponent(out Health parentHealth))
+        if (obj.transform.parent.TryGetComponent(out EnemyController enemyController))
         {
-            if(projectile.damage != 0) parentHealth.TakeDamage(damage);
-            if(projectile.heal != 0) parentHealth.Heal(projectile.heal);
+            EnemyInteraction(enemyController);
+            //if(projectile.heal != 0) parentHealth.Heal(projectile.heal);
         }
 
         if (projectile.createArea)
@@ -152,11 +151,24 @@ public class Projectile : MonoBehaviour
 
         foreach (Collider2D enemy in cols)
         {
-            if (enemy.gameObject.transform.parent.TryGetComponent(out Health parentHealth))
+            if (enemy.gameObject.transform.parent.TryGetComponent(out EnemyController enemyController))
             {
-                if (projectile.damage != 0) parentHealth.TakeDamage(damage);
-
+                EnemyInteraction(enemyController);
             }
+        }
+    }
+
+    private void EnemyInteraction(EnemyController enemyController)
+    {
+        if (projectile.damage != 0) enemyController.Health.TakeDamage(damage);
+
+        if (projectile.slow)
+        {
+            enemyController.DoSlow(projectile.slowStrength - Upgrades.Instance.SlowCalculation(), projectile.slowDuration);
+        }
+        if (projectile.stun)
+        {
+            enemyController.DoStun(Upgrades.Instance.StunCalculation(projectile.stunDuration));
         }
     }
 }

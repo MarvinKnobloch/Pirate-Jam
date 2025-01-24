@@ -9,16 +9,28 @@ public class ProjectileObj : ScriptableObject
     public int damage;
     public int heal;
     public ProjectileType projectileType;
+
+    [Header("AOE")]
     public float aoeRange;
     public float maxBulletHeight;
 
+    [Header("MultiShot")]
     public int multipleProjectiles;
     public float multiShotAngle;
 
+    [Header("Slow, Range 1 = Normal Movement Speed")]
+    public bool slow;
+    [Range(0.6f, 1)]
+    public float slowStrength;
+    public float slowDuration;
+
+    [Header("Stun")]
+    public bool stun;
+    public float stunDuration;
+
+    [Space]
     public float timeToDestroy;
-
     public LayerMask hitLayer;
-
     public bool mirrorAttack;
 
     [Header("Area")]
@@ -28,7 +40,6 @@ public class ProjectileObj : ScriptableObject
     [Header("Upgrades")]
     public Upgrades.UpgradeValues damageUpgrade;
     public Upgrades.UpgradeValues aoeSizeUpgrade;
-    public Upgrades.UpgradeValues slowUpgrade;
 }
     public enum ProjectileType{
     single,

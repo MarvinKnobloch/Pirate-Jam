@@ -29,6 +29,7 @@ public class EnemyController : MonoBehaviour
     private float _slowPercentage;
     private float _slowDuration;
     private bool _isStunned = false;
+    private float _stunDuration;
 
     void OnEnable()
     {
@@ -78,15 +79,17 @@ public class EnemyController : MonoBehaviour
 
     public void DoStun(float stunDuration)
     {
-        StartCoroutine(Stun(stunDuration));
+        StopCoroutine("Stun");
+
+        _stunDuration = stunDuration;
+        StartCoroutine("Stun");
     }
 
-    IEnumerator Stun(float stunDuration)
+    IEnumerator Stun()
     {
-        MoveSpeed = 0;
+        Debug.Log(_stunDuration);
         _isStunned = true;
-        yield return new WaitForSeconds(stunDuration);
-        MoveSpeed = _maxMovementSpeed;
+        yield return new WaitForSeconds(_stunDuration);
         _isStunned = false;
     }
 
@@ -134,6 +137,12 @@ public class EnemyController : MonoBehaviour
 
     private void MoveToPlayerOrTarget()
     {
+        if (_isStunned)
+        {
+            _rigidbody.linearVelocity = Vector2.zero;
+            return;
+        }
+
         var nearestTarget = _targetDetector.Targets.ElementAtOrDefault(0);
         Vector3 targetPosition;
 

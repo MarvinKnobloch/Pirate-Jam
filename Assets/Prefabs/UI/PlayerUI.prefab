@@ -1622,11 +1622,11 @@ MonoBehaviour:
   upgradeStringAfterFirstValue: '%.
 
     Increase stun duration by'
-  upgradeStringAfterSecondValue: ' seconds.'
+  upgradeStringAfterSecondValue: '%.'
   maxLevel: 10
   upgradeValue: 10
   upgradeType: 8
-  secondUpgradeValue: 0.3
+  secondUpgradeValue: 10
   secondUpgradeType: 9
 --- !u!1 &2386320313004219014
 GameObject:
