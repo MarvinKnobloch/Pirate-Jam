@@ -119,9 +119,11 @@ namespace UpgradeSystem
                     break;
             }
         }
-        public int DamageUpgradeCalculation(UpgradeType upgradeType, float percentage)
+        public int DamageUpgradeCalculation(int baseDamage, UpgradeType upgradeType, float percentage)
         {
-            return Mathf.RoundToInt(Upgrades.Instance.GetUpgradeStat(upgradeType) * (percentage * 0.01f));
+            int finalDamage = baseDamage + Mathf.RoundToInt(Upgrades.Instance.GetUpgradeStat(upgradeType) * (percentage * 0.01f));
+            finalDamage += Mathf.RoundToInt(damagePercentageUpgradeValue * 0.01f * finalDamage);
+            return finalDamage;
         }
         public float AoeSizeCalculation(UpgradeType upgradeType, float percentage)
         {

@@ -30,7 +30,7 @@ MonoBehaviour:
   areaPrefab: {fileID: 4328325964248613563, guid: 8de2ef56c9f90b843b5de23516614297, type: 3}
   damageUpgrade:
     type: 4
-    percentage: 10
+    percentage: 100
   aoeSizeUpgrade:
     type: 7
     percentage: 200

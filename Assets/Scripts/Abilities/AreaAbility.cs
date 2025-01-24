@@ -29,7 +29,7 @@ public class AreaAbility : MonoBehaviour
     }
     public void SetAreaValues(ProjectileObj projectile)
     {
-        damage = damage + Upgrades.Instance.DamageUpgradeCalculation(projectile.damageUpgrade.type, projectile.damageUpgrade.percentage);
+        damage = Upgrades.Instance.DamageUpgradeCalculation(damage, projectile.damageUpgrade.type, projectile.damageUpgrade.percentage);
 
         float scaling = Upgrades.Instance.AoeSizeCalculation(projectile.aoeSizeUpgrade.type, projectile.aoeSizeUpgrade.percentage);
         areaSize.x *= scaling;

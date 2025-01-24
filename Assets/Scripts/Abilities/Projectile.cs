@@ -76,11 +76,13 @@ public class Projectile : MonoBehaviour
     }
     private void StatsUpdate()
     {
-        if (projectile.damage != 0) damage = projectile.damage + Upgrades.Instance.DamageUpgradeCalculation(projectile.damageUpgrade.type, projectile.damageUpgrade.percentage);
+        if (projectile.damage != 0) damage = Upgrades.Instance.DamageUpgradeCalculation(projectile.damage, projectile.damageUpgrade.type, projectile.damageUpgrade.percentage);
         if (projectile.aoeRange != 0) aoeSize = projectile.aoeRange * Upgrades.Instance.AoeSizeCalculation(projectile.aoeSizeUpgrade.type, projectile.aoeSizeUpgrade.percentage);
 
         float percentage = Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.BulletSpeed);
         bulletSpeed = projectile.speed + (percentage * 0.01f * projectile.speed);
+
+        Debug.Log(damage);
     }
 
     private void StraightMovement()

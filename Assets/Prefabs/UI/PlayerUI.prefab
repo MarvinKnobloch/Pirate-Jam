@@ -3310,7 +3310,7 @@ MonoBehaviour:
 '
   upgradeStringAfterSecondValue: 
   maxLevel: 10
-  upgradeValue: 5
+  upgradeValue: 100
   upgradeType: 14
   secondUpgradeValue: 0
   secondUpgradeType: 0
