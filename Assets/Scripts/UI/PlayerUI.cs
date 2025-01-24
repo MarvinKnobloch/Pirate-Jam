@@ -8,6 +8,7 @@ public class PlayerUI : MonoBehaviour
     public static PlayerUI Instance;
 
     public CooldownController cooldownController;
+    public ExpController expController;
 
     [Header("Health")]
     public Image healthBar;

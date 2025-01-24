@@ -14,6 +14,9 @@ public class EnemyController : MonoBehaviour
     public float AttackCooldown = 1f;
     public int AttackDamage = 1;
 
+    [Header("Exp")]
+    public int experienceGain;
+
     [NonSerialized] public Health Health;
 
     private Rigidbody2D _rigidbody;
@@ -149,6 +152,7 @@ public class EnemyController : MonoBehaviour
     }
     public void OnDeath()
     {
+        PlayerUI.Instance.expController.PlayerGainExp(experienceGain);
         PlayerUI.Instance.KillCountUpdate();
     }
 }

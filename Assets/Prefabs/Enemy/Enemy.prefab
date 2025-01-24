@@ -260,6 +260,7 @@ MonoBehaviour:
   AttackDistance: 0.7
   AttackCooldown: 0.5
   AttackDamage: 1
+  experienceGain: 10
 --- !u!114 &8265245240528079808
 MonoBehaviour:
   m_ObjectHideFlags: 0
