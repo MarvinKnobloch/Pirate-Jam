@@ -10,10 +10,16 @@ public class AreaAbility : MonoBehaviour
     [SerializeField] private float tickInterval;
     [SerializeField] private int damage;
     [SerializeField] private int heal;
+    [SerializeField] private LayerMask hitLayer;
+
+    [Header("Slow")]
     [Range(0.6f, 1f)]
     [SerializeField] private float speedReduction;
     [SerializeField] private float slowDuration;
-    [SerializeField] private LayerMask hitLayer;
+
+    [Header("Stun")]
+    [SerializeField] private float stunDuration;
+
 
     private enum AreaType
     {
@@ -69,25 +75,25 @@ public class AreaAbility : MonoBehaviour
     }
     private void ExecuteAbility(Collider2D[] cols)
     {
-
         foreach (Collider2D obj in cols)
         {
-            if (damage != 0)
+            if(obj.gameObject.transform.parent.TryGetComponent(out EnemyController enemyController))
             {
-                if (obj.gameObject.transform.parent.TryGetComponent(out Health parentHealth))
+                if (damage != 0)
                 {
-                    parentHealth.TakeDamage(damage);
+                    enemyController.health.TakeDamage(damage);
                 }
-            }
-            if (heal != 0)
-            {
+                if (heal != 0)
+                {
 
-            }
-            if (speedReduction < 1)
-            {
-                if (obj.gameObject.transform.parent.TryGetComponent(out EnemyController enemyController))
+                }
+                if (speedReduction < 1)
                 {
                     enemyController.DoSlow(speedReduction - Upgrades.Instance.SlowCalculation(), slowDuration);
+                }
+                if (stunDuration > 0)
+                {
+                    enemyController.DoStun(Upgrades.Instance.StunCalculation(stunDuration));
                 }
             }
         }

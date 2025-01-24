@@ -160,7 +160,7 @@ public class Projectile : MonoBehaviour
 
     private void EnemyInteraction(EnemyController enemyController)
     {
-        if (projectile.damage != 0) enemyController.Health.TakeDamage(damage);
+        if (projectile.damage != 0) enemyController.health.TakeDamage(damage);
 
         if (projectile.slow)
         {

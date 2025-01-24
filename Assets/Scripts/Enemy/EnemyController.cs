@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
     [Header("Exp")]
     public int experienceGain;
 
-    [NonSerialized] public Health Health;
+    [NonSerialized] public Health health;
 
     private Rigidbody2D _rigidbody;
     private CircleCollider2D _collider;
@@ -43,8 +43,8 @@ public class EnemyController : MonoBehaviour
 
         _targetDetector = GetComponentInChildren<EnemyTargetDetector>();
 
-        Health = GetComponent<Health>();
-        if (Health != null) Health.dieEvent.AddListener(OnDeath);
+        health = GetComponent<Health>();
+        if (health != null) health.dieEvent.AddListener(OnDeath);
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -89,7 +89,10 @@ public class EnemyController : MonoBehaviour
     {
         Debug.Log(_stunDuration);
         _isStunned = true;
+        health.HealthBarImage.color = Color.gray;
         yield return new WaitForSeconds(_stunDuration);
+        if (MoveSpeed != _maxMovementSpeed) health.HealthBarImage.color = Color.blue;
+        else health.HealthBarImage.color = Color.red;
         _isStunned = false;
     }
 
@@ -110,7 +113,9 @@ public class EnemyController : MonoBehaviour
     IEnumerator Slow()
     {
         MoveSpeed *= _slowPercentage;
+        health.HealthBarImage.color = Color.blue;
         yield return new WaitForSeconds(_slowDuration);
+        health.HealthBarImage.color = Color.red;
         MoveSpeed = _maxMovementSpeed;
     }
 
