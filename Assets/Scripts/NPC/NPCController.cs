@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UpgradeSystem;
 
 public class NPCController : MonoBehaviour
 {
     public float MoveSpeed;
     public int GatherAmount = 1;
-    public float GatherTime = 1f;
+    public float GatherTime = 1;
 
     private bool _isGathering = false;
     private GatherResource _targetResource;
     private Coroutine _gatherCoroutine;
 
+    private void OnEnable()
+    {
+        GatherTime = GatherTime - Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.GatherSpeed);
+    }
     void FixedUpdate()
     {
         if (!_isGathering)

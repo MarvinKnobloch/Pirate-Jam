@@ -54,8 +54,8 @@ public class UpgradeSlot : MonoBehaviour
     public void AddUpgrade()
     {
         currentLevel++;
-        Upgrades.Instance.IncreaseValue(upgradeType, Mathf.RoundToInt(upgradeValue));
-        if(secondUpgradeType != Upgrades.UpgradeType.Empty) Upgrades.Instance.IncreaseValue(secondUpgradeType, Mathf.RoundToInt(secondUpgradeValue));
+        Upgrades.Instance.IncreaseValue(upgradeType, upgradeValue);
+        if(secondUpgradeType != Upgrades.UpgradeType.Empty) Upgrades.Instance.IncreaseValue(secondUpgradeType, secondUpgradeValue);
 
 
         switch (upgradeType)
