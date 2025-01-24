@@ -16,11 +16,11 @@ public class MenuController : MonoBehaviour
 
     [SerializeField] private GameObject titleMenu;
     [SerializeField] private GameObject ingameMenu;
-    [SerializeField] private GameObject upgradeMenu;
 
     [SerializeField] private GameObject confirmController;
     [SerializeField] private Button confirmButton;
     [SerializeField] private TextMeshProUGUI confirmText;
+    [SerializeField] private AbilityMenuController _abilityMenu;
 
     private void Awake()
     {
@@ -44,7 +44,7 @@ public class MenuController : MonoBehaviour
         }
         if (controls.Player.UpgradMenu.WasPerformedThisFrame())
         {
-            HandleUpgradeMenu();
+            HandleAbilityMenu();
         }
 
     }
@@ -67,10 +67,10 @@ public class MenuController : MonoBehaviour
         {
             if (Player.Instance == null) return;
 
-            if (PlayerUI.Instance.upgradeController.GetComponent<UpgradeController>().upgradeSelectionGrid.gameObject.activeSelf == true) return;
-            if (upgradeMenu.activeSelf == true)
+            if (PlayerUI.Instance.upgradeController.GetComponent<UpgradeController>().upgradeSelectionGrid.activeSelf == true) return;
+            if (_abilityMenu.gameObject.activeSelf == true)
             {
-                upgradeMenu.SetActive(false);
+                _abilityMenu.gameObject.SetActive(false);
                 EndPause();
             }
             else if (ingameMenu.activeSelf == false)
@@ -90,20 +90,20 @@ public class MenuController : MonoBehaviour
             }
         }
     }
-    private void HandleUpgradeMenu()
+    private void HandleAbilityMenu()
     {
         if (Player.Instance == null) return;
         if (ingameMenu.activeSelf == true) return;
-        if (PlayerUI.Instance.upgradeController.GetComponent<UpgradeController>().upgradeSelectionGrid.gameObject.activeSelf == true) return;
+        if (PlayerUI.Instance.upgradeController.GetComponent<UpgradeController>().upgradeSelectionGrid.activeSelf == true) return;
 
-        if (upgradeMenu.activeSelf == false)
+        if (_abilityMenu.gameObject.activeSelf == false)
         {
-            upgradeMenu.SetActive(true);
+            _abilityMenu.gameObject.SetActive(true);
             PauseGame();
         }
         else
         {
-            upgradeMenu.SetActive(false);
+            _abilityMenu.gameObject.SetActive(false);
             EndPause();
         }
     }

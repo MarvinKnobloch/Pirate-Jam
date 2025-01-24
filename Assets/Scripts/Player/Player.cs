@@ -2,6 +2,8 @@ using UnityEngine;
 using System;
 using Unity.VisualScripting;
 using static UpgradeSystem.Upgrades;
+using System.Collections.Generic;
+using System.Linq;
 
 public class Player : MonoBehaviour
 {
@@ -17,7 +19,7 @@ public class Player : MonoBehaviour
     public float energyRestoreInterval;
     [SerializeField] private int energyRestoreAmount;
 
-    public Abilities[] abilities;
+    public List<Abilities> abilities;
 
     [NonSerialized] public Health health;
 
@@ -70,37 +72,46 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (controls.Player.Ability1.WasPerformedThisFrame())
+        var ability1 = abilities.ElementAtOrDefault(0);
+        var ability2 = abilities.ElementAtOrDefault(1);
+        var ability3 = abilities.ElementAtOrDefault(2);
+        var ability4 = abilities.ElementAtOrDefault(3);
+        var ability5 = abilities.ElementAtOrDefault(4);
+        var ability6 = abilities.ElementAtOrDefault(5);
+        var ability7 = abilities.ElementAtOrDefault(6);
+        var ability8 = abilities.ElementAtOrDefault(7);
+
+        if (ability1 != null && controls.Player.Ability1.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[0], 0);
+            abilityController.CheckForAbility(ability1, 0);
         }
-        if (controls.Player.Ability2.WasPerformedThisFrame())
+        if (ability2 != null && controls.Player.Ability2.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[1], 1);
+            abilityController.CheckForAbility(ability2, 1);
         }
-        if (controls.Player.Ability3.WasPerformedThisFrame())
+        if (ability3 != null && controls.Player.Ability3.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[2], 2);
+            abilityController.CheckForAbility(ability3, 2);
         }
-        if (controls.Player.Ability4.WasPerformedThisFrame())
+        if (ability4 != null && controls.Player.Ability4.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[3], 3);
+            abilityController.CheckForAbility(ability4, 3);
         }
-        if (controls.Player.Ability5.WasPerformedThisFrame())
+        if (ability5 != null && controls.Player.Ability5.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[4], 4);
+            abilityController.CheckForAbility(ability5, 4);
         }
-        if (controls.Player.Ability6.WasPerformedThisFrame())
+        if (ability6 != null && controls.Player.Ability6.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[5], 5);
+            abilityController.CheckForAbility(ability6, 5);
         }
-        if (controls.Player.Ability7.WasPerformedThisFrame())
+        if (ability7 != null && controls.Player.Ability7.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[6], 6);
+            abilityController.CheckForAbility(ability7, 6);
         }
-        if (controls.Player.Ability8.WasPerformedThisFrame())
+        if (ability8 != null && controls.Player.Ability8.WasPerformedThisFrame())
         {
-            abilityController.CheckForAbility(abilities[7], 7);
+            abilityController.CheckForAbility(ability8, 7);
         }
     }
 
