@@ -17,10 +17,12 @@ public class AbilityMenuController : MonoBehaviour
 
         if (ability != null)
         {
-            Player.Instance.abilities.Add(ability);
+            if (AbilityUpgradeController.Instance.PurchaseAbility())
+            {
+                Player.Instance.abilities.Add(ability);
+                Destroy(caller);
+            }
         }
-
-        Destroy(caller);
     }
 
     public void UpgradeAbility(GameObject caller)
