@@ -968,7 +968,7 @@ MonoBehaviour:
 '
   upgradeStringAfterSecondValue: 
   maxLevel: 10
-  upgradeValue: 3
+  upgradeValue: 10
   upgradeType: 10
   secondUpgradeValue: 0
   secondUpgradeType: 0
@@ -1720,7 +1720,7 @@ MonoBehaviour:
     Increase stun duration by'
   upgradeStringAfterSecondValue: '%.'
   maxLevel: 10
-  upgradeValue: 10
+  upgradeValue: 5
   upgradeType: 8
   secondUpgradeValue: 10
   secondUpgradeType: 9
@@ -2210,7 +2210,7 @@ MonoBehaviour:
   upgradeStringAfterFirstValue: .
   upgradeStringAfterSecondValue: 
   maxLevel: 10
-  upgradeValue: 4
+  upgradeValue: 2
   upgradeType: 3
   secondUpgradeValue: 0
   secondUpgradeType: 0
@@ -3275,7 +3275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1005696281508677853
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3542,7 +3542,7 @@ MonoBehaviour:
 '
   upgradeStringAfterSecondValue: 
   maxLevel: 10
-  upgradeValue: 100
+  upgradeValue: 15
   upgradeType: 14
   secondUpgradeValue: 0
   secondUpgradeType: 0
@@ -5334,7 +5334,7 @@ MonoBehaviour:
     Increase minion health by'
   upgradeStringAfterSecondValue: .
   maxLevel: 10
-  upgradeValue: 2
+  upgradeValue: 4
   upgradeType: 1
   secondUpgradeValue: 1
   secondUpgradeType: 2

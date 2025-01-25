@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaSize: {x: 3, y: 3}
   areaCollider: 0
-  lifeTime: 3
+  lifeTime: 2
   tickInterval: 0.5
   damage: 1
   heal: 0
@@ -110,5 +110,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   speedReduction: 0.9
-  slowDuration: 2
-  stunDuration: 0.2
+  slowDuration: 1
+  stunDuration: 0

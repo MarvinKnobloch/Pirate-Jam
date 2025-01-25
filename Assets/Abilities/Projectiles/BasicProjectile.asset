@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BasicProjectile
   m_EditorClassIdentifier: 
   prefab: {fileID: 5903401445494139436, guid: 44e65ae7a8c87504286b7f00833f2ff5, type: 3}
-  speed: 4
+  speed: 8
   damage: 1
   heal: 0
   projectileType: 0
@@ -24,7 +24,7 @@ MonoBehaviour:
   slow: 0
   slowStrength: 0.831
   slowDuration: 0
-  stun: 1
+  stun: 0
   stunDuration: 2
   timeToDestroy: 5
   hitLayer:

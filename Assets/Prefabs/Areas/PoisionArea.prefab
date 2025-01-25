@@ -109,6 +109,6 @@ MonoBehaviour:
   hitLayer:
     serializedVersion: 2
     m_Bits: 128
-  speedReduction: 0.6
+  speedReduction: 0.7
   slowDuration: 2
-  stunDuration: 0.5
+  stunDuration: 0

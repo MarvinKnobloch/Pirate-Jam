@@ -17,11 +17,11 @@ MonoBehaviour:
   damage: 1
   heal: 0
   projectileType: 1
-  aoeRange: 10
+  aoeRange: 1
   maxBulletHeight: 3
   multipleProjectiles: 0
   multiShotAngle: 0
-  slow: 1
+  slow: 0
   slowStrength: 0.6
   slowDuration: 3
   stun: 1
