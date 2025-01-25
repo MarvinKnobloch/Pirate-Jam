@@ -21,6 +21,8 @@ public class EnemyController : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
     private CircleCollider2D _collider;
+    private float targetUpdateTime;
+    private GameObject nearestTarget;
     private float _attackTimer = 0f;
     private bool _isAttacking = false;
     private float _maxMovementSpeed;
@@ -121,10 +123,8 @@ public class EnemyController : MonoBehaviour
 
     private void HandleAttack()
     {
-        if (_isStunned)
-        {
-            return;
-        }
+        if (_isStunned) return;
+        if (Player.Instance == null) return;
 
         if (_attackTimer <= 0)
         {
@@ -142,15 +142,20 @@ public class EnemyController : MonoBehaviour
 
     private void MoveToPlayerOrTarget()
     {
-        if (_isStunned)
+        if (_isStunned || Player.Instance == null)
         {
             _rigidbody.linearVelocity = Vector2.zero;
             return;
         }
 
-        var nearestTarget = _targetDetector.Targets.ElementAtOrDefault(0);
-        Vector3 targetPosition;
+        targetUpdateTime += Time.fixedDeltaTime;
+        if (targetUpdateTime > 0.1f)
+        {
+            targetUpdateTime = 0;
+            nearestTarget = _targetDetector.Targets.ElementAtOrDefault(0);
+        }
 
+        Vector3 targetPosition;
         if (nearestTarget != null)
         {
             targetPosition = nearestTarget.transform.position;
@@ -158,7 +163,6 @@ public class EnemyController : MonoBehaviour
         else
         {
             targetPosition = Player.Instance.transform.position;
-
         }
 
         var direction = (targetPosition - transform.position).normalized;
