@@ -78,7 +78,7 @@ public class AreaAbility : MonoBehaviour
     private void CheckInBox()
     {
         float angle = transform.eulerAngles.z;
-        if(angle > 180)
+        if (angle > 180)
         {
             float difference = angle - 180;
             angle = (180 - difference) * -1;
@@ -92,7 +92,7 @@ public class AreaAbility : MonoBehaviour
     {
         foreach (Collider2D obj in cols)
         {
-            if(obj.gameObject.transform.parent.TryGetComponent(out EnemyController enemyController))
+            if (obj.gameObject.transform.parent.TryGetComponent(out EnemyController enemyController))
             {
                 if (damageAmount != 0)
                 {

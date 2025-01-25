@@ -109,13 +109,6 @@ MonoBehaviour:
   energyRestoreAmount: 1
   abilities:
   - {fileID: 11400000, guid: 263b1e16752a13f4bab2181ebf86ad97, type: 2}
-  - {fileID: 11400000, guid: 59c3a181c8eebb44389eb6d1d7307bdb, type: 2}
-  - {fileID: 11400000, guid: d976206bc70cbfd49934b5063aa269c3, type: 2}
-  - {fileID: 11400000, guid: 64b73054378863b44a7b300465c3f7fc, type: 2}
-  - {fileID: 11400000, guid: 348e88d9d5e1c5e49ac1a5d2f5d939db, type: 2}
-  - {fileID: 11400000, guid: 518bf22a6eb549b429f7f5bbb2d99744, type: 2}
-  - {fileID: 11400000, guid: e8d8035d098c2e5499279ffed915a42d, type: 2}
-  - {fileID: 11400000, guid: c9257f5bb27dff049b0c95d37a889aad, type: 2}
   Iron: 0
   Copper: 0
   Wood: 0

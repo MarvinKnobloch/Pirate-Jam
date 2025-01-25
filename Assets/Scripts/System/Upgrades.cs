@@ -131,15 +131,17 @@ namespace UpgradeSystem
         {
             int finalDamage = baseDamage + Mathf.RoundToInt(Upgrades.Instance.GetUpgradeStat(upgradeType) * (percentage * 0.01f));
             finalDamage += Mathf.RoundToInt(damagePercentageUpgradeValue * 0.01f * finalDamage);
+            finalDamage += Mathf.RoundToInt(AbilityUpgradeController.Instance.DamageUpgrade);
             return finalDamage;
         }
         public float AoeSizeCalculation(float percentage)
         {
-            return (1 + aoeSizeUpgradeValue * (percentage * 0.0001f));
+            return 1 + aoeSizeUpgradeValue + AbilityUpgradeController.Instance.AOERangeUpgrade * (percentage * 0.0001f);
         }
         public float SlowCalculation()
         {
             float slow = GetUpgradeStat(UpgradeType.Slow) * 0.01f;
+            slow -= AbilityUpgradeController.Instance.SpeedReductionUpgrade;
             if (slow < 0.1f) slow = 0.1f;
             return slow;
         }
@@ -149,7 +151,7 @@ namespace UpgradeSystem
         }
         public int HealCalculation(int baseHeal, float percentage)
         {
-            return baseHeal + Mathf.RoundToInt(healUpgradeValue * (percentage * 0.01f));
+            return baseHeal + Mathf.RoundToInt(healthUpgradeValue * (percentage * 0.01f)) + Mathf.RoundToInt(AbilityUpgradeController.Instance.HealUpgrade);
         }
         public int LifeStealCalculation(int baseLifesteal, float percentage)
         {

@@ -15,6 +15,6 @@ MonoBehaviour:
   InstancePrefab: {fileID: 8441325002812652694, guid: 7913cd99f1acca740ab08b4f34216042, type: 3}
   MaxInstances: 8
   SpawnTickRate: 1
-  SpawnInstancesPerTick: 5
-  SpawnMagnitude: 40
+  SpawnInstancesPerTick: 4
+  SpawnMagnitude: 30
   SpawnChance: 1
