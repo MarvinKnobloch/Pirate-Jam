@@ -511,6 +511,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6801602131743238892, guid: b584293dc20ca53439dfb3b6779f6c7c, type: 3}
+      propertyPath: 'AbilityMapping.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: cd62c97446fb5844998d885112e14143, type: 2}
     - target: {fileID: 8778342762502614998, guid: b584293dc20ca53439dfb3b6779f6c7c, type: 3}
       propertyPath: m_Name
       value: MenuController
