@@ -29,11 +29,12 @@ public class AreaAbility : MonoBehaviour
     }
     public void SetAreaValues(ProjectileObj projectile)
     {
-        damage = damage + Upgrades.Instance.DamageUpgradeCalculation(projectile.damageUpgrade.type, projectile.damageUpgrade.percentage);
+        damage += Upgrades.Instance.DamageUpgradeCalculation(projectile.damageUpgrade.type, projectile.damageUpgrade.percentage);
+        damage += Mathf.RoundToInt(AbilityUpgradeController.Instance.DamageUpgrade);
 
         float scaling = Upgrades.Instance.AoeSizeCalculation(projectile.aoeSizeUpgrade.type, projectile.aoeSizeUpgrade.percentage);
-        areaSize.x *= scaling;
-        areaSize.y *= scaling;
+        areaSize.x *= scaling + AbilityUpgradeController.Instance.AOERangeUpgrade;
+        areaSize.y *= scaling + AbilityUpgradeController.Instance.AOERangeUpgrade;
         transform.localScale = new Vector3(areaSize.x, areaSize.y, 1);
     }
     private void SetAreaCollider()
@@ -57,7 +58,7 @@ public class AreaAbility : MonoBehaviour
     private void CheckInBox()
     {
         float angle = transform.eulerAngles.z;
-        if(angle > 180)
+        if (angle > 180)
         {
             float difference = angle - 180;
             angle = (180 - difference) * -1;
@@ -87,7 +88,7 @@ public class AreaAbility : MonoBehaviour
             {
                 if (obj.gameObject.transform.parent.TryGetComponent(out EnemyController enemyController))
                 {
-                    float finalSlow = speedReduction - Upgrades.Instance.SlowCalculation();
+                    float finalSlow = speedReduction - Upgrades.Instance.SlowCalculation() - AbilityUpgradeController.Instance.SpeedReductionUpgrade;
                     if (finalSlow < 0.1f) finalSlow = 0.1f;
                     enemyController.DoSlow(finalSlow, speedReductionTime);
                 }

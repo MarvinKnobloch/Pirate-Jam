@@ -73,8 +73,12 @@ public class Projectile : MonoBehaviour
     }
     private void StatsUpdate()
     {
-        if (projectile.damage != 0) damage = projectile.damage + Upgrades.Instance.DamageUpgradeCalculation(projectile.damageUpgrade.type, projectile.damageUpgrade.percentage);
-        if (projectile.aoeRange != 0) aoeSize = projectile.aoeRange * Upgrades.Instance.AoeSizeCalculation(projectile.aoeSizeUpgrade.type, projectile.aoeSizeUpgrade.percentage);
+        if (projectile.damage != 0) damage = projectile.damage
+            + Upgrades.Instance.DamageUpgradeCalculation(projectile.damageUpgrade.type, projectile.damageUpgrade.percentage)
+            + Mathf.RoundToInt(AbilityUpgradeController.Instance.DamageUpgrade);
+        if (projectile.aoeRange != 0) aoeSize = projectile.aoeRange
+            * Upgrades.Instance.AoeSizeCalculation(projectile.aoeSizeUpgrade.type, projectile.aoeSizeUpgrade.percentage)
+            * AbilityUpgradeController.Instance.AOERangeUpgrade;
     }
 
     private void StraightMovement()
@@ -127,8 +131,8 @@ public class Projectile : MonoBehaviour
     {
         if (obj.transform.parent.TryGetComponent(out Health parentHealth))
         {
-            if(projectile.damage != 0) parentHealth.TakeDamage(damage);
-            if(projectile.heal != 0) parentHealth.Heal(projectile.heal);
+            if (projectile.damage != 0) parentHealth.TakeDamage(damage);
+            if (projectile.heal != 0) parentHealth.Heal(projectile.heal + Mathf.RoundToInt(AbilityUpgradeController.Instance.HealUpgrade));
         }
 
         if (projectile.createArea)
