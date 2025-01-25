@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using static UpgradeSystem.Upgrades;
 
 namespace UpgradeSystem
 {
@@ -24,7 +25,8 @@ namespace UpgradeSystem
         private float gatherSpeedUpgradeValue;
         private float bulletSpeedUpgradeValue;
         private float damagePercentageUpgradeValue;
-        private int healValue;
+        private int healUpgradeValue;
+        private float lifeStealUpgradeValue;
 
         private void Awake()
         {
@@ -65,7 +67,9 @@ namespace UpgradeSystem
                 case UpgradeType.DamagePercentage:
                     return damagePercentageUpgradeValue;
                 case UpgradeType.Heal:
-                    return healValue;
+                    return healUpgradeValue;
+                case UpgradeType.LifeSteal:
+                    return lifeStealUpgradeValue;
             }
             return 0;
         }
@@ -116,7 +120,10 @@ namespace UpgradeSystem
                     damagePercentageUpgradeValue += value;
                     break;
                 case UpgradeType.Heal:
-                    healValue += Mathf.RoundToInt(value);
+                    healUpgradeValue += Mathf.RoundToInt(value);
+                    break;
+                case UpgradeType.LifeSteal:
+                    lifeStealUpgradeValue += value;
                     break;
             }
         }
@@ -126,9 +133,9 @@ namespace UpgradeSystem
             finalDamage += Mathf.RoundToInt(damagePercentageUpgradeValue * 0.01f * finalDamage);
             return finalDamage;
         }
-        public float AoeSizeCalculation(UpgradeType upgradeType, float percentage)
+        public float AoeSizeCalculation(float percentage)
         {
-            return (1 + GetUpgradeStat(upgradeType) * (percentage * 0.0001f));
+            return (1 + aoeSizeUpgradeValue * (percentage * 0.0001f));
         }
         public float SlowCalculation()
         {
@@ -139,6 +146,14 @@ namespace UpgradeSystem
         public float StunCalculation(float stunDuration)
         {
             return stunDuration + (stunUpgradeValue * 0.01f * stunDuration);
+        }
+        public int HealCalculation(int baseHeal, float percentage)
+        {
+            return baseHeal + Mathf.RoundToInt(healthUpgradeValue * (percentage * 0.01f));
+        }
+        public int LifeStealCalculation(int baseLifesteal, float percentage)
+        {
+            return baseLifesteal + Mathf.RoundToInt(lifeStealUpgradeValue * (percentage * 0.01f));
         }
 
 
@@ -167,6 +182,7 @@ namespace UpgradeSystem
             BulletSpeed,
             DamagePercentage,
             Heal,
+            LifeSteal,
         }
     }
 }

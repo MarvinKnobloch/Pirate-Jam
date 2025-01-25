@@ -581,6 +581,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6417470378537717934, guid: 26cf60b316ed7bd469c751c90430f594, type: 3}
+      propertyPath: 'abilities.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: cd62c97446fb5844998d885112e14143, type: 2}
     - target: {fileID: 7310719990948256121, guid: 26cf60b316ed7bd469c751c90430f594, type: 3}
       propertyPath: maxHealth
       value: 50

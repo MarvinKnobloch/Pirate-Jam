@@ -16,5 +16,5 @@ MonoBehaviour:
   AbilityID: 8
   AbilityCost: 1
   AbilityCooldown: 2
-  AbilityTime: 0.2
+  AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: ff2acda00a91a8f449754f02a205a6a7, type: 2}

@@ -4,21 +4,35 @@ using UpgradeSystem;
 
 public class AreaAbility : MonoBehaviour
 {
-    [SerializeField] Vector2 areaSize;
     [SerializeField] private AreaType areaCollider;
+    [SerializeField] Vector2 areaSize;
+    [SerializeField] private float aoeSizeScaling;
+
+    [Header("Damage")]
+    [SerializeField] private int damageAmount;
+    [SerializeField] private Upgrades.UpgradeType damageType;
+    [SerializeField] private float damageScaling;
     [SerializeField] private float lifeTime;
     [SerializeField] private float tickInterval;
-    [SerializeField] private int damage;
-    [SerializeField] private int heal;
-    [SerializeField] private LayerMask hitLayer;
 
-    [Header("Slow")]
-    [Range(0.6f, 1f)]
-    [SerializeField] private float speedReduction;
+    [Header("Slow, Range 1 = Normal Movement Speed")]
     [SerializeField] private float slowDuration;
+    [Range(0.6f, 1)]
+    [SerializeField] private float slowStrength;
 
     [Header("Stun")]
     [SerializeField] private float stunDuration;
+
+    [Header("Heal")]
+    [SerializeField] private int healAmount;
+    [SerializeField] private float healScaling;
+
+    [Header("LifeSteal")]
+    [SerializeField] private int lifeStealAmount;
+    [SerializeField] private float lifeStealScaling;
+
+    [Header("Other")]
+    [SerializeField] private LayerMask hitLayer;
 
 
     private enum AreaType
@@ -28,16 +42,18 @@ public class AreaAbility : MonoBehaviour
     }
     private void Start()
     {
-
         CancelInvoke();
         Destroy(gameObject, lifeTime);
         InvokeRepeating("SetAreaCollider", 0.1f, tickInterval);
     }
-    public void SetAreaValues(ProjectileObj projectile)
+    public void SetValues()
     {
-        damage = Upgrades.Instance.DamageUpgradeCalculation(damage, projectile.damageUpgrade.type, projectile.damageUpgrade.percentage);
+        if (damageAmount != 0) damageAmount = Upgrades.Instance.DamageUpgradeCalculation(damageAmount, damageType, damageScaling);
+        if (healAmount != 0) healAmount = Upgrades.Instance.HealCalculation(healAmount, healScaling);
+        if (lifeStealAmount != 0) lifeStealAmount = Upgrades.Instance.LifeStealCalculation(lifeStealAmount, lifeStealScaling);
 
-        float scaling = Upgrades.Instance.AoeSizeCalculation(projectile.aoeSizeUpgrade.type, projectile.aoeSizeUpgrade.percentage);
+
+        float scaling = Upgrades.Instance.AoeSizeCalculation(aoeSizeScaling);
         areaSize.x *= scaling;
         areaSize.y *= scaling;
         transform.localScale = new Vector3(areaSize.x, areaSize.y, 1);
@@ -79,22 +95,27 @@ public class AreaAbility : MonoBehaviour
         {
             if(obj.gameObject.transform.parent.TryGetComponent(out EnemyController enemyController))
             {
-                if (damage != 0)
+                if (damageAmount != 0)
                 {
-                    enemyController.health.TakeDamage(damage);
+                    enemyController.health.TakeDamage(damageAmount);
                 }
-                if (heal != 0)
+                if (slowDuration > 0)
                 {
-
-                }
-                if (speedReduction < 1)
-                {
-                    enemyController.DoSlow(speedReduction - Upgrades.Instance.SlowCalculation(), slowDuration);
+                    enemyController.DoSlow(slowStrength - Upgrades.Instance.SlowCalculation(), slowDuration);
                 }
                 if (stunDuration > 0)
                 {
                     enemyController.DoStun(Upgrades.Instance.StunCalculation(stunDuration));
                 }
+                if (lifeStealAmount > 0)
+                {
+                    Player.Instance.health.Heal(lifeStealAmount);
+                }
+
+            }
+            else if (obj.transform.parent.TryGetComponent(out NPCController nPCController))
+            {
+                if (healAmount != 0) nPCController.health.Heal(healAmount);
             }
         }
     }

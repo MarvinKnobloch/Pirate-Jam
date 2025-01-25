@@ -14,18 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 8356378035270633483, guid: c5b1c9500a7680f42ae30d07d4700010, type: 3}
   speed: 5
-  damage: 1
-  heal: 0
   projectileType: 1
+  damage: 1
+  damageType: 3
+  damageScaling: 50
   aoeRange: 1
+  aoeSizeScaling: 50
   maxBulletHeight: 3
   multipleProjectiles: 0
   multiShotAngle: 0
-  slow: 0
+  slowDuration: 0
   slowStrength: 0.6
-  slowDuration: 3
-  stun: 1
   stunDuration: 1
+  healAmount: 0
+  healScaling: 0
+  lifeStealAmount: 0
+  lifeStealScaling: 0
   timeToDestroy: 5
   hitLayer:
     serializedVersion: 2
@@ -33,9 +37,3 @@ MonoBehaviour:
   mirrorAttack: 0
   createArea: 0
   areaPrefab: {fileID: 0}
-  damageUpgrade:
-    type: 3
-    percentage: 50
-  aoeSizeUpgrade:
-    type: 7
-    percentage: 100

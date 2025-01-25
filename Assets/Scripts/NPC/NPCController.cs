@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -13,6 +14,12 @@ public class NPCController : MonoBehaviour
     private GatherResource _targetResource;
     private Coroutine _gatherCoroutine;
 
+    [NonSerialized] public Health health;
+
+    private void Awake()
+    {
+        health = GetComponent<Health>();
+    }
     private void OnEnable()
     {
         GatherTime = GatherTime - Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.GatherSpeed);
