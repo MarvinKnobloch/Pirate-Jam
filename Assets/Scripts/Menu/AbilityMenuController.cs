@@ -17,11 +17,13 @@ public class AbilityMenuController : MonoBehaviour
 
         if (ability != null)
         {
-            Player.Instance.abilities.Add(ability);
-            PlayerUI.Instance.cooldownController.ActivateCooldownObj(Player.Instance.abilities.Count - 1);
+            if (AbilityUpgradeController.Instance.PurchaseAbility())
+            {
+                Player.Instance.abilities.Add(ability);
+                PlayerUI.Instance.cooldownController.ActivateCooldownObj(Player.Instance.abilities.Count - 1);
+                Destroy(caller);
+            }
         }
-
-        Destroy(caller);
     }
 
     public void UpgradeAbility(GameObject caller)

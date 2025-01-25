@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AbilityUpgradeController : MonoBehaviour
@@ -9,6 +10,9 @@ public class AbilityUpgradeController : MonoBehaviour
     public float HealUpgrade = 0.0f;
     public float SpeedReductionUpgrade = 0.0f;
     public float AOERangeUpgrade = 0.0f;
+
+    private int _upgradeLevel = 1;
+    private int _abilityLevel = 1;
 
     void Awake()
     {
@@ -22,8 +26,95 @@ public class AbilityUpgradeController : MonoBehaviour
         }
     }
 
-    public void UpgradeAbility(int abilityIndex)
+    public bool PurchaseAbility()
     {
+        if (_abilityLevel < 3)
+        {
+            if (Player.Instance.SubtractResources(new() { { ResourceType.Iron, 4 * _abilityLevel } }))
+            {
+                _abilityLevel++;
+                return true;
+            }
+        }
+        else if (_abilityLevel < 8)
+        {
+            if (
+                Player.Instance.SubtractResources(new() {
+                    { ResourceType.Iron, _abilityLevel },
+                    { ResourceType.Copper, 4 * _abilityLevel }
+                })
+            )
+            {
+                _abilityLevel++;
+                return true;
+            }
+        }
+        else
+        {
+            if (
+                Player.Instance.SubtractResources(new() {
+                    { ResourceType.Iron, _abilityLevel },
+                    { ResourceType.Copper, _abilityLevel },
+                    { ResourceType.Wood, _abilityLevel }
+                })
+            )
+            {
+                _abilityLevel++;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool PurchaseUpgrade()
+    {
+        if (_upgradeLevel < 6)
+        {
+            if (Player.Instance.SubtractResources(new() { { ResourceType.Iron, 4 * _abilityLevel } }))
+            {
+                _upgradeLevel++;
+                return true;
+            }
+        }
+        else if (_upgradeLevel < 16)
+        {
+            if (
+                Player.Instance.SubtractResources(new() {
+                    { ResourceType.Iron, _abilityLevel },
+                    { ResourceType.Copper, 4 * _abilityLevel }
+                })
+            )
+            {
+                _upgradeLevel++;
+                return true;
+            }
+        }
+        else
+        {
+            if (
+                Player.Instance.SubtractResources(new() {
+                    { ResourceType.Iron, _abilityLevel },
+                    { ResourceType.Copper, _abilityLevel },
+                    { ResourceType.Wood, _abilityLevel }
+                })
+            )
+            {
+                _upgradeLevel++;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public bool UpgradeAbility(int abilityIndex)
+    {
+        if (!PurchaseUpgrade())
+        {
+            return false;
+        }
+
         switch (abilityIndex)
         {
             case 0:
@@ -48,6 +139,8 @@ public class AbilityUpgradeController : MonoBehaviour
                 UpgradeAbility7();
                 break;
         }
+
+        return true;
     }
 
     // Cannon

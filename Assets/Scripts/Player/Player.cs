@@ -154,6 +154,45 @@ public class Player : MonoBehaviour
 
         if (PlayerUI.Instance != null) PlayerUI.Instance.ResourceUIUpdate(Iron, Copper, Wood);
     }
+
+    public bool SubtractResources(Dictionary<ResourceType, int> resources)
+    {
+        foreach (var resource in resources)
+        {
+            switch (resource.Key)
+            {
+                case ResourceType.Iron:
+                    if (Iron < resource.Value) return false;
+                    break;
+                case ResourceType.Copper:
+                    if (Copper < resource.Value) return false;
+                    break;
+                case ResourceType.Wood:
+                    if (Wood < resource.Value) return false;
+                    break;
+            }
+        }
+
+        foreach (var resource in resources)
+        {
+            switch (resource.Key)
+            {
+                case ResourceType.Iron:
+                    Iron -= resource.Value;
+                    break;
+                case ResourceType.Copper:
+                    Copper -= resource.Value;
+                    break;
+                case ResourceType.Wood:
+                    Wood -= resource.Value;
+                    break;
+            }
+        }
+
+        if (PlayerUI.Instance != null) PlayerUI.Instance.ResourceUIUpdate(Iron, Copper, Wood);
+        return true;
+    }
+
     private void OnDeath()
     {
         PlayerUI.Instance.gameOverObj.SetActive(true);
