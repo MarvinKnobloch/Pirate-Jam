@@ -54,8 +54,8 @@ public class AreaAbility : MonoBehaviour
 
 
         float scaling = Upgrades.Instance.AoeSizeCalculation(aoeSizeScaling);
-        areaSize.x *= scaling + AbilityUpgradeController.Instance.AOERangeUpgrade;
-        areaSize.y *= scaling + AbilityUpgradeController.Instance.AOERangeUpgrade;
+        areaSize.x *= scaling;
+        areaSize.y *= scaling;
         transform.localScale = new Vector3(areaSize.x, areaSize.y, 1);
     }
     private void SetAreaCollider()

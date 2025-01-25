@@ -4,11 +4,11 @@ public class AbilityUpgradeController : MonoBehaviour
 {
     public static AbilityUpgradeController Instance;
 
-    public float SpeedUpgrade = 1.0f;
-    public float DamageUpgrade = 1.0f;
-    public float HealUpgrade = 1.0f;
-    public float SpeedReductionUpgrade = 1.0f;
-    public float AOERangeUpgrade = 1.0f;
+    public float SpeedUpgrade = 0.0f;
+    public float DamageUpgrade = 0.0f;
+    public float HealUpgrade = 0.0f;
+    public float SpeedReductionUpgrade = 0.0f;
+    public float AOERangeUpgrade = 0.0f;
 
     void Awake()
     {

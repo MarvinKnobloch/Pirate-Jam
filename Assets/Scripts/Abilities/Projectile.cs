@@ -84,8 +84,7 @@ public class Projectile : MonoBehaviour
         if (projectile.lifeStealAmount != 0) lifeSteal = Upgrades.Instance.LifeStealCalculation(projectile.lifeStealAmount, projectile.lifeStealScaling);
 
         float percentage = Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.BulletSpeed);
-        bulletSpeed = projectile.speed + (percentage * 0.01f * projectile.speed);
-
+        bulletSpeed = projectile.speed + (percentage * 0.01f * projectile.speed) + AbilityUpgradeController.Instance.SpeedUpgrade;
     }
 
     private void StraightMovement()
