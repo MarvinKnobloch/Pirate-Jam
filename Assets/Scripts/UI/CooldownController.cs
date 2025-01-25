@@ -39,10 +39,12 @@ public class CooldownController : MonoBehaviour
             prefab.SetActive(false);
         }
         HotkeysUpdate();
-
-        for (int r = 0; r < Player.Instance.abilities.Count; r++)
+    }
+    private void Start()
+    {
+        for (int i = 0; i < Player.Instance.abilities.Count; i++)
         {
-            ActivateCooldownObj(r);
+            ActivateCooldownObj(i);
         }
     }
     public void ActivateCooldownObj(int slot)
