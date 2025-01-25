@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2749713577168443850}
   - component: {fileID: 447922936188470419}
   m_Layer: 0
-  m_Name: FireArea
+  m_Name: LifeStealArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.44879463, b: 0, a: 1}
+  m_Color: {r: 0.38679248, g: 0.0018244971, b: 0.051051855, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,20 +101,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaCollider: 0
-  areaSize: {x: 3, y: 3}
+  areaSize: {x: 4, y: 4}
   aoeSizeScaling: 100
   damageAmount: 1
   damageType: 4
-  damageScaling: 50
+  damageScaling: 20
   lifeTime: 2
   tickInterval: 0.5
-  slowDuration: 1
-  slowStrength: 0.9
+  slowDuration: 0
+  slowStrength: 0.6
   stunDuration: 0
-  healAmount: 0
-  healScaling: 0
-  lifeStealAmount: 0
-  lifeStealScaling: 0
+  healAmount: 3
+  healScaling: 75
+  lifeStealAmount: 1
+  lifeStealScaling: 75
   hitLayer:
     serializedVersion: 2
     m_Bits: 128

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 770166c160678bc4a914ec5e804298d8, type: 3}
-  m_Name: PosionArea
+  m_Name: LifeStealArea
   m_EditorClassIdentifier: 
-  AbilityName: PoisionArea
-  AbilityID: 7
+  AbilityName: LifeStealArea
+  AbilityID: 9
   AbilityCost: 1
-  AbilityCooldown: 3
+  AbilityCooldown: 4
   AbilityTime: 0.1
-  projectileObj: {fileID: 11400000, guid: 0ee895928fab28d48add608fa18040ce, type: 2}
+  projectileObj: {fileID: 11400000, guid: ae9c957a8dbad4f428db287f3618e0b1, type: 2}

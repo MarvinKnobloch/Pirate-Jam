@@ -8,8 +8,11 @@ public class Projectile : MonoBehaviour
     private Abilities ability;
     private ProjectileObj projectile;
     private Vector2 direction;
+
+    //stats
     private int damage;
     private float aoeSize;
+    private int lifeSteal;
 
     //AOE
     [SerializeField] private GameObject aoeVisualBullet;
@@ -76,12 +79,13 @@ public class Projectile : MonoBehaviour
     }
     private void StatsUpdate()
     {
-        if (projectile.damage != 0) damage = projectile.damage
-            + Upgrades.Instance.DamageUpgradeCalculation(projectile.damage, projectile.damageUpgrade.type, projectile.damageUpgrade.percentage)
-            + Mathf.RoundToInt(AbilityUpgradeController.Instance.DamageUpgrade);
-        if (projectile.aoeRange != 0) aoeSize = projectile.aoeRange
-            * Upgrades.Instance.AoeSizeCalculation(projectile.aoeSizeUpgrade.type, projectile.aoeSizeUpgrade.percentage)
-            * AbilityUpgradeController.Instance.AOERangeUpgrade;
+        if (projectile.damage != 0) damage = Upgrades.Instance.DamageUpgradeCalculation(projectile.damage, projectile.damageType, projectile.damageScaling);
+        if (projectile.aoeRange != 0) aoeSize = projectile.aoeRange * Upgrades.Instance.AoeSizeCalculation(projectile.aoeSizeScaling);
+        if (projectile.lifeStealAmount != 0) lifeSteal = Upgrades.Instance.LifeStealCalculation(projectile.lifeStealAmount, projectile.lifeStealScaling);
+
+        float percentage = Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.BulletSpeed);
+        bulletSpeed = projectile.speed + (percentage * 0.01f * projectile.speed);
+
     }
 
     private void StraightMovement()
@@ -135,13 +139,16 @@ public class Projectile : MonoBehaviour
         if (obj.transform.parent.TryGetComponent(out EnemyController enemyController))
         {
             EnemyInteraction(enemyController);
-            // if (projectile.heal != 0) parentHealth.Heal(projectile.heal + Mathf.RoundToInt(AbilityUpgradeController.Instance.HealUpgrade));
+        }
+        else if (obj.transform.parent.TryGetComponent(out NPCController nPCController))
+        {
+            if (projectile.healAmount != 0) NPCHeal(nPCController);
         }
 
         if (projectile.createArea)
         {
             GameObject area = Instantiate(projectile.areaPrefab, transform.position, transform.rotation);
-            area.GetComponent<AreaAbility>().SetAreaValues(projectile);
+            area.GetComponent<AreaAbility>().SetValues();
         }
     }
 
@@ -149,12 +156,22 @@ public class Projectile : MonoBehaviour
     {
         Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, aoeSize, projectile.hitLayer);
 
-        foreach (Collider2D enemy in cols)
+        foreach (Collider2D obj in cols)
         {
-            if (enemy.gameObject.transform.parent.TryGetComponent(out EnemyController enemyController))
+            if (obj.gameObject.transform.parent.TryGetComponent(out EnemyController enemyController))
             {
                 EnemyInteraction(enemyController);
             }
+            else if (obj.transform.parent.TryGetComponent(out NPCController nPCController))
+            {
+                if (projectile.healAmount != 0) NPCHeal(nPCController);
+            }
+        }
+
+        if (projectile.createArea)
+        {
+            GameObject area = Instantiate(projectile.areaPrefab, transform.position, transform.rotation);
+            area.GetComponent<AreaAbility>().SetValues();
         }
     }
 
@@ -162,13 +179,21 @@ public class Projectile : MonoBehaviour
     {
         if (projectile.damage != 0) enemyController.health.TakeDamage(damage);
 
-        if (projectile.slow)
+        if (projectile.slowDuration > 0)
         {
             enemyController.DoSlow(projectile.slowStrength - Upgrades.Instance.SlowCalculation(), projectile.slowDuration);
         }
-        if (projectile.stun)
+        if (projectile.stunDuration > 0)
         {
             enemyController.DoStun(Upgrades.Instance.StunCalculation(projectile.stunDuration));
         }
+        if (projectile.lifeStealAmount > 0)
+        {
+            Player.Instance.health.Heal(lifeSteal);
+        }
+    }
+    private void NPCHeal(NPCController nPCController)
+    {
+        nPCController.health.Heal(Upgrades.Instance.HealCalculation(projectile.healAmount, projectile.healScaling));
     }
 }

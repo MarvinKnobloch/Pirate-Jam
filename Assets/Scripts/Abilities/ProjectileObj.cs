@@ -6,12 +6,16 @@ public class ProjectileObj : ScriptableObject
 {
     public GameObject prefab;
     public float speed;
-    public int damage;
-    public int heal;
     public ProjectileType projectileType;
+
+    [Header("Damage")]
+    public int damage;
+    public Upgrades.UpgradeType damageType;
+    public float damageScaling;
 
     [Header("AOE")]
     public float aoeRange;
+    public float aoeSizeScaling;
     public float maxBulletHeight;
 
     [Header("MultiShot")]
@@ -19,16 +23,22 @@ public class ProjectileObj : ScriptableObject
     public float multiShotAngle;
 
     [Header("Slow, Range 1 = Normal Movement Speed")]
-    public bool slow;
+    public float slowDuration;
     [Range(0.6f, 1)]
     public float slowStrength;
-    public float slowDuration;
 
     [Header("Stun")]
-    public bool stun;
     public float stunDuration;
 
-    [Space]
+    [Header("Heal")]
+    public int healAmount;
+    public float healScaling;
+
+    [Header("LifeSteal")]
+    public int lifeStealAmount;
+    public float lifeStealScaling;
+
+    [Header("Other")]
     public float timeToDestroy;
     public LayerMask hitLayer;
     public bool mirrorAttack;
@@ -37,9 +47,6 @@ public class ProjectileObj : ScriptableObject
     public bool createArea;
     public GameObject areaPrefab;
 
-    [Header("Upgrades")]
-    public Upgrades.UpgradeValues damageUpgrade;
-    public Upgrades.UpgradeValues aoeSizeUpgrade;
 }
     public enum ProjectileType{
     single,
