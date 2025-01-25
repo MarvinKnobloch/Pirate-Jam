@@ -6036,9 +6036,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownPrefab: {fileID: 280651689389470, guid: 822e2e2e01cfb884db7bef77c2d21dc6, type: 3}
   cooldownPrefabCount: 8
+  cooldownObj: []
   cooldownImage: []
   onCooldown: 
   cooldownText: []
+  cooldownHotkey: []
 --- !u!1 &8442058784193605783
 GameObject:
   m_ObjectHideFlags: 0

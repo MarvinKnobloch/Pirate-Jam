@@ -18,6 +18,7 @@ public class AbilityMenuController : MonoBehaviour
         if (ability != null)
         {
             Player.Instance.abilities.Add(ability);
+            PlayerUI.Instance.cooldownController.ActivateCooldownObj(Player.Instance.abilities.Count - 1);
         }
 
         Destroy(caller);

@@ -131,6 +131,7 @@ public class MenuController : MonoBehaviour
     public void ResumeGame()
     {
         ingameMenu.SetActive(false);
+        PlayerUI.Instance.cooldownController.HotkeysUpdate();
         EndPause();
     }
     public void SetRestartConfirm()
