@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4844b80c316a2094d91f85851f9fd637, type: 3}
-  m_Name: HealBullet
+  m_Name: HealShot
   m_EditorClassIdentifier: 
   prefab: {fileID: 5903401445494139436, guid: d3582ad4aaa77a043af7ebf6c276c347, type: 3}
   speed: 12

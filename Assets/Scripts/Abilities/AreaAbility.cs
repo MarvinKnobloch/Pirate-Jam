@@ -52,7 +52,6 @@ public class AreaAbility : MonoBehaviour
         if (healAmount != 0) healAmount = Upgrades.Instance.HealCalculation(healAmount, healScaling);
         if (lifeStealAmount != 0) lifeStealAmount = Upgrades.Instance.LifeStealCalculation(lifeStealAmount, lifeStealScaling);
 
-
         float scaling = Upgrades.Instance.AoeSizeCalculation(aoeSizeScaling);
         areaSize.x *= scaling;
         areaSize.y *= scaling;

@@ -149,7 +149,7 @@ namespace UpgradeSystem
         }
         public int HealCalculation(int baseHeal, float percentage)
         {
-            return baseHeal + Mathf.RoundToInt(healthUpgradeValue * (percentage * 0.01f));
+            return baseHeal + Mathf.RoundToInt(healUpgradeValue * (percentage * 0.01f));
         }
         public int LifeStealCalculation(int baseLifesteal, float percentage)
         {

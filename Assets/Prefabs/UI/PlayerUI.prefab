@@ -2364,7 +2364,7 @@ GameObject:
   - component: {fileID: 5731990211789993500}
   - component: {fileID: 290749573939031483}
   m_Layer: 5
-  m_Name: EnergyRecharge
+  m_Name: HealLifeSteal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2496,14 +2496,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a777fdc9b82f724fabff330c47126ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeString: Decrease energy recharge interval by
-  upgradeStringAfterFirstValue: ' seconds.'
-  upgradeStringAfterSecondValue: 
+  upgradeString: Increase healing done to minions by
+  upgradeStringAfterFirstValue: '.
+
+    Increase lifesteal by'
+  upgradeStringAfterSecondValue: .
   maxLevel: 10
-  upgradeValue: 0.02
-  upgradeType: 6
-  secondUpgradeValue: 0
-  secondUpgradeType: 0
+  upgradeValue: 2
+  upgradeType: 15
+  secondUpgradeValue: 1
+  secondUpgradeType: 16
 --- !u!1 &4033130067465987519
 GameObject:
   m_ObjectHideFlags: 0
@@ -3275,7 +3277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1005696281508677853
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3560,7 +3562,7 @@ GameObject:
   - component: {fileID: 8176930901819498330}
   - component: {fileID: 8472627153866313965}
   m_Layer: 5
-  m_Name: MaxEnergy
+  m_Name: Energy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3693,13 +3695,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeString: Increase maximum energy by
-  upgradeStringAfterFirstValue: .
-  upgradeStringAfterSecondValue: 
+  upgradeStringAfterFirstValue: '.
+
+    Decrease energy recharge interval by'
+  upgradeStringAfterSecondValue: ' seconds.'
   maxLevel: 10
-  upgradeValue: 2
+  upgradeValue: 3
   upgradeType: 5
-  secondUpgradeValue: 0
-  secondUpgradeType: 0
+  secondUpgradeValue: 0.02
+  secondUpgradeType: 6
 --- !u!1 &6813802850923762829
 GameObject:
   m_ObjectHideFlags: 0
