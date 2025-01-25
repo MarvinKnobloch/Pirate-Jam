@@ -10,10 +10,16 @@ public class AreaAbility : MonoBehaviour
     [SerializeField] private float tickInterval;
     [SerializeField] private int damage;
     [SerializeField] private int heal;
+    [SerializeField] private LayerMask hitLayer;
+
+    [Header("Slow")]
     [Range(0.6f, 1f)]
     [SerializeField] private float speedReduction;
-    [SerializeField] private float speedReductionTime;
-    [SerializeField] private LayerMask hitLayer;
+    [SerializeField] private float slowDuration;
+
+    [Header("Stun")]
+    [SerializeField] private float stunDuration;
+
 
     private enum AreaType
     {
@@ -29,7 +35,7 @@ public class AreaAbility : MonoBehaviour
     }
     public void SetAreaValues(ProjectileObj projectile)
     {
-        damage += Upgrades.Instance.DamageUpgradeCalculation(projectile.damageUpgrade.type, projectile.damageUpgrade.percentage);
+        damage += Upgrades.Instance.DamageUpgradeCalculation(damage, projectile.damageUpgrade.type, projectile.damageUpgrade.percentage);
         damage += Mathf.RoundToInt(AbilityUpgradeController.Instance.DamageUpgrade);
 
         float scaling = Upgrades.Instance.AoeSizeCalculation(projectile.aoeSizeUpgrade.type, projectile.aoeSizeUpgrade.percentage);
@@ -70,27 +76,25 @@ public class AreaAbility : MonoBehaviour
     }
     private void ExecuteAbility(Collider2D[] cols)
     {
-
         foreach (Collider2D obj in cols)
         {
-            if (damage != 0)
+            if (obj.gameObject.transform.parent.TryGetComponent(out EnemyController enemyController))
             {
-                if (obj.gameObject.transform.parent.TryGetComponent(out Health parentHealth))
+                if (damage != 0)
                 {
-                    parentHealth.TakeDamage(damage);
+                    enemyController.health.TakeDamage(damage);
                 }
-            }
-            if (heal != 0)
-            {
-
-            }
-            if (speedReduction < 1)
-            {
-                if (obj.gameObject.transform.parent.TryGetComponent(out EnemyController enemyController))
+                if (heal != 0)
                 {
-                    float finalSlow = speedReduction - Upgrades.Instance.SlowCalculation() - AbilityUpgradeController.Instance.SpeedReductionUpgrade;
-                    if (finalSlow < 0.1f) finalSlow = 0.1f;
-                    enemyController.DoSlow(finalSlow, speedReductionTime);
+
+                }
+                if (speedReduction < 1)
+                {
+                    enemyController.DoSlow(speedReduction - Upgrades.Instance.SlowCalculation(), slowDuration);
+                }
+                if (stunDuration > 0)
+                {
+                    enemyController.DoStun(Upgrades.Instance.StunCalculation(stunDuration));
                 }
             }
         }

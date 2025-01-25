@@ -106,8 +106,9 @@ MonoBehaviour:
   tickInterval: 1
   damage: 1
   heal: 0
-  speedReduction: 0.6
-  speedReductionTime: 2
   hitLayer:
     serializedVersion: 2
     m_Bits: 128
+  speedReduction: 0.7
+  slowDuration: 2
+  stunDuration: 0

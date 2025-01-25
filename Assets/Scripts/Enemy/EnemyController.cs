@@ -14,10 +14,15 @@ public class EnemyController : MonoBehaviour
     public float AttackCooldown = 1f;
     public int AttackDamage = 1;
 
-    [NonSerialized] public Health Health;
+    [Header("Exp")]
+    public int experienceGain;
+
+    [NonSerialized] public Health health;
 
     private Rigidbody2D _rigidbody;
     private CircleCollider2D _collider;
+    private float targetUpdateTime;
+    private GameObject nearestTarget;
     private float _attackTimer = 0f;
     private bool _isAttacking = false;
     private float _maxMovementSpeed;
@@ -26,6 +31,7 @@ public class EnemyController : MonoBehaviour
     private float _slowPercentage;
     private float _slowDuration;
     private bool _isStunned = false;
+    private float _stunDuration;
 
     void OnEnable()
     {
@@ -39,8 +45,8 @@ public class EnemyController : MonoBehaviour
 
         _targetDetector = GetComponentInChildren<EnemyTargetDetector>();
 
-        Health = GetComponent<Health>();
-        if (Health != null) Health.dieEvent.AddListener(OnDeath);
+        health = GetComponent<Health>();
+        if (health != null) health.dieEvent.AddListener(OnDeath);
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -75,15 +81,20 @@ public class EnemyController : MonoBehaviour
 
     public void DoStun(float stunDuration)
     {
-        StartCoroutine(Stun(stunDuration));
+        StopCoroutine("Stun");
+
+        _stunDuration = stunDuration;
+        StartCoroutine("Stun");
     }
 
-    IEnumerator Stun(float stunDuration)
+    IEnumerator Stun()
     {
-        MoveSpeed = 0;
+        Debug.Log(_stunDuration);
         _isStunned = true;
-        yield return new WaitForSeconds(stunDuration);
-        MoveSpeed = _maxMovementSpeed;
+        health.HealthBarImage.color = Color.gray;
+        yield return new WaitForSeconds(_stunDuration);
+        if (MoveSpeed != _maxMovementSpeed) health.HealthBarImage.color = Color.blue;
+        else health.HealthBarImage.color = Color.red;
         _isStunned = false;
     }
 
@@ -104,16 +115,16 @@ public class EnemyController : MonoBehaviour
     IEnumerator Slow()
     {
         MoveSpeed *= _slowPercentage;
+        health.HealthBarImage.color = Color.blue;
         yield return new WaitForSeconds(_slowDuration);
+        health.HealthBarImage.color = Color.red;
         MoveSpeed = _maxMovementSpeed;
     }
 
     private void HandleAttack()
     {
-        if (_isStunned)
-        {
-            return;
-        }
+        if (_isStunned) return;
+        if (Player.Instance == null) return;
 
         if (_attackTimer <= 0)
         {
@@ -131,9 +142,20 @@ public class EnemyController : MonoBehaviour
 
     private void MoveToPlayerOrTarget()
     {
-        var nearestTarget = _targetDetector.Targets.ElementAtOrDefault(0);
-        Vector3 targetPosition;
+        if (_isStunned || Player.Instance == null)
+        {
+            _rigidbody.linearVelocity = Vector2.zero;
+            return;
+        }
 
+        targetUpdateTime += Time.fixedDeltaTime;
+        if (targetUpdateTime > 0.1f)
+        {
+            targetUpdateTime = 0;
+            nearestTarget = _targetDetector.Targets.ElementAtOrDefault(0);
+        }
+
+        Vector3 targetPosition;
         if (nearestTarget != null)
         {
             targetPosition = nearestTarget.transform.position;
@@ -141,7 +163,6 @@ public class EnemyController : MonoBehaviour
         else
         {
             targetPosition = Player.Instance.transform.position;
-
         }
 
         var direction = (targetPosition - transform.position).normalized;
@@ -149,6 +170,7 @@ public class EnemyController : MonoBehaviour
     }
     public void OnDeath()
     {
+        PlayerUI.Instance.expController.PlayerGainExp(experienceGain);
         PlayerUI.Instance.KillCountUpdate();
     }
 }

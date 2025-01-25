@@ -2,10 +2,12 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 using UpgradeSystem;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
     public RectTransform HealthBar;
+    [NonSerialized] public Image HealthBarImage;
     public bool HealthBarPermanent = false;
     public float HealthBarOffset = 1f;
 
@@ -30,6 +32,7 @@ public class Health : MonoBehaviour
 
     void Start()
     {
+        if (HealthBar != null) HealthBarImage = HealthBar.GetComponent<Image>();
         HealthUpgrade();
         currentHealth = maxHealth;
 

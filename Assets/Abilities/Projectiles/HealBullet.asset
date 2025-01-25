@@ -21,6 +21,11 @@ MonoBehaviour:
   maxBulletHeight: 0
   multipleProjectiles: 0
   multiShotAngle: 0
+  slow: 0
+  slowStrength: 0.6
+  slowDuration: 0
+  stun: 0
+  stunDuration: 0
   timeToDestroy: 5
   hitLayer:
     serializedVersion: 2
@@ -28,3 +33,9 @@ MonoBehaviour:
   mirrorAttack: 0
   createArea: 0
   areaPrefab: {fileID: 0}
+  damageUpgrade:
+    type: 0
+    percentage: 0
+  aoeSizeUpgrade:
+    type: 0
+    percentage: 0

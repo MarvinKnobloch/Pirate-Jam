@@ -260,6 +260,7 @@ MonoBehaviour:
   AttackDistance: 0.7
   AttackCooldown: 0.5
   AttackDamage: 1
+  experienceGain: 10
 --- !u!114 &8265245240528079808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 6589723892033796994}
+  healthbarImage: {fileID: 8893117553888831323}
   HealthBarPermanent: 0
   HealthBarOffset: 1
   maxHealth: 3
@@ -460,3 +462,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3263193145813955883, guid: fae109589fef1714ebd144ad69d51b50, type: 3}
   m_PrefabInstance: {fileID: 8519216305284239017}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8893117553888831323 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 959518903400884722, guid: fae109589fef1714ebd144ad69d51b50, type: 3}
+  m_PrefabInstance: {fileID: 8519216305284239017}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

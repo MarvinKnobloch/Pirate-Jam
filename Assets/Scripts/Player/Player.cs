@@ -68,6 +68,8 @@ public class Player : MonoBehaviour
         EnergyUpdate(MaxEnergy);
         AddResource(ResourceType.Iron, 0);
         InvokeRepeating("EnergyRestoreTick", energyRestoreInterval, energyRestoreInterval);
+
+        if (health != null) health.dieEvent.AddListener(OnDeath);
     }
 
     void Update()
@@ -151,6 +153,10 @@ public class Player : MonoBehaviour
         }
 
         if (PlayerUI.Instance != null) PlayerUI.Instance.ResourceUIUpdate(Iron, Copper, Wood);
+    }
+    private void OnDeath()
+    {
+        PlayerUI.Instance.gameOverObj.SetActive(true);
     }
 
 }

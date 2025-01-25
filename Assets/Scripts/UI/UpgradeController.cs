@@ -40,6 +40,7 @@ public class UpgradeController : MonoBehaviour
             if (upgradeSlots[slotNumber].gameObject.activeSelf == false)
             {
                 upgradeSlots[slotNumber].gameObject.SetActive(true);
+                upgradeSlots[slotNumber].gameObject.transform.SetAsFirstSibling();
                 activeSlots++;
             }
             yield return null;

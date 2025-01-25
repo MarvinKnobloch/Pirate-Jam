@@ -15,6 +15,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private GameObject aoeVisualBullet;
     private Vector3 endPosition;
     private Vector3 lastPosition;
+    private float bulletSpeed;
     private float currentSpeed;
     private float distance;
     private float startHeight;
@@ -51,6 +52,7 @@ public class Projectile : MonoBehaviour
         direction = _direction;
 
         StatsUpdate();
+
         Destroy(gameObject, projectile.timeToDestroy);
     }
     public void SetProjectileAOE(Abilities aby, Vector2 startPosi, Vector2 endPosi)
@@ -60,21 +62,22 @@ public class Projectile : MonoBehaviour
         endPosition = endPosi;
         direction = ((Vector2)endPosi - (Vector2)transform.position).normalized;
 
+        StatsUpdate();
+
         distance = Vector2.Distance(endPosi, startPosi);
 
         startHeight = transform.position.z;
-        currentSpeed = projectile.speed * (1 + distance / distance * 3);
+        currentSpeed = bulletSpeed * (1 + distance / distance * 3);
         maxHeight = projectile.maxBulletHeight; //distance / 3;
         bulletLifeTime = distance / currentSpeed;
         currentLifeTime = bulletLifeTime;
 
-        StatsUpdate();
         Destroy(gameObject, projectile.timeToDestroy);
     }
     private void StatsUpdate()
     {
         if (projectile.damage != 0) damage = projectile.damage
-            + Upgrades.Instance.DamageUpgradeCalculation(projectile.damageUpgrade.type, projectile.damageUpgrade.percentage)
+            + Upgrades.Instance.DamageUpgradeCalculation(projectile.damage, projectile.damageUpgrade.type, projectile.damageUpgrade.percentage)
             + Mathf.RoundToInt(AbilityUpgradeController.Instance.DamageUpgrade);
         if (projectile.aoeRange != 0) aoeSize = projectile.aoeRange
             * Upgrades.Instance.AoeSizeCalculation(projectile.aoeSizeUpgrade.type, projectile.aoeSizeUpgrade.percentage)
@@ -83,7 +86,7 @@ public class Projectile : MonoBehaviour
 
     private void StraightMovement()
     {
-        transform.Translate(direction * projectile.speed * Time.deltaTime, Space.World);
+        transform.Translate(direction * bulletSpeed * Time.deltaTime, Space.World);
         transform.right = direction;
     }
     private void CurveMovement()
@@ -129,10 +132,10 @@ public class Projectile : MonoBehaviour
     }
     private void DealSingleDamage(GameObject obj)
     {
-        if (obj.transform.parent.TryGetComponent(out Health parentHealth))
+        if (obj.transform.parent.TryGetComponent(out EnemyController enemyController))
         {
-            if (projectile.damage != 0) parentHealth.TakeDamage(damage);
-            if (projectile.heal != 0) parentHealth.Heal(projectile.heal + Mathf.RoundToInt(AbilityUpgradeController.Instance.HealUpgrade));
+            EnemyInteraction(enemyController);
+            // if (projectile.heal != 0) parentHealth.Heal(projectile.heal + Mathf.RoundToInt(AbilityUpgradeController.Instance.HealUpgrade));
         }
 
         if (projectile.createArea)
@@ -148,11 +151,24 @@ public class Projectile : MonoBehaviour
 
         foreach (Collider2D enemy in cols)
         {
-            if (enemy.gameObject.transform.parent.TryGetComponent(out Health parentHealth))
+            if (enemy.gameObject.transform.parent.TryGetComponent(out EnemyController enemyController))
             {
-                if (projectile.damage != 0) parentHealth.TakeDamage(damage);
-
+                EnemyInteraction(enemyController);
             }
+        }
+    }
+
+    private void EnemyInteraction(EnemyController enemyController)
+    {
+        if (projectile.damage != 0) enemyController.health.TakeDamage(damage);
+
+        if (projectile.slow)
+        {
+            enemyController.DoSlow(projectile.slowStrength - Upgrades.Instance.SlowCalculation(), projectile.slowDuration);
+        }
+        if (projectile.stun)
+        {
+            enemyController.DoStun(Upgrades.Instance.StunCalculation(projectile.stunDuration));
         }
     }
 }

@@ -41,6 +41,8 @@ public class SpawnDirector : MonoBehaviour
 
     void SpawnEnemy(Spawnable spawnable)
     {
+        if (Player.Instance == null) return;
+
         var spawnPosition = SpawnUtil.GetSpawnPointAroundTarget(
             (Vector2)_player.transform.position,
             spawnable.SpawnMagnitude

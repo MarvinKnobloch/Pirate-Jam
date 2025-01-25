@@ -21,6 +21,11 @@ MonoBehaviour:
   maxBulletHeight: 0
   multipleProjectiles: 0
   multiShotAngle: 0
+  slow: 0
+  slowStrength: 0.6
+  slowDuration: 0
+  stun: 0
+  stunDuration: 0
   timeToDestroy: 5
   hitLayer:
     serializedVersion: 2
@@ -30,10 +35,7 @@ MonoBehaviour:
   areaPrefab: {fileID: 4328325964248613563, guid: 8de2ef56c9f90b843b5de23516614297, type: 3}
   damageUpgrade:
     type: 4
-    percentage: 10
+    percentage: 50
   aoeSizeUpgrade:
     type: 7
-    percentage: 200
-  slowUpgrade:
-    type: 0
-    percentage: 0
+    percentage: 100
