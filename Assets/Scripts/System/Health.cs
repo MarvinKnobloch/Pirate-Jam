@@ -78,7 +78,7 @@ public class Health : MonoBehaviour
         if (amount == 0) return;
 
         Value += amount;
-        Debug.Log(Value);
+        //Debug.Log(amount);
 
         if (gameObject == Player.Instance.gameObject) Player.Instance.HealthUIUpdate();
         else

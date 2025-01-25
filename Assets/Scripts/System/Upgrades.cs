@@ -151,7 +151,7 @@ namespace UpgradeSystem
         }
         public int HealCalculation(int baseHeal, float percentage)
         {
-            return baseHeal + Mathf.RoundToInt(healthUpgradeValue * (percentage * 0.01f)) + Mathf.RoundToInt(AbilityUpgradeController.Instance.HealUpgrade);
+            return baseHeal + Mathf.RoundToInt(healUpgradeValue * (percentage * 0.01f)) + Mathf.RoundToInt(AbilityUpgradeController.Instance.HealUpgrade);
         }
         public int LifeStealCalculation(int baseLifesteal, float percentage)
         {

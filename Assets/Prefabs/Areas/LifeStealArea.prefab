@@ -112,9 +112,9 @@ MonoBehaviour:
   slowStrength: 0.6
   stunDuration: 0
   healAmount: 3
-  healScaling: 75
+  healScaling: 50
   lifeStealAmount: 1
-  lifeStealScaling: 75
+  lifeStealScaling: 40
   hitLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384

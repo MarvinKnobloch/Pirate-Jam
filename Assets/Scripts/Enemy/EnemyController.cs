@@ -89,7 +89,7 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator Stun()
     {
-        Debug.Log(_stunDuration);
+        //Debug.Log(_stunDuration);
         _isStunned = true;
         health.HealthBarImage.color = Color.gray;
         yield return new WaitForSeconds(_stunDuration);
