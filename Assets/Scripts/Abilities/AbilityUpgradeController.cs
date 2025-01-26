@@ -30,7 +30,7 @@ public class AbilityUpgradeController : MonoBehaviour
     {
         if (_abilityLevel < 3)
         {
-            if (Player.Instance.SubtractResources(new() { { ResourceType.Iron, 4 * _abilityLevel } }))
+            if (Player.Instance.SubtractResources(new() { { ResourceType.Wood, 4 * _abilityLevel } }))
             {
                 _abilityLevel++;
                 return true;
@@ -40,7 +40,7 @@ public class AbilityUpgradeController : MonoBehaviour
         {
             if (
                 Player.Instance.SubtractResources(new() {
-                    { ResourceType.Iron, _abilityLevel },
+                    { ResourceType.Wood, _abilityLevel },
                     { ResourceType.Copper, 4 * _abilityLevel }
                 })
             )
@@ -53,9 +53,9 @@ public class AbilityUpgradeController : MonoBehaviour
         {
             if (
                 Player.Instance.SubtractResources(new() {
-                    { ResourceType.Iron, _abilityLevel },
+                    { ResourceType.Wood, _abilityLevel },
                     { ResourceType.Copper, _abilityLevel },
-                    { ResourceType.Wood, _abilityLevel }
+                    { ResourceType.Gold, _abilityLevel }
                 })
             )
             {
@@ -71,7 +71,7 @@ public class AbilityUpgradeController : MonoBehaviour
     {
         if (_upgradeLevel < 6)
         {
-            if (Player.Instance.SubtractResources(new() { { ResourceType.Iron, 4 * _abilityLevel } }))
+            if (Player.Instance.SubtractResources(new() { { ResourceType.Wood, 4 * _abilityLevel } }))
             {
                 _upgradeLevel++;
                 return true;
@@ -81,7 +81,7 @@ public class AbilityUpgradeController : MonoBehaviour
         {
             if (
                 Player.Instance.SubtractResources(new() {
-                    { ResourceType.Iron, _abilityLevel },
+                    { ResourceType.Wood, _abilityLevel },
                     { ResourceType.Copper, 4 * _abilityLevel }
                 })
             )
@@ -94,9 +94,9 @@ public class AbilityUpgradeController : MonoBehaviour
         {
             if (
                 Player.Instance.SubtractResources(new() {
-                    { ResourceType.Iron, _abilityLevel },
+                    { ResourceType.Wood, _abilityLevel },
                     { ResourceType.Copper, _abilityLevel },
-                    { ResourceType.Wood, _abilityLevel }
+                    { ResourceType.Gold, _abilityLevel }
                 })
             )
             {

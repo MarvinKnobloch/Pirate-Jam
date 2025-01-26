@@ -983,6 +983,7 @@ GameObject:
   - component: {fileID: 7884405535910626959}
   - component: {fileID: 1830285978334597292}
   - component: {fileID: 6743383782582095121}
+  - component: {fileID: 3800791396682951109}
   m_Layer: 5
   m_Name: TooltipWindow
   m_TagString: Untagged
@@ -1051,6 +1052,29 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!223 &3800791396682951109
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308665694399802522}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 6
+  m_TargetDisplay: 0
 --- !u!1 &1411278351495303676
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,7 +1302,7 @@ GameObject:
   - component: {fileID: 6518830851627916616}
   - component: {fileID: 4581013729472102667}
   m_Layer: 5
-  m_Name: WoodText
+  m_Name: GoldText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1331,7 +1355,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Wood:'
+  m_text: 'Gold:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3026,7 +3050,7 @@ GameObject:
   - component: {fileID: 2847423342879019667}
   - component: {fileID: 6958009790129388298}
   m_Layer: 5
-  m_Name: IronText
+  m_Name: WoodText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3079,7 +3103,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Iron:'
+  m_text: 'Wood:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3433,7 +3457,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1005696281508677853
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4009,7 +4033,7 @@ GameObject:
   - component: {fileID: 3000191128315631338}
   - component: {fileID: 5045908248918231502}
   m_Layer: 5
-  m_Name: IronValue
+  m_Name: WoodValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4145,7 +4169,7 @@ GameObject:
   - component: {fileID: 572587161626528876}
   - component: {fileID: 7516619915572599024}
   m_Layer: 5
-  m_Name: WoodValue
+  m_Name: GoldValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4882,7 +4906,7 @@ GameObject:
   - component: {fileID: 1394301709790511118}
   - component: {fileID: 9048638648753553599}
   m_Layer: 5
-  m_Name: WoodBackground
+  m_Name: GoldBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5601,7 +5625,7 @@ GameObject:
   - component: {fileID: 1694398120230953231}
   - component: {fileID: 9004686222359182113}
   m_Layer: 5
-  m_Name: IronBackground
+  m_Name: WoodBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

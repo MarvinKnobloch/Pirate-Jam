@@ -1,44 +1,131 @@
-using System.Linq;
+
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AbilityMenuController : MonoBehaviour
 {
-    public Abilities[] AbilityMapping;
+    [SerializeField] private Abilities startAbility;
+    [SerializeField] private int maxAbilities;
+    private int newAbilityIndex;
 
-    public void UnlockAbility(GameObject caller)
+    [Space]
+    [SerializeField] private GameObject abilityGridPrefab;
+    private GameObject healAbiltiesGrid;
+    private GameObject tier1AbiltiesGrid;
+    private GameObject tier2AbiltiesGrid;
+    private GameObject tier3AbiltiesGrid;
+
+    private List<AbilityMenuEntry> allEntries = new List<AbilityMenuEntry>(); 
+
+    [SerializeField] private Abilities[] healAbilities;
+    [SerializeField] private Abilities[] tier1Abilities;
+    [SerializeField] private Abilities[] tier2Abilities;
+    [SerializeField] private Abilities[] tier3Abilities;
+
+    private void Start()
     {
-        if (!caller.TryGetComponent<AbilityMenuEntry>(out var abilityEntry))
+        healAbiltiesGrid = transform.GetChild(0).GetChild(0).gameObject;
+        tier1AbiltiesGrid = transform.GetChild(0).GetChild(1).gameObject;
+        tier2AbiltiesGrid = transform.GetChild(0).GetChild(2).gameObject;
+        tier3AbiltiesGrid = transform.GetChild(0).GetChild(3).gameObject;
+
+        for (int i = 0; i < healAbilities.Length; i++)
         {
-            Debug.Log("You fucked up mate. Add a AbilityMenuEntry component to the button");
-            return;
+            CreatePrefab(healAbiltiesGrid, healAbilities[i]);
         }
 
-        var ability = AbilityMapping.ElementAtOrDefault(abilityEntry.AbilityIndex);
-
-        if (ability != null)
+        for (int r = 0; r < tier1Abilities.Length; r++)
         {
-            if (AbilityUpgradeController.Instance.PurchaseAbility())
-            {
-                Player.Instance.abilities.Add(ability);
-                PlayerUI.Instance.cooldownController.ActivateCooldownObj(Player.Instance.abilities.Count - 1);
-                Destroy(caller);
-            }
+            CreatePrefab(tier1AbiltiesGrid, tier1Abilities[r]);
+        }
+
+        for (int t = 0; t < tier2Abilities.Length; t++)
+        {
+            CreatePrefab(tier2AbiltiesGrid, tier2Abilities[t]);
+        }
+        for(int u = 0;  u < tier3Abilities.Length; u++)
+        {
+            CreatePrefab(tier3AbiltiesGrid, tier3Abilities[u]);
         }
     }
-
-    public void UpgradeAbility(GameObject caller)
+    private void CreatePrefab(GameObject grid, Abilities ability)
     {
-        if (!caller.TryGetComponent<AbilityMenuEntry>(out var abilityEntry))
+        GameObject prefab = Instantiate(abilityGridPrefab, grid.transform);
+
+        prefab.GetComponent<TooltipWindow>().ability = ability;
+
+        AbilityMenuEntry abilityMenuEntry = prefab.GetComponent<AbilityMenuEntry>();
+        abilityMenuEntry.ability = ability;
+        abilityMenuEntry.abilityMenuController = this;
+        abilityMenuEntry.abilitySlot = -1;
+
+        if(ability == startAbility)
         {
-            Debug.Log("You fucked up mate. Add a AbilityMenuEntry component to the button");
-            return;
+            abilityMenuEntry.gotAbility = true;
+            abilityMenuEntry.abilitySlot = newAbilityIndex;
+            newAbilityIndex++;
         }
 
-        var ability = AbilityMapping.ElementAtOrDefault(abilityEntry.AbilityIndex);
+        abilityMenuEntry.PrefabUpdate();
+        abilityMenuEntry.CostsUpdate();
 
-        if (ability != null)
+        allEntries.Add(abilityMenuEntry);
+    }
+    public void BuyUpgradeAbility(AbilityMenuEntry abilityMenuEntry)
+    {
+        if (abilityMenuEntry.ability == null) return;
+
+        if (abilityMenuEntry.gotAbility == false)
         {
-            AbilityUpgradeController.Instance.UpgradeAbility(abilityEntry.AbilityIndex);
+            if (newAbilityIndex >= maxAbilities)
+            {
+                Debug.Log("Got 8 Abilties");
+                return; 
+            }
+            //Buy
+            if (PurchaseAbility(abilityMenuEntry))
+            {
+                Player.Instance.abilities.Add(abilityMenuEntry.ability);
+                abilityMenuEntry.abilitySlot = newAbilityIndex;
+                abilityMenuEntry.gotAbility = true;
+                abilityMenuEntry.currentAbilityLvl++;
+                abilityMenuEntry.PrefabUpdate();
+                PlayerUI.Instance.cooldownController.ActivateCooldownObj(Player.Instance.abilities.Count - 1);
+
+                newAbilityIndex++;
+
+                CostsUpdate();
+            }
+        }
+        else
+        {
+            //Upgrade
+            if (PurchaseAbility(abilityMenuEntry))
+            {
+                Debug.Log("upgrade");
+            }
+        }
+
+    }
+    public bool PurchaseAbility(AbilityMenuEntry abilityMenuEntry)
+    {
+        if (Player.Instance.SubtractResources(new() {          
+                    { ResourceType.Wood, abilityMenuEntry.ability.upgradeCosts[abilityMenuEntry.currentAbilityLvl].wood },
+                    { ResourceType.Copper, abilityMenuEntry.ability.upgradeCosts[abilityMenuEntry.currentAbilityLvl].copper },
+                    { ResourceType.Gold, abilityMenuEntry.ability.upgradeCosts[abilityMenuEntry.currentAbilityLvl].gold }
+            })
+        )
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private void CostsUpdate()
+    {
+        for (int i = 0; i < allEntries.Count; i++)
+        {
+            allEntries[i].CostsUpdate();
         }
     }
 }

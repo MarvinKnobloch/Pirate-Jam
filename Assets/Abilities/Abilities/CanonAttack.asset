@@ -20,3 +20,24 @@ MonoBehaviour:
   projectileObj: {fileID: 11400000, guid: ef51ecce8a8f07641b06f06079621c67, type: 2}
   Description: Shot a bullet on your current mouse position that deals area damage
     and stuns enemies.
+  maxLevel: 5
+  damageUpgradeValue: 1
+  areaUpgradeValue: 0
+  healUpgradeValue: 0
+  lifestealUpgradeValue: 0
+  upgradeCosts:
+  - wood: 5
+    cooper: 0
+    gold: 0
+  - wood: 5
+    cooper: 0
+    gold: 0
+  - wood: 5
+    cooper: 0
+    gold: 0
+  - wood: 5
+    cooper: 0
+    gold: 0
+  - wood: 5
+    cooper: 0
+    gold: 0

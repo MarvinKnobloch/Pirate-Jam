@@ -28,7 +28,7 @@ public class GatherResource : MonoBehaviour
 
 public enum ResourceType
 {
-    Iron,
+    Wood,
     Copper,
-    Wood
+    Gold
 }

@@ -19,3 +19,24 @@ MonoBehaviour:
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: ee0bf7287c67e104e9a9bdf526fd9c91, type: 2}
   Description: Shot a piercing bullet which will damage and slow enemies
+  maxLevel: 5
+  damageUpgradeValue: 0
+  areaUpgradeValue: 0
+  healUpgradeValue: 0
+  lifestealUpgradeValue: 0
+  upgradeCosts:
+  - wood: 5
+    cooper: 0
+    gold: 0
+  - wood: 5
+    cooper: 0
+    gold: 0
+  - wood: 5
+    cooper: 0
+    gold: 0
+  - wood: 5
+    cooper: 0
+    gold: 0
+  - wood: 5
+    cooper: 0
+    gold: 0

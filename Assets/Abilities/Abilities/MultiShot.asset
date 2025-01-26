@@ -19,3 +19,24 @@ MonoBehaviour:
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: c22419fff0f5a8d4083ae2751eb1d569, type: 2}
   Description: Shot multiple bullets.
+  maxLevel: 5
+  damageUpgradeValue: 0
+  areaUpgradeValue: 0
+  healUpgradeValue: 0
+  lifestealUpgradeValue: 0
+  upgradeCosts:
+  - wood: 5
+    cooper: 0
+    gold: 0
+  - wood: 5
+    cooper: 0
+    gold: 0
+  - wood: 5
+    cooper: 0
+    gold: 0
+  - wood: 5
+    cooper: 0
+    gold: 0
+  - wood: 5
+    cooper: 0
+    gold: 0

@@ -24,9 +24,9 @@ public class Player : MonoBehaviour
     [NonSerialized] public Health health;
 
     [Header("Resources")]
-    public int Iron = 0;
-    public int Copper = 0;
     public int Wood = 0;
+    public int Copper = 0;
+    public int Gold = 0;
 
     public int CurrentEnergy
     {
@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
     {
         HealthUIUpdate();
         EnergyUpdate(MaxEnergy);
-        AddResource(ResourceType.Iron, 0);
+        AddResource(ResourceType.Wood, 0);
         InvokeRepeating("EnergyRestoreTick", energyRestoreInterval, energyRestoreInterval);
 
         if (health != null) health.dieEvent.AddListener(OnDeath);
@@ -141,18 +141,18 @@ public class Player : MonoBehaviour
     {
         switch (type)
         {
-            case ResourceType.Iron:
-                Iron += amount;
+            case ResourceType.Wood:
+                Wood += amount;
                 break;
             case ResourceType.Copper:
                 Copper += amount;
                 break;
-            case ResourceType.Wood:
-                Wood += amount;
+            case ResourceType.Gold:
+                Gold += amount;
                 break;
         }
 
-        if (PlayerUI.Instance != null) PlayerUI.Instance.ResourceUIUpdate(Iron, Copper, Wood);
+        if (PlayerUI.Instance != null) PlayerUI.Instance.ResourceUIUpdate(Wood, Copper, Gold);
     }
 
     public bool SubtractResources(Dictionary<ResourceType, int> resources)
@@ -161,14 +161,14 @@ public class Player : MonoBehaviour
         {
             switch (resource.Key)
             {
-                case ResourceType.Iron:
-                    if (Iron < resource.Value) return false;
+                case ResourceType.Wood:
+                    if (Wood < resource.Value) return false;
                     break;
                 case ResourceType.Copper:
                     if (Copper < resource.Value) return false;
                     break;
-                case ResourceType.Wood:
-                    if (Wood < resource.Value) return false;
+                case ResourceType.Gold:
+                    if (Gold < resource.Value) return false;
                     break;
             }
         }
@@ -177,19 +177,19 @@ public class Player : MonoBehaviour
         {
             switch (resource.Key)
             {
-                case ResourceType.Iron:
-                    Iron -= resource.Value;
+                case ResourceType.Wood:
+                    Wood -= resource.Value;
                     break;
                 case ResourceType.Copper:
                     Copper -= resource.Value;
                     break;
-                case ResourceType.Wood:
-                    Wood -= resource.Value;
+                case ResourceType.Gold:
+                    Gold -= resource.Value;
                     break;
             }
         }
 
-        if (PlayerUI.Instance != null) PlayerUI.Instance.ResourceUIUpdate(Iron, Copper, Wood);
+        if (PlayerUI.Instance != null) PlayerUI.Instance.ResourceUIUpdate(Wood, Copper, Gold);
         return true;
     }
 

@@ -12,10 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770166c160678bc4a914ec5e804298d8, type: 3}
   m_Name: PosionArea
   m_EditorClassIdentifier: 
-  AbilityName: PoisionArea
+  AbilityName: Poison Area
   AbilityID: 7
   AbilityCost: 1
   AbilityCooldown: 3
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 0ee895928fab28d48add608fa18040ce, type: 2}
   Description: Shot a bullet which will react a poison area on the ground.
+  maxLevel: 5
+  damageUpgradeValue: 0
+  areaUpgradeValue: 0
+  healUpgradeValue: 0
+  lifestealUpgradeValue: 0
+  upgradeCosts:
+  - wood: 5
+    copper: 0
+    gold: 0
+  - wood: 5
+    copper: 0
+    gold: 0
+  - wood: 5
+    copper: 0
+    gold: 0
+  - wood: 5
+    copper: 0
+    gold: 0
+  - wood: 5
+    copper: 0
+    gold: 0

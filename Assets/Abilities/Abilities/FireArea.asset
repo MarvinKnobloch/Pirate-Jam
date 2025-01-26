@@ -19,3 +19,24 @@ MonoBehaviour:
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 098975787fb0cff4aa69ab60af1b4ad9, type: 2}
   Description: Shot a bullet which will react a fire area on the ground.
+  maxLevel: 5
+  damageUpgradeValue: 0
+  areaUpgradeValue: 0
+  healUpgradeValue: 0
+  lifestealUpgradeValue: 0
+  upgradeCosts:
+  - wood: 5
+    cooper: 0
+    gold: 0
+  - wood: 5
+    cooper: 0
+    gold: 0
+  - wood: 5
+    cooper: 0
+    gold: 0
+  - wood: 5
+    cooper: 0
+    gold: 0
+  - wood: 5
+    cooper: 0
+    gold: 0

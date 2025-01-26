@@ -20,7 +20,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject confirmController;
     [SerializeField] private Button confirmButton;
     [SerializeField] private TextMeshProUGUI confirmText;
-    [SerializeField] private AbilityMenuController _abilityMenu;
+    [SerializeField] private GameObject _abilityMenu;
 
     private void Awake()
     {
@@ -70,6 +70,7 @@ public class MenuController : MonoBehaviour
             if (PlayerUI.Instance.upgradeController.GetComponent<UpgradeController>().upgradeSelectionGrid.activeSelf == true) return;
             if (_abilityMenu.gameObject.activeSelf == true)
             {
+                PlayerUI.Instance.tooltipController.HideTooltip();
                 _abilityMenu.gameObject.SetActive(false);
                 EndPause();
             }
@@ -103,6 +104,7 @@ public class MenuController : MonoBehaviour
         }
         else
         {
+            PlayerUI.Instance.tooltipController.HideTooltip();
             _abilityMenu.gameObject.SetActive(false);
             EndPause();
         }
