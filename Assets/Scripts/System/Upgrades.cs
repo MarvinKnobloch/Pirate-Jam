@@ -136,7 +136,7 @@ namespace UpgradeSystem
         }
         public float AoeSizeCalculation(float percentage)
         {
-            return 1 + aoeSizeUpgradeValue + AbilityUpgradeController.Instance.AOERangeUpgrade * (percentage * 0.0001f);
+            return 1 + aoeSizeUpgradeValue * (percentage * 0.0001f); //AbilityUpgradeController.Instance.AOERangeUpgrade 
         }
         public float SlowCalculation()
         {

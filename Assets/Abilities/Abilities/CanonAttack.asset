@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770166c160678bc4a914ec5e804298d8, type: 3}
   m_Name: CanonAttack
   m_EditorClassIdentifier: 
-  AbilityName: Canon
+  AbilityName: Canon Bullet
   AbilityID: 2
   AbilityCost: 1
   AbilityCooldown: 5
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: ef51ecce8a8f07641b06f06079621c67, type: 2}
+  Description: Shot a bullet on your current mouse position that deals area damage
+    and stuns enemies.

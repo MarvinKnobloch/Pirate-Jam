@@ -18,3 +18,4 @@ MonoBehaviour:
   AbilityCooldown: 3
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: c22419fff0f5a8d4083ae2751eb1d569, type: 2}
+  Description: Shot multiple bullets.

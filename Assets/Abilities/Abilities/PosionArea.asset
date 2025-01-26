@@ -18,3 +18,4 @@ MonoBehaviour:
   AbilityCooldown: 3
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 0ee895928fab28d48add608fa18040ce, type: 2}
+  Description: Shot a bullet which will react a poison area on the ground.

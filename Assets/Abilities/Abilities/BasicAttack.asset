@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770166c160678bc4a914ec5e804298d8, type: 3}
   m_Name: BasicAttack
   m_EditorClassIdentifier: 
-  AbilityName: BasicAttack
+  AbilityName: Basic Attack
   AbilityID: 1
   AbilityCost: 1
   AbilityCooldown: 0
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 1752d0a6e386bfc4dbc780fa5c868ef7, type: 2}
+  Description: Shot a single bullet that deals damage to enemies.

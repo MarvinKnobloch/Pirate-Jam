@@ -6,30 +6,30 @@ public class AreaAbility : MonoBehaviour
 {
     [SerializeField] private AreaType areaCollider;
     [SerializeField] Vector2 areaSize;
-    [SerializeField] private float aoeSizeScaling;
+    public float aoeSizeScaling;
 
     [Header("Damage")]
-    [SerializeField] private int damageAmount;
+    public int damageAmount;
     [SerializeField] private Upgrades.UpgradeType damageType;
-    [SerializeField] private float damageScaling;
-    [SerializeField] private float lifeTime;
-    [SerializeField] private float tickInterval;
+    public float damageScaling;
+    public float lifeTime;
+    public float tickInterval;
 
     [Header("Slow, Range 1 = Normal Movement Speed")]
-    [SerializeField] private float slowDuration;
+    public float slowDuration;
     [Range(0.6f, 1)]
-    [SerializeField] private float slowStrength;
+    public float slowStrength;
 
     [Header("Stun")]
-    [SerializeField] private float stunDuration;
+    public float stunDuration;
 
     [Header("Heal")]
-    [SerializeField] private int healAmount;
-    [SerializeField] private float healScaling;
+    public int healAmount;
+    public float healScaling;
 
     [Header("LifeSteal")]
-    [SerializeField] private int lifeStealAmount;
-    [SerializeField] private float lifeStealScaling;
+    public int lifeStealAmount;
+    public float lifeStealScaling;
 
     [Header("Other")]
     [SerializeField] private LayerMask hitLayer;
