@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UpgradeSystem;
 
 public class TooltipWindow : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -29,15 +30,18 @@ public class TooltipWindow : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         text.text += Name();
         text.text += Discription();
         text.text += Damage();
-        text.text += Cooldown();
-        text.text += Costs();
+        text.text += Size(ability.projectileObj.aoeSizeScaling);
         text.text += Utility(ability.projectileObj.slowDuration, ability.projectileObj.slowStrength, ability.projectileObj.stunDuration);
+        text.text += Healing(ability.projectileObj.healAmount, ability.projectileObj.lifeStealAmount, ability.projectileObj.healScaling, ability.projectileObj.lifeStealScaling);
+
         if(ability.projectileObj.areaPrefab != null) text.text += Area();
-        text.text += Scaling();
+
+        PlayerUI.Instance.tooltipController.energyText.text = ability.AbilityCost.ToString();
+        PlayerUI.Instance.tooltipController.cooldownText.text = ability.AbilityCooldown.ToString();
     }
     private string Name()
     {
-        return "<b><u>" + ability.AbilityName + "</u></b>\n";
+        return "<b><u>" + ability.AbilityName + "</u></b>\n\n";
     }
     private string Discription()
     {
@@ -48,26 +52,50 @@ public class TooltipWindow : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (ability.projectileObj.damage != 0)
         {
             string text = string.Empty;
-            if (ability.projectileObj.damageType == UpgradeSystem.Upgrades.UpgradeType.Damage) text = "Damage Type: Normal\n";
+            if (ability.projectileObj.damageType == Upgrades.UpgradeType.Damage) text = "Damage Type: Normal\n";
             else text = "Damage Type: Damage over time\n";
-            text += "Damage: <color=green>" + ability.projectileObj.damage + "</color>\n";
+            text += "Damage: <color=green>" + Upgrades.Instance.DamageUpgradeCalculation(ability.projectileObj.damage, ability.projectileObj.damageType, ability.projectileObj.damageScaling) + 
+                     "</color> (<color=yellow>" + ability.projectileObj.damageScaling + "</color>%)\n";
             return text;
         }
         else return "Damage: <color=green>" + 0 + "</color>\n";
     }
-    private string Cooldown()
+    private string Size(float scaling)
     {
-        return "Cooldown: <color=green>" +ability.AbilityCooldown + "</color> Seconds\n";
-    }
-    private string Costs()
-    {
-        return "Costs: <color=green>" +ability.AbilityCost + "</color> Energy \n";
+        string text = string.Empty;
+        if (scaling != 0) text += "Area Scaling: (<color=yellow>" + scaling + "</color>%)\n";
+
+        return text;
     }
     private string Utility(float slowDuration, float slowStrength, float stunDuration)
     {
         string text = string.Empty;
-        if(slowDuration > 0) text += "Slow: <color=green>" + (1 - slowStrength) * 100 + "</color>% Duration: <color=green>" + slowDuration + "</color> seconds\n";
-        if (stunDuration > 0) text += "Stun: <color=green>" + stunDuration + "</color> seconds\n";
+        if (slowDuration > 0)
+        {
+            slowStrength -= Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.Slow) * 0.01f;
+            text += "Slow: <color=green>" + (1 - slowStrength) * 100 + "</color>% Duration: <color=green>" + slowDuration + "</color> seconds\n"; 
+        }
+        if (stunDuration > 0)
+        {
+            stunDuration = Upgrades.Instance.StunCalculation(stunDuration);
+            text += "Stun: <color=green>" + stunDuration + "</color> seconds\n";
+        }
+
+        return text;
+    }
+    private string Healing(int healAmount, int lifestealAmount, float healScaling, float lifestealScaling)
+    {
+        string text = string.Empty;
+        if (healAmount > 0)
+        {
+            healAmount = Upgrades.Instance.HealCalculation(healAmount, healScaling);
+            text += "Minion Heal: <color=green>" + healAmount + "</color> (<color=yellow>" + healScaling + "</color>%)\n";
+        }
+        if (lifestealAmount > 0)
+        {
+            lifestealAmount = Upgrades.Instance.LifeStealCalculation(lifestealAmount, lifestealScaling);
+            text += "Lifesteal: <color=green>" + lifestealAmount + "</color> (<color=yellow>" + lifestealScaling + "</color>%)\n"; 
+        }
 
         return text;
     }
@@ -76,16 +104,15 @@ public class TooltipWindow : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         AreaAbility areaAbility = ability.projectileObj.areaPrefab.GetComponent<AreaAbility>();
         string text = string.Empty;
         text = "\nArea: Damage over time\n";
-        text += "Damage: <color=green>" + areaAbility.damageAmount + "</color>\n";
+        text += "Damage: <color=green>" + Upgrades.Instance.DamageUpgradeCalculation(areaAbility.damageAmount, areaAbility.damageType, areaAbility.damageScaling) + "</color> " +
+                "(<color=yellow>" + areaAbility.damageScaling + "</color>%)\n";
         text += "Damage interval: <color=green>" + areaAbility.tickInterval + "</color> seconds\n";
         text += "Lifetime: <color=green>" + areaAbility.lifeTime + "</color> seconds\n";
+        text += Size(areaAbility.aoeSizeScaling);
         text += Utility(areaAbility.slowDuration, areaAbility.slowStrength, areaAbility.stunDuration);
+        text += Healing(areaAbility.healAmount, areaAbility.lifeStealAmount, areaAbility.healScaling, areaAbility.lifeStealScaling);
 
         return text;
 
-    }
-    private string Scaling()
-    {
-        return string.Empty;
     }
 }

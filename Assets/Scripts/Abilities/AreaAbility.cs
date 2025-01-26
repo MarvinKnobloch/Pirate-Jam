@@ -10,7 +10,7 @@ public class AreaAbility : MonoBehaviour
 
     [Header("Damage")]
     public int damageAmount;
-    [SerializeField] private Upgrades.UpgradeType damageType;
+    public Upgrades.UpgradeType damageType;
     public float damageScaling;
     public float lifeTime;
     public float tickInterval;

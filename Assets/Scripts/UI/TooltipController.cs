@@ -8,6 +8,8 @@ public class TooltipController : MonoBehaviour
     private GameObject tooltipWindow;
     private RectTransform tooltipRect;
     [NonSerialized] public TextMeshProUGUI tooltipText;
+    public TextMeshProUGUI energyText;
+    public TextMeshProUGUI cooldownText;
 
     private float rectHeightMultiplier = 0.25f;
 
@@ -21,6 +23,9 @@ public class TooltipController : MonoBehaviour
         tooltipText.text = string.Empty;
 
         tooltipRect = tooltipWindow.GetComponent<RectTransform>();
+
+        energyText.text = string.Empty;
+        cooldownText.text = string.Empty;
 
     }
     public void WindowEnable()
@@ -52,6 +57,8 @@ public class TooltipController : MonoBehaviour
     public void HideTooltip()
     {
         tooltipText.text = string.Empty;
+        energyText.text = string.Empty;
+        cooldownText.text = string.Empty;
         tooltipWindow.SetActive(false);
     }
 }
