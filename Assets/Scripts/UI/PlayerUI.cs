@@ -10,6 +10,7 @@ public class PlayerUI : MonoBehaviour
     public CooldownController cooldownController;
     public ExpController expController;
     public GameObject gameOverObj;
+    public TooltipController tooltipController;
 
     [Header("Health")]
     public Image healthBar;

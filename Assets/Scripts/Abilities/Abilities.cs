@@ -9,6 +9,9 @@ public class Abilities : ScriptableObject
     public float AbilityCooldown;
     public float AbilityTime;
     public ProjectileObj projectileObj;
+
+    [Space]
+    [TextArea][SerializeField] public string Description;
 }
 
 
