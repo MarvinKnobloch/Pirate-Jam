@@ -20,24 +20,8 @@ MonoBehaviour:
   projectileObj: {fileID: 11400000, guid: 8f41d9cdaec451842a74d59538c34686, type: 2}
   Description: Shot 3 explosive bullets which will deal aoe damage and slow down
     enemies.
-  maxLevel: 5
-  damageUpgradeValue: 5
-  areaUpgradeValue: 0
+  abilityTier: 1
+  damageUpgradeValue: 3
+  areaUpgradeValue: 0.1
   healUpgradeValue: 0
   lifestealUpgradeValue: 0
-  upgradeCosts:
-  - wood: 5
-    cooper: 0
-    gold: 0
-  - wood: 5
-    cooper: 0
-    gold: 0
-  - wood: 5
-    cooper: 0
-    gold: 0
-  - wood: 5
-    cooper: 0
-    gold: 0
-  - wood: 5
-    cooper: 0
-    gold: 0

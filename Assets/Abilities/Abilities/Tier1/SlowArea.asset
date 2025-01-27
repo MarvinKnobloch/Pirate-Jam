@@ -10,33 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 770166c160678bc4a914ec5e804298d8, type: 3}
-  m_Name: PosionArea
+  m_Name: SlowArea
   m_EditorClassIdentifier: 
-  AbilityName: Poison Area
-  AbilityID: 7
-  AbilityCost: 1
+  AbilityName: Slow Area
+  AbilityID: 14
+  AbilityCost: 2
   AbilityCooldown: 3
   AbilityTime: 0.1
-  projectileObj: {fileID: 11400000, guid: 0ee895928fab28d48add608fa18040ce, type: 2}
-  Description: Shot a bullet which will react a poison area on the ground.
-  maxLevel: 5
+  projectileObj: {fileID: 11400000, guid: 34922bc3a3602a84398e165d69c6d295, type: 2}
+  Description: Shot a bullet which will create a slow area on the ground.
+  abilityTier: 0
   damageUpgradeValue: 1
-  areaUpgradeValue: 0.5
+  areaUpgradeValue: 0.2
   healUpgradeValue: 0
   lifestealUpgradeValue: 0
-  upgradeCosts:
-  - wood: 5
-    copper: 0
-    gold: 0
-  - wood: 5
-    copper: 0
-    gold: 0
-  - wood: 5
-    copper: 0
-    gold: 0
-  - wood: 5
-    copper: 0
-    gold: 0
-  - wood: 5
-    copper: 0
-    gold: 0

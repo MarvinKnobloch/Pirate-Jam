@@ -108,7 +108,7 @@ MonoBehaviour:
   damageScaling: 50
   lifeTime: 2
   tickInterval: 0.5
-  slowDuration: 1
+  slowDuration: 0
   slowStrength: 0.9
   stunDuration: 0
   healAmount: 0

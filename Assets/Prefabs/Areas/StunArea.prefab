@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 187706106325157534}
   - component: {fileID: 3813151337508659804}
   m_Layer: 0
-  m_Name: PoisionArea
+  m_Name: StunArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.3301887, b: 0.0105660595, a: 1}
+  m_Color: {r: 0.03137255, g: 0.6039216, b: 0.972549, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,16 +101,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaCollider: 1
-  areaSize: {x: 2, y: 4}
-  aoeSizeScaling: 100
-  damageAmount: 2
+  areaSize: {x: 1.5, y: 8}
+  aoeSizeScaling: 80
+  damageAmount: 1
   damageType: 4
-  damageScaling: 50
-  lifeTime: 3
+  damageScaling: 20
+  lifeTime: 4
   tickInterval: 1
-  slowDuration: 1.5
-  slowStrength: 0.9
-  stunDuration: 0
+  slowDuration: 0
+  slowStrength: 0.6
+  stunDuration: 0.7
   healAmount: 0
   healScaling: 0
   lifeStealAmount: 0

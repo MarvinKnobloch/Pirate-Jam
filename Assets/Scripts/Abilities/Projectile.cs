@@ -46,9 +46,6 @@ public class Projectile : MonoBehaviour
                 case ProjectileType.piercing:
                     StraightMovement();
                     break;
-                case ProjectileType.damageOverTime:
-                    StraightMovement();
-                    break;
             }
         }
     }
@@ -138,28 +135,28 @@ public class Projectile : MonoBehaviour
                 case ProjectileType.piercing:
                     DealSingleDamage(collision.gameObject);
                     break;
-                case ProjectileType.damageOverTime:
-                    DealDamageOverTime(collision.gameObject);
-                    Destroy(gameObject);
-                    break;
             }
         }
     }
     private void DealSingleDamage(GameObject obj)
     {
-        if (obj.transform.parent.TryGetComponent(out EnemyController enemyController))
+        if (projectile.damageType == Upgrades.UpgradeType.DamageOverTime) DealDamageOverTime(obj);
+        else
         {
-            EnemyInteraction(enemyController);
-        }
-        else if (obj.transform.parent.TryGetComponent(out NPCController nPCController))
-        {
-            if (projectile.healAmount != 0) NPCHeal(nPCController);
-        }
+            if (obj.transform.parent.TryGetComponent(out EnemyController enemyController))
+            {
+                EnemyInteraction(enemyController);
+            }
+            else if (obj.transform.parent.TryGetComponent(out NPCController nPCController))
+            {
+                if (projectile.healAmount != 0) NPCHeal(nPCController);
+            }
 
-        if (projectile.createArea)
-        {
-            GameObject area = Instantiate(projectile.areaPrefab, transform.position, transform.rotation);
-            area.GetComponent<AreaAbility>().SetValues(abilitySlot);
+            if (projectile.createArea)
+            {
+                GameObject area = Instantiate(projectile.areaPrefab, transform.position, transform.rotation);
+                area.GetComponent<AreaAbility>().SetValues(abilitySlot);
+            }
         }
     }
 

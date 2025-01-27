@@ -55,7 +55,4 @@ public class ProjectileObj : ScriptableObject
     aoe,
     explosion,
     piercing,
-    damageOverTime,
-    summon,
-
 }

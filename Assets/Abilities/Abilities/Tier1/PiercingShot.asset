@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 770166c160678bc4a914ec5e804298d8, type: 3}
-  m_Name: LifeStealArea
+  m_Name: PiercingShot
   m_EditorClassIdentifier: 
-  AbilityName: Lifesteal Area
-  AbilityID: 9
+  AbilityName: Piercing Shot
+  AbilityID: 4
   AbilityCost: 1
-  AbilityCooldown: 4
+  AbilityCooldown: 3
   AbilityTime: 0.1
-  projectileObj: {fileID: 11400000, guid: ae9c957a8dbad4f428db287f3618e0b1, type: 2}
-  Description: Shot a bullet which will react a lifesteal area on the ground.
-  abilityTier: 1
-  damageUpgradeValue: 0
+  projectileObj: {fileID: 11400000, guid: ee0bf7287c67e104e9a9bdf526fd9c91, type: 2}
+  Description: Shot a piercing bullet which will damage and slow enemies
+  abilityTier: 0
+  damageUpgradeValue: 3
   areaUpgradeValue: 0
   healUpgradeValue: 0
   lifestealUpgradeValue: 0
