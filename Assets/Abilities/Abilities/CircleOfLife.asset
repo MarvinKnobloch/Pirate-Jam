@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 770166c160678bc4a914ec5e804298d8, type: 3}
-  m_Name: LifeStealArea
+  m_Name: CircleOfLife
   m_EditorClassIdentifier: 
-  AbilityName: Lifesteal Area
-  AbilityID: 9
-  AbilityCost: 1
-  AbilityCooldown: 4
+  AbilityName: Circle of Life
+  AbilityID: 12
+  AbilityCost: 3
+  AbilityCooldown: 5
   AbilityTime: 0.1
-  projectileObj: {fileID: 11400000, guid: ae9c957a8dbad4f428db287f3618e0b1, type: 2}
-  Description: Shot a bullet which will react a lifesteal area on the ground.
-  abilityTier: 1
-  damageUpgradeValue: 0
+  projectileObj: {fileID: 11400000, guid: 4c00215e64081624bba655b8504b6e30, type: 2}
+  Description: Creates a area which will heal minions and stun enemies
+  abilityTier: 0
+  damageUpgradeValue: 1
   areaUpgradeValue: 0
-  healUpgradeValue: 0
+  healUpgradeValue: 5
   lifestealUpgradeValue: 0

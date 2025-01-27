@@ -3,6 +3,7 @@ using System;
 using UnityEngine.Events;
 using UpgradeSystem;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Health : MonoBehaviour
 {
@@ -69,6 +70,7 @@ public class Health : MonoBehaviour
 
         if (Value <= 0)
         {
+            StopAllCoroutines();
             dieEvent?.Invoke();
             Destroy(gameObject);
         }
@@ -84,6 +86,20 @@ public class Health : MonoBehaviour
         else
         {
             EnemyHealthbarUpdate();
+        }
+    }
+    public void DamageOverTime(int amount, int maxTicks, float tickInterval)
+    {
+        StartCoroutine(StartDamageOverTime(amount, maxTicks, tickInterval));
+    }
+    IEnumerator StartDamageOverTime(int amount,int maxTicks, float tickInterval)
+    {
+        int currentticks = 0;
+        while(currentticks < maxTicks)
+        {
+            currentticks++;
+            TakeDamage(amount);
+            yield return new WaitForSeconds(tickInterval);
         }
     }
     private void EnemyHealthbarUpdate()

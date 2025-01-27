@@ -46,6 +46,9 @@ public class Projectile : MonoBehaviour
                 case ProjectileType.piercing:
                     StraightMovement();
                     break;
+                case ProjectileType.damageOverTime:
+                    StraightMovement();
+                    break;
             }
         }
     }
@@ -135,6 +138,10 @@ public class Projectile : MonoBehaviour
                 case ProjectileType.piercing:
                     DealSingleDamage(collision.gameObject);
                     break;
+                case ProjectileType.damageOverTime:
+                    DealDamageOverTime(collision.gameObject);
+                    Destroy(gameObject);
+                    break;
             }
         }
     }
@@ -171,6 +178,33 @@ public class Projectile : MonoBehaviour
                 if (projectile.healAmount != 0) NPCHeal(nPCController);
             }
         }
+
+        if (projectile.createArea)
+        {
+            GameObject area = Instantiate(projectile.areaPrefab, transform.position, transform.rotation);
+            area.GetComponent<AreaAbility>().SetValues(abilitySlot);
+        }
+    }
+    private void DealDamageOverTime(GameObject obj)
+    {
+        if (obj.transform.parent.TryGetComponent(out EnemyController enemyController))
+        {
+            if (projectile.damage != 0) enemyController.health.DamageOverTime(damage, projectile.damageOverTimeTicks, projectile.damageOverTimeInterval);
+
+            if (projectile.slowDuration > 0)
+            {
+                enemyController.DoSlow(projectile.slowStrength - Upgrades.Instance.SlowCalculation(), projectile.slowDuration);
+            }
+            if (projectile.stunDuration > 0)
+            {
+                enemyController.DoStun(Upgrades.Instance.StunCalculation(projectile.stunDuration));
+            }
+            if (projectile.lifeStealAmount > 0)
+            {
+                Player.Instance.health.Heal(lifeSteal);
+            }
+        }
+
 
         if (projectile.createArea)
         {

@@ -6871,7 +6871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1372176806791545031
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15905,7 +15905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.9019608}
+  m_Color: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -17930,14 +17930,34 @@ MonoBehaviour:
   healAbilities:
   - {fileID: 11400000, guid: c9257f5bb27dff049b0c95d37a889aad, type: 2}
   - {fileID: 11400000, guid: cd62c97446fb5844998d885112e14143, type: 2}
+  - {fileID: 11400000, guid: 17b6a235624155240a51bb9670a009b6, type: 2}
+  - {fileID: 11400000, guid: 61580d9f963f736498b1adc169763354, type: 2}
+  - {fileID: 11400000, guid: 05e067c388d0c1b45a92e55c4b45b277, type: 2}
   tier1Abilities:
   - {fileID: 11400000, guid: 263b1e16752a13f4bab2181ebf86ad97, type: 2}
   - {fileID: 11400000, guid: 59c3a181c8eebb44389eb6d1d7307bdb, type: 2}
+  - {fileID: 11400000, guid: 348e88d9d5e1c5e49ac1a5d2f5d939db, type: 2}
   tier2Abilities:
   - {fileID: 11400000, guid: 518bf22a6eb549b429f7f5bbb2d99744, type: 2}
   - {fileID: 11400000, guid: d976206bc70cbfd49934b5063aa269c3, type: 2}
-  tier3Abilities:
   - {fileID: 11400000, guid: e8d8035d098c2e5499279ffed915a42d, type: 2}
+  upgradeCosts:
+  - wood: 5
+    copper: 0
+    gold: 0
+  - wood: 10
+    copper: 0
+    gold: 0
+  - wood: 12
+    copper: 5
+    gold: 0
+  - wood: 15
+    copper: 8
+    gold: 0
+  - wood: 18
+    copper: 10
+    gold: 5
+  ressourceCostMultipler: 0.8
 --- !u!1 &8943856865770999621
 GameObject:
   m_ObjectHideFlags: 0

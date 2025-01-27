@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770166c160678bc4a914ec5e804298d8, type: 3}
+  m_Name: HealGranate
+  m_EditorClassIdentifier: 
+  AbilityName: Heal Granate
+  AbilityID: 10
+  AbilityCost: 2
+  AbilityCooldown: 5
+  AbilityTime: 0.1
+  projectileObj: {fileID: 11400000, guid: 2e020ee7007e4e540af787560bab7c89, type: 2}
+  Description: Lauch a lifesteal granate that heals minions and yourself
+  maxLevel: 5
+  damageUpgradeValue: 0
+  areaUpgradeValue: 0
+  healUpgradeValue: 2
+  lifestealUpgradeValue: 1
+  upgradeCosts:
+  - wood: 5
+    copper: 0
+    gold: 0
+  - wood: 5
+    copper: 0
+    gold: 0
+  - wood: 5
+    copper: 0
+    gold: 0
+  - wood: 5
+    copper: 0
+    gold: 0
+  - wood: 5
+    copper: 0
+    gold: 0

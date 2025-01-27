@@ -93,6 +93,9 @@ public class AbilityController : MonoBehaviour
             case ProjectileType.piercing:
                 ShootSingleBullet();
                 break;
+            case ProjectileType.damageOverTime:
+                ShootSingleBullet();
+                break;
         }
 
 

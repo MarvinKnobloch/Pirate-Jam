@@ -15,19 +15,17 @@ public class Abilities : ScriptableObject
     [TextArea][SerializeField] public string Description;
 
     [Space]
-    public int maxLevel;
+    public Tier abilityTier;
+    [NonSerialized] public int maxLevel = 5;
     public int damageUpgradeValue;
     public float areaUpgradeValue;
     public int healUpgradeValue;
     public int lifestealUpgradeValue;
-    public RessourceCosts[] upgradeCosts;
 
-    [Serializable]
-    public struct RessourceCosts
+    public enum Tier
     {
-        public int wood;
-        public int copper;
-        public int gold;
+        Tier1,
+        Tier2,
     }
 
 

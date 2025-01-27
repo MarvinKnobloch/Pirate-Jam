@@ -12,6 +12,8 @@ public class ProjectileObj : ScriptableObject
     public int damage;
     public Upgrades.UpgradeType damageType;
     public float damageScaling;
+    public int damageOverTimeTicks;
+    public float damageOverTimeInterval;
 
     [Header("AOE")]
     public float aoeRange;
@@ -53,7 +55,7 @@ public class ProjectileObj : ScriptableObject
     aoe,
     explosion,
     piercing,
-    heal,
+    damageOverTime,
     summon,
 
 }

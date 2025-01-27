@@ -1,6 +1,8 @@
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Playables;
 using UnityEngine;
 
 public class AbilityMenuController : MonoBehaviour
@@ -15,21 +17,24 @@ public class AbilityMenuController : MonoBehaviour
     private GameObject healAbiltiesGrid;
     private GameObject tier1AbiltiesGrid;
     private GameObject tier2AbiltiesGrid;
-    private GameObject tier3AbiltiesGrid;
+    //private GameObject tier3AbiltiesGrid;
 
     private List<AbilityMenuEntry> allEntries = new List<AbilityMenuEntry>();
 
     [SerializeField] private Abilities[] healAbilities;
     [SerializeField] private Abilities[] tier1Abilities;
     [SerializeField] private Abilities[] tier2Abilities;
-    [SerializeField] private Abilities[] tier3Abilities;
+    //[SerializeField] private Abilities[] tier3Abilities;
+
+    public float ressourceCostMultipler;
+    public RessourceCosts[] upgradeCosts;
 
     private void Start()
     {
         healAbiltiesGrid = transform.GetChild(0).GetChild(0).gameObject;
         tier1AbiltiesGrid = transform.GetChild(0).GetChild(1).gameObject;
         tier2AbiltiesGrid = transform.GetChild(0).GetChild(2).gameObject;
-        tier3AbiltiesGrid = transform.GetChild(0).GetChild(3).gameObject;
+        //tier3AbiltiesGrid = transform.GetChild(0).GetChild(3).gameObject;
 
         for (int i = 0; i < healAbilities.Length; i++)
         {
@@ -45,10 +50,10 @@ public class AbilityMenuController : MonoBehaviour
         {
             CreatePrefab(tier2AbiltiesGrid, tier2Abilities[t]);
         }
-        for (int u = 0; u < tier3Abilities.Length; u++)
-        {
-            CreatePrefab(tier3AbiltiesGrid, tier3Abilities[u]);
-        }
+        //for (int u = 0; u < tier3Abilities.Length; u++)
+        //{
+        //    CreatePrefab(tier3AbiltiesGrid, tier3Abilities[u]);
+        //}
     }
     private void CreatePrefab(GameObject grid, Abilities ability)
     {
@@ -87,7 +92,7 @@ public class AbilityMenuController : MonoBehaviour
                 return;
             }
             //Buy
-            if (PurchaseAbility(abilityMenuEntry))
+            if (PurchaseAbility(abilityMenuEntry.currentAbilityLvl, (int)abilityMenuEntry.ability.abilityTier))
             {
                 Player.Instance.abilities.Add(abilityMenuEntry.ability);
                 abilityMenuEntry.abilitySlot = newAbilityIndex;
@@ -104,7 +109,7 @@ public class AbilityMenuController : MonoBehaviour
         else
         {
             //Upgrade
-            if (PurchaseAbility(abilityMenuEntry))
+            if (PurchaseAbility(abilityMenuEntry.currentAbilityLvl, (int)abilityMenuEntry.ability.abilityTier))
             {
                 AbilityController abilityController = Player.Instance.abilityController;
                 abilityController.slotUpgrades[abilityMenuEntry.abilitySlot].slotDamage += abilityMenuEntry.ability.damageUpgradeValue;
@@ -118,14 +123,31 @@ public class AbilityMenuController : MonoBehaviour
                 CostsUpdate();
             }
         }
+        
+        if(newAbilityIndex >= maxAbilities)
+        {
+            for (int i = 0; i < allEntries.Count; i++)
+            {
+                if (allEntries[i].abilitySlot == -1) allEntries[i].gameObject.SetActive(false);
+            }
+        } 
 
     }
-    public bool PurchaseAbility(AbilityMenuEntry abilityMenuEntry)
+    public bool PurchaseAbility(int abilityLevel, int tier)
     {
+        int woodCosts = upgradeCosts[abilityLevel].wood;
+        if(tier > 0) woodCosts = Mathf.RoundToInt(woodCosts * (ressourceCostMultipler * (tier + 1)));
+
+        int copperCosts = upgradeCosts[abilityLevel].copper;
+        if(tier > 0) copperCosts = Mathf.RoundToInt(copperCosts * (ressourceCostMultipler * (tier + 1)));
+
+        int goldCosts = upgradeCosts[abilityLevel].gold;
+        if (tier > 0) goldCosts = Mathf.RoundToInt(goldCosts * (ressourceCostMultipler * (tier + 1)));
+
         if (Player.Instance.SubtractResources(new() {
-                    { ResourceType.Wood, abilityMenuEntry.ability.upgradeCosts[abilityMenuEntry.currentAbilityLvl].wood },
-                    { ResourceType.Copper, abilityMenuEntry.ability.upgradeCosts[abilityMenuEntry.currentAbilityLvl].copper },
-                    { ResourceType.Gold, abilityMenuEntry.ability.upgradeCosts[abilityMenuEntry.currentAbilityLvl].gold }
+                    { ResourceType.Wood, woodCosts},
+                    { ResourceType.Copper, copperCosts},
+                    { ResourceType.Gold, goldCosts}
             })
         )
         {
@@ -138,17 +160,18 @@ public class AbilityMenuController : MonoBehaviour
     {
         for (int i = 0; i < allEntries.Count; i++)
         {
-            allEntries[i].CostsUpdate();
+            if (allEntries[i].gameObject.activeSelf == true) allEntries[i].CostsUpdate();
         }
     }
     private void ActivateCantClickLayer()
     {
         cantClickLayer.SetActive(true);
-        //StartCoroutine(DisabelCantClickLayer());
     }
-    //IEnumerator DisabelCantClickLayer()
-    //{
-    //    yield return null;
-    //    cantClickLayer.SetActive(false);
-    //}
+    [Serializable]
+    public struct RessourceCosts
+    {
+        public int wood;
+        public int copper;
+        public int gold;
+    }
 }
