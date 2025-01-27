@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
+using System.Collections;
 
 public class AbilityMenuEntry : MonoBehaviour
 {
@@ -32,11 +33,11 @@ public class AbilityMenuEntry : MonoBehaviour
 
         if(gotAbility == false)
         {
-            abilityNameText.text = "Buy: " + ability.AbilityName; // + " " + (currentAbilityLvl + 1);
+            abilityNameText.text = "Buy: <color=green>" + ability.AbilityName + "</color>";
         }
         else
         {
-            abilityNameText.text = "Upgrade: " + ability.AbilityName; // + " " + (currentAbilityLvl + 1);
+            abilityNameText.text = "Upgrade: <color=yellow>" + ability.AbilityName + " " + (currentAbilityLvl + 1) + "</color>";
         }
     }
     public void CostsUpdate()

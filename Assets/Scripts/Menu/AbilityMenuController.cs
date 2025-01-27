@@ -1,4 +1,5 @@
 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class AbilityMenuController : MonoBehaviour
     [SerializeField] private Abilities startAbility;
     [SerializeField] private int maxAbilities;
     private int newAbilityIndex;
+    public GameObject cantClickLayer;
 
     [Space]
     [SerializeField] private GameObject abilityGridPrefab;
@@ -15,7 +17,7 @@ public class AbilityMenuController : MonoBehaviour
     private GameObject tier2AbiltiesGrid;
     private GameObject tier3AbiltiesGrid;
 
-    private List<AbilityMenuEntry> allEntries = new List<AbilityMenuEntry>(); 
+    private List<AbilityMenuEntry> allEntries = new List<AbilityMenuEntry>();
 
     [SerializeField] private Abilities[] healAbilities;
     [SerializeField] private Abilities[] tier1Abilities;
@@ -43,7 +45,7 @@ public class AbilityMenuController : MonoBehaviour
         {
             CreatePrefab(tier2AbiltiesGrid, tier2Abilities[t]);
         }
-        for(int u = 0;  u < tier3Abilities.Length; u++)
+        for (int u = 0; u < tier3Abilities.Length; u++)
         {
             CreatePrefab(tier3AbiltiesGrid, tier3Abilities[u]);
         }
@@ -59,10 +61,11 @@ public class AbilityMenuController : MonoBehaviour
         abilityMenuEntry.abilityMenuController = this;
         abilityMenuEntry.abilitySlot = -1;
 
-        if(ability == startAbility)
+        if (ability == startAbility)
         {
-            abilityMenuEntry.gotAbility = true;
             abilityMenuEntry.abilitySlot = newAbilityIndex;
+            abilityMenuEntry.gotAbility = true;
+            abilityMenuEntry.currentAbilityLvl++;
             newAbilityIndex++;
         }
 
@@ -75,12 +78,13 @@ public class AbilityMenuController : MonoBehaviour
     {
         if (abilityMenuEntry.ability == null) return;
 
+        ActivateCantClickLayer();
         if (abilityMenuEntry.gotAbility == false)
         {
             if (newAbilityIndex >= maxAbilities)
             {
                 Debug.Log("Got 8 Abilties");
-                return; 
+                return;
             }
             //Buy
             if (PurchaseAbility(abilityMenuEntry))
@@ -118,7 +122,7 @@ public class AbilityMenuController : MonoBehaviour
     }
     public bool PurchaseAbility(AbilityMenuEntry abilityMenuEntry)
     {
-        if (Player.Instance.SubtractResources(new() {          
+        if (Player.Instance.SubtractResources(new() {
                     { ResourceType.Wood, abilityMenuEntry.ability.upgradeCosts[abilityMenuEntry.currentAbilityLvl].wood },
                     { ResourceType.Copper, abilityMenuEntry.ability.upgradeCosts[abilityMenuEntry.currentAbilityLvl].copper },
                     { ResourceType.Gold, abilityMenuEntry.ability.upgradeCosts[abilityMenuEntry.currentAbilityLvl].gold }
@@ -137,4 +141,14 @@ public class AbilityMenuController : MonoBehaviour
             allEntries[i].CostsUpdate();
         }
     }
+    private void ActivateCantClickLayer()
+    {
+        cantClickLayer.SetActive(true);
+        //StartCoroutine(DisabelCantClickLayer());
+    }
+    //IEnumerator DisabelCantClickLayer()
+    //{
+    //    yield return null;
+    //    cantClickLayer.SetActive(false);
+    //}
 }

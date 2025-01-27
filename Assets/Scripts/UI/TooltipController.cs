@@ -43,7 +43,7 @@ public class TooltipController : MonoBehaviour
         yield return null;
         tooltipWindow.transform.localScale = new Vector3(1, 1, 1);
         //Ist keine Formel, einfach ein bisschen ausprobiert was passt
-        float widthOffset = Screen.width / 7;
+        float widthOffset = Screen.width / 5;  //7
 
         float heigthoffset = ((Screen.height * 0.5f) - Input.mousePosition.y) / 90;              //Bestimmt ob das Fenster nach unten oder oben geht.
 
@@ -51,7 +51,7 @@ public class TooltipController : MonoBehaviour
         else heigthoffset -= tooltipRect.rect.height * rectHeightMultiplier;
 
         //links oder rechts von mousePosition          1.35f = 35% vom rechten Bildschirmrand
-        if (Screen.width / Input.mousePosition.x > 1.35f) tooltipWindow.transform.position = Input.mousePosition + new Vector3(widthOffset, heigthoffset, 0);
+        if (Screen.width / Input.mousePosition.x > 1.4f) tooltipWindow.transform.position = Input.mousePosition + new Vector3(widthOffset, heigthoffset, 0);
         else tooltipWindow.transform.position = Input.mousePosition + new Vector3(widthOffset * -1, heigthoffset, 0);
     }
     public void HideTooltip()

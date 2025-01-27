@@ -15,7 +15,12 @@ public class TooltipWindow : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         PlayerUI.Instance.tooltipController.WindowEnable();
         if (ability != null)
         {
-            SetText();
+            if (TryGetComponent(out AbilityMenuEntry abilityMenuEntry))
+            {
+                if (abilityMenuEntry.gotAbility) SetUpgrade();
+                else SetDiscription();
+            }
+            else SetDiscription();
             PlayerUI.Instance.tooltipController.SetWindowPosition();
         }
         else PlayerUI.Instance.tooltipController.HideTooltip();
@@ -25,7 +30,7 @@ public class TooltipWindow : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         PlayerUI.Instance.tooltipController.HideTooltip();
     }
-    private void SetText()
+    private void SetDiscription()
     {
         TextMeshProUGUI text = PlayerUI.Instance.tooltipController.tooltipText;
         text.text += Name();
@@ -37,6 +42,7 @@ public class TooltipWindow : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         if(ability.projectileObj.areaPrefab != null) text.text += Area();
 
+        
         PlayerUI.Instance.tooltipController.energyText.text = ability.AbilityCost.ToString();
         PlayerUI.Instance.tooltipController.cooldownText.text = ability.AbilityCooldown.ToString();
     }
@@ -116,5 +122,27 @@ public class TooltipWindow : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         return text;
 
+    }
+
+    private void SetUpgrade()
+    {
+        //TextMeshProUGUI energyText = PlayerUI.Instance.tooltipController.energyText;
+        //energyText.text = ability.AbilityCost.ToString();
+        //energyText.gameObject.SetActive(true);
+
+        //TextMeshProUGUI cooldownText = PlayerUI.Instance.tooltipController.cooldownText;
+        //cooldownText.text = ability.AbilityCooldown.ToString();
+        //cooldownText.gameObject.SetActive(true);
+
+        TextMeshProUGUI text = PlayerUI.Instance.tooltipController.tooltipText;
+        text.text += "<b><u>" + ability.AbilityName + "</u></b>\n\n";
+        text.text += "<u>Upgrade to level " + (GetComponent<AbilityMenuEntry>().currentAbilityLvl + 1) + "</u>\n";
+        text.text += "Damage: <color=green>+" + ability.damageUpgradeValue + "</color>\n";
+        text.text += "Area Size: <color=green>+" + ability.areaUpgradeValue + "%</color>\n";
+        text.text += "Minion Heal: <color=green>+" + ability.healUpgradeValue + "</color>\n";
+        text.text += "Lifesteal: <color=green>+" + ability.lifestealUpgradeValue + "</color>\n";
+
+        PlayerUI.Instance.tooltipController.energyText.text = ability.AbilityCost.ToString();
+        PlayerUI.Instance.tooltipController.cooldownText.text = ability.AbilityCooldown.ToString();
     }
 }
