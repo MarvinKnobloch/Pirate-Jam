@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
 
     [NonSerialized] public Controls controls;
-    private AbilityController abilityController;
+    [NonSerialized] public AbilityController abilityController;
 
     [Header("Energy")]
     [SerializeField] private int currentEnergy;

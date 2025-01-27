@@ -34,6 +34,8 @@ public class AreaAbility : MonoBehaviour
     [Header("Other")]
     [SerializeField] private LayerMask hitLayer;
 
+    private int abilitySlot;
+
 
     private enum AreaType
     {
@@ -46,16 +48,18 @@ public class AreaAbility : MonoBehaviour
         Destroy(gameObject, lifeTime);
         InvokeRepeating("SetAreaCollider", 0.1f, tickInterval);
     }
-    public void SetValues()
+    public void SetValues(int _abilitySlot)
     {
-        if (damageAmount != 0) damageAmount = Upgrades.Instance.DamageUpgradeCalculation(damageAmount, damageType, damageScaling);
-        if (healAmount != 0) healAmount = Upgrades.Instance.HealCalculation(healAmount, healScaling);
-        if (lifeStealAmount != 0) lifeStealAmount = Upgrades.Instance.LifeStealCalculation(lifeStealAmount, lifeStealScaling);
+        if (damageAmount != 0) damageAmount = Upgrades.Instance.DamageUpgradeCalculation(damageAmount, damageType, damageScaling, _abilitySlot);
+        if (healAmount != 0) healAmount = Upgrades.Instance.HealCalculation(healAmount, healScaling, _abilitySlot);
+        if (lifeStealAmount != 0) lifeStealAmount = Upgrades.Instance.LifeStealCalculation(lifeStealAmount, lifeStealScaling, _abilitySlot);
 
         float scaling = Upgrades.Instance.AoeSizeCalculation(aoeSizeScaling);
-        areaSize.x *= scaling;
-        areaSize.y *= scaling;
+        areaSize.x = (areaSize.x + Player.Instance.abilityController.slotUpgrades[_abilitySlot].slotArea) * scaling;
+        areaSize.y = (areaSize.y + Player.Instance.abilityController.slotUpgrades[_abilitySlot].slotArea) * scaling;
         transform.localScale = new Vector3(areaSize.x, areaSize.y, 1);
+
+        abilitySlot = _abilitySlot;
     }
     private void SetAreaCollider()
     {

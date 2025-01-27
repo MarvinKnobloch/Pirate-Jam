@@ -109,9 +109,9 @@ MonoBehaviour:
   energyRestoreAmount: 1
   abilities:
   - {fileID: 11400000, guid: 263b1e16752a13f4bab2181ebf86ad97, type: 2}
-  Iron: 0
-  Copper: 0
   Wood: 0
+  Copper: 0
+  Gold: 0
 --- !u!114 &8687104560363440044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +124,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff3f7258518308b44bec92dbfc7fa941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotUpgrades:
+  - slotDamage: 0
+    slotArea: 0
+    slotHeal: 0
+    slotLifesteal: 0
+  - slotDamage: 0
+    slotArea: 0
+    slotHeal: 0
+    slotLifesteal: 0
+  - slotDamage: 0
+    slotArea: 0
+    slotHeal: 0
+    slotLifesteal: 0
+  - slotDamage: 0
+    slotArea: 0
+    slotHeal: 0
+    slotLifesteal: 0
+  - slotDamage: 0
+    slotArea: 0
+    slotHeal: 0
+    slotLifesteal: 0
+  - slotDamage: 0
+    slotArea: 0
+    slotHeal: 0
+    slotLifesteal: 0
+  - slotDamage: 0
+    slotArea: 0
+    slotHeal: 0
+    slotLifesteal: 0
+  - slotDamage: 0
+    slotArea: 0
+    slotHeal: 0
+    slotLifesteal: 0
 --- !u!114 &7310719990948256121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,7 +173,6 @@ MonoBehaviour:
   HealthBarPermanent: 0
   HealthBarOffset: 1
   maxHealth: 100
-  currentHealth: 10
   dieEvent:
     m_PersistentCalls:
       m_Calls: []

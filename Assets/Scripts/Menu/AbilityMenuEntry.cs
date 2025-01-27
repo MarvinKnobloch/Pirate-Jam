@@ -41,6 +41,12 @@ public class AbilityMenuEntry : MonoBehaviour
     }
     public void CostsUpdate()
     {
+        if (currentAbilityLvl >= ability.maxLevel)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
         if (ability.upgradeCosts[currentAbilityLvl].wood == 0) woodCosts.gameObject.SetActive(false);
         else
         {

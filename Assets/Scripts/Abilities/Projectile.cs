@@ -5,13 +5,14 @@ using UpgradeSystem;
 
 public class Projectile : MonoBehaviour
 {
-    private Abilities ability;
+    private int abilitySlot;
     private ProjectileObj projectile;
     private Vector2 direction;
 
     //stats
     private int damage;
     private float aoeSize;
+    private int heal;
     private int lifeSteal;
 
     //AOE
@@ -48,24 +49,24 @@ public class Projectile : MonoBehaviour
             }
         }
     }
-    public void SetProjectileSingle(Abilities aby, Vector2 _direction)
+    public void SetProjectileSingle(Abilities aby, Vector2 _direction, int _abilitySlot)
     {
-        ability = aby;
         projectile = aby.projectileObj;
         direction = _direction;
+        abilitySlot = _abilitySlot;
 
-        StatsUpdate();
+        StatsUpdate(_abilitySlot);
 
         Destroy(gameObject, projectile.timeToDestroy);
     }
-    public void SetProjectileAOE(Abilities aby, Vector2 startPosi, Vector2 endPosi)
+    public void SetProjectileAOE(Abilities aby, Vector2 startPosi, Vector2 endPosi, int _abilitySlot)
     {
-        ability = aby;
         projectile = aby.projectileObj;
         endPosition = endPosi;
         direction = ((Vector2)endPosi - (Vector2)transform.position).normalized;
+        abilitySlot = _abilitySlot;
 
-        StatsUpdate();
+        StatsUpdate(_abilitySlot);
 
         distance = Vector2.Distance(endPosi, startPosi);
 
@@ -77,14 +78,18 @@ public class Projectile : MonoBehaviour
 
         Destroy(gameObject, projectile.timeToDestroy);
     }
-    private void StatsUpdate()
+    private void StatsUpdate(int _abilitySlot)
     {
-        if (projectile.damage != 0) damage = Upgrades.Instance.DamageUpgradeCalculation(projectile.damage, projectile.damageType, projectile.damageScaling);
-        if (projectile.aoeRange != 0) aoeSize = projectile.aoeRange * Upgrades.Instance.AoeSizeCalculation(projectile.aoeSizeScaling);
-        if (projectile.lifeStealAmount != 0) lifeSteal = Upgrades.Instance.LifeStealCalculation(projectile.lifeStealAmount, projectile.lifeStealScaling);
+        if (projectile.damage != 0) damage = Upgrades.Instance.DamageUpgradeCalculation(projectile.damage, projectile.damageType, projectile.damageScaling, _abilitySlot);
+        if (projectile.aoeRange != 0)
+        { 
+            aoeSize = (projectile.aoeRange + Player.Instance.abilityController.slotUpgrades[abilitySlot].slotArea) * Upgrades.Instance.AoeSizeCalculation(projectile.aoeSizeScaling);
+        }
+        if (projectile.healAmount != 0) heal = Upgrades.Instance.HealCalculation(projectile.healAmount, projectile.healScaling, _abilitySlot);
+        if (projectile.lifeStealAmount != 0) lifeSteal = Upgrades.Instance.LifeStealCalculation(projectile.lifeStealAmount, projectile.lifeStealScaling, _abilitySlot);
 
         float percentage = Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.BulletSpeed);
-        bulletSpeed = projectile.speed + (percentage * 0.01f * projectile.speed) + AbilityUpgradeController.Instance.SpeedUpgrade;
+        bulletSpeed = projectile.speed + (percentage * 0.01f * projectile.speed);
     }
 
     private void StraightMovement()
@@ -147,7 +152,7 @@ public class Projectile : MonoBehaviour
         if (projectile.createArea)
         {
             GameObject area = Instantiate(projectile.areaPrefab, transform.position, transform.rotation);
-            area.GetComponent<AreaAbility>().SetValues();
+            area.GetComponent<AreaAbility>().SetValues(abilitySlot);
         }
     }
 
@@ -170,7 +175,7 @@ public class Projectile : MonoBehaviour
         if (projectile.createArea)
         {
             GameObject area = Instantiate(projectile.areaPrefab, transform.position, transform.rotation);
-            area.GetComponent<AreaAbility>().SetValues();
+            area.GetComponent<AreaAbility>().SetValues(abilitySlot);
         }
     }
 
@@ -193,6 +198,6 @@ public class Projectile : MonoBehaviour
     }
     private void NPCHeal(NPCController nPCController)
     {
-        nPCController.health.Heal(Upgrades.Instance.HealCalculation(projectile.healAmount, projectile.healScaling));
+        nPCController.health.Heal(heal);
     }
 }

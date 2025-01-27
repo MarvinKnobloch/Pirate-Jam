@@ -102,7 +102,16 @@ public class AbilityMenuController : MonoBehaviour
             //Upgrade
             if (PurchaseAbility(abilityMenuEntry))
             {
-                Debug.Log("upgrade");
+                AbilityController abilityController = Player.Instance.abilityController;
+                abilityController.slotUpgrades[abilityMenuEntry.abilitySlot].slotDamage += abilityMenuEntry.ability.damageUpgradeValue;
+                abilityController.slotUpgrades[abilityMenuEntry.abilitySlot].slotArea += abilityMenuEntry.ability.areaUpgradeValue;
+                abilityController.slotUpgrades[abilityMenuEntry.abilitySlot].slotHeal += abilityMenuEntry.ability.healUpgradeValue;
+                abilityController.slotUpgrades[abilityMenuEntry.abilitySlot].slotLifesteal += abilityMenuEntry.ability.lifestealUpgradeValue;
+
+                abilityMenuEntry.currentAbilityLvl++;
+                abilityMenuEntry.PrefabUpdate();
+
+                CostsUpdate();
             }
         }
 

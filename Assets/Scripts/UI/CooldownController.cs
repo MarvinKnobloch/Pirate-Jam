@@ -51,6 +51,7 @@ public class CooldownController : MonoBehaviour
     {
         cooldownObj[slot].SetActive(true);
         cooldownObj[slot].GetComponent<TooltipWindow>().ability = Player.Instance.abilities[slot];
+        cooldownObj[slot].GetComponent<TooltipWindow>().abilitySlot = slot;
     }
     public void HotkeysUpdate()
     {

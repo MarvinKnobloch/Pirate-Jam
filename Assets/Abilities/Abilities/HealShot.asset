@@ -23,21 +23,21 @@ MonoBehaviour:
   maxLevel: 5
   damageUpgradeValue: 0
   areaUpgradeValue: 0
-  healUpgradeValue: 0
-  lifestealUpgradeValue: 0
+  healUpgradeValue: 1
+  lifestealUpgradeValue: 5
   upgradeCosts:
   - wood: 5
-    cooper: 0
+    copper: 0
     gold: 0
   - wood: 5
-    cooper: 0
+    copper: 0
     gold: 0
   - wood: 5
-    cooper: 0
+    copper: 0
     gold: 0
   - wood: 5
-    cooper: 0
+    copper: 0
     gold: 0
   - wood: 5
-    cooper: 0
+    copper: 0
     gold: 0

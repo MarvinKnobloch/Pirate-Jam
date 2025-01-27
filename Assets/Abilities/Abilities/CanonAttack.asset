@@ -22,22 +22,22 @@ MonoBehaviour:
     and stuns enemies.
   maxLevel: 5
   damageUpgradeValue: 1
-  areaUpgradeValue: 0
+  areaUpgradeValue: 0.1
   healUpgradeValue: 0
   lifestealUpgradeValue: 0
   upgradeCosts:
   - wood: 5
-    cooper: 0
+    copper: 0
     gold: 0
   - wood: 5
-    cooper: 0
+    copper: 0
     gold: 0
   - wood: 5
-    cooper: 0
+    copper: 0
     gold: 0
   - wood: 5
-    cooper: 0
+    copper: 0
     gold: 0
   - wood: 5
-    cooper: 0
+    copper: 0
     gold: 0

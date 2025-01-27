@@ -127,21 +127,20 @@ namespace UpgradeSystem
                     break;
             }
         }
-        public int DamageUpgradeCalculation(int baseDamage, UpgradeType upgradeType, float percentage)
+        public int DamageUpgradeCalculation(int baseDamage, UpgradeType upgradeType, float percentage, int abilitySlot)
         {
-            int finalDamage = baseDamage + Mathf.RoundToInt(Upgrades.Instance.GetUpgradeStat(upgradeType) * (percentage * 0.01f));
+            int damage = baseDamage + Player.Instance.abilityController.slotUpgrades[abilitySlot].slotDamage;
+            int finalDamage = damage + Mathf.RoundToInt(Upgrades.Instance.GetUpgradeStat(upgradeType) * (percentage * 0.01f));
             finalDamage += Mathf.RoundToInt(damagePercentageUpgradeValue * 0.01f * finalDamage);
-            finalDamage += Mathf.RoundToInt(AbilityUpgradeController.Instance.DamageUpgrade);
             return finalDamage;
         }
         public float AoeSizeCalculation(float percentage)
         {
-            return 1 + aoeSizeUpgradeValue * (percentage * 0.0001f); //AbilityUpgradeController.Instance.AOERangeUpgrade 
+            return 1 + aoeSizeUpgradeValue * (percentage * 0.0001f);
         }
         public float SlowCalculation()
         {
             float slow = GetUpgradeStat(UpgradeType.Slow) * 0.01f;
-            slow -= AbilityUpgradeController.Instance.SpeedReductionUpgrade;
             if (slow < 0.1f) slow = 0.1f;
             return slow;
         }
@@ -149,13 +148,15 @@ namespace UpgradeSystem
         {
             return stunDuration + (stunUpgradeValue * 0.01f * stunDuration);
         }
-        public int HealCalculation(int baseHeal, float percentage)
+        public int HealCalculation(int baseHeal, float percentage, int abilitySlot)
         {
-            return baseHeal + Mathf.RoundToInt(healUpgradeValue * (percentage * 0.01f)) + Mathf.RoundToInt(AbilityUpgradeController.Instance.HealUpgrade);
+            int heal = baseHeal + Player.Instance.abilityController.slotUpgrades[abilitySlot].slotHeal;
+            return heal + Mathf.RoundToInt(healUpgradeValue * (percentage * 0.01f));
         }
-        public int LifeStealCalculation(int baseLifesteal, float percentage)
+        public int LifeStealCalculation(int baseLifesteal, float percentage, int abilitySlot)
         {
-            return baseLifesteal + Mathf.RoundToInt(lifeStealUpgradeValue * (percentage * 0.01f));
+            int lifesteal = baseLifesteal + Player.Instance.abilityController.slotUpgrades[abilitySlot].slotLifesteal;
+            return lifesteal + Mathf.RoundToInt(lifeStealUpgradeValue * (percentage * 0.01f));
         }
 
 

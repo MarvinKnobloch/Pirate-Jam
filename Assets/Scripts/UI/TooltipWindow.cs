@@ -8,6 +8,7 @@ using UpgradeSystem;
 public class TooltipWindow : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Abilities ability;
+    public int abilitySlot;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -51,11 +52,12 @@ public class TooltipWindow : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if (ability.projectileObj.damage != 0)
         {
+            int damage = Upgrades.Instance.DamageUpgradeCalculation(ability.projectileObj.damage, ability.projectileObj.damageType, ability.projectileObj.damageScaling, abilitySlot);
             string text = string.Empty;
             if (ability.projectileObj.damageType == Upgrades.UpgradeType.Damage) text = "Damage Type: Normal\n";
             else text = "Damage Type: Damage over time\n";
-            text += "Damage: <color=green>" + Upgrades.Instance.DamageUpgradeCalculation(ability.projectileObj.damage, ability.projectileObj.damageType, ability.projectileObj.damageScaling) + 
-                     "</color> (<color=yellow>" + ability.projectileObj.damageScaling + "</color>%)\n";
+            text += "Damage: <color=green>" + damage + "</color> (<color=yellow>" + ability.projectileObj.damageScaling + "</color>%)\n";
+
             return text;
         }
         else return "Damage: <color=green>" + 0 + "</color>\n";
@@ -88,12 +90,12 @@ public class TooltipWindow : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         string text = string.Empty;
         if (healAmount > 0)
         {
-            healAmount = Upgrades.Instance.HealCalculation(healAmount, healScaling);
+            healAmount = Upgrades.Instance.HealCalculation(healAmount, healScaling, abilitySlot);
             text += "Minion Heal: <color=green>" + healAmount + "</color> (<color=yellow>" + healScaling + "</color>%)\n";
         }
         if (lifestealAmount > 0)
         {
-            lifestealAmount = Upgrades.Instance.LifeStealCalculation(lifestealAmount, lifestealScaling);
+            lifestealAmount = Upgrades.Instance.LifeStealCalculation(lifestealAmount, lifestealScaling, abilitySlot);
             text += "Lifesteal: <color=green>" + lifestealAmount + "</color> (<color=yellow>" + lifestealScaling + "</color>%)\n"; 
         }
 
@@ -104,7 +106,7 @@ public class TooltipWindow : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         AreaAbility areaAbility = ability.projectileObj.areaPrefab.GetComponent<AreaAbility>();
         string text = string.Empty;
         text = "\nArea: Damage over time\n";
-        text += "Damage: <color=green>" + Upgrades.Instance.DamageUpgradeCalculation(areaAbility.damageAmount, areaAbility.damageType, areaAbility.damageScaling) + "</color> " +
+        text += "Damage: <color=green>" + Upgrades.Instance.DamageUpgradeCalculation(areaAbility.damageAmount, areaAbility.damageType, areaAbility.damageScaling, abilitySlot) + "</color> " +
                 "(<color=yellow>" + areaAbility.damageScaling + "</color>%)\n";
         text += "Damage interval: <color=green>" + areaAbility.tickInterval + "</color> seconds\n";
         text += "Lifetime: <color=green>" + areaAbility.lifeTime + "</color> seconds\n";

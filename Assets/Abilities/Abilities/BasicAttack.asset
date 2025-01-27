@@ -26,17 +26,17 @@ MonoBehaviour:
   lifestealUpgradeValue: 0
   upgradeCosts:
   - wood: 5
-    cooper: 0
+    copper: 0
     gold: 0
   - wood: 10
-    cooper: 0
+    copper: 0
     gold: 0
   - wood: 15
-    cooper: 5
+    copper: 5
     gold: 0
   - wood: 20
-    cooper: 10
+    copper: 8
     gold: 0
   - wood: 20
-    cooper: 10
+    copper: 10
     gold: 5

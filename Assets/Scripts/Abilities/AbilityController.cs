@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,12 +11,15 @@ public class AbilityController : MonoBehaviour
     private Camera cam;
 
     private Abilities currentAbility;
+    private int abilitySlot;
     private AbilityState state;
     private float abilityTimer;
 
     private Vector3 mousePosi;
 
     private CooldownController cooldownController;
+
+    public SlotUpgrades[] slotUpgrades;
     private enum AbilityState
     {
         WaitForAbility,
@@ -49,20 +53,21 @@ public class AbilityController : MonoBehaviour
     }
 
 
-    public void CheckForAbility(Abilities ability, int abilitySlot)
+    public void CheckForAbility(Abilities ability, int _abilitySlot)
     {
         if (Player.Instance.CurrentEnergy < ability.AbilityCost) return;
         if (state == AbilityState.ExecuteAbility) return;
-        if (cooldownController != null) if (cooldownController.onCooldown[abilitySlot]) return;
+        if (cooldownController != null) if (cooldownController.onCooldown[_abilitySlot]) return;
 
         currentAbility = ability;
+        abilitySlot = _abilitySlot;
         abilityTimer = 0;
 
         if (cooldownController != null)
         {
             float cooldown = currentAbility.AbilityCooldown - (currentAbility.AbilityCooldown * Upgrades.Instance.GetUpgradeStat(UpgradeType.Cooldown) * 0.01f);
             if (cooldown <= 0) cooldown = 0;
-            cooldownController.CooldownStart(abilitySlot, cooldown);
+            cooldownController.CooldownStart(_abilitySlot, cooldown);
         }
         Player.Instance.EnergyUpdate(-ability.AbilityCost);
 
@@ -116,7 +121,7 @@ public class AbilityController : MonoBehaviour
         {
             bullet.transform.right = direction;
 
-            projectile.SetProjectileSingle(currentAbility, direction);
+            projectile.SetProjectileSingle(currentAbility, direction, abilitySlot);
         }
     }
     private void ShootAoeBullet()
@@ -136,7 +141,7 @@ public class AbilityController : MonoBehaviour
             {
                 float dist = Vector2.Distance(mousePosi, transform.position);
 
-                projectile.SetProjectileAOE(currentAbility, transform.position, mousePosi);
+                projectile.SetProjectileAOE(currentAbility, transform.position, mousePosi, abilitySlot);
             }
         }
     }
@@ -170,12 +175,20 @@ public class AbilityController : MonoBehaviour
                 bullet.transform.Rotate(0, 0, startAngle - i * shotAngle);
                 //direction = bullet.transform.right;
 
-                projectile.SetProjectileSingle(currentAbility, bullet.transform.right);
+                projectile.SetProjectileSingle(currentAbility, bullet.transform.right, abilitySlot);
             }
             if (currentAbility.projectileObj.mirrorAttack)
             {
                 CreateSingleBullet(bullet.transform.right * -1);
             }
         }
+    }
+    [Serializable]
+    public struct SlotUpgrades
+    {
+        public int slotDamage;
+        public float slotArea;
+        public int slotHeal;
+        public int slotLifesteal;
     }
 }
