@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UpgradeSystem;
 
@@ -41,7 +42,7 @@ public class ProjectileObj : ScriptableObject
     public float lifeStealScaling;
 
     [Header("Other")]
-    public float timeToDestroy;
+    public float timeToDestroy = 5;
     public LayerMask hitLayer;
     public bool mirrorAttack;
 

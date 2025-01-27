@@ -17,9 +17,9 @@ MonoBehaviour:
   projectileType: 0
   damage: 2
   damageType: 4
-  damageScaling: 10
+  damageScaling: 20
   damageOverTimeTicks: 5
-  damageOverTimeInterval: 2
+  damageOverTimeInterval: 1
   aoeRange: 0
   aoeSizeScaling: 0
   maxBulletHeight: 0

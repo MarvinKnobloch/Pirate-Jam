@@ -90,6 +90,8 @@ public class ExpController : MonoBehaviour
     }
     private void levelup()
     {
+        if (Player.Instance == null) return;
+
         playerCurrentLvL++;
 
         upgradeController.SetUpgradeSelection();

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4844b80c316a2094d91f85851f9fd637, type: 3}
   m_Name: StunShotProj
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 8356378035270633483, guid: 8dd1a97f2fb6bad48960114d9dace566, type: 3}
   speed: 4
   projectileType: 1
   damage: 1
@@ -32,7 +32,7 @@ MonoBehaviour:
   healScaling: 0
   lifeStealAmount: 0
   lifeStealScaling: 0
-  timeToDestroy: 0
+  timeToDestroy: 5
   hitLayer:
     serializedVersion: 2
     m_Bits: 128

@@ -32,7 +32,7 @@ MonoBehaviour:
   healScaling: 0
   lifeStealAmount: 0
   lifeStealScaling: 0
-  timeToDestroy: 0
+  timeToDestroy: 5
   hitLayer:
     serializedVersion: 2
     m_Bits: 128
