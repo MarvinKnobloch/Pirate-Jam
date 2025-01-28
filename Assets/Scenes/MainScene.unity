@@ -1254,7 +1254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6417470378537717934, guid: 26cf60b316ed7bd469c751c90430f594, type: 3}
       propertyPath: Gold
-      value: 1000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6417470378537717934, guid: 26cf60b316ed7bd469c751c90430f594, type: 3}
       propertyPath: Wood
@@ -1262,7 +1262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6417470378537717934, guid: 26cf60b316ed7bd469c751c90430f594, type: 3}
       propertyPath: Copper
-      value: 1000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6417470378537717934, guid: 26cf60b316ed7bd469c751c90430f594, type: 3}
       propertyPath: 'abilities.Array.data[0]'
@@ -1368,7 +1368,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 50, z: 1}
+  m_LocalScale: {x: 80, y: 80, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1574,6 +1574,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5361009383055650279, guid: d608c566c9eabaf4d91abf4328f0db3d, type: 3}
+      propertyPath: field of view
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 6842898013974413717, guid: d608c566c9eabaf4d91abf4328f0db3d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

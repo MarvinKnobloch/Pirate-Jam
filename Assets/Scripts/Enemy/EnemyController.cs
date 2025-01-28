@@ -75,6 +75,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
+            _rigidbody.linearVelocity = Vector2.zero;
             HandleAttack();
         }
     }

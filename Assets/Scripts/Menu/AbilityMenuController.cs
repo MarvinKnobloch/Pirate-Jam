@@ -2,15 +2,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.Playables;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UpgradeSystem;
 
 public class AbilityMenuController : MonoBehaviour
 {
+    private Controls controls;
     [SerializeField] private Abilities startAbility;
     [SerializeField] private int maxAbilities;
     private int newAbilityIndex;
     public GameObject cantClickLayer;
+    [SerializeField] private TextMeshProUGUI statsText;
 
     [Space]
     [SerializeField] private GameObject abilityGridPrefab;
@@ -24,17 +31,23 @@ public class AbilityMenuController : MonoBehaviour
     [SerializeField] private Abilities[] healAbilities;
     [SerializeField] private Abilities[] tier1Abilities;
     [SerializeField] private Abilities[] tier2Abilities;
-    //[SerializeField] private Abilities[] tier3Abilities;
 
     public float ressourceCostMultipler;
     public RessourceCosts[] upgradeCosts;
+
+    [Header("Player Abilities")]
+    [SerializeField] private GameObject playerAbilityGrid;
+    [SerializeField] private GameObject cooldownPrefab;
+    [SerializeField] private int cooldownPrefabCount;
+
+    private List<GameObject> playerAbilityObj = new List<GameObject>();
+    private List<TextMeshProUGUI> playerAbilityHotkey = new List<TextMeshProUGUI>();
 
     private void Start()
     {
         healAbiltiesGrid = transform.GetChild(0).GetChild(0).gameObject;
         tier1AbiltiesGrid = transform.GetChild(0).GetChild(1).gameObject;
         tier2AbiltiesGrid = transform.GetChild(0).GetChild(2).gameObject;
-        //tier3AbiltiesGrid = transform.GetChild(0).GetChild(3).gameObject;
 
         for (int i = 0; i < healAbilities.Length; i++)
         {
@@ -50,10 +63,28 @@ public class AbilityMenuController : MonoBehaviour
         {
             CreatePrefab(tier2AbiltiesGrid, tier2Abilities[t]);
         }
-        //for (int u = 0; u < tier3Abilities.Length; u++)
-        //{
-        //    CreatePrefab(tier3AbiltiesGrid, tier3Abilities[u]);
-        //}
+
+        controls = Keybindinputmanager.Controls;
+
+        //PLayerAbilities
+        for (int i = 0; i < cooldownPrefabCount; i++)
+        {
+            GameObject prefab = Instantiate(cooldownPrefab, playerAbilityGrid.transform);
+
+            //Set ability Image  prefab.GetComponent<Image>() = Player.Instance.abilities
+            playerAbilityObj.Add(prefab);
+            playerAbilityHotkey.Add(prefab.transform.GetChild(2).GetComponent<TextMeshProUGUI>());
+            prefab.SetActive(false);
+        }
+        for (int i = 0; i < Player.Instance.abilities.Count; i++)
+        {
+            playerAbilityObj[i].SetActive(true);
+            playerAbilityObj[i].GetComponent<TooltipWindow>().ability = Player.Instance.abilities[i];
+            playerAbilityObj[i].GetComponent<TooltipWindow>().abilitySlot = i;
+
+        }
+        HotkeysUpdate();
+
     }
     private void CreatePrefab(GameObject grid, Abilities ability)
     {
@@ -79,6 +110,27 @@ public class AbilityMenuController : MonoBehaviour
 
         allEntries.Add(abilityMenuEntry);
     }
+    public void SetStats()
+    {
+        statsText.text = string.Empty;
+        statsText.text += "\n\n";
+        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.PlayerHealth) + "\n";
+        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.MinionHealth) + "\n";
+        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.Damage) + "\n";
+        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.DamageOverTime) + "\n";
+        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.DamagePercentage) + "%\n";
+        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.AoeSize) + "%\n";
+        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.Slow) + "%\n";
+        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.Stun) + "%\n";
+        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.Heal) + "\n";
+        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.LifeSteal) + "\n";
+        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.GatherSpeed) + " seconds\n";
+        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.BulletSpeed) + "%\n";
+        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.ExpGain) + "%\n";
+        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.Cooldown) + "%\n";
+        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.MaxEnergy) + " seconds\n";
+        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.EnergyInterval) + " seconds\n";
+    }
     public void BuyUpgradeAbility(AbilityMenuEntry abilityMenuEntry)
     {
         if (abilityMenuEntry.ability == null) return;
@@ -99,9 +151,16 @@ public class AbilityMenuController : MonoBehaviour
                 abilityMenuEntry.gotAbility = true;
                 abilityMenuEntry.currentAbilityLvl++;
                 abilityMenuEntry.PrefabUpdate();
-                PlayerUI.Instance.cooldownController.ActivateCooldownObj(Player.Instance.abilities.Count - 1);
+
+                int slot = Player.Instance.abilities.Count - 1;
+                PlayerUI.Instance.cooldownController.ActivateCooldownObj(slot);
+                playerAbilityObj[slot].SetActive(true);
+                playerAbilityObj[slot].GetComponent<TooltipWindow>().ability = Player.Instance.abilities[slot];
+                playerAbilityObj[slot].GetComponent<TooltipWindow>().abilitySlot = slot;
 
                 newAbilityIndex++;
+
+                if (newAbilityIndex >= 4) tier2AbiltiesGrid.SetActive(true);
 
                 CostsUpdate();
             }
@@ -166,6 +225,17 @@ public class AbilityMenuController : MonoBehaviour
     private void ActivateCantClickLayer()
     {
         cantClickLayer.SetActive(true);
+    }
+    public void HotkeysUpdate()
+    {
+        playerAbilityHotkey[0].text = controls.Player.Ability1.GetBindingDisplayString();
+        playerAbilityHotkey[1].text = controls.Player.Ability2.GetBindingDisplayString();
+        playerAbilityHotkey[2].text = controls.Player.Ability3.GetBindingDisplayString();
+        playerAbilityHotkey[3].text = controls.Player.Ability4.GetBindingDisplayString();
+        playerAbilityHotkey[4].text = controls.Player.Ability5.GetBindingDisplayString();
+        playerAbilityHotkey[5].text = controls.Player.Ability6.GetBindingDisplayString();
+        playerAbilityHotkey[6].text = controls.Player.Ability7.GetBindingDisplayString();
+        playerAbilityHotkey[7].text = controls.Player.Ability8.GetBindingDisplayString();
     }
     [Serializable]
     public struct RessourceCosts

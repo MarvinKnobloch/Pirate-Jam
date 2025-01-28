@@ -7,7 +7,7 @@ using static UpgradeSystem.Upgrades;
 
 public class AbilityController : MonoBehaviour
 {
-    //private Controls controls;
+    [SerializeField] private Transform bulletSpawnPosition;
     private Camera cam;
 
     private Abilities currentAbility;
@@ -99,7 +99,7 @@ public class AbilityController : MonoBehaviour
     {
         if (currentAbility.projectileObj.multipleProjectiles < 2)
         {
-            Vector2 direction = ((Vector2)mousePosi - (Vector2)transform.position).normalized;
+            Vector2 direction = ((Vector2)mousePosi - (Vector2)bulletSpawnPosition.position).normalized;
             CreateSingleBullet(direction);
 
             if (currentAbility.projectileObj.mirrorAttack)
@@ -114,7 +114,7 @@ public class AbilityController : MonoBehaviour
     }
     private void CreateSingleBullet(Vector2 direction)
     {
-        GameObject bullet = Instantiate(currentAbility.projectileObj.prefab, transform.position, Quaternion.identity);
+        GameObject bullet = Instantiate(currentAbility.projectileObj.prefab, bulletSpawnPosition.position, Quaternion.identity);
         if (bullet.TryGetComponent(out Projectile projectile))
         {
             bullet.transform.right = direction;
@@ -133,13 +133,13 @@ public class AbilityController : MonoBehaviour
     }
     private void CreateAoeBullet(Vector3 mousePosi)
     {
-        GameObject bullet = Instantiate(currentAbility.projectileObj.prefab, transform.position, Quaternion.identity);
+        GameObject bullet = Instantiate(currentAbility.projectileObj.prefab, bulletSpawnPosition.position, Quaternion.identity);
         {
             if (bullet.TryGetComponent(out Projectile projectile))
             {
-                float dist = Vector2.Distance(mousePosi, transform.position);
+                float dist = Vector2.Distance(mousePosi, bulletSpawnPosition.position);
 
-                projectile.SetProjectileAOE(currentAbility, transform.position, mousePosi, abilitySlot);
+                projectile.SetProjectileAOE(currentAbility, bulletSpawnPosition.position, mousePosi, abilitySlot);
             }
         }
     }
@@ -161,11 +161,11 @@ public class AbilityController : MonoBehaviour
     }
     private void CreateMultiShotBullet(int count, float shotAngle, float startAngle)
     {
-        Vector2 direction = ((Vector2)mousePosi - (Vector2)transform.position).normalized;
+        Vector2 direction = ((Vector2)mousePosi - (Vector2)bulletSpawnPosition.position).normalized;
 
         for (int i = 0; i < count; i++)
         {
-            GameObject bullet = Instantiate(currentAbility.projectileObj.prefab, transform.position, Quaternion.identity);
+            GameObject bullet = Instantiate(currentAbility.projectileObj.prefab, bulletSpawnPosition.position, Quaternion.identity);
 
             if (bullet.TryGetComponent(out Projectile projectile))
             {

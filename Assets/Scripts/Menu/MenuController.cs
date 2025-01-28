@@ -100,6 +100,7 @@ public class MenuController : MonoBehaviour
         if (_abilityMenu.gameObject.activeSelf == false)
         {
             _abilityMenu.gameObject.SetActive(true);
+            _abilityMenu.GetComponentInParent<AbilityMenuController>().SetStats();
             PauseGame();
         }
         else
@@ -134,6 +135,7 @@ public class MenuController : MonoBehaviour
     {
         ingameMenu.SetActive(false);
         PlayerUI.Instance.cooldownController.HotkeysUpdate();
+        _abilityMenu.GetComponentInParent<AbilityMenuController>().HotkeysUpdate();
         EndPause();
     }
     public void SetRestartConfirm()
@@ -169,9 +171,6 @@ public class MenuController : MonoBehaviour
 
     private void PauseGame()
     {
-        //Cursor.lockState = CursorLockMode.None;
-        //Cursor.visible = true;
-
         gameIsPaused = true;
         Time.timeScale = 0;
 
