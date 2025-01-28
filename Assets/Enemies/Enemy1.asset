@@ -16,5 +16,6 @@ MonoBehaviour:
   MaxInstances: 8
   SpawnTickRate: 1
   SpawnInstancesPerTick: 4
-  SpawnMagnitude: 30
+  SpawnMinMagnitude: 38
+  SpawnMaxMagnitude: 40
   SpawnChance: 1

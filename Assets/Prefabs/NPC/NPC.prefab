@@ -67,7 +67,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.7
 --- !u!1 &6663886683702503038
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,6 +121,9 @@ MonoBehaviour:
   MoveSpeed: 2
   GatherAmount: 1
   GatherTime: 1
+  gatherLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &4375035516994118455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +140,6 @@ MonoBehaviour:
   HealthBarPermanent: 1
   HealthBarOffset: 1
   maxHealth: 10
-  currentHealth: 2
   dieEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -229,7 +231,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -247,7 +249,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 100
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -261,7 +263,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1001 &5672070139551814147
 PrefabInstance:
   m_ObjectHideFlags: 0

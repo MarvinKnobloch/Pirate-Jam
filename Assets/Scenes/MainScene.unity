@@ -1258,7 +1258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6417470378537717934, guid: 26cf60b316ed7bd469c751c90430f594, type: 3}
       propertyPath: Wood
-      value: 1000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6417470378537717934, guid: 26cf60b316ed7bd469c751c90430f594, type: 3}
       propertyPath: Copper

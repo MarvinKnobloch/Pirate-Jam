@@ -45,7 +45,7 @@ public class SpawnDirector : MonoBehaviour
 
         var spawnPosition = SpawnUtil.GetSpawnPointAroundTarget(
             (Vector2)_player.transform.position,
-            spawnable.SpawnMagnitude
+            Random.Range(spawnable.SpawnMinMagnitude, spawnable.SpawnMaxMagnitude)
         );
 
         var enemy = Instantiate(spawnable.InstancePrefab, spawnPosition, Quaternion.identity);

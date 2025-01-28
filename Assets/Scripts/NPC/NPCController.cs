@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UpgradeSystem;
 
@@ -15,6 +16,8 @@ public class NPCController : MonoBehaviour
     private Coroutine _gatherCoroutine;
 
     [NonSerialized] public Health health;
+
+    [SerializeField] private LayerMask gatherLayer;
 
     private void Awake()
     {
@@ -53,13 +56,21 @@ public class NPCController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.collider.GetComponent<GatherResource>() != null)
+        if (((1 << collision.gameObject.layer) & gatherLayer) != 0)
         {
             _isGathering = true;
         }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (((1 << collision.gameObject.layer) & gatherLayer) != 0)
+        {
+            _isGathering = false;
+        }
+    }
+
 
     IEnumerator DoGather()
     {

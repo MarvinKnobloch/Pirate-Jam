@@ -258,9 +258,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 1.31
   AttackDistance: 0.7
-  AttackCooldown: 2
+  AttackCooldown: 1.5
   AttackDamage: 2
   experienceGain: 12
+  _attackTimer: 0
+  _isAttacking: 0
 --- !u!114 &8265245240528079808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,7 +278,7 @@ MonoBehaviour:
   HealthBar: {fileID: 6589723892033796994}
   HealthBarPermanent: 0
   HealthBarOffset: 1
-  maxHealth: 13
+  maxHealth: 10
   dieEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -309,7 +311,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &5810476043483011221
 CircleCollider2D:
   m_ObjectHideFlags: 0

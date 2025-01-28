@@ -23,8 +23,8 @@ public class EnemyController : MonoBehaviour
     private CircleCollider2D _collider;
     private float targetUpdateTime;
     private GameObject nearestTarget;
-    private float _attackTimer = 0f;
-    private bool _isAttacking = false;
+    [SerializeField] private float _attackTimer = 0f;
+    [SerializeField] private bool _isAttacking = false;
     private float _maxMovementSpeed;
     private EnemyTargetDetector _targetDetector;
     private GameObject _attackTarget;
@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
 
     void OnEnable()
     {
-        _attackTimer = AttackCooldown;
+        _attackTimer = AttackCooldown * 0.5f;
         _maxMovementSpeed = MoveSpeed;
 
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -48,25 +48,6 @@ public class EnemyController : MonoBehaviour
         health = GetComponent<Health>();
         if (health != null) health.dieEvent.AddListener(OnDeath);
     }
-
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.collider.CompareTag("Player") || other.collider.CompareTag("NPC"))
-        {
-            _isAttacking = true;
-            _attackTarget = other.gameObject;
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.collider.CompareTag("Player") || other.collider.CompareTag("NPC"))
-        {
-            _isAttacking = false;
-            _attackTarget = null;
-        }
-    }
-
     void FixedUpdate()
     {
         if (!_isAttacking)
@@ -75,7 +56,6 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            _rigidbody.linearVelocity = Vector2.zero;
             HandleAttack();
         }
     }
@@ -124,6 +104,8 @@ public class EnemyController : MonoBehaviour
 
     private void HandleAttack()
     {
+        _rigidbody.linearVelocity = Vector2.zero;
+
         if (_isStunned) return;
         if (Player.Instance == null) return;
 
@@ -139,6 +121,8 @@ public class EnemyController : MonoBehaviour
         {
             _attackTimer -= Time.fixedDeltaTime;
         }
+
+        CheckForAttackTarget();
     }
 
     private void MoveToPlayerOrTarget()
@@ -149,12 +133,7 @@ public class EnemyController : MonoBehaviour
             return;
         }
 
-        targetUpdateTime += Time.fixedDeltaTime;
-        if (targetUpdateTime > 0.1f)
-        {
-            targetUpdateTime = 0;
-            nearestTarget = _targetDetector.Targets.ElementAtOrDefault(0);
-        }
+        CheckForAttackTarget();
 
         Vector3 targetPosition;
         if (nearestTarget != null)
@@ -169,9 +148,79 @@ public class EnemyController : MonoBehaviour
         var direction = (targetPosition - transform.position).normalized;
         _rigidbody.MovePosition(transform.position + MoveSpeed * Time.fixedDeltaTime * direction);
     }
+    private void CheckForAttackTarget()
+    {
+        targetUpdateTime += Time.fixedDeltaTime;
+        if (targetUpdateTime > 0.1f)
+        {
+            targetUpdateTime = 0;
+            nearestTarget = _targetDetector.Targets.ElementAtOrDefault(0);
+
+            if (nearestTarget != null)
+            {
+                _attackTarget = nearestTarget;
+                if (Vector2.Distance(_attackTarget.transform.position, transform.position) < 2)
+                {
+                    _isAttacking = true;
+                }
+                else
+                {
+                    _isAttacking = false;
+                }
+            }
+            else
+            {
+                _isAttacking = false;
+                _attackTarget = null;
+            }
+        }
+    }
     public void OnDeath()
     {
         PlayerUI.Instance.expController.PlayerGainExp(experienceGain);
         PlayerUI.Instance.KillCountUpdate();
     }
 }
+
+
+
+//private void OnCollisionEnter2D(Collision2D collision)
+//{
+//    if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("NPC"))
+//    {
+//        Debug.Log("attack");
+//        _isAttacking = true;
+//        _attackTarget = collision.gameObject;
+//    }
+//}
+//private void OnCollisionExit2D(Collision2D collision)
+//{
+//    if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("NPC"))
+//    {
+//        if (collision.gameObject == _attackTarget)
+//        {
+//            _isAttacking = false;
+//            _attackTarget = null;
+//        }
+//    }
+//}
+//private void OnTriggerEnter2D(Collider2D collision)
+//{
+//    if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("NPC"))
+//    {
+//        Debug.Log("attack");
+//        _isAttacking = true;
+//        _attackTarget = collision.gameObject;
+//    }
+//}
+//private void OnTriggerExit2D(Collider2D collision)
+//{
+//    if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("NPC"))
+//    {
+//        if (collision.gameObject == _attackTarget)
+//        {
+//            _isAttacking = false;
+//            _attackTarget = null;
+//        }
+//    }
+//}

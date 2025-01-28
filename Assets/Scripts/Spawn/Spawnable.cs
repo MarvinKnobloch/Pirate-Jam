@@ -7,6 +7,7 @@ public class Spawnable : ScriptableObject
     public int MaxInstances;
     public float SpawnTickRate;
     public int SpawnInstancesPerTick;
-    public int SpawnMagnitude;
+    public int SpawnMinMagnitude;
+    public int SpawnMaxMagnitude;
     public float SpawnChance;
 }

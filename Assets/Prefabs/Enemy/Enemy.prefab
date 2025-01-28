@@ -258,9 +258,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 2
   AttackDistance: 0.7
-  AttackCooldown: 2
+  AttackCooldown: 1.3
   AttackDamage: 1
   experienceGain: 10
+  _attackTimer: 0
+  _isAttacking: 0
 --- !u!114 &8265245240528079808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,7 +278,7 @@ MonoBehaviour:
   HealthBar: {fileID: 6589723892033796994}
   HealthBarPermanent: 0
   HealthBarOffset: 1
-  maxHealth: 8
+  maxHealth: 6
   dieEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -309,7 +311,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &5810476043483011221
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -317,7 +319,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8441325002812652694}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
