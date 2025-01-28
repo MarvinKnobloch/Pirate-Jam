@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5422c1ecafc3bc4b93ec9b6db349be2, type: 3}
-  m_Name: WoodResource
+  m_Name: SingleEnemy
   m_EditorClassIdentifier: 
-  InstancePrefab: {fileID: 6787278756199275497, guid: 1615606624ef6c44faa1b1e30cbebe1d, type: 3}
-  MaxInstances: 6
-  SpawnTickRate: 6
+  InstancePrefab: {fileID: 8441325002812652694, guid: 8722919351e9f84439ee67e976aa02e3, type: 3}
+  MaxInstances: 10
+  SpawnTickRate: 10
   SpawnInstancesPerTick: 1
-  SpawnMinMagnitude: 9
-  SpawnMaxMagnitude: 13
+  SpawnMinMagnitude: 38
+  SpawnMaxMagnitude: 40
   SpawnChance: 1
   spawnOnGameStart: 1

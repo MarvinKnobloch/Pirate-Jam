@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaCollider: 0
-  areaSize: {x: 3, y: 3}
+  areaSize: {x: 4, y: 4}
   aoeSizeScaling: 100
   damageAmount: 0
   damageType: 4

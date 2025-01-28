@@ -134,9 +134,9 @@ namespace UpgradeSystem
             finalDamage += Mathf.RoundToInt(damagePercentageUpgradeValue * 0.01f * finalDamage);
             return finalDamage;
         }
-        public float AoeSizeCalculation(float percentage)
+        public float AoeSizeCalculation(int upgradeAoeSize, float percentage)
         {
-            return 1 + aoeSizeUpgradeValue * (percentage * 0.0001f);
+            return (aoeSizeUpgradeValue + upgradeAoeSize) * (percentage * 0.0001f);
         }
         public float SlowCalculation()
         {

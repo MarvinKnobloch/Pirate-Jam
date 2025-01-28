@@ -1,11 +1,7 @@
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.Playables;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UpgradeSystem;
@@ -18,13 +14,15 @@ public class AbilityMenuController : MonoBehaviour
     private int newAbilityIndex;
     public GameObject cantClickLayer;
     [SerializeField] private TextMeshProUGUI statsText;
+    [SerializeField] private TextMeshProUGUI currentWood;
+    [SerializeField] private TextMeshProUGUI currentCopper;
+    [SerializeField] private TextMeshProUGUI currentGold;
 
     [Space]
     [SerializeField] private GameObject abilityGridPrefab;
     private GameObject healAbiltiesGrid;
     private GameObject tier1AbiltiesGrid;
     private GameObject tier2AbiltiesGrid;
-    //private GameObject tier3AbiltiesGrid;
 
     private List<AbilityMenuEntry> allEntries = new List<AbilityMenuEntry>();
 
@@ -110,7 +108,12 @@ public class AbilityMenuController : MonoBehaviour
 
         allEntries.Add(abilityMenuEntry);
     }
-    public void SetStats()
+    public void MenuEnable()
+    {
+        SetStats();
+        CurrentRessourceUpdate();
+    }
+    private void SetStats()
     {
         statsText.text = string.Empty;
         statsText.text += "\n\n";
@@ -130,6 +133,12 @@ public class AbilityMenuController : MonoBehaviour
         statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.Cooldown) + "%\n";
         statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.MaxEnergy) + " seconds\n";
         statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.EnergyInterval) + " seconds\n";
+    }
+    private void CurrentRessourceUpdate()
+    {
+        currentWood.text = Player.Instance.Wood.ToString();
+        currentCopper.text = Player.Instance.Copper.ToString();
+        currentGold.text = Player.Instance.Gold.ToString();
     }
     public void BuyUpgradeAbility(AbilityMenuEntry abilityMenuEntry)
     {
@@ -162,6 +171,7 @@ public class AbilityMenuController : MonoBehaviour
 
                 if (newAbilityIndex >= 4) tier2AbiltiesGrid.SetActive(true);
 
+                CurrentRessourceUpdate();
                 CostsUpdate();
             }
         }
@@ -179,6 +189,7 @@ public class AbilityMenuController : MonoBehaviour
                 abilityMenuEntry.currentAbilityLvl++;
                 abilityMenuEntry.PrefabUpdate();
 
+                CurrentRessourceUpdate();
                 CostsUpdate();
             }
         }

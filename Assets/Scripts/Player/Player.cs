@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using static UpgradeSystem.Upgrades;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class Player : MonoBehaviour
     [SerializeField] private int maxEnergy;
     public float energyRestoreInterval;
     [SerializeField] private int energyRestoreAmount;
+    //Overload
+    [NonSerialized] public bool overloadonCooldown;
+    [NonSerialized] public bool overloadActive;
+    [SerializeField] private int overloadDuration;
+    [SerializeField] private int overloadCooldown;
 
     public List<Abilities> abilities;
 
@@ -115,6 +121,10 @@ public class Player : MonoBehaviour
         {
             abilityController.CheckForAbility(ability8, 7);
         }
+        if (controls.Player.Overload.WasPerformedThisFrame())
+        {
+            OverloadStart();
+        }
     }
 
     public void HealthUIUpdate()
@@ -135,6 +145,21 @@ public class Player : MonoBehaviour
     {
         Instance.MaxEnergy += Mathf.RoundToInt(value);
         if (PlayerUI.Instance != null) PlayerUI.Instance.EnergyUIUpdate(CurrentEnergy, MaxEnergy);
+    }
+    public void OverloadStart()
+    {
+        if(overloadonCooldown == false)
+        {
+            overloadonCooldown = true;
+            overloadActive = true;
+            PlayerUI.Instance.cooldownController.OverloadCooldownStart(overloadCooldown);
+            StartCoroutine(OverloadEnd());
+        }
+    }
+    IEnumerator OverloadEnd()
+    {
+        yield return new WaitForSeconds(overloadDuration);
+        overloadActive = false;
     }
 
     public void AddResource(ResourceType type, int amount)
@@ -195,6 +220,7 @@ public class Player : MonoBehaviour
 
     private void OnDeath()
     {
+        StopAllCoroutines();
         PlayerUI.Instance.gameOverObj.SetActive(true);
     }
 

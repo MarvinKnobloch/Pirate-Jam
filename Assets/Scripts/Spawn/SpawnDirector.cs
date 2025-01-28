@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnDirector : MonoBehaviour
@@ -10,17 +11,30 @@ public class SpawnDirector : MonoBehaviour
     private Dictionary<int, List<GameObject>> _instances = new();
     private Player _player;
 
+    [SerializeField] private bool isRessourceDirector;
+
     void Start()
     {
         _player = FindFirstObjectByType<Player>();
         _instances = Spawnables.ToDictionary(s => s.GetInstanceID(), s => new List<GameObject>());
         Spawnables.ForEach(s => StartCoroutine(NPCDirector(s)));
+
+        for (int i = 0; i < Spawnables.Count; i++)
+        {
+            if (Spawnables[i].spawnOnGameStart) HandleSpawn(Spawnables[i]);
+        }
     }
 
     IEnumerator NPCDirector(Spawnable spawnable)
     {
         yield return new WaitForSeconds(spawnable.SpawnTickRate);
 
+        HandleSpawn(spawnable);
+
+        yield return NPCDirector(spawnable);
+    }
+    void HandleSpawn(Spawnable spawnable)
+    {
         if (Random.Range(0f, 1f) <= spawnable.SpawnChance)
         {
             if (_instances[spawnable.GetInstanceID()].Count() < spawnable.MaxInstances)
@@ -35,8 +49,6 @@ public class SpawnDirector : MonoBehaviour
                 }
             }
         }
-
-        yield return NPCDirector(spawnable);
     }
 
     void SpawnEnemy(Spawnable spawnable)
@@ -53,6 +65,11 @@ public class SpawnDirector : MonoBehaviour
         component.SpawnDirector = this;
         component.Key = spawnable.GetInstanceID();
         _instances[spawnable.GetInstanceID()].Add(enemy);
+
+        if (isRessourceDirector) 
+        { 
+            if(enemy.TryGetComponent(out GatherResource gatherResource)) PlayerUI.Instance.allressources.Add(gatherResource);
+        }
     }
 
     public void Delete(int key, GameObject instance)

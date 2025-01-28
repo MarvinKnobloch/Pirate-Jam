@@ -30,8 +30,8 @@ MonoBehaviour:
   stunDuration: 0
   healAmount: 0
   healScaling: 0
-  lifeStealAmount: 0
-  lifeStealScaling: 0
+  lifeStealAmount: 2
+  lifeStealScaling: 50
   timeToDestroy: 5
   hitLayer:
     serializedVersion: 2

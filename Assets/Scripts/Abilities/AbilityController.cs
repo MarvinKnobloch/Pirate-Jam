@@ -7,7 +7,8 @@ using static UpgradeSystem.Upgrades;
 
 public class AbilityController : MonoBehaviour
 {
-    [SerializeField] private Transform bulletSpawnPosition;
+    [SerializeField] private Transform bulletLeftSpawn;
+    [SerializeField] private Transform bulletRightSpawn;
     private Camera cam;
 
     private Abilities currentAbility;
@@ -18,6 +19,7 @@ public class AbilityController : MonoBehaviour
     private Vector3 mousePosi;
 
     private CooldownController cooldownController;
+    private Player player;
 
     public SlotUpgrades[] slotUpgrades;
     private enum AbilityState
@@ -31,6 +33,7 @@ public class AbilityController : MonoBehaviour
     {
         //controls = Keybindinputmanager.Controls;
         cam = Camera.main;
+        player = GetComponent<Player>();
     }
     private void Start()
     {
@@ -55,7 +58,11 @@ public class AbilityController : MonoBehaviour
 
     public void CheckForAbility(Abilities ability, int _abilitySlot)
     {
-        if (Player.Instance.CurrentEnergy < ability.AbilityCost) return;
+        if(player.overloadActive == false)
+        {
+            if (player.CurrentEnergy < ability.AbilityCost) return;
+        }
+
         if (state == AbilityState.ExecuteAbility) return;
         if (cooldownController != null) if (cooldownController.onCooldown[_abilitySlot]) return;
 
@@ -69,7 +76,8 @@ public class AbilityController : MonoBehaviour
             if (cooldown <= 0) cooldown = 0;
             cooldownController.CooldownStart(_abilitySlot, cooldown);
         }
-        Player.Instance.EnergyUpdate(-ability.AbilityCost);
+
+        if (player.overloadActive == false) player.EnergyUpdate(-ability.AbilityCost);
 
         state = AbilityState.ExecuteAbility;
         CastAbility();
@@ -99,7 +107,9 @@ public class AbilityController : MonoBehaviour
     {
         if (currentAbility.projectileObj.multipleProjectiles < 2)
         {
-            Vector2 direction = ((Vector2)mousePosi - (Vector2)bulletSpawnPosition.position).normalized;
+            Vector2 direction;
+            if (mousePosi.x < 0) direction = ((Vector2)mousePosi - (Vector2)bulletLeftSpawn.position).normalized;
+            else direction = ((Vector2)mousePosi - (Vector2)bulletRightSpawn.position).normalized;
             CreateSingleBullet(direction);
 
             if (currentAbility.projectileObj.mirrorAttack)
@@ -114,7 +124,10 @@ public class AbilityController : MonoBehaviour
     }
     private void CreateSingleBullet(Vector2 direction)
     {
-        GameObject bullet = Instantiate(currentAbility.projectileObj.prefab, bulletSpawnPosition.position, Quaternion.identity);
+        Vector3 spawnPosi;
+        if (mousePosi.x < 0) spawnPosi = bulletLeftSpawn.position;
+        else spawnPosi = bulletRightSpawn.position;
+        GameObject bullet = Instantiate(currentAbility.projectileObj.prefab, spawnPosi, Quaternion.identity);
         if (bullet.TryGetComponent(out Projectile projectile))
         {
             bullet.transform.right = direction;
@@ -133,13 +146,16 @@ public class AbilityController : MonoBehaviour
     }
     private void CreateAoeBullet(Vector3 mousePosi)
     {
-        GameObject bullet = Instantiate(currentAbility.projectileObj.prefab, bulletSpawnPosition.position, Quaternion.identity);
+        Vector3 spawnPosi;
+        if (mousePosi.x < 0) spawnPosi = bulletLeftSpawn.position;
+        else spawnPosi = bulletRightSpawn.position;
+        GameObject bullet = Instantiate(currentAbility.projectileObj.prefab, spawnPosi, Quaternion.identity);
         {
             if (bullet.TryGetComponent(out Projectile projectile))
             {
-                float dist = Vector2.Distance(mousePosi, bulletSpawnPosition.position);
+                float dist = Vector2.Distance(mousePosi, spawnPosi);
 
-                projectile.SetProjectileAOE(currentAbility, bulletSpawnPosition.position, mousePosi, abilitySlot);
+                projectile.SetProjectileAOE(currentAbility, spawnPosi, mousePosi, abilitySlot);
             }
         }
     }
@@ -161,11 +177,14 @@ public class AbilityController : MonoBehaviour
     }
     private void CreateMultiShotBullet(int count, float shotAngle, float startAngle)
     {
-        Vector2 direction = ((Vector2)mousePosi - (Vector2)bulletSpawnPosition.position).normalized;
+        Vector3 spawnPosi;
+        if (mousePosi.x < 0) spawnPosi = bulletLeftSpawn.position;
+        else spawnPosi = bulletRightSpawn.position;
+        Vector2 direction = ((Vector2)mousePosi - (Vector2)spawnPosi).normalized;
 
         for (int i = 0; i < count; i++)
         {
-            GameObject bullet = Instantiate(currentAbility.projectileObj.prefab, bulletSpawnPosition.position, Quaternion.identity);
+            GameObject bullet = Instantiate(currentAbility.projectileObj.prefab, spawnPosi, Quaternion.identity);
 
             if (bullet.TryGetComponent(out Projectile projectile))
             {
@@ -185,7 +204,7 @@ public class AbilityController : MonoBehaviour
     public struct SlotUpgrades
     {
         public int slotDamage;
-        public float slotArea;
+        public int slotArea;
         public int slotHeal;
         public int slotLifesteal;
     }

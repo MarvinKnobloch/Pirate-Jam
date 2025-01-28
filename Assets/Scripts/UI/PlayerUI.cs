@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.Rendering;
+using System.Collections.Generic;
+using System;
 
 public class PlayerUI : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PlayerUI : MonoBehaviour
     public ExpController expController;
     public GameObject gameOverObj;
     public TooltipController tooltipController;
+
+    public List<GatherResource> allressources = new List<GatherResource>();
 
     [Header("Health")]
     public Image healthBar;

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityName: Lifesteal Shot
   AbilityID: 11
-  AbilityCost: 2
-  AbilityCooldown: 5
+  AbilityCost: 3
+  AbilityCooldown: 8
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 05c15ed929fa8d24d8262916cb66e143, type: 2}
   Description: Shot a single bullet which will heal yourself and deals damage over

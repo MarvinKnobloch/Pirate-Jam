@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4844b80c316a2094d91f85851f9fd637, type: 3}
-  m_Name: HealGranateProj
+  m_Name: HealGrenadeProj
   m_EditorClassIdentifier: 
   prefab: {fileID: 8356378035270633483, guid: c8eeb043b2ae598478366d3e3db0cdd4, type: 3}
   speed: 5
@@ -28,9 +28,9 @@ MonoBehaviour:
   slowDuration: 0
   slowStrength: 0.6
   stunDuration: 0
-  healAmount: 2
+  healAmount: 4
   healScaling: 50
-  lifeStealAmount: 2
+  lifeStealAmount: 3
   lifeStealScaling: 50
   timeToDestroy: 5
   hitLayer:

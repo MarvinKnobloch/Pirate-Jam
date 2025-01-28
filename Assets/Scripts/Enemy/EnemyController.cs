@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
     private CircleCollider2D _collider;
     private float targetUpdateTime;
     private GameObject nearestTarget;
-    [SerializeField] private float _attackTimer = 0f;
+    private float _attackTimer = 0f;
     [SerializeField] private bool _isAttacking = false;
     private float _maxMovementSpeed;
     private EnemyTargetDetector _targetDetector;

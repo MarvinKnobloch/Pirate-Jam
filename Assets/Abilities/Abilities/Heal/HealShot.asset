@@ -14,30 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityName: Heal Shot
   AbilityID: 8
-  AbilityCost: 1
-  AbilityCooldown: 2
+  AbilityCost: 3
+  AbilityCooldown: 10
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: ff2acda00a91a8f449754f02a205a6a7, type: 2}
   Description: Shot a lifestealing piercing bullet which will stun enemies and heal
     minions and yourself.
-  maxLevel: 5
+  abilityTier: 0
   damageUpgradeValue: 0
   areaUpgradeValue: 0
-  healUpgradeValue: 1
-  lifestealUpgradeValue: 5
-  upgradeCosts:
-  - wood: 5
-    copper: 0
-    gold: 0
-  - wood: 5
-    copper: 0
-    gold: 0
-  - wood: 5
-    copper: 0
-    gold: 0
-  - wood: 5
-    copper: 0
-    gold: 0
-  - wood: 5
-    copper: 0
-    gold: 0
+  healUpgradeValue: 3
+  lifestealUpgradeValue: 3

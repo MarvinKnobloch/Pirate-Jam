@@ -54,9 +54,10 @@ public class AreaAbility : MonoBehaviour
         if (healAmount != 0) healAmount = Upgrades.Instance.HealCalculation(healAmount, healScaling, _abilitySlot);
         if (lifeStealAmount != 0) lifeStealAmount = Upgrades.Instance.LifeStealCalculation(lifeStealAmount, lifeStealScaling, _abilitySlot);
 
-        float scaling = Upgrades.Instance.AoeSizeCalculation(aoeSizeScaling);
-        areaSize.x = (areaSize.x + Player.Instance.abilityController.slotUpgrades[_abilitySlot].slotArea) * scaling;
-        areaSize.y = (areaSize.y + Player.Instance.abilityController.slotUpgrades[_abilitySlot].slotArea) * scaling;
+        float scalingX = areaSize.x * Upgrades.Instance.AoeSizeCalculation(Player.Instance.abilityController.slotUpgrades[_abilitySlot].slotArea, aoeSizeScaling);
+        float scalingY = areaSize.y * Upgrades.Instance.AoeSizeCalculation(Player.Instance.abilityController.slotUpgrades[_abilitySlot].slotArea, aoeSizeScaling);
+        areaSize.x += scalingX;
+        areaSize.y += scalingY;
         transform.localScale = new Vector3(areaSize.x, areaSize.y, 1);
 
         abilitySlot = _abilitySlot;

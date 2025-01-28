@@ -83,7 +83,8 @@ public class Projectile : MonoBehaviour
         if (projectile.damage != 0) damage = Upgrades.Instance.DamageUpgradeCalculation(projectile.damage, projectile.damageType, projectile.damageScaling, _abilitySlot);
         if (projectile.aoeRange != 0)
         { 
-            aoeSize = (projectile.aoeRange + Player.Instance.abilityController.slotUpgrades[abilitySlot].slotArea) * Upgrades.Instance.AoeSizeCalculation(projectile.aoeSizeScaling);
+            float bonusAoe = projectile.aoeRange * Upgrades.Instance.AoeSizeCalculation(Player.Instance.abilityController.slotUpgrades[abilitySlot].slotArea, projectile.aoeSizeScaling);
+            aoeSize = projectile.aoeRange + bonusAoe;
         }
         if (projectile.healAmount != 0) heal = Upgrades.Instance.HealCalculation(projectile.healAmount, projectile.healScaling, _abilitySlot);
         if (projectile.lifeStealAmount != 0) lifeSteal = Upgrades.Instance.LifeStealCalculation(projectile.lifeStealAmount, projectile.lifeStealScaling, _abilitySlot);
@@ -162,7 +163,7 @@ public class Projectile : MonoBehaviour
 
     private void DealAoeDamage()
     {
-        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, aoeSize, projectile.hitLayer);
+        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, aoeSize * 0.5f, projectile.hitLayer);
 
         foreach (Collider2D obj in cols)
         {

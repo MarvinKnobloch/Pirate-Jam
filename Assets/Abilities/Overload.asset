@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 770166c160678bc4a914ec5e804298d8, type: 3}
-  m_Name: MultiShot
+  m_Name: Overload
   m_EditorClassIdentifier: 
-  AbilityName: Multi Shot
-  AbilityID: 5
-  AbilityCost: 3
-  AbilityCooldown: 8
-  AbilityTime: 0.1
-  projectileObj: {fileID: 11400000, guid: c22419fff0f5a8d4083ae2751eb1d569, type: 2}
-  Description: Shot multiple bullets.
+  AbilityName: Overload
+  AbilityID: 0
+  AbilityCost: 0
+  AbilityCooldown: 60
+  AbilityTime: 0
+  projectileObj: {fileID: 0}
+  Description: Abilities will cost 0 energy for 8 sec
   abilityTier: 0
-  damageUpgradeValue: 3
+  damageUpgradeValue: 0
   areaUpgradeValue: 0
   healUpgradeValue: 0
   lifestealUpgradeValue: 0

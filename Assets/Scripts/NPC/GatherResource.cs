@@ -19,6 +19,7 @@ public class GatherResource : MonoBehaviour
 
         if (_amount <= 0)
         {
+            PlayerUI.Instance.allressources.Remove(this);
             Destroy(gameObject);
         }
 

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityName: Piercing Shot
   AbilityID: 4
-  AbilityCost: 1
-  AbilityCooldown: 3
+  AbilityCost: 3
+  AbilityCooldown: 8
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: ee0bf7287c67e104e9a9bdf526fd9c91, type: 2}
   Description: Shot a piercing bullet which will damage and slow enemies

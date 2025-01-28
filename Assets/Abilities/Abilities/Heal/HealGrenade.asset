@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 770166c160678bc4a914ec5e804298d8, type: 3}
-  m_Name: HealGranate
+  m_Name: HealGrenade
   m_EditorClassIdentifier: 
-  AbilityName: Heal Granate
+  AbilityName: Heal Grenade
   AbilityID: 10
   AbilityCost: 2
-  AbilityCooldown: 5
+  AbilityCooldown: 10
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 2e020ee7007e4e540af787560bab7c89, type: 2}
   Description: Lauch a lifesteal granate that heals minions and yourself
   abilityTier: 1
-  damageUpgradeValue: 0
-  areaUpgradeValue: 0
+  damageUpgradeValue: 1
+  areaUpgradeValue: 30
   healUpgradeValue: 2
-  lifestealUpgradeValue: 1
+  lifestealUpgradeValue: 2

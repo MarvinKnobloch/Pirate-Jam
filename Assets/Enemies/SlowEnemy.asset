@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5422c1ecafc3bc4b93ec9b6db349be2, type: 3}
-  m_Name: Enemy1
+  m_Name: SlowEnemy
   m_EditorClassIdentifier: 
-  InstancePrefab: {fileID: 8441325002812652694, guid: 7913cd99f1acca740ab08b4f34216042, type: 3}
-  MaxInstances: 8
-  SpawnTickRate: 1
-  SpawnInstancesPerTick: 4
+  InstancePrefab: {fileID: 8441325002812652694, guid: 8f3f33382862ba04e8437ad90652ad86, type: 3}
+  MaxInstances: 10
+  SpawnTickRate: 55
+  SpawnInstancesPerTick: 3
   SpawnMinMagnitude: 38
   SpawnMaxMagnitude: 40
-  SpawnChance: 1
+  SpawnChance: 10
+  spawnOnGameStart: 0

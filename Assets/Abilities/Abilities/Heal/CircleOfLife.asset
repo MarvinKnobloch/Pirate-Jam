@@ -15,12 +15,13 @@ MonoBehaviour:
   AbilityName: Circle of Life
   AbilityID: 12
   AbilityCost: 3
-  AbilityCooldown: 5
+  AbilityCooldown: 10
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 4c00215e64081624bba655b8504b6e30, type: 2}
-  Description: Creates a area which will heal minions and stun enemies
-  abilityTier: 0
-  damageUpgradeValue: 1
-  areaUpgradeValue: 0
-  healUpgradeValue: 5
-  lifestealUpgradeValue: 0
+  Description: Shot a bullet which will lifesteal and create a area to heal minions
+    and stun enemies
+  abilityTier: 1
+  damageUpgradeValue: 0
+  areaUpgradeValue: 20
+  healUpgradeValue: 2
+  lifestealUpgradeValue: 2

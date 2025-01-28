@@ -15,9 +15,11 @@ MonoBehaviour:
   prefab: {fileID: 5903401445494139436, guid: 44e65ae7a8c87504286b7f00833f2ff5, type: 3}
   speed: 8
   projectileType: 0
-  damage: 1
+  damage: 4
   damageType: 3
   damageScaling: 100
+  damageOverTimeTicks: 0
+  damageOverTimeInterval: 0
   aoeRange: 0
   aoeSizeScaling: 0
   maxBulletHeight: 0

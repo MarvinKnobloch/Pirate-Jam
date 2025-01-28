@@ -107,6 +107,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Overload"",
+                    ""type"": ""Button"",
+                    ""id"": ""2a59f076-ffc4-48dd-b974-eeae713eb330"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -208,6 +217,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Ability8"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a66c6549-be6f-4d00-a70b-90b555f48015"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Overload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -253,6 +273,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Ability7 = m_Player.FindAction("Ability7", throwIfNotFound: true);
         m_Player_Ability8 = m_Player.FindAction("Ability8", throwIfNotFound: true);
         m_Player_UpgradMenu = m_Player.FindAction("UpgradMenu", throwIfNotFound: true);
+        m_Player_Overload = m_Player.FindAction("Overload", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_MenuEsc = m_Menu.FindAction("MenuEsc", throwIfNotFound: true);
@@ -332,6 +353,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Ability7;
     private readonly InputAction m_Player_Ability8;
     private readonly InputAction m_Player_UpgradMenu;
+    private readonly InputAction m_Player_Overload;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -345,6 +367,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Ability7 => m_Wrapper.m_Player_Ability7;
         public InputAction @Ability8 => m_Wrapper.m_Player_Ability8;
         public InputAction @UpgradMenu => m_Wrapper.m_Player_UpgradMenu;
+        public InputAction @Overload => m_Wrapper.m_Player_Overload;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -381,6 +404,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @UpgradMenu.started += instance.OnUpgradMenu;
             @UpgradMenu.performed += instance.OnUpgradMenu;
             @UpgradMenu.canceled += instance.OnUpgradMenu;
+            @Overload.started += instance.OnOverload;
+            @Overload.performed += instance.OnOverload;
+            @Overload.canceled += instance.OnOverload;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -412,6 +438,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @UpgradMenu.started -= instance.OnUpgradMenu;
             @UpgradMenu.performed -= instance.OnUpgradMenu;
             @UpgradMenu.canceled -= instance.OnUpgradMenu;
+            @Overload.started -= instance.OnOverload;
+            @Overload.performed -= instance.OnOverload;
+            @Overload.canceled -= instance.OnOverload;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -486,6 +515,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnAbility7(InputAction.CallbackContext context);
         void OnAbility8(InputAction.CallbackContext context);
         void OnUpgradMenu(InputAction.CallbackContext context);
+        void OnOverload(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

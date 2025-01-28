@@ -18,7 +18,7 @@ public class Abilities : ScriptableObject
     public Tier abilityTier;
     [NonSerialized] public int maxLevel = 5;
     public int damageUpgradeValue;
-    public float areaUpgradeValue;
+    public int areaUpgradeValue;
     public int healUpgradeValue;
     public int lifestealUpgradeValue;
 

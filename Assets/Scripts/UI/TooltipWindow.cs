@@ -35,12 +35,16 @@ public class TooltipWindow : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         TextMeshProUGUI text = PlayerUI.Instance.tooltipController.tooltipText;
         text.text += Name();
         text.text += Discription();
-        text.text += Damage();
-        text.text += Size(ability.projectileObj.aoeSizeScaling);
-        text.text += Utility(ability.projectileObj.slowDuration, ability.projectileObj.slowStrength, ability.projectileObj.stunDuration);
-        text.text += Healing(ability.projectileObj.healAmount, ability.projectileObj.lifeStealAmount, ability.projectileObj.healScaling, ability.projectileObj.lifeStealScaling);
 
-        if(ability.projectileObj.areaPrefab != null) text.text += Area();
+        if (ability.projectileObj != null)
+        {
+            text.text += Damage();
+            text.text += Size(ability.projectileObj.aoeSizeScaling);
+            text.text += Utility(ability.projectileObj.slowDuration, ability.projectileObj.slowStrength, ability.projectileObj.stunDuration);
+            text.text += Healing(ability.projectileObj.healAmount, ability.projectileObj.lifeStealAmount, ability.projectileObj.healScaling, ability.projectileObj.lifeStealScaling);
+
+            if (ability.projectileObj.areaPrefab != null) text.text += Area();
+        }
 
         
         PlayerUI.Instance.tooltipController.energyText.text = ability.AbilityCost.ToString();
@@ -114,8 +118,8 @@ public class TooltipWindow : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         text = "\nArea: Damage over time\n";
         text += "Damage: <color=green>" + Upgrades.Instance.DamageUpgradeCalculation(areaAbility.damageAmount, areaAbility.damageType, areaAbility.damageScaling, abilitySlot) + "</color> " +
                 "(<color=yellow>" + areaAbility.damageScaling + "</color>%)\n";
-        text += "Damage interval: <color=green>" + areaAbility.tickInterval + "</color> seconds\n";
         text += "Lifetime: <color=green>" + areaAbility.lifeTime + "</color> seconds\n";
+        text += "Interval: <color=green>" + areaAbility.tickInterval + "</color> seconds\n";
         text += Size(areaAbility.aoeSizeScaling);
         text += Utility(areaAbility.slowDuration, areaAbility.slowStrength, areaAbility.stunDuration);
         text += Healing(areaAbility.healAmount, areaAbility.lifeStealAmount, areaAbility.healScaling, areaAbility.lifeStealScaling);

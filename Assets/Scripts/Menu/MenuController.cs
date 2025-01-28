@@ -100,7 +100,7 @@ public class MenuController : MonoBehaviour
         if (_abilityMenu.gameObject.activeSelf == false)
         {
             _abilityMenu.gameObject.SetActive(true);
-            _abilityMenu.GetComponentInParent<AbilityMenuController>().SetStats();
+            _abilityMenu.GetComponentInParent<AbilityMenuController>().MenuEnable();
             PauseGame();
         }
         else

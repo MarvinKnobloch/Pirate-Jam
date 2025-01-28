@@ -19,24 +19,8 @@ MonoBehaviour:
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 1752d0a6e386bfc4dbc780fa5c868ef7, type: 2}
   Description: Shot a single bullet that deals damage to enemies.
-  maxLevel: 5
-  damageUpgradeValue: 3
+  abilityTier: 0
+  damageUpgradeValue: 2
   areaUpgradeValue: 0
   healUpgradeValue: 0
   lifestealUpgradeValue: 0
-  upgradeCosts:
-  - wood: 5
-    copper: 0
-    gold: 0
-  - wood: 10
-    copper: 0
-    gold: 0
-  - wood: 15
-    copper: 5
-    gold: 0
-  - wood: 20
-    copper: 8
-    gold: 0
-  - wood: 20
-    copper: 10
-    gold: 5

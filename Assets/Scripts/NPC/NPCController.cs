@@ -10,6 +10,7 @@ public class NPCController : MonoBehaviour
     public float MoveSpeed;
     public int GatherAmount = 1;
     public float GatherTime = 1;
+    private float lookGatherTimer;
 
     private bool _isGathering = false;
     private GatherResource _targetResource;
@@ -92,23 +93,30 @@ public class NPCController : MonoBehaviour
 
     void FindClosestResource()
     {
-        var foundResources = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<GatherResource>().ToArray();
-        var closestResourceDistance = float.MaxValue;
-        GatherResource closestResource = null;
+        lookGatherTimer += Time.fixedDeltaTime;
 
-        foreach (var resource in foundResources)
+        if (lookGatherTimer > 0.1f)
         {
-            var distance = Vector2.Distance(transform.position, resource.transform.position);
-            if (distance < closestResourceDistance)
+            if (PlayerUI.Instance.allressources.Count != 0)
             {
-                closestResourceDistance = distance;
-                closestResource = resource;
+                int randomNumber = UnityEngine.Random.Range(0, PlayerUI.Instance.allressources.Count);
+                _targetResource = PlayerUI.Instance.allressources[randomNumber];
             }
+            else _targetResource = null;
+        }
+        else
+        {
+            _targetResource = null;
         }
 
-        if (closestResource != null)
-        {
-            _targetResource = closestResource;
-        }
+        //foreach (var resource in foundResources)
+        //{
+        //    var distance = Vector2.Distance(transform.position, resource.transform.position);
+        //    if (distance < closestResourceDistance)
+        //    {
+        //        closestResourceDistance = distance;
+        //        closestResource = resource;
+        //    }
+        //}
     }
 }

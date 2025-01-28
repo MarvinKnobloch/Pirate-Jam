@@ -4,6 +4,7 @@ using TMPro;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 public class CooldownController : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class CooldownController : MonoBehaviour
     public List<bool> onCooldown = new List<bool>();
     public List<TextMeshProUGUI> cooldownText = new List<TextMeshProUGUI>();
     public List<TextMeshProUGUI> cooldownHotkey = new List<TextMeshProUGUI>();
+
+    [Space]
+    [SerializeField] private Image overloadImage;
+    [SerializeField] private TextMeshProUGUI overloadCooldownText;
+    [SerializeField] private TextMeshProUGUI overloadHotkey;
 
     private Controls controls;
     private void Awake()
@@ -63,6 +69,8 @@ public class CooldownController : MonoBehaviour
         cooldownHotkey[5].text = controls.Player.Ability6.GetBindingDisplayString();
         cooldownHotkey[6].text = controls.Player.Ability7.GetBindingDisplayString();
         cooldownHotkey[7].text = controls.Player.Ability8.GetBindingDisplayString();
+
+        overloadHotkey.text = controls.Player.Overload.GetBindingDisplayString();
     }
     public void CooldownStart(int number, float time)
     {
@@ -86,5 +94,28 @@ public class CooldownController : MonoBehaviour
         onCooldown[number] = false;
         cooldownText[number].text = string.Empty;
         cooldownImage[number].enabled = false;
+    }
+
+    public void OverloadCooldownStart(float time)
+    {
+        StartCoroutine(OverloadCooldown(time));
+    }
+    private IEnumerator OverloadCooldown(float time)
+    {
+        float maxTime = time;
+        overloadImage.enabled = true;
+        overloadImage.fillAmount = 1;
+        overloadCooldownText.text = Mathf.Ceil(time).ToString();
+
+        while (time > 0)
+        {
+            time -= Time.deltaTime;
+            overloadImage.fillAmount = time / maxTime;
+            overloadCooldownText.text = Mathf.Ceil(time).ToString();
+            yield return null;
+        }
+        Player.Instance.overloadonCooldown = false;
+        overloadCooldownText.text = string.Empty;
+        overloadImage.enabled = false;
     }
 }

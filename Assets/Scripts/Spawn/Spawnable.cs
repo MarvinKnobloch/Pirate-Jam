@@ -10,4 +10,6 @@ public class Spawnable : ScriptableObject
     public int SpawnMinMagnitude;
     public int SpawnMaxMagnitude;
     public float SpawnChance;
+
+    public bool spawnOnGameStart;
 }
