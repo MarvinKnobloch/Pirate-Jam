@@ -20,7 +20,7 @@ MonoBehaviour:
   projectileObj: {fileID: 11400000, guid: d744ad2c2dfaa7a41bace0cb94c03208, type: 2}
   Description: Shot a bullet which will deal big damage
   abilityTier: 1
-  damageUpgradeValue: 7
+  damageUpgradeValue: 8
   areaUpgradeValue: 0
   healUpgradeValue: 0
   lifestealUpgradeValue: 0

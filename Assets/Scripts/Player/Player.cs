@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
     [NonSerialized] public Controls controls;
     [NonSerialized] public AbilityController abilityController;
+    public Transform attackTransform;
 
     [Header("Energy")]
     [SerializeField] private int currentEnergy;

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5422c1ecafc3bc4b93ec9b6db349be2, type: 3}
+  m_Name: 3SlowEnemy
+  m_EditorClassIdentifier: 
+  InstancePrefab: {fileID: 8441325002812652694, guid: 7d531cd3f7437c14d80a180fa8e122b6, type: 3}
+  MaxInstances: 10
+  SpawnTickRate: 55
+  SpawnInstancesPerTick: 3
+  SpawnMinMagnitude: 38
+  SpawnMaxMagnitude: 40
+  SpawnChance: 10
+  spawnOnGameStart: 0

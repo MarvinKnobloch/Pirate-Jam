@@ -22,7 +22,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI confirmText;
     [SerializeField] private GameObject _abilityMenu;
 
-    public static float hpScaling;
+    public static float hpScaling = 1;
 
     private void Awake()
     {

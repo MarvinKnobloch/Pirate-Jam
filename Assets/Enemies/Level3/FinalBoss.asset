@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5422c1ecafc3bc4b93ec9b6db349be2, type: 3}
+  m_Name: FinalBoss
+  m_EditorClassIdentifier: 
+  InstancePrefab: {fileID: 8441325002812652694, guid: 8bcddf76f30a1784393bebc39b49e11b, type: 3}
+  MaxInstances: 10
+  SpawnTickRate: 118
+  SpawnInstancesPerTick: 1
+  SpawnMinMagnitude: 2
+  SpawnMaxMagnitude: 2
+  SpawnChance: 1
+  spawnOnGameStart: 0

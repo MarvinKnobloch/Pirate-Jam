@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     public float AttackDistance = 2f;
     public float AttackCooldown = 1f;
     public int AttackDamage = 1;
+    [SerializeField] private bool focusPlayerOnly;
 
     [Header("Exp")]
     public int experienceGain;
@@ -24,7 +25,7 @@ public class EnemyController : MonoBehaviour
     private float targetUpdateTime;
     private GameObject nearestTarget;
     private float _attackTimer = 0f;
-    [SerializeField] private bool _isAttacking = false;
+    private bool _isAttacking = false;
     private float _maxMovementSpeed;
     private EnemyTargetDetector _targetDetector;
     private GameObject _attackTarget;
@@ -133,16 +134,41 @@ public class EnemyController : MonoBehaviour
             return;
         }
 
-        CheckForAttackTarget();
-
         Vector3 targetPosition;
-        if (nearestTarget != null)
+
+        if (focusPlayerOnly)
         {
-            targetPosition = nearestTarget.transform.position;
+            targetPosition = Player.Instance.transform.position;
+            targetUpdateTime += Time.fixedDeltaTime;
+            if (targetUpdateTime > 0.1f)
+            {
+                targetUpdateTime = 0;
+
+                float colliderSize = Player.Instance.GetComponent<Collider2D>().bounds.size.y * 0.5f;
+                if (Vector2.Distance(Player.Instance.attackTransform.position, transform.position) < (colliderSize + transform.localScale.x))
+                {
+                    _attackTarget = Player.Instance.gameObject;
+                    _isAttacking = true;
+                }
+                else
+                {
+                    _attackTarget = null;
+                    _isAttacking = false;
+                }
+            }
         }
         else
         {
-            targetPosition = Player.Instance.transform.position;
+            CheckForAttackTarget();
+
+            if (nearestTarget != null)
+            {
+                targetPosition = nearestTarget.transform.position;
+            }
+            else
+            {
+                targetPosition = Player.Instance.transform.position;
+            }
         }
 
         var direction = (targetPosition - transform.position).normalized;
@@ -159,7 +185,15 @@ public class EnemyController : MonoBehaviour
             if (nearestTarget != null)
             {
                 _attackTarget = nearestTarget;
-                if (Vector2.Distance(_attackTarget.transform.position, transform.position) < 2)
+                Vector2 target = _attackTarget.transform.position;
+                float colliderSize = _attackTarget.transform.localScale.x;
+                if (_attackTarget == Player.Instance.gameObject)
+                {
+                    target = Player.Instance.attackTransform.position;
+                    colliderSize = Player.Instance.GetComponent<Collider2D>().bounds.size.y * 0.5f;
+                }
+
+                if (Vector2.Distance(target, transform.position) < (colliderSize + transform.localScale.x))
                 {
                     _isAttacking = true;
                 }

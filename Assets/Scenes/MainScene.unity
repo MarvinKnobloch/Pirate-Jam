@@ -1343,6 +1343,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 297615106001930732, guid: 26cf60b316ed7bd469c751c90430f594, type: 3}
+      propertyPath: m_Name
+      value: AttackPosi/Cam
+      objectReference: {fileID: 0}
     - target: {fileID: 2082249384443785821, guid: 26cf60b316ed7bd469c751c90430f594, type: 3}
       propertyPath: m_Name
       value: CommandCenter
