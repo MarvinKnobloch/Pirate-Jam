@@ -22,6 +22,8 @@ public class MenuController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI confirmText;
     [SerializeField] private GameObject _abilityMenu;
 
+    public static float hpScaling;
+
     private void Awake()
     {
         controls = Keybindinputmanager.Controls;
@@ -38,7 +40,7 @@ public class MenuController : MonoBehaviour
     }
     private void Start()
     {
-        PlayerUI.Instance.menuController = this;
+        if(SceneManager.GetActiveScene().buildIndex != 0) PlayerUI.Instance.menuController = this;
     }
     void Update()
     {
@@ -71,7 +73,11 @@ public class MenuController : MonoBehaviour
         {
             if (Player.Instance == null) return;
 
-            if (PlayerUI.Instance.upgradeController.GetComponent<UpgradeController>().upgrades.activeSelf == true) return;
+            if (PlayerUI.Instance != null)
+            { 
+                if (PlayerUI.Instance.upgradeController.GetComponent<UpgradeController>().upgrades.activeSelf == true) return; 
+            }
+
             if (_abilityMenu.gameObject.activeSelf == true)
             {
                 PlayerUI.Instance.tooltipController.HideTooltip();
@@ -99,7 +105,10 @@ public class MenuController : MonoBehaviour
     {
         if (Player.Instance == null) return;
         if (ingameMenu.activeSelf == true) return;
-        if (PlayerUI.Instance.upgradeController.GetComponent<UpgradeController>().upgrades.activeSelf == true) return;
+        if (PlayerUI.Instance != null)
+        {
+            if (PlayerUI.Instance.upgradeController.GetComponent<UpgradeController>().upgrades.activeSelf == true) return;
+        }
 
         if (_abilityMenu.gameObject.activeSelf == false)
         {
@@ -109,7 +118,7 @@ public class MenuController : MonoBehaviour
         }
         else
         {
-            PlayerUI.Instance.tooltipController.HideTooltip();
+            if (PlayerUI.Instance != null) PlayerUI.Instance.tooltipController.HideTooltip();
             _abilityMenu.gameObject.SetActive(false);
             EndPause();
         }
@@ -127,7 +136,11 @@ public class MenuController : MonoBehaviour
             AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.menuButton);
         }
     }
-
+    public void SetDifficulty(float percentage)
+    {
+        hpScaling = percentage;
+        StartGame();
+    }
     public void StartGame()
     {
         AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.menuButton);

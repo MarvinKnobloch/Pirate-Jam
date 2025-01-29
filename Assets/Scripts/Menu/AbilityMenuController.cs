@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UpgradeSystem;
 
 public class AbilityMenuController : MonoBehaviour
@@ -43,6 +44,12 @@ public class AbilityMenuController : MonoBehaviour
 
     private void Start()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {        
+            gameObject.SetActive(false);
+            return;
+        }
+
         healAbiltiesGrid = transform.GetChild(0).GetChild(0).gameObject;
         tier1AbiltiesGrid = transform.GetChild(0).GetChild(1).gameObject;
         tier2AbiltiesGrid = transform.GetChild(0).GetChild(2).gameObject;

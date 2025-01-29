@@ -118,9 +118,11 @@ public class Health : MonoBehaviour
     }
     public void HealthUpgrade()
     {
-        if (healthUpgrade.type == Upgrades.UpgradeType.Empty) return;
-
-        if (healthUpgrade.type == Upgrades.UpgradeType.PlayerHealth)
+        if (healthUpgrade.type == Upgrades.UpgradeType.Empty)
+        {
+            MaxValue = Mathf.RoundToInt(MaxValue * MenuController.hpScaling);
+        }
+        else if (healthUpgrade.type == Upgrades.UpgradeType.PlayerHealth)
         {
             MaxValue += Mathf.RoundToInt(Upgrades.Instance.GetUpgradeStat(healthUpgrade.type) * (healthUpgrade.percentage * 0.01f));
             if (Player.Instance != null) Player.Instance.HealthUIUpdate();
