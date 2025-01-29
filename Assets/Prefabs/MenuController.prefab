@@ -11065,7 +11065,7 @@ MonoBehaviour:
   inputBinding:
     m_Name: 
     m_Id: 1864a50e-4ebf-4fd4-a641-fd00ec141e45
-    m_Path: <Keyboard>/1
+    m_Path: <Keyboard>/f2
     m_Interactions: 
     m_Processors: 
     m_Groups: 
@@ -18623,7 +18623,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: F2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -19331,7 +19331,7 @@ MonoBehaviour:
   inputBinding:
     m_Name: 
     m_Id: 1864a50e-4ebf-4fd4-a641-fd00ec141e45
-    m_Path: <Keyboard>/1
+    m_Path: <Keyboard>/f2
     m_Interactions: 
     m_Processors: 
     m_Groups: 
@@ -19642,21 +19642,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e8d8035d098c2e5499279ffed915a42d, type: 2}
   - {fileID: 11400000, guid: bc031dd36f2902f4fbb056218fd8a281, type: 2}
   - {fileID: 11400000, guid: 4f54b837daf365646b62e68e2d56fb11, type: 2}
-  ressourceCostMultipler: 0.8
+  ressourceCostMultipler: 0.7
   upgradeCosts:
   - wood: 8
     copper: 0
     gold: 0
-  - wood: 12
+  - wood: 11
     copper: 0
     gold: 0
-  - wood: 15
+  - wood: 13
     copper: 5
     gold: 0
-  - wood: 18
+  - wood: 16
     copper: 8
     gold: 2
-  - wood: 20
+  - wood: 18
     copper: 10
     gold: 5
   playerAbilityGrid: {fileID: 5646108740668183495}

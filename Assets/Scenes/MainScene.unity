@@ -427,6 +427,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8524119505118796919, guid: ac3c4fea293f7be4a82e1fa5e1815d96, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00012207031
+      objectReference: {fileID: 0}
     - target: {fileID: 8559672828815347715, guid: ac3c4fea293f7be4a82e1fa5e1815d96, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -548,6 +552,10 @@ PrefabInstance:
     - target: {fileID: 552011654796493135, guid: eb472a0e9a7a8434bb1eb6b1cb5271ca, type: 3}
       propertyPath: m_Name
       value: Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 3174033925639855358, guid: eb472a0e9a7a8434bb1eb6b1cb5271ca, type: 3}
+      propertyPath: Lens.FieldOfView
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 3174033925639855358, guid: eb472a0e9a7a8434bb1eb6b1cb5271ca, type: 3}
       propertyPath: Target.TrackingTarget
@@ -1752,7 +1760,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5361009383055650279, guid: d608c566c9eabaf4d91abf4328f0db3d, type: 3}
       propertyPath: field of view
-      value: 60
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 6842898013974413717, guid: d608c566c9eabaf4d91abf4328f0db3d, type: 3}
       propertyPath: m_LocalPosition.x

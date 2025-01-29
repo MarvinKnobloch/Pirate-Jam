@@ -20,7 +20,7 @@ MonoBehaviour:
   damageScaling: 20
   damageOverTimeTicks: 0
   damageOverTimeInterval: 0
-  aoeRange: 1.5
+  aoeRange: 4
   aoeSizeScaling: 50
   maxBulletHeight: 5
   multipleProjectiles: 0
@@ -30,7 +30,7 @@ MonoBehaviour:
   stunDuration: 0
   healAmount: 4
   healScaling: 50
-  lifeStealAmount: 3
+  lifeStealAmount: 2
   lifeStealScaling: 50
   timeToDestroy: 5
   hitLayer:

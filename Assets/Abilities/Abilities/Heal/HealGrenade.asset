@@ -18,9 +18,10 @@ MonoBehaviour:
   AbilityCooldown: 10
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 2e020ee7007e4e540af787560bab7c89, type: 2}
-  Description: Lauch a lifesteal granate that heals minions and yourself
+  Description: Lauch a granate which heals yourself for each enemy hit. Also heals
+    minions.
   abilityTier: 1
   damageUpgradeValue: 1
   areaUpgradeValue: 30
   healUpgradeValue: 2
-  lifestealUpgradeValue: 2
+  lifestealUpgradeValue: 1

@@ -18,7 +18,7 @@ MonoBehaviour:
   AbilityCooldown: 8
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: c22419fff0f5a8d4083ae2751eb1d569, type: 2}
-  Description: Shot multiple bullets.
+  Description: Shot multiple bullets that slow enemies
   abilityTier: 0
   damageUpgradeValue: 3
   areaUpgradeValue: 0

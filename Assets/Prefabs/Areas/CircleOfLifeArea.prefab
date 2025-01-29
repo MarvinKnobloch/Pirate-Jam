@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaCollider: 0
-  areaSize: {x: 4, y: 4}
+  areaSize: {x: 5, y: 5}
   aoeSizeScaling: 100
   damageAmount: 0
   damageType: 4
@@ -111,8 +111,8 @@ MonoBehaviour:
   slowDuration: 0
   slowStrength: 1
   stunDuration: 0.7
-  healAmount: 3
-  healScaling: 100
+  healAmount: 2
+  healScaling: 70
   lifeStealAmount: 0
   lifeStealScaling: 0
   hitLayer:

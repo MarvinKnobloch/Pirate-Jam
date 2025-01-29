@@ -28,10 +28,10 @@ MonoBehaviour:
   slowDuration: 0
   slowStrength: 0.6
   stunDuration: 1.5
-  healAmount: 5
-  healScaling: 100
+  healAmount: 4
+  healScaling: 80
   lifeStealAmount: 2
-  lifeStealScaling: 100
+  lifeStealScaling: 80
   timeToDestroy: 5
   hitLayer:
     serializedVersion: 2

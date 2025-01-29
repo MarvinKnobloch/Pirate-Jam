@@ -24,4 +24,4 @@ MonoBehaviour:
   damageUpgradeValue: 1
   areaUpgradeValue: 0
   healUpgradeValue: 0
-  lifestealUpgradeValue: 3
+  lifestealUpgradeValue: 2

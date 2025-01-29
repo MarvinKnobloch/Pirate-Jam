@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
-  MaxAmount: 5
+  MaxAmount: 6
 --- !u!58 &4264773350253262458
 CircleCollider2D:
   m_ObjectHideFlags: 0

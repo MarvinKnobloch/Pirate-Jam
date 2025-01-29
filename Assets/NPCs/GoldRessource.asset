@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: GoldRessource
   m_EditorClassIdentifier: 
   InstancePrefab: {fileID: 6787278756199275497, guid: 7153639e6861d83459ce239a13a3995e, type: 3}
-  MaxInstances: 3
+  MaxInstances: 5
   SpawnTickRate: 40
   SpawnInstancesPerTick: 1
-  SpawnMinMagnitude: 18
-  SpawnMaxMagnitude: 22
+  SpawnMinMagnitude: 17
+  SpawnMaxMagnitude: 21
   SpawnChance: 1
   spawnOnGameStart: 0

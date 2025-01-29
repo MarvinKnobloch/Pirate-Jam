@@ -1213,7 +1213,7 @@ MonoBehaviour:
 '
   upgradeStringAfterSecondValue: 
   maxLevel: 10
-  upgradeValue: 10
+  upgradeValue: 15
   upgradeType: 10
   secondUpgradeValue: 0
   secondUpgradeType: 0

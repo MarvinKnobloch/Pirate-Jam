@@ -17,7 +17,7 @@ MonoBehaviour:
   projectileType: 0
   damage: 4
   damageType: 3
-  damageScaling: 100
+  damageScaling: 80
   damageOverTimeTicks: 0
   damageOverTimeInterval: 0
   aoeRange: 0

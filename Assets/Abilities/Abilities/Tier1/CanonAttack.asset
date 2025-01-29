@@ -18,8 +18,7 @@ MonoBehaviour:
   AbilityCooldown: 8
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: ef51ecce8a8f07641b06f06079621c67, type: 2}
-  Description: Shot a bullet on your current mouse position that deals area damage
-    and stuns enemies.
+  Description: Shot a bullet which will deal area damage and stuns enemies.
   abilityTier: 0
   damageUpgradeValue: 3
   areaUpgradeValue: 20
