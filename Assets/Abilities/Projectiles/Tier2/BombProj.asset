@@ -17,12 +17,12 @@ MonoBehaviour:
   projectileType: 1
   damage: 11
   damageType: 3
-  damageScaling: 80
+  damageScaling: 60
   damageOverTimeTicks: 0
   damageOverTimeInterval: 0
-  aoeRange: 10
+  aoeRange: 8
   aoeSizeScaling: 50
-  maxBulletHeight: 10
+  maxBulletHeight: 15
   multipleProjectiles: 0
   multiShotAngle: 0
   slowDuration: 0

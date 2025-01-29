@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LifestealProj
   m_EditorClassIdentifier: 
   prefab: {fileID: 2019969566017605790, guid: b31806fd4e3c1e740960b95f45da90bc, type: 3}
-  speed: 10
+  speed: 11
   projectileType: 0
   damage: 2
   damageType: 4

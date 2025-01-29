@@ -14,6 +14,7 @@ public class Health : MonoBehaviour
 
     [SerializeField] private int maxHealth = 1;
     private int currentHealth;
+    private int baseHealth;
 
     [HideInInspector]
     public UnityEvent dieEvent;
@@ -33,6 +34,8 @@ public class Health : MonoBehaviour
 
     void Start()
     {
+        baseHealth = maxHealth;
+
         if (HealthBar != null) HealthBarImage = HealthBar.GetComponent<Image>();
         HealthUpgrade();
         currentHealth = maxHealth;
@@ -124,7 +127,7 @@ public class Health : MonoBehaviour
         }
         else if (healthUpgrade.type == Upgrades.UpgradeType.PlayerHealth)
         {
-            MaxValue += Mathf.RoundToInt(Upgrades.Instance.GetUpgradeStat(healthUpgrade.type) * (healthUpgrade.percentage * 0.01f));
+            MaxValue = baseHealth + PlayerUI.Instance.expController.playerCurrentLvL + Mathf.RoundToInt(Upgrades.Instance.GetUpgradeStat(healthUpgrade.type) * (healthUpgrade.percentage * 0.01f));
             if (Player.Instance != null) Player.Instance.HealthUIUpdate();
         }
         else if (healthUpgrade.type == Upgrades.UpgradeType.MinionHealth)

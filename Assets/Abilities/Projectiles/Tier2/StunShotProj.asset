@@ -15,19 +15,19 @@ MonoBehaviour:
   prefab: {fileID: 8356378035270633483, guid: 8dd1a97f2fb6bad48960114d9dace566, type: 3}
   speed: 4
   projectileType: 1
-  damage: 1
+  damage: 2
   damageType: 3
-  damageScaling: 20
+  damageScaling: 30
   damageOverTimeTicks: 0
   damageOverTimeInterval: 0
-  aoeRange: 3
+  aoeRange: 7
   aoeSizeScaling: 100
-  maxBulletHeight: 4
+  maxBulletHeight: 8
   multipleProjectiles: 0
   multiShotAngle: 0
   slowDuration: 0
   slowStrength: 0.6
-  stunDuration: 2.5
+  stunDuration: 3
   healAmount: 0
   healScaling: 0
   lifeStealAmount: 0

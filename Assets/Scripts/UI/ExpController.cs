@@ -13,7 +13,7 @@ public class ExpController : MonoBehaviour
     private float uncalculatedExp;
     private float playerRequiredExp;
     private float playerCurrentExp;
-    private int playerCurrentLvL = 1;
+    public int playerCurrentLvL = 1;
 
     [SerializeField] private Image expBarPreviewImage;
     [SerializeField] private Image expBarImage;
@@ -94,6 +94,7 @@ public class ExpController : MonoBehaviour
 
         playerCurrentLvL++;
 
+        Player.Instance.health.HealthUpgrade();
         upgradeController.SetUpgradeSelection();
 
         uncalculatedExp -= playerRequiredExp - playerCurrentExp;

@@ -144,7 +144,7 @@ public class EnemyController : MonoBehaviour
             {
                 targetUpdateTime = 0;
 
-                float colliderSize = Player.Instance.GetComponent<Collider2D>().bounds.size.y * 0.5f;
+                float colliderSize = Player.Instance.GetComponent<Collider2D>().bounds.size.y * 0.52f;
                 if (Vector2.Distance(Player.Instance.attackTransform.position, transform.position) < (colliderSize + transform.localScale.x))
                 {
                     _attackTarget = Player.Instance.gameObject;
@@ -190,7 +190,7 @@ public class EnemyController : MonoBehaviour
                 if (_attackTarget == Player.Instance.gameObject)
                 {
                     target = Player.Instance.attackTransform.position;
-                    colliderSize = Player.Instance.GetComponent<Collider2D>().bounds.size.y * 0.5f;
+                    colliderSize = Player.Instance.GetComponent<Collider2D>().bounds.size.y * 0.52f;
                 }
 
                 if (Vector2.Distance(target, transform.position) < (colliderSize + transform.localScale.x))

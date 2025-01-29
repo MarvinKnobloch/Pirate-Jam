@@ -18,7 +18,7 @@ MonoBehaviour:
   AbilityCooldown: 4
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: d9fa6512b22b4c74296849a4023ffa2f, type: 2}
-  Description: Shot a bullet which will apply a deadly wound on the enemy
+  Description: Shoot a bullet which gives the enemy a deadly wound.
   abilityTier: 0
   damageUpgradeValue: 4
   areaUpgradeValue: 0

@@ -18,10 +18,10 @@ MonoBehaviour:
   AbilityCooldown: 3
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 8f41d9cdaec451842a74d59538c34686, type: 2}
-  Description: Shot 3 explosive bullets which will deal aoe damage and slow down
+  Description: Shoot 3 explosive bullets which will deal aoe damage and slow down
     enemies.
   abilityTier: 1
   damageUpgradeValue: 3
-  areaUpgradeValue: 0.1
+  areaUpgradeValue: 0
   healUpgradeValue: 0
   lifestealUpgradeValue: 0

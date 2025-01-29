@@ -71,10 +71,11 @@ public class MenuController : MonoBehaviour
         }
         else
         {
+            
             if (Player.Instance == null) return;
 
             if (PlayerUI.Instance != null)
-            { 
+            {
                 if (PlayerUI.Instance.upgradeController.GetComponent<UpgradeController>().upgrades.activeSelf == true) return; 
             }
 
@@ -199,7 +200,7 @@ public class MenuController : MonoBehaviour
         //Cursor.visible = false;
 
         gameIsPaused = false;
-        Time.timeScale = 1;
+        if (PlayerUI.Instance.startGameCanvas.activeSelf == false) Time.timeScale = 1;
 
         AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.menuButton);
     }

@@ -15,12 +15,12 @@ MonoBehaviour:
   AbilityName: Multi Shot
   AbilityID: 5
   AbilityCost: 3
-  AbilityCooldown: 8
+  AbilityCooldown: 10
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: c22419fff0f5a8d4083ae2751eb1d569, type: 2}
-  Description: Shot multiple bullets that slow enemies
+  Description: Shoot multiple bullets.
   abilityTier: 0
-  damageUpgradeValue: 3
+  damageUpgradeValue: 2
   areaUpgradeValue: 0
   healUpgradeValue: 0
   lifestealUpgradeValue: 0

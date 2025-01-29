@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: HealGrenadeProj
   m_EditorClassIdentifier: 
   prefab: {fileID: 8356378035270633483, guid: c8eeb043b2ae598478366d3e3db0cdd4, type: 3}
-  speed: 5
+  speed: 6
   projectileType: 1
-  damage: 1
+  damage: 3
   damageType: 3
-  damageScaling: 20
+  damageScaling: 50
   damageOverTimeTicks: 0
   damageOverTimeInterval: 0
-  aoeRange: 4
+  aoeRange: 5
   aoeSizeScaling: 50
   maxBulletHeight: 5
   multipleProjectiles: 0
@@ -30,7 +30,7 @@ MonoBehaviour:
   stunDuration: 0
   healAmount: 4
   healScaling: 50
-  lifeStealAmount: 2
+  lifeStealAmount: 4
   lifeStealScaling: 50
   timeToDestroy: 5
   hitLayer:

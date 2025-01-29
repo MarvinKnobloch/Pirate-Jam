@@ -124,22 +124,22 @@ public class AbilityMenuController : MonoBehaviour
     {
         statsText.text = string.Empty;
         statsText.text += "\n\n";
-        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.PlayerHealth) + "\n";
-        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.MinionHealth) + "\n";
-        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.Damage) + "\n";
-        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.DamageOverTime) + "\n";
-        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.DamagePercentage) + "%\n";
-        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.AoeSize) + "%\n";
-        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.Slow) + "%\n";
-        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.Stun) + "%\n";
-        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.Heal) + "\n";
-        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.LifeSteal) + "\n";
-        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.GatherSpeed) + " seconds\n";
-        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.BulletSpeed) + "%\n";
-        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.ExpGain) + "%\n";
-        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.Cooldown) + "%\n";
-        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.MaxEnergy) + " seconds\n";
-        statsText.text += Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.EnergyInterval) + " seconds\n";
+        statsText.text += "+" + Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.PlayerHealth) + "\n";
+        statsText.text += "+" + Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.MinionHealth) + "\n";
+        statsText.text += "+" + Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.Damage) + "\n";
+        statsText.text += "+" + Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.DamageOverTime) + "\n";
+        statsText.text += "+" + Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.DamagePercentage) + "%\n";
+        statsText.text += "+" + Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.AoeSize) + "%\n";
+        statsText.text += "+" + Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.Slow) + "%\n";
+        statsText.text += "+" + Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.Stun) + "%\n";
+        statsText.text += "+" + Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.Heal) + "\n";
+        statsText.text += "+" + Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.LifeSteal) + "\n";
+        statsText.text += "+" + Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.GatherSpeed) + " seconds\n";
+        statsText.text += "+" + Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.BulletSpeed) + "%\n";
+        statsText.text += "+" + Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.ExpGain) + "%\n";
+        statsText.text += "+" + Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.Cooldown) + "%\n";
+        statsText.text += "+" + Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.MaxEnergy) + " seconds\n";
+        statsText.text += "+" + Upgrades.Instance.GetUpgradeStat(Upgrades.UpgradeType.EnergyInterval) + " seconds\n";
     }
     private void CurrentRessourceUpdate()
     {

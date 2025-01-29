@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PiercingBullet
   m_EditorClassIdentifier: 
   prefab: {fileID: 2019969566017605790, guid: 49e4002462fb8524392e7e11ed822389, type: 3}
-  speed: 10
+  speed: 11
   projectileType: 3
   damage: 7
   damageType: 3

@@ -18,8 +18,8 @@ MonoBehaviour:
   AbilityCooldown: 8
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 05c15ed929fa8d24d8262916cb66e143, type: 2}
-  Description: Shot a single bullet which will heal yourself and deals damage over
-    time.
+  Description: Shoot a single bullet which over time will drain the life of enemies
+    and heal you.
   abilityTier: 0
   damageUpgradeValue: 1
   areaUpgradeValue: 0

@@ -20,7 +20,7 @@ MonoBehaviour:
   projectileObj: {fileID: 11400000, guid: 1752d0a6e386bfc4dbc780fa5c868ef7, type: 2}
   Description: Shot a single bullet that deals damage to enemies.
   abilityTier: 0
-  damageUpgradeValue: 2
+  damageUpgradeValue: 1
   areaUpgradeValue: 0
   healUpgradeValue: 0
   lifestealUpgradeValue: 0

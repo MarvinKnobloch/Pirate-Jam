@@ -18,9 +18,9 @@ MonoBehaviour:
   AbilityCooldown: 4
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 9249151b25555c241b69da898242cc5b, type: 2}
-  Description: Shot a bullet which will create a stun area on the ground.
+  Description: Shoot a bullet which will create a stun area on the ground.
   abilityTier: 1
   damageUpgradeValue: 1
-  areaUpgradeValue: 0.2
+  areaUpgradeValue: 0
   healUpgradeValue: 0
   lifestealUpgradeValue: 0

@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: MultishotBullet
   m_EditorClassIdentifier: 
   prefab: {fileID: 5903401445494139436, guid: 44e65ae7a8c87504286b7f00833f2ff5, type: 3}
-  speed: 10
+  speed: 11
   projectileType: 0
-  damage: 6
+  damage: 5
   damageType: 3
-  damageScaling: 80
+  damageScaling: 70
   damageOverTimeTicks: 0
   damageOverTimeInterval: 0
   aoeRange: 0
   aoeSizeScaling: 0
   maxBulletHeight: 0
-  multipleProjectiles: 5
-  multiShotAngle: 10
-  slowDuration: 1.2
+  multipleProjectiles: 7
+  multiShotAngle: 8
+  slowDuration: 0
   slowStrength: 0.9
   stunDuration: 0
   healAmount: 0

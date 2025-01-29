@@ -18,8 +18,8 @@ MonoBehaviour:
   AbilityCooldown: 10
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: ff2acda00a91a8f449754f02a205a6a7, type: 2}
-  Description: Shot a lifestealing piercing bullet which will stun enemies and heal
-    minions and yourself.
+  Description: Shoot a lifestealing bullet to stun your enemies, heal your minions
+    and heal yourself.
   abilityTier: 0
   damageUpgradeValue: 0
   areaUpgradeValue: 0

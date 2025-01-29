@@ -258,8 +258,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 1.5
   AttackDistance: 0.7
-  AttackCooldown: 1.2
-  AttackDamage: 4
+  AttackCooldown: 1
+  AttackDamage: 3
   focusPlayerOnly: 0
   experienceGain: 100
 --- !u!114 &8265245240528079808
@@ -277,7 +277,7 @@ MonoBehaviour:
   HealthBar: {fileID: 6589723892033796994}
   HealthBarPermanent: 0
   HealthBarOffset: 1
-  maxHealth: 44
+  maxHealth: 60
   dieEvent:
     m_PersistentCalls:
       m_Calls: []

@@ -15,12 +15,12 @@ MonoBehaviour:
   AbilityName: Canon Bullet
   AbilityID: 2
   AbilityCost: 3
-  AbilityCooldown: 8
+  AbilityCooldown: 9
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: ef51ecce8a8f07641b06f06079621c67, type: 2}
-  Description: Shot a bullet which will deal area damage and stuns enemies.
+  Description: Shoot a bullet which deals damage over an area and stuns enemies
   abilityTier: 0
-  damageUpgradeValue: 3
+  damageUpgradeValue: 2
   areaUpgradeValue: 20
   healUpgradeValue: 0
   lifestealUpgradeValue: 0

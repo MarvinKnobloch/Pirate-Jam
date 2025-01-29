@@ -15,12 +15,12 @@ MonoBehaviour:
   AbilityName: Bomb
   AbilityID: 18
   AbilityCost: 4
-  AbilityCooldown: 12
+  AbilityCooldown: 13
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: c2d66b67511e71d4e981c11593048641, type: 2}
-  Description: Shot a bullet which will deal damage in a huge area
+  Description: Shoot a bullet which will deal damage in a huge area
   abilityTier: 1
-  damageUpgradeValue: 4
+  damageUpgradeValue: 3
   areaUpgradeValue: 20
   healUpgradeValue: 0
   lifestealUpgradeValue: 0

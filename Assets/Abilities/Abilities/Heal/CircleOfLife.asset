@@ -18,8 +18,8 @@ MonoBehaviour:
   AbilityCooldown: 10
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 4c00215e64081624bba655b8504b6e30, type: 2}
-  Description: Shot a bullet which will lifesteal and create a area to heal minions
-    and stun enemies
+  Description: Shoot a bullet to lifesteal. The area created heals minions and stuns
+    enemies.
   abilityTier: 1
   damageUpgradeValue: 0
   areaUpgradeValue: 20

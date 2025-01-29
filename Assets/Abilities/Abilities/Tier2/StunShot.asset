@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityName: Stun shot
   AbilityID: 16
-  AbilityCost: 2
-  AbilityCooldown: 4
+  AbilityCost: 3
+  AbilityCooldown: 11
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 5f80a31f6d359704384528555e401163, type: 2}
-  Description: Shot a bullet which will stun enemies and aoe deal damage
+  Description: Shoot a bullet which will stun enemies and aoe deal damage
   abilityTier: 1
   damageUpgradeValue: 2
-  areaUpgradeValue: 0.2
+  areaUpgradeValue: 20
   healUpgradeValue: 0
   lifestealUpgradeValue: 0

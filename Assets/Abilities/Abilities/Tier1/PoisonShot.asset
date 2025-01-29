@@ -18,7 +18,7 @@ MonoBehaviour:
   AbilityCooldown: 4
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: b9809f7c031f89b4fa03bf4aaa23a706, type: 2}
-  Description: Shot multiple arrow which will poison enemies
+  Description: Shoot multiple arrows that poison enemies.
   abilityTier: 0
   damageUpgradeValue: 1
   areaUpgradeValue: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CircleOfLifeProj
   m_EditorClassIdentifier: 
   prefab: {fileID: 8356378035270633483, guid: 797246300b1370f47af4e757e32b5847, type: 3}
-  speed: 5
+  speed: 6
   projectileType: 1
   damage: 1
   damageType: 4
@@ -30,7 +30,7 @@ MonoBehaviour:
   stunDuration: 0
   healAmount: 0
   healScaling: 0
-  lifeStealAmount: 2
+  lifeStealAmount: 3
   lifeStealScaling: 50
   timeToDestroy: 5
   hitLayer:

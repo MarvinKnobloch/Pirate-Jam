@@ -13,7 +13,7 @@ namespace UpgradeSystem
 
         private int healthUpgradeValue;
         private int minionHealthUpgradeValue;
-        private int damageUpgradeValue;
+        private float damageUpgradeValue;
         private float damageOverTimeUpgradeValue;
         private int maxEnergyUpgradeValue;
         private float energyIntervalUpgradeValue;
@@ -84,7 +84,7 @@ namespace UpgradeSystem
                     minionHealthUpgradeValue += Mathf.RoundToInt(value);
                     break;
                 case UpgradeType.Damage:
-                    damageUpgradeValue += Mathf.RoundToInt(value);
+                    damageUpgradeValue += value;
                     break;
                 case UpgradeType.DamageOverTime:
                     damageOverTimeUpgradeValue += value;

@@ -18,7 +18,7 @@ MonoBehaviour:
   AbilityCooldown: 10
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: ae9c957a8dbad4f428db287f3618e0b1, type: 2}
-  Description: Shot a bullet which will react a lifesteal area on the ground.
+  Description: Shoot a bullet which creates a lifesteal area on the ground.
   abilityTier: 1
   damageUpgradeValue: 0
   areaUpgradeValue: 10

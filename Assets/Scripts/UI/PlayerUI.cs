@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System;
+using System.Collections;
 
 public class PlayerUI : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class PlayerUI : MonoBehaviour
     public GameObject gameOverObj;
     public TooltipController tooltipController;
     [NonSerialized] public MenuController menuController;
+    public GameObject startGameCanvas;
+    public GameObject victoryScreen;
 
     public List<GatherResource> allressources = new List<GatherResource>();
 
@@ -51,6 +54,15 @@ public class PlayerUI : MonoBehaviour
         else Destroy(gameObject);
 
         killCount.text = 0 + " Kills";
+    }
+    private void Start()
+    {
+        StartCoroutine(PauseGame());
+    }
+    IEnumerator PauseGame()
+    {
+        yield return null;
+        if(startGameCanvas.activeSelf == true) Time.timeScale = 0;
     }
     private void Update()
     {
@@ -91,5 +103,19 @@ public class PlayerUI : MonoBehaviour
     public void HandleAbilityMenuButton()
     {
         menuController.HandleAbilityMenu();
+    }
+    public void CloseStartGameCanvas()
+    {
+        Time.timeScale = 1;
+        startGameCanvas.SetActive(false);
+    }
+    public void Victory()
+    {
+        victoryScreen.SetActive(true);
+        Time.timeScale = 0;
+    }
+    public void BackToMainMenu()
+    {
+        menuController.BackToMainMenu();
     }
 }

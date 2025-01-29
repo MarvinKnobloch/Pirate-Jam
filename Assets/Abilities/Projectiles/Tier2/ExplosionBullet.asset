@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ExplosionBullet
   m_EditorClassIdentifier: 
   prefab: {fileID: 7943254572456533060, guid: 83f5561e2e551fd4693751c65f906a34, type: 3}
-  speed: 10
+  speed: 11
   projectileType: 2
   damage: 2
   damageType: 3

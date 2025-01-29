@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HealProjectile
   m_EditorClassIdentifier: 
   prefab: {fileID: 5903401445494139436, guid: d3582ad4aaa77a043af7ebf6c276c347, type: 3}
-  speed: 12
+  speed: 13
   projectileType: 3
   damage: 2
   damageType: 3
@@ -30,7 +30,7 @@ MonoBehaviour:
   stunDuration: 1.5
   healAmount: 4
   healScaling: 80
-  lifeStealAmount: 2
+  lifeStealAmount: 3
   lifeStealScaling: 80
   timeToDestroy: 5
   hitLayer:

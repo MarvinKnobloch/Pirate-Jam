@@ -112,7 +112,7 @@ MonoBehaviour:
   slowStrength: 1
   stunDuration: 0.7
   healAmount: 2
-  healScaling: 70
+  healScaling: 60
   lifeStealAmount: 0
   lifeStealScaling: 0
   hitLayer:

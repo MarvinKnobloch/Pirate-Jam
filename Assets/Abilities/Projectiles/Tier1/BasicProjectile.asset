@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: BasicProjectile
   m_EditorClassIdentifier: 
   prefab: {fileID: 5903401445494139436, guid: 44e65ae7a8c87504286b7f00833f2ff5, type: 3}
-  speed: 8
+  speed: 9
   projectileType: 0
   damage: 4
   damageType: 3
-  damageScaling: 80
+  damageScaling: 40
   damageOverTimeTicks: 0
   damageOverTimeInterval: 0
   aoeRange: 0
