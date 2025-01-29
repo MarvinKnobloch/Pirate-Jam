@@ -12,6 +12,7 @@ public class PlayerUI : MonoBehaviour
     public ExpController expController;
     public GameObject gameOverObj;
     public TooltipController tooltipController;
+    [NonSerialized] public MenuController menuController;
 
     public List<GatherResource> allressources = new List<GatherResource>();
 
@@ -81,5 +82,13 @@ public class PlayerUI : MonoBehaviour
     {
         kills++;
         killCount.text = kills + " Kills";
+    }
+    public void HandleMenuButton()
+    {
+        menuController.HandleMenu();
+    }
+    public void HandleAbilityMenuButton()
+    {
+        menuController.HandleAbilityMenu();
     }
 }

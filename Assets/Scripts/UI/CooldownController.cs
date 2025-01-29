@@ -4,7 +4,6 @@ using TMPro;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.InputSystem;
-using Unity.VisualScripting;
 
 public class CooldownController : MonoBehaviour
 {
@@ -21,6 +20,9 @@ public class CooldownController : MonoBehaviour
     [SerializeField] private Image overloadImage;
     [SerializeField] private TextMeshProUGUI overloadCooldownText;
     [SerializeField] private TextMeshProUGUI overloadHotkey;
+
+    [Space]
+    [SerializeField] private TextMeshProUGUI abilityMenuButtontext;
 
     private Controls controls;
     private void Awake()
@@ -71,6 +73,7 @@ public class CooldownController : MonoBehaviour
         cooldownHotkey[7].text = controls.Player.Ability8.GetBindingDisplayString();
 
         overloadHotkey.text = controls.Player.Overload.GetBindingDisplayString();
+        abilityMenuButtontext.text = "Abtiliy Menu (" + controls.Player.UpgradMenu.GetBindingDisplayString() + ")"; 
     }
     public void CooldownStart(int number, float time)
     {

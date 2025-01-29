@@ -11,7 +11,7 @@ public class TooltipController : MonoBehaviour
     public TextMeshProUGUI energyText;
     public TextMeshProUGUI cooldownText;
 
-    private float rectHeightMultiplier = 0.25f;
+    private float rectHeightMultiplier = 0.3f; //0.25f
 
 
     private void Awake()
@@ -45,13 +45,13 @@ public class TooltipController : MonoBehaviour
         //Ist keine Formel, einfach ein bisschen ausprobiert was passt
         float widthOffset = Screen.width / 5;  //7
 
-        float heigthoffset = ((Screen.height * 0.5f) - Input.mousePosition.y) / 90;              //Bestimmt ob das Fenster nach unten oder oben geht.
+        float heigthoffset = ((Screen.height * 0.5f) - Input.mousePosition.y) / 70;              //Bestimmt ob das Fenster nach unten oder oben geht.
 
         if (heigthoffset > 0) heigthoffset += tooltipRect.rect.height * rectHeightMultiplier;    //Wie weit das Fenster nach unten/oben geht basierend auf der Größe
         else heigthoffset -= tooltipRect.rect.height * rectHeightMultiplier;
 
         //links oder rechts von mousePosition          1.35f = 35% vom rechten Bildschirmrand
-        if (Screen.width / Input.mousePosition.x > 1.4f) tooltipWindow.transform.position = Input.mousePosition + new Vector3(widthOffset, heigthoffset, 0);
+        if (Screen.width / Input.mousePosition.x > 1.43f) tooltipWindow.transform.position = Input.mousePosition + new Vector3(widthOffset, heigthoffset, 0);
         else tooltipWindow.transform.position = Input.mousePosition + new Vector3(widthOffset * -1, heigthoffset, 0);
     }
     public void HideTooltip()

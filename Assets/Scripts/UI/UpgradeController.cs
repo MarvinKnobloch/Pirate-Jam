@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class UpgradeController : MonoBehaviour
 {
-    [SerializeField] public GameObject upgradeSelectionGrid;
+    [SerializeField] public GameObject upgrades;
+    [SerializeField] private GameObject upgradeSelectionGrid;
     private List<UpgradeSlot> upgradeSlots = new List<UpgradeSlot>();
 
     private int activeSlots;
@@ -45,7 +46,7 @@ public class UpgradeController : MonoBehaviour
             }
             yield return null;
         }
-        upgradeSelectionGrid.SetActive(true);
+        upgrades.SetActive(true);
         Time.timeScale = 0;
     }
     public void RemoveUpgrade(UpgradeSlot slot)
@@ -62,6 +63,6 @@ public class UpgradeController : MonoBehaviour
         Time.timeScale = 1;
 
         AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.menuButton);
-        upgradeSelectionGrid.SetActive(false);
+        upgrades.SetActive(false);
     }
 }

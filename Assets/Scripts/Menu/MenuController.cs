@@ -36,6 +36,10 @@ public class MenuController : MonoBehaviour
             baseMenu = ingameMenu;
         }
     }
+    private void Start()
+    {
+        PlayerUI.Instance.menuController = this;
+    }
     void Update()
     {
         if (controls.Menu.MenuEsc.WasPerformedThisFrame())
@@ -67,7 +71,7 @@ public class MenuController : MonoBehaviour
         {
             if (Player.Instance == null) return;
 
-            if (PlayerUI.Instance.upgradeController.GetComponent<UpgradeController>().upgradeSelectionGrid.activeSelf == true) return;
+            if (PlayerUI.Instance.upgradeController.GetComponent<UpgradeController>().upgrades.activeSelf == true) return;
             if (_abilityMenu.gameObject.activeSelf == true)
             {
                 PlayerUI.Instance.tooltipController.HideTooltip();
@@ -91,11 +95,11 @@ public class MenuController : MonoBehaviour
             }
         }
     }
-    private void HandleAbilityMenu()
+    public void HandleAbilityMenu()
     {
         if (Player.Instance == null) return;
         if (ingameMenu.activeSelf == true) return;
-        if (PlayerUI.Instance.upgradeController.GetComponent<UpgradeController>().upgradeSelectionGrid.activeSelf == true) return;
+        if (PlayerUI.Instance.upgradeController.GetComponent<UpgradeController>().upgrades.activeSelf == true) return;
 
         if (_abilityMenu.gameObject.activeSelf == false)
         {
@@ -134,7 +138,7 @@ public class MenuController : MonoBehaviour
     public void ResumeGame()
     {
         ingameMenu.SetActive(false);
-        PlayerUI.Instance.cooldownController.HotkeysUpdate();
+        PlayerUI.Instance.cooldownController.HotkeysUpdate();          //hier wird auch der Ability Menu hotkey upgedated
         _abilityMenu.GetComponentInParent<AbilityMenuController>().HotkeysUpdate();
         EndPause();
     }
