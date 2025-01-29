@@ -33,8 +33,9 @@ public class PlayerUI : MonoBehaviour
     public TextMeshProUGUI killCount;
     private int kills;
 
+    public TextMeshProUGUI gameTimerInfoText;
     public TextMeshProUGUI gameTimer;
-    private float time;
+    [NonSerialized] public float currentLevelTime;
     private int seconds;
     private int minutes;
 
@@ -53,10 +54,10 @@ public class PlayerUI : MonoBehaviour
     }
     private void Update()
     {
-        time += Time.deltaTime;
+        currentLevelTime -= Time.deltaTime;
 
-        seconds = Mathf.FloorToInt(time % 60);
-        minutes = Mathf.FloorToInt(time / 60 % 60);
+        seconds = Mathf.FloorToInt(currentLevelTime % 60);
+        minutes = Mathf.FloorToInt(currentLevelTime / 60 % 60);
         gameTimer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
