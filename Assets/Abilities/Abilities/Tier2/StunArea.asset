@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityName: Stun Area
   AbilityID: 19
-  AbilityCost: 2
-  AbilityCooldown: 4
+  AbilityCost: 3
+  AbilityCooldown: 14
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 9249151b25555c241b69da898242cc5b, type: 2}
   Description: Shoot a bullet which will create a stun area on the ground.
   abilityTier: 1
   damageUpgradeValue: 1
-  areaUpgradeValue: 0
+  areaUpgradeValue: 30
   healUpgradeValue: 0
   lifestealUpgradeValue: 0

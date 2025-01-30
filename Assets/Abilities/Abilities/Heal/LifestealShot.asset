@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityName: Lifesteal Shot
   AbilityID: 11
-  AbilityCost: 3
-  AbilityCooldown: 8
+  AbilityCost: 2
+  AbilityCooldown: 9
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 05c15ed929fa8d24d8262916cb66e143, type: 2}
   Description: Shoot a single bullet which over time will drain the life of enemies

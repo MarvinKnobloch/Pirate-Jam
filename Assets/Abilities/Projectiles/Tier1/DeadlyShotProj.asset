@@ -15,10 +15,10 @@ MonoBehaviour:
   prefab: {fileID: 2019969566017605790, guid: ce3898829fceb5d44b732d38c07d54c3, type: 3}
   speed: 12
   projectileType: 0
-  damage: 2
+  damage: 4
   damageType: 4
-  damageScaling: 20
-  damageOverTimeTicks: 5
+  damageScaling: 30
+  damageOverTimeTicks: 4
   damageOverTimeInterval: 1
   aoeRange: 0
   aoeSizeScaling: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
   multiShotAngle: 0
   slowDuration: 0
   slowStrength: 0.6
-  stunDuration: 0
+  stunDuration: 1
   healAmount: 0
   healScaling: 0
   lifeStealAmount: 0
@@ -37,5 +37,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   mirrorAttack: 0
+  visualEffect: {fileID: 0}
   createArea: 0
   areaPrefab: {fileID: 0}

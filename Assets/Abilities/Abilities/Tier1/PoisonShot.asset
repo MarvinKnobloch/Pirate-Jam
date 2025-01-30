@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityName: Poison Shot
   AbilityID: 15
-  AbilityCost: 2
-  AbilityCooldown: 4
+  AbilityCost: 3
+  AbilityCooldown: 10
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: b9809f7c031f89b4fa03bf4aaa23a706, type: 2}
   Description: Shoot multiple arrows that poison enemies.

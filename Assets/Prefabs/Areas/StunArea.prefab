@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaCollider: 1
-  areaSize: {x: 1.5, y: 8}
-  aoeSizeScaling: 80
+  areaSize: {x: 2, y: 12}
+  aoeSizeScaling: 100
   damageAmount: 1
   damageType: 4
   damageScaling: 20

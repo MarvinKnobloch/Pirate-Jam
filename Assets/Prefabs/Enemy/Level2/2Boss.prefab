@@ -259,7 +259,7 @@ MonoBehaviour:
   MoveSpeed: 0.5
   AttackDistance: 0.7
   AttackCooldown: 3
-  AttackDamage: 30
+  AttackDamage: 25
   focusPlayerOnly: 1
   experienceGain: 500
 --- !u!114 &8265245240528079808

@@ -141,7 +141,7 @@ MonoBehaviour:
   attackTransform: {fileID: 7907546951335282176}
   currentEnergy: 0
   maxEnergy: 20
-  energyRestoreInterval: 1
+  energyRestoreInterval: 0.95
   energyRestoreAmount: 2
   overloadDuration: 8
   overloadCooldown: 60

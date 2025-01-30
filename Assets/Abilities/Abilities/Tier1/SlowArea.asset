@@ -15,12 +15,12 @@ MonoBehaviour:
   AbilityName: Slow Area
   AbilityID: 14
   AbilityCost: 2
-  AbilityCooldown: 3
+  AbilityCooldown: 10
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 34922bc3a3602a84398e165d69c6d295, type: 2}
   Description: Shoot a bullet to create an area that slows enemies down.
   abilityTier: 0
   damageUpgradeValue: 1
-  areaUpgradeValue: 0
+  areaUpgradeValue: 40
   healUpgradeValue: 0
   lifestealUpgradeValue: 0
