@@ -32,10 +32,11 @@ MonoBehaviour:
   healScaling: 0
   lifeStealAmount: 0
   lifeStealScaling: 0
-  timeToDestroy: 5
+  timeToDestroy: 15
   hitLayer:
     serializedVersion: 2
     m_Bits: 128
   mirrorAttack: 0
+  visualEffect: {fileID: 5127698170399931462, guid: ca82be593be392a44afeee871edd9b05, type: 3}
   createArea: 0
   areaPrefab: {fileID: 0}

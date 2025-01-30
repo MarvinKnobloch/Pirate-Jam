@@ -158,6 +158,10 @@ public class Projectile : MonoBehaviour
                 GameObject area = Instantiate(projectile.areaPrefab, transform.position, transform.rotation);
                 area.GetComponent<AreaAbility>().SetValues(abilitySlot);
             }
+            if (projectile.visualEffect != null)
+            {
+                CreateEffect(projectile.visualEffect);
+            }
         }
     }
 
@@ -181,6 +185,11 @@ public class Projectile : MonoBehaviour
         {
             GameObject area = Instantiate(projectile.areaPrefab, transform.position, transform.rotation);
             area.GetComponent<AreaAbility>().SetValues(abilitySlot);
+        }
+
+        if (projectile.visualEffect != null)
+        {
+            CreateEffect(projectile.visualEffect);
         }
     }
     private void DealDamageOverTime(GameObject obj)
@@ -209,6 +218,10 @@ public class Projectile : MonoBehaviour
             GameObject area = Instantiate(projectile.areaPrefab, transform.position, transform.rotation);
             area.GetComponent<AreaAbility>().SetValues(abilitySlot);
         }
+        if (projectile.visualEffect != null)
+        {
+            CreateEffect(projectile.visualEffect);
+        }
     }
 
     private void EnemyInteraction(EnemyController enemyController)
@@ -231,5 +244,10 @@ public class Projectile : MonoBehaviour
     private void NPCHeal(NPCController nPCController)
     {
         nPCController.health.Heal(heal);
+    }
+    private void CreateEffect(GameObject obj)
+    {
+        GameObject effect = Instantiate(obj, transform.position, Quaternion.identity);
+        effect.transform.localScale = new Vector3(aoeSize, aoeSize, 1);
     }
 }

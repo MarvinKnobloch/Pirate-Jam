@@ -45,6 +45,7 @@ public class ProjectileObj : ScriptableObject
     public float timeToDestroy = 5;
     public LayerMask hitLayer;
     public bool mirrorAttack;
+    public GameObject visualEffect;
 
     [Header("Area")]
     public bool createArea;

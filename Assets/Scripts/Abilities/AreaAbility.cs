@@ -42,6 +42,10 @@ public class AreaAbility : MonoBehaviour
         Circle,
         Box,
     }
+    private void Awake()
+    {
+        if (areaCollider == AreaType.Circle) transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
     private void Start()
     {
         CancelInvoke();

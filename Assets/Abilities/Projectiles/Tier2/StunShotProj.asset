@@ -20,7 +20,7 @@ MonoBehaviour:
   damageScaling: 30
   damageOverTimeTicks: 0
   damageOverTimeInterval: 0
-  aoeRange: 7
+  aoeRange: 9
   aoeSizeScaling: 100
   maxBulletHeight: 8
   multipleProjectiles: 0
@@ -37,5 +37,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   mirrorAttack: 0
+  visualEffect: {fileID: 0}
   createArea: 0
   areaPrefab: {fileID: 0}

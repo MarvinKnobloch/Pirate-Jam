@@ -18,7 +18,7 @@ MonoBehaviour:
   AbilityCooldown: 8
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: ee0bf7287c67e104e9a9bdf526fd9c91, type: 2}
-  Description: Shoot a piercing bullet which will damage enemies.
+  Description: Shoot a piercing bullet which will damage and slow enemies
   abilityTier: 0
   damageUpgradeValue: 3
   areaUpgradeValue: 0

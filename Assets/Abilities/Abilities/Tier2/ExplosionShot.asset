@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityName: Explosion Shot
   AbilityID: 3
-  AbilityCost: 1
-  AbilityCooldown: 3
+  AbilityCost: 3
+  AbilityCooldown: 11
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 8f41d9cdaec451842a74d59538c34686, type: 2}
   Description: Shoot 3 explosive bullets which will deal aoe damage and slow down
