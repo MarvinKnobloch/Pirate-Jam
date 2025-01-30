@@ -39,6 +39,6 @@ MonoBehaviour:
   mirrorAttack: 0
   visualEffect: {fileID: 0}
   releaseSound: 0
-  hitSound: 3
+  hitSound: 6
   createArea: 1
   areaPrefab: {fileID: 4328325964248613563, guid: 8de2ef56c9f90b843b5de23516614297, type: 3}

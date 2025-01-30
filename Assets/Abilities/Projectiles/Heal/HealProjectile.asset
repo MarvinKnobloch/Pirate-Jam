@@ -38,7 +38,7 @@ MonoBehaviour:
     m_Bits: 384
   mirrorAttack: 0
   visualEffect: {fileID: 0}
-  releaseSound: 0
+  releaseSound: 10
   hitSound: 0
   createArea: 0
   areaPrefab: {fileID: 0}

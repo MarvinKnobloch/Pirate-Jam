@@ -28,6 +28,14 @@ public class AudioController : MonoBehaviour
         explosion,
         buy,
         normalShoot,
+        fire,
+        poison,
+        overload,
+        towerhit,
+        aoeHeal,
+        healShot,
+        lifesteal,
+        gameOver,
     }
 
     private void Awake()

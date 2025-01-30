@@ -65,7 +65,11 @@ public class Health : MonoBehaviour
 
         Value -= amount;
 
-        if (gameObject == Player.Instance.gameObject) Player.Instance.HealthUIUpdate();
+        if (gameObject == Player.Instance.gameObject) 
+        { 
+            Player.Instance.HealthUIUpdate();
+            AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.towerhit);
+        }
         else
         {
             EnemyHealthbarUpdate();

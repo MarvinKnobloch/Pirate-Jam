@@ -156,6 +156,7 @@ public class Player : MonoBehaviour
             overloadonCooldown = true;
             overloadActive = true;
             PlayerUI.Instance.cooldownController.OverloadCooldownStart(overloadCooldown);
+            AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.overload);
             StartCoroutine(OverloadEnd());
         }
     }
@@ -224,6 +225,7 @@ public class Player : MonoBehaviour
     private void OnDeath()
     {
         StopAllCoroutines();
+        AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.gameOver);
         PlayerUI.Instance.gameOverObj.SetActive(true);
     }
 
