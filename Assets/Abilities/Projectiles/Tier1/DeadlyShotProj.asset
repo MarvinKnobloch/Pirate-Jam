@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DeadlyShotProj
   m_EditorClassIdentifier: 
   prefab: {fileID: 2019969566017605790, guid: ce3898829fceb5d44b732d38c07d54c3, type: 3}
-  speed: 11
+  speed: 12
   projectileType: 0
   damage: 2
   damageType: 4

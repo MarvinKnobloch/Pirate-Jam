@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StunShotProj
   m_EditorClassIdentifier: 
   prefab: {fileID: 8356378035270633483, guid: 8dd1a97f2fb6bad48960114d9dace566, type: 3}
-  speed: 4
+  speed: 5
   projectileType: 1
   damage: 2
   damageType: 3

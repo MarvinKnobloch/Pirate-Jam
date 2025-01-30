@@ -57,6 +57,7 @@ public class PlayerUI : MonoBehaviour
     }
     private void Start()
     {
+        startGameCanvas.SetActive(true);
         StartCoroutine(PauseGame());
     }
     IEnumerator PauseGame()

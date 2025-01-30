@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SlowAreaProj
   m_EditorClassIdentifier: 
   prefab: {fileID: 7943254572456533060, guid: 6f143b4922570ea4e8cc91f51e230e41, type: 3}
-  speed: 10
+  speed: 11
   projectileType: 0
   damage: 0
   damageType: 0

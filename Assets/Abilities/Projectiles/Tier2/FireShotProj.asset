@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireShotProj
   m_EditorClassIdentifier: 
   prefab: {fileID: 5903401445494139436, guid: de9c0af9f4aaf5043a913dd6ad9b2b83, type: 3}
-  speed: 11
+  speed: 12
   projectileType: 3
   damage: 3
   damageType: 4
