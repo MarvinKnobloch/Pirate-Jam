@@ -24,6 +24,10 @@ public class AudioController : MonoBehaviour
     {
         empty,
         menuButton,
+        multiBullets,
+        explosion,
+        buy,
+        normalShoot,
     }
 
     private void Awake()
@@ -72,6 +76,7 @@ public class AudioController : MonoBehaviour
 
     public void PlaySoundOneshot(int soundNumber)
     {
+        if (soundNumber == 0) return;
         soundSource.PlayOneShot(soundClips[soundNumber].clip, soundClips[soundNumber].volume);
     }
 

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4844b80c316a2094d91f85851f9fd637, type: 3}
   m_Name: SlowAreaProj
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7943254572456533060, guid: 6f143b4922570ea4e8cc91f51e230e41, type: 3}
-  speed: 11
-  projectileType: 0
+  prefab: {fileID: 8356378035270633483, guid: 7c1d36b41138ebb478f72295ed412654, type: 3}
+  speed: 5
+  projectileType: 1
   damage: 0
   damageType: 0
   damageScaling: 0
@@ -22,7 +22,7 @@ MonoBehaviour:
   damageOverTimeInterval: 0
   aoeRange: 0
   aoeSizeScaling: 0
-  maxBulletHeight: 0
+  maxBulletHeight: 8
   multipleProjectiles: 0
   multiShotAngle: 0
   slowDuration: 0
@@ -32,10 +32,11 @@ MonoBehaviour:
   healScaling: 0
   lifeStealAmount: 0
   lifeStealScaling: 0
-  timeToDestroy: 5
+  timeToDestroy: 10
   hitLayer:
     serializedVersion: 2
     m_Bits: 128
   mirrorAttack: 0
+  visualEffect: {fileID: 0}
   createArea: 1
   areaPrefab: {fileID: 5928990622130729032, guid: fcd39654bfb290e46ac65f998760e7be, type: 3}

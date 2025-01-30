@@ -81,6 +81,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0) return;
+
         var ability1 = abilities.ElementAtOrDefault(0);
         var ability2 = abilities.ElementAtOrDefault(1);
         var ability3 = abilities.ElementAtOrDefault(2);

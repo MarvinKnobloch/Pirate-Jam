@@ -174,6 +174,8 @@ public class AbilityMenuController : MonoBehaviour
                 playerAbilityObj[slot].GetComponent<TooltipWindow>().ability = Player.Instance.abilities[slot];
                 playerAbilityObj[slot].GetComponent<TooltipWindow>().abilitySlot = slot;
 
+
+                AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.buy);
                 newAbilityIndex++;
 
                 if (newAbilityIndex >= 4) tier2AbiltiesGrid.SetActive(true);
@@ -192,6 +194,8 @@ public class AbilityMenuController : MonoBehaviour
                 abilityController.slotUpgrades[abilityMenuEntry.abilitySlot].slotArea += abilityMenuEntry.ability.areaUpgradeValue;
                 abilityController.slotUpgrades[abilityMenuEntry.abilitySlot].slotHeal += abilityMenuEntry.ability.healUpgradeValue;
                 abilityController.slotUpgrades[abilityMenuEntry.abilitySlot].slotLifesteal += abilityMenuEntry.ability.lifestealUpgradeValue;
+
+                AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.buy);
 
                 abilityMenuEntry.currentAbilityLvl++;
                 abilityMenuEntry.PrefabUpdate();

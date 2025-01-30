@@ -46,6 +46,8 @@ public class ProjectileObj : ScriptableObject
     public LayerMask hitLayer;
     public bool mirrorAttack;
     public GameObject visualEffect;
+    public AudioController.Sounds releaseSound;
+    public AudioController.Sounds hitSound;
 
     [Header("Area")]
     public bool createArea;
