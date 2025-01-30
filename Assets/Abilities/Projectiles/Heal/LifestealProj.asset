@@ -30,12 +30,13 @@ MonoBehaviour:
   stunDuration: 0
   healAmount: 0
   healScaling: 0
-  lifeStealAmount: 5
-  lifeStealScaling: 150
+  lifeStealAmount: 6
+  lifeStealScaling: 120
   timeToDestroy: 5
   hitLayer:
     serializedVersion: 2
     m_Bits: 128
   mirrorAttack: 0
+  visualEffect: {fileID: 0}
   createArea: 0
   areaPrefab: {fileID: 0}

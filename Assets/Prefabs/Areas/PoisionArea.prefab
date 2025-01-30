@@ -190,15 +190,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaCollider: 1
-  areaSize: {x: 2, y: 4}
+  areaSize: {x: 3, y: 6}
   aoeSizeScaling: 100
-  damageAmount: 2
+  damageAmount: 3
   damageType: 4
   damageScaling: 50
-  lifeTime: 3
+  lifeTime: 3.1
   tickInterval: 1
   slowDuration: 1.5
-  slowStrength: 0.9
+  slowStrength: 0.8
   stunDuration: 0
   healAmount: 0
   healScaling: 0

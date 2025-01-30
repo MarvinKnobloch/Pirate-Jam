@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InstancePrefab: {fileID: 8441325002812652694, guid: e617e1550febfc4498056bad5bb1caea, type: 3}
   MaxInstances: 20
-  SpawnTickRate: 8
+  SpawnTickRate: 10
   SpawnInstancesPerTick: 5
   SpawnMinMagnitude: 38
   SpawnMaxMagnitude: 40

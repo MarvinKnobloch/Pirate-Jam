@@ -21853,14 +21853,14 @@ MonoBehaviour:
     copper: 0
     gold: 0
   - wood: 13
-    copper: 5
+    copper: 4
     gold: 0
   - wood: 16
-    copper: 8
-    gold: 2
+    copper: 6
+    gold: 3
   - wood: 18
-    copper: 10
-    gold: 5
+    copper: 9
+    gold: 6
   playerAbilityGrid: {fileID: 5646108740668183495}
   cooldownPrefab: {fileID: 280651689389470, guid: 822e2e2e01cfb884db7bef77c2d21dc6, type: 3}
   cooldownPrefabCount: 8

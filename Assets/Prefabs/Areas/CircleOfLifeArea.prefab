@@ -106,7 +106,7 @@ MonoBehaviour:
   damageAmount: 0
   damageType: 4
   damageScaling: 0
-  lifeTime: 3
+  lifeTime: 3.1
   tickInterval: 1
   slowDuration: 0
   slowStrength: 1

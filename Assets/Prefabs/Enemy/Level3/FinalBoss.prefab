@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 8265245240528079808}
   - component: {fileID: 5786323231946821683}
   - component: {fileID: 5810476043483011221}
+  - component: {fileID: 7580303274660781937}
   m_Layer: 0
   m_Name: FinalBoss
   m_TagString: Enemy
@@ -259,7 +260,7 @@ MonoBehaviour:
   MoveSpeed: 0.5
   AttackDistance: 0.7
   AttackCooldown: 3
-  AttackDamage: 60
+  AttackDamage: 40
   focusPlayerOnly: 1
   experienceGain: 1
 --- !u!114 &8265245240528079808
@@ -347,6 +348,18 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.67
+--- !u!114 &7580303274660781937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441325002812652694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86f1fac666dd37845870a795459640cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8519216305284239017
 PrefabInstance:
   m_ObjectHideFlags: 0

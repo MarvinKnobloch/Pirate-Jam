@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityName: Fire Area
   AbilityID: 6
-  AbilityCost: 1
-  AbilityCooldown: 3
+  AbilityCost: 3
+  AbilityCooldown: 9
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 098975787fb0cff4aa69ab60af1b4ad9, type: 2}
   Description: Shoot a bullet which creates an area of fire on the ground.
   abilityTier: 0
   damageUpgradeValue: 2
-  areaUpgradeValue: 1
+  areaUpgradeValue: 10
   healUpgradeValue: 0
   lifestealUpgradeValue: 0

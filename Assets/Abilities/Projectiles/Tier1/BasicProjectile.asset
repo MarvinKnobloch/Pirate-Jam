@@ -17,7 +17,7 @@ MonoBehaviour:
   projectileType: 0
   damage: 4
   damageType: 3
-  damageScaling: 40
+  damageScaling: 20
   damageOverTimeTicks: 0
   damageOverTimeInterval: 0
   aoeRange: 0
@@ -37,5 +37,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   mirrorAttack: 0
+  visualEffect: {fileID: 0}
   createArea: 0
   areaPrefab: {fileID: 0}

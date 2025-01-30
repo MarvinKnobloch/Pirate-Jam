@@ -101,20 +101,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaCollider: 0
-  areaSize: {x: 4, y: 4}
-  aoeSizeScaling: 100
+  areaSize: {x: 5, y: 5}
+  aoeSizeScaling: 80
   damageAmount: 1
   damageType: 4
   damageScaling: 20
-  lifeTime: 2
+  lifeTime: 2.1
   tickInterval: 0.5
   slowDuration: 0
   slowStrength: 0.6
   stunDuration: 0
-  healAmount: 3
+  healAmount: 2
   healScaling: 50
   lifeStealAmount: 1
-  lifeStealScaling: 40
+  lifeStealScaling: 20
   hitLayer:
     serializedVersion: 2
     m_Bits: 384

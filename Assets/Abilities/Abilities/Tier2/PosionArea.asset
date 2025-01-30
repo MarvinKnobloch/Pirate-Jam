@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityName: Poison Area
   AbilityID: 7
-  AbilityCost: 1
-  AbilityCooldown: 3
+  AbilityCost: 3
+  AbilityCooldown: 13
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 0ee895928fab28d48add608fa18040ce, type: 2}
   Description: Shoot a bullet which will create a poison area on the ground.
   abilityTier: 1
   damageUpgradeValue: 1
-  areaUpgradeValue: 0
+  areaUpgradeValue: 30
   healUpgradeValue: 0
   lifestealUpgradeValue: 0

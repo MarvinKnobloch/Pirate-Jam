@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityName: Fire Shot
   AbilityID: 14
-  AbilityCost: 2
-  AbilityCooldown: 5
+  AbilityCost: 3
+  AbilityCooldown: 12
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: fbf47513d84a9e942b9ed21b55752458, type: 2}
   Description: Shoot a piercing bullet which will burn enemies

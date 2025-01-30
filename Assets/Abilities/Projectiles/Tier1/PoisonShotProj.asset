@@ -18,13 +18,13 @@ MonoBehaviour:
   damage: 2
   damageType: 4
   damageScaling: 80
-  damageOverTimeTicks: 3
+  damageOverTimeTicks: 4
   damageOverTimeInterval: 0.5
   aoeRange: 0
   aoeSizeScaling: 0
   maxBulletHeight: 0
   multipleProjectiles: 3
-  multiShotAngle: 45
+  multiShotAngle: 30
   slowDuration: 0
   slowStrength: 0.6
   stunDuration: 0
@@ -37,5 +37,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   mirrorAttack: 1
+  visualEffect: {fileID: 0}
   createArea: 0
   areaPrefab: {fileID: 0}

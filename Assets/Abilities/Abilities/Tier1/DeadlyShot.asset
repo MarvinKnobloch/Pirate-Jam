@@ -15,12 +15,12 @@ MonoBehaviour:
   AbilityName: Deadly Shot
   AbilityID: 20
   AbilityCost: 2
-  AbilityCooldown: 4
+  AbilityCooldown: 8
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: d9fa6512b22b4c74296849a4023ffa2f, type: 2}
-  Description: Shoot a bullet which gives the enemy a deadly wound.
+  Description: Shoot a bullet which stuns the enemy and gives a deadly wound.
   abilityTier: 0
-  damageUpgradeValue: 4
+  damageUpgradeValue: 2
   areaUpgradeValue: 0
   healUpgradeValue: 0
   lifestealUpgradeValue: 0

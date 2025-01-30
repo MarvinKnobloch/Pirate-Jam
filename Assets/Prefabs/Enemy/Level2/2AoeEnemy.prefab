@@ -258,7 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 2.2
   AttackDistance: 0.7
-  AttackCooldown: 1
+  AttackCooldown: 1.1
   AttackDamage: 1
   focusPlayerOnly: 0
   experienceGain: 20
