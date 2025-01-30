@@ -62,7 +62,7 @@ public class UpgradeController : MonoBehaviour
     {
         Time.timeScale = 1;
 
-        AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.menuButton);
+        AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.buy);
         upgrades.SetActive(false);
     }
 }

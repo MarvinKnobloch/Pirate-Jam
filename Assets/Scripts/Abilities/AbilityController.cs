@@ -79,6 +79,7 @@ public class AbilityController : MonoBehaviour
 
         if (player.overloadActive == false) player.EnergyUpdate(-ability.AbilityCost);
 
+        AudioController.Instance.PlaySoundOneshot((int)ability.projectileObj.releaseSound);
         state = AbilityState.ExecuteAbility;
         CastAbility();
     }

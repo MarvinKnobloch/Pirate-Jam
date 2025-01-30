@@ -107,6 +107,7 @@ public class PlayerUI : MonoBehaviour
     }
     public void CloseStartGameCanvas()
     {
+        AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.menuButton);
         Time.timeScale = 1;
         startGameCanvas.SetActive(false);
     }

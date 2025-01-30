@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UpgradeSystem;
@@ -104,6 +105,7 @@ public class Projectile : MonoBehaviour
         if (currentLifeTime <= 0)
         {
             DealAoeDamage();
+            AudioController.Instance.PlaySoundOneshot((int)projectile.hitSound);
             Destroy(gameObject);
         }
         transform.Translate(direction * currentSpeed * Time.deltaTime, Space.World);
@@ -127,10 +129,12 @@ public class Projectile : MonoBehaviour
             {
                 case ProjectileType.single:
                     DealSingleDamage(collision.gameObject);
+                    AudioController.Instance.PlaySoundOneshot((int)projectile.hitSound);
                     Destroy(gameObject);
                     break;
                 case ProjectileType.explosion:
                     DealAoeDamage();
+                    AudioController.Instance.PlaySoundOneshot((int)projectile.hitSound);
                     Destroy(gameObject);
                     break;
                 case ProjectileType.piercing:
