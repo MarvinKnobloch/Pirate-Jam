@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4844b80c316a2094d91f85851f9fd637, type: 3}
   m_Name: CanonProjectile
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8356378035270633483, guid: c5b1c9500a7680f42ae30d07d4700010, type: 3}
+  prefab: {fileID: 8356378035270633483, guid: 4c91432c64bc40c4c9c114cf4deaf45e, type: 3}
   speed: 5
   projectileType: 1
   damage: 7

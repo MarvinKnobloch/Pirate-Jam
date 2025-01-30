@@ -18,7 +18,7 @@ MonoBehaviour:
   AbilityCooldown: 10
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: c22419fff0f5a8d4083ae2751eb1d569, type: 2}
-  Description: Shoot multiple bullets.
+  Description: Shoot multiple arrow.
   abilityTier: 0
   damageUpgradeValue: 2
   areaUpgradeValue: 0

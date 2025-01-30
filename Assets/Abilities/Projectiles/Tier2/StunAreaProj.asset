@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StunAreaProj
   m_EditorClassIdentifier: 
   prefab: {fileID: 2019969566017605790, guid: 23d2ed0a9c4789f4084c8410cf848f66, type: 3}
-  speed: 12
+  speed: 18
   projectileType: 0
   damage: 0
   damageType: 0
@@ -37,5 +37,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   mirrorAttack: 0
+  visualEffect: {fileID: 0}
+  releaseSound: 0
+  hitSound: 0
   createArea: 1
   areaPrefab: {fileID: 5928990622130729032, guid: dbe526c9063c1264f92f5428418a2894, type: 3}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireShotProj
   m_EditorClassIdentifier: 
   prefab: {fileID: 5903401445494139436, guid: de9c0af9f4aaf5043a913dd6ad9b2b83, type: 3}
-  speed: 12
+  speed: 18
   projectileType: 3
   damage: 3
   damageType: 4
@@ -37,5 +37,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   mirrorAttack: 0
+  visualEffect: {fileID: 0}
+  releaseSound: 0
+  hitSound: 0
   createArea: 0
   areaPrefab: {fileID: 0}

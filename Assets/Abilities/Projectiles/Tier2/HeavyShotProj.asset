@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HeavyShotProj
   m_EditorClassIdentifier: 
   prefab: {fileID: 2019969566017605790, guid: ce3898829fceb5d44b732d38c07d54c3, type: 3}
-  speed: 12
+  speed: 18
   projectileType: 0
   damage: 26
   damageType: 3
@@ -37,5 +37,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   mirrorAttack: 0
+  visualEffect: {fileID: 0}
+  releaseSound: 0
+  hitSound: 0
   createArea: 0
   areaPrefab: {fileID: 0}

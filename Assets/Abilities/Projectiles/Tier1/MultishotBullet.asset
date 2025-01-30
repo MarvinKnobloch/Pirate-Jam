@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4844b80c316a2094d91f85851f9fd637, type: 3}
   m_Name: MultishotBullet
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5903401445494139436, guid: 44e65ae7a8c87504286b7f00833f2ff5, type: 3}
-  speed: 12
+  prefab: {fileID: 2019969566017605790, guid: 771491912b8872a4e8cf12eeacc384ad, type: 3}
+  speed: 16
   projectileType: 0
   damage: 5
   damageType: 3

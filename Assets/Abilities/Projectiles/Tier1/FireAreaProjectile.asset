@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireAreaProjectile
   m_EditorClassIdentifier: 
   prefab: {fileID: 5903401445494139436, guid: 192bbda08f5cb874dae84309fb2ab7df, type: 3}
-  speed: 12
+  speed: 18
   projectileType: 0
   damage: 0
   damageType: 0
