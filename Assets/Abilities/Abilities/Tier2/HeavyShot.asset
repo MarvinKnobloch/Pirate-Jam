@@ -18,7 +18,7 @@ MonoBehaviour:
   AbilityCooldown: 10
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: d744ad2c2dfaa7a41bace0cb94c03208, type: 2}
-  AbilitySprite: {fileID: 21300000, guid: 1d969c06639b38c4d87aec8fd856ef90, type: 3}
+  AbilitySprite: {fileID: 21300000, guid: e658404f0f709144a8c70421b38c3c34, type: 3}
   Description: Shoot a single bullet which will deal big damage.
   abilityTier: 1
   damageUpgradeValue: 8

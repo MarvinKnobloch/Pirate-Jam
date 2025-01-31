@@ -18,7 +18,7 @@ MonoBehaviour:
   AbilityCooldown: 12
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 5f80a31f6d359704384528555e401163, type: 2}
-  AbilitySprite: {fileID: 0}
+  AbilitySprite: {fileID: 21300000, guid: 762a09129e2fea74886e230e45f4d318, type: 3}
   Description: Shoot a bullet which will stun enemies and deal aoe damage.
   abilityTier: 1
   damageUpgradeValue: 2
