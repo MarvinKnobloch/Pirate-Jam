@@ -18,7 +18,8 @@ MonoBehaviour:
   AbilityCooldown: 9
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 05c15ed929fa8d24d8262916cb66e143, type: 2}
-  Description: Shoot a single bullet which over time will drain the life of enemies
+  AbilitySprite: {fileID: 21300000, guid: 42f36bbdf5a40c64589569a087514da6, type: 3}
+  Description: Shoot a single arrow which over time will drain the life of enemies
     and heal you.
   abilityTier: 0
   damageUpgradeValue: 1

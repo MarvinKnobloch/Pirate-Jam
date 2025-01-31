@@ -18,6 +18,7 @@ MonoBehaviour:
   AbilityCooldown: 10
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 34922bc3a3602a84398e165d69c6d295, type: 2}
+  AbilitySprite: {fileID: 21300000, guid: 6ffeb95a922c506498283a48e6535421, type: 3}
   Description: Shoot a bullet to create an area that slows enemies down.
   abilityTier: 0
   damageUpgradeValue: 1

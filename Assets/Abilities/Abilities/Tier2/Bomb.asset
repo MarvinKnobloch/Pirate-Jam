@@ -18,7 +18,8 @@ MonoBehaviour:
   AbilityCooldown: 13
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: c2d66b67511e71d4e981c11593048641, type: 2}
-  Description: Shoot a bullet which will deal damage in a huge area
+  AbilitySprite: {fileID: 21300000, guid: 906dc982605fc7c4998229c56a0261ae, type: 3}
+  Description: Shoot a bomb which will deal damage in a huge area.
   abilityTier: 1
   damageUpgradeValue: 3
   areaUpgradeValue: 20

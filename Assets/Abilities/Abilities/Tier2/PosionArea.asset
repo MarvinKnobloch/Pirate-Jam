@@ -18,7 +18,8 @@ MonoBehaviour:
   AbilityCooldown: 13
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 0ee895928fab28d48add608fa18040ce, type: 2}
-  Description: Shoot a bullet which will create a poison area on the ground.
+  AbilitySprite: {fileID: -4347532159779508366, guid: 243db805539097d43b07125039e3a27d, type: 3}
+  Description: Shoot an arrow which will create a poison area on the ground.
   abilityTier: 1
   damageUpgradeValue: 1
   areaUpgradeValue: 30

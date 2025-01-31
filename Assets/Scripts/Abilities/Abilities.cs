@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Ability", menuName = "ScriptableObjects/Ability")]
 public class Abilities : ScriptableObject
@@ -10,6 +11,7 @@ public class Abilities : ScriptableObject
     public float AbilityCooldown;
     public float AbilityTime;
     public ProjectileObj projectileObj;
+    public Sprite AbilitySprite;
 
     [Space]
     [TextArea][SerializeField] public string Description;

@@ -18,6 +18,7 @@ MonoBehaviour:
   AbilityCooldown: 12
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: ae9c957a8dbad4f428db287f3618e0b1, type: 2}
+  AbilitySprite: {fileID: 6648615940598474596, guid: 6317b9c753cb1c64181607ac357315ff, type: 3}
   Description: Shoot a bullet which creates a lifesteal area on the ground.
   abilityTier: 1
   damageUpgradeValue: 0

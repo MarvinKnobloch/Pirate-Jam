@@ -20,7 +20,7 @@ MonoBehaviour:
   damageScaling: 75
   damageOverTimeTicks: 0
   damageOverTimeInterval: 0
-  aoeRange: 4
+  aoeRange: 5
   aoeSizeScaling: 50
   maxBulletHeight: 0
   multipleProjectiles: 3

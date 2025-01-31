@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4844b80c316a2094d91f85851f9fd637, type: 3}
   m_Name: HealGrenadeProj
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8356378035270633483, guid: c8eeb043b2ae598478366d3e3db0cdd4, type: 3}
+  prefab: {fileID: 8356378035270633483, guid: c5b1c9500a7680f42ae30d07d4700010, type: 3}
   speed: 6
   projectileType: 1
   damage: 3
@@ -22,7 +22,7 @@ MonoBehaviour:
   damageOverTimeInterval: 0
   aoeRange: 5
   aoeSizeScaling: 50
-  maxBulletHeight: 5
+  maxBulletHeight: 6
   multipleProjectiles: 0
   multiShotAngle: 0
   slowDuration: 0
@@ -37,7 +37,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 384
   mirrorAttack: 0
-  visualEffect: {fileID: 0}
+  visualEffect: {fileID: 5127698170399931462, guid: ca82be593be392a44afeee871edd9b05, type: 3}
   releaseSound: 2
   hitSound: 10
   createArea: 0

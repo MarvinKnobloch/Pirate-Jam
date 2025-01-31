@@ -17,7 +17,7 @@ MonoBehaviour:
   projectileType: 0
   damage: 4
   damageType: 4
-  damageScaling: 30
+  damageScaling: 40
   damageOverTimeTicks: 4
   damageOverTimeInterval: 1
   aoeRange: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
   multiShotAngle: 0
   slowDuration: 0
   slowStrength: 0.6
-  stunDuration: 1
+  stunDuration: 1.2
   healAmount: 0
   healScaling: 0
   lifeStealAmount: 0

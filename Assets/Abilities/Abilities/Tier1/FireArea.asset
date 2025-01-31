@@ -18,7 +18,8 @@ MonoBehaviour:
   AbilityCooldown: 9
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 098975787fb0cff4aa69ab60af1b4ad9, type: 2}
-  Description: Shoot a bullet which creates an area of fire on the ground.
+  AbilitySprite: {fileID: 1098286324429101383, guid: c290cf8436bbed545aa81963e27e9000, type: 3}
+  Description: Shoot an arrow which creates an area of fire on the ground.
   abilityTier: 0
   damageUpgradeValue: 2
   areaUpgradeValue: 10

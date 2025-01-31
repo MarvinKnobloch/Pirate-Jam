@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UpgradeSystem;
 
 public class AbilityMenuController : MonoBehaviour
@@ -86,7 +87,7 @@ public class AbilityMenuController : MonoBehaviour
             playerAbilityObj[i].SetActive(true);
             playerAbilityObj[i].GetComponent<TooltipWindow>().ability = Player.Instance.abilities[i];
             playerAbilityObj[i].GetComponent<TooltipWindow>().abilitySlot = i;
-
+            playerAbilityObj[i].transform.GetChild(0).GetComponent<Image>().sprite = Player.Instance.abilities[i].AbilitySprite;
         }
         HotkeysUpdate();
 
@@ -173,8 +174,12 @@ public class AbilityMenuController : MonoBehaviour
                 playerAbilityObj[slot].SetActive(true);
                 playerAbilityObj[slot].GetComponent<TooltipWindow>().ability = Player.Instance.abilities[slot];
                 playerAbilityObj[slot].GetComponent<TooltipWindow>().abilitySlot = slot;
+                playerAbilityObj[slot].transform.GetChild(0).GetComponent<Image>().sprite = abilityMenuEntry.ability.AbilitySprite;
 
-
+                if (abilityMenuEntry.ability.AbilitySprite != null)
+                {
+                    PlayerUI.Instance.cooldownController.cooldownObj[newAbilityIndex].transform.GetChild(0).GetComponent<Image>().sprite = abilityMenuEntry.ability.AbilitySprite;
+                }
                 AudioController.Instance.PlaySoundOneshot((int)AudioController.Sounds.buy);
                 newAbilityIndex++;
 

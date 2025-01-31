@@ -1,7 +1,4 @@
-using Unity.VisualScripting;
-using UnityEditor.Playables;
 using UnityEngine;
-using UnityEngine.UIElements;
 using UpgradeSystem;
 
 public class Projectile : MonoBehaviour

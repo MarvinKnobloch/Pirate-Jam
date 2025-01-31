@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4844b80c316a2094d91f85851f9fd637, type: 3}
   m_Name: StunAreaProj
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2019969566017605790, guid: 23d2ed0a9c4789f4084c8410cf848f66, type: 3}
+  prefab: {fileID: 2019969566017605790, guid: ce3898829fceb5d44b732d38c07d54c3, type: 3}
   speed: 18
   projectileType: 0
   damage: 0

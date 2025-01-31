@@ -5,6 +5,7 @@ using static UpgradeSystem.Upgrades;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -75,6 +76,11 @@ public class Player : MonoBehaviour
         EnergyUpdate(MaxEnergy);
         AddResource(ResourceType.Wood, 0);
         InvokeRepeating("EnergyRestoreTick", energyRestoreInterval, energyRestoreInterval);
+
+        for (int i = 0; i < abilities.Count; i++)
+        {
+            if(abilities[i].AbilitySprite != null) PlayerUI.Instance.cooldownController.cooldownObj[i].transform.GetChild(0).GetComponent<Image>().sprite = abilities[i].AbilitySprite;
+        }
 
         if (health != null) health.dieEvent.AddListener(OnDeath);
     }

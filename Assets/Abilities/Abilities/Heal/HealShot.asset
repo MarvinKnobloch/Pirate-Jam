@@ -18,6 +18,7 @@ MonoBehaviour:
   AbilityCooldown: 10
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: ff2acda00a91a8f449754f02a205a6a7, type: 2}
+  AbilitySprite: {fileID: 21300000, guid: 13fec1d6d85bbbf49b6fb592847f7253, type: 3}
   Description: Shoot a lifestealing bullet to stun your enemies, heal your minions
     and heal yourself.
   abilityTier: 0

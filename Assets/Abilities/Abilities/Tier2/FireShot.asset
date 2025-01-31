@@ -18,7 +18,8 @@ MonoBehaviour:
   AbilityCooldown: 12
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: fbf47513d84a9e942b9ed21b55752458, type: 2}
-  Description: Shoot a piercing bullet which will burn enemies
+  AbilitySprite: {fileID: 21300000, guid: a83e1e9546e77644888797907362435f, type: 3}
+  Description: Shoot a piercing arrow that will burn enemies.
   abilityTier: 1
   damageUpgradeValue: 3
   areaUpgradeValue: 0

@@ -18,6 +18,7 @@ MonoBehaviour:
   AbilityCooldown: 8
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: d9fa6512b22b4c74296849a4023ffa2f, type: 2}
+  AbilitySprite: {fileID: 21300000, guid: 1d969c06639b38c4d87aec8fd856ef90, type: 3}
   Description: Shoot a bullet which stuns the enemy and gives a deadly wound.
   abilityTier: 0
   damageUpgradeValue: 2

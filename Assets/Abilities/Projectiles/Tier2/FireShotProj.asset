@@ -15,9 +15,9 @@ MonoBehaviour:
   prefab: {fileID: 5903401445494139436, guid: de9c0af9f4aaf5043a913dd6ad9b2b83, type: 3}
   speed: 18
   projectileType: 3
-  damage: 3
+  damage: 4
   damageType: 4
-  damageScaling: 80
+  damageScaling: 70
   damageOverTimeTicks: 4
   damageOverTimeInterval: 0.3
   aoeRange: 0

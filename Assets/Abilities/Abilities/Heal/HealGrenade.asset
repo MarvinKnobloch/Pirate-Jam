@@ -18,6 +18,7 @@ MonoBehaviour:
   AbilityCooldown: 10
   AbilityTime: 0.1
   projectileObj: {fileID: 11400000, guid: 2e020ee7007e4e540af787560bab7c89, type: 2}
+  AbilitySprite: {fileID: 21300000, guid: 0c69f1eb0ff8684498618bc0f4e21f16, type: 3}
   Description: Launch a grenade which heals you for each enemy hit. This also heals
     minions.
   abilityTier: 1

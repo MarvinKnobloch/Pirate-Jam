@@ -33,6 +33,7 @@ public class TooltipWindow : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private void SetDiscription()
     {
         TextMeshProUGUI text = PlayerUI.Instance.tooltipController.tooltipText;
+        text.text = string.Empty;
         text.text += Name();
         text.text += Discription();
 
@@ -139,6 +140,7 @@ public class TooltipWindow : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         //cooldownText.gameObject.SetActive(true);
 
         TextMeshProUGUI text = PlayerUI.Instance.tooltipController.tooltipText;
+        text.text = string.Empty;
         text.text += "<b><u>" + ability.AbilityName + "</u></b>\n\n";
         text.text += "<u>Upgrade to level " + (GetComponent<AbilityMenuEntry>().currentAbilityLvl + 1) + "</u>\n";
         text.text += "Damage: <color=green>+" + ability.damageUpgradeValue + "</color>\n";
