@@ -67,7 +67,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.8
 --- !u!1 &835139594245322347
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +114,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 448
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 8265245240528079808}
   - component: {fileID: 5786323231946821683}
   - component: {fileID: 5810476043483011221}
+  - component: {fileID: 1174130127031734232}
   m_Layer: 0
   m_Name: 3Boss
   m_TagString: Enemy
@@ -181,7 +182,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 2.2, y: 2.2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6589723892033796994}
@@ -233,8 +234,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.38679248, g: 0.15331188, b: 0, a: 1}
+  m_Sprite: {fileID: 7143246850662798176, guid: 18aac69164297ed4197a4a035aa42f9b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -275,8 +276,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 6589723892033796994}
-  HealthBarPermanent: 0
-  HealthBarOffset: 1
+  HealthBarPermanent: 1
+  HealthBarOffset: 2
   maxHealth: 400
   dieEvent:
     m_PersistentCalls:
@@ -346,7 +347,29 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.67
+  m_Radius: 1
+--- !u!95 &1174130127031734232
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441325002812652694}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d5d2eff2ff8fc1c43a4f83f78202633f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &8519216305284239017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -357,7 +380,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 959518903400884722, guid: fae109589fef1714ebd144ad69d51b50, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.020755768
       objectReference: {fileID: 0}
     - target: {fileID: 959518903400884722, guid: fae109589fef1714ebd144ad69d51b50, type: 3}
       propertyPath: m_Color.g
@@ -446,10 +469,6 @@ PrefabInstance:
     - target: {fileID: 3263193145813955883, guid: fae109589fef1714ebd144ad69d51b50, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3880564814018214472, guid: fae109589fef1714ebd144ad69d51b50, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8280983770968939263, guid: fae109589fef1714ebd144ad69d51b50, type: 3}
       propertyPath: m_Name

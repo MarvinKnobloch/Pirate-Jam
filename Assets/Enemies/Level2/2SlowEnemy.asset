@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5422c1ecafc3bc4b93ec9b6db349be2, type: 3}
   m_Name: 2SlowEnemy
   m_EditorClassIdentifier: 
-  InstancePrefab: {fileID: 8441325002812652694, guid: e4375a5a08f828a48839bbe47acc0bb9, type: 3}
+  InstancePrefab: {fileID: 8441325002812652694, guid: da70f7b97d4f0ff4189d33e4375df1bc, type: 3}
   MaxInstances: 10
   SpawnTickRate: 65
   SpawnInstancesPerTick: 4

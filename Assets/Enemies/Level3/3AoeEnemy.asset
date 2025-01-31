@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5422c1ecafc3bc4b93ec9b6db349be2, type: 3}
   m_Name: 3AoeEnemy
   m_EditorClassIdentifier: 
-  InstancePrefab: {fileID: 8441325002812652694, guid: e617e1550febfc4498056bad5bb1caea, type: 3}
+  InstancePrefab: {fileID: 8441325002812652694, guid: 0ace93ab2ec33a74eb8409f3ef30d2b3, type: 3}
   MaxInstances: 20
   SpawnTickRate: 10
   SpawnInstancesPerTick: 5
